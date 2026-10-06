@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#edf2ff" />
+    <meta name="description" content="XimiTech — trải nghiệm web tương tác với ánh sáng, mặt nước và chuyển động." />
+    <title>XimiTech — Ánh sáng trong chuyển động</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2320294d'/%3E%3Cpath d='M16 14l16 18 16-18M16 50l16-18 16 18' fill='none' stroke='white' stroke-width='6'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="is-loading">
+    <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="cursor" aria-hidden="true">
+      <span class="cursor__halo"></span>
+      <span class="cursor__dot">✦</span>
+    </div>
+
+    <div class="loader" role="status" aria-live="polite">
+      <span class="loader__mark">X.</span>
+      <p>Đang tạo mặt nước</p>
+      <div class="loader__track"><span></span></div>
+      <strong class="loader__value">0%</strong>
+    </div>
+
+    <header class="site-header" data-header>
+      <div class="header-glass">
+        <a class="brand" href="https://webs4v.vn/" aria-label="Webs4V — Trang chủ">
+          <img src="./image/logo-webs4v-2-1.png" alt="Webs4V" width="1310" height="672" />
+        </a>
+
+        <nav class="primary-nav" aria-label="Điều hướng chính">
+          <a href="https://webs4v.vn/">Trang chủ</a>
+          <a href="https://webs4v.vn/ve-chung-toi/">Về chúng tôi</a>
+          <a href="https://webs4v.vn/dich-vu/">Dịch vụ</a>
+          <a href="https://webs4v.vn/chinh-sach-bao-mat/">Chính sách</a>
+          <a href="https://webs4v.vn/tuyen-dung/">Tuyển dụng</a>
+          <a href="https://webs4v.vn/lien-he/">Liên hệ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="header-cta" href="https://webs4v.vn/lien-he/">
+            <span>Bắt đầu dự án</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5m0 0H7m8 0v8" /></svg>
+          </a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Mở menu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobile-navigation" aria-hidden="true">
+        <p class="mobile-menu__label">Khám phá Webs4V</p>
+        <nav aria-label="Điều hướng trên thiết bị di động">
+          <a href="https://webs4v.vn/"><span>01</span>Trang chủ</a>
+          <a href="https://webs4v.vn/ve-chung-toi/"><span>02</span>Về chúng tôi</a>
+          <a href="https://webs4v.vn/dich-vu/"><span>03</span>Dịch vụ</a>
+          <a href="https://webs4v.vn/chinh-sach-bao-mat/"><span>04</span>Chính sách</a>
+          <a href="https://webs4v.vn/tuyen-dung/"><span>05</span>Tuyển dụng</a>
+          <a href="https://webs4v.vn/lien-he/"><span>06</span>Liên hệ</a>
+        </nav>
+        <a class="mobile-menu__cta" href="https://webs4v.vn/lien-he/">
+          <span>Trao đổi về dự án</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5m0 0H7m8 0v8" /></svg>
+        </a>
+      </div>
+    </header>
+    <div class="menu-backdrop" aria-hidden="true"></div>
+
+    <aside class="scroll-progress" aria-hidden="true">
+      <span></span>
+      <small>Cuộn để khám phá</small>
+    </aside>
+
+    <main id="top">
+      <section class="panel hero">
+        <div class="copy copy--hero reveal">
+          <p class="eyebrow">Webs4V · Thiết kế website cao cấp</p>
+          <h1>Website khác biệt.<br /><span>Kinh doanh hiệu quả.</span></h1>
+          <p class="hero__description">Thiết kế riêng theo thương hiệu, nền tảng kỹ thuật tốt và quy trình rõ ràng để doanh nghiệp tự tin phát triển trên môi trường số.</p>
+          <div class="hero__actions">
+            <a class="hero__primary" href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">
+              <span>Nhận tư vấn</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5m0 0H7m8 0v8" /></svg>
+            </a>
+            <a class="hero__phone" href="tel:0364003638"><span>Gọi ngay</span><strong>0364 003 638</strong></a>
+          </div>
+          <div class="hero__proof" aria-label="Năng lực Webs4V">
+            <div><strong>200+</strong><span>Website đã thực hiện</span></div>
+            <div><strong>01 năm</strong><span>Bảo hành kỹ thuật</span></div>
+            <div><strong>03 lần</strong><span>Chỉnh sửa thiết kế</span></div>
+          </div>
+          <p class="hero__note">Di chuyển con trỏ để tương tác với mặt nước và logo.</p>
+        </div>
+      </section>
+
+      <section class="panel story" id="story">
+        <div class="copy copy--center reveal">
+          <p class="eyebrow">Một không gian, một nhịp điệu</p>
+          <h2>Trong một thế giới<br />luôn <em>đổi thay,</em></h2>
+          <p>Ánh sáng, màu sắc và chuyển động cùng tồn tại trong một dòng chảy liên tục.</p>
+        </div>
+      </section>
+
+      <section class="panel approach" id="approach">
+        <div class="copy reveal">
+          <p class="eyebrow">Cách chúng tôi tạo trải nghiệm</p>
+          <h2>Ít chi tiết hơn.<br /><em>Nhiều cảm giác hơn.</em></h2>
+          <div class="principles">
+            <article><span>01</span><h3>Ánh sáng</h3><p>Phản chiếu dịu, trong và có chiều sâu.</p></article>
+            <article><span>02</span><h3>Chuyển động</h3><p>Phản hồi tự nhiên theo từng lần chạm.</p></article>
+            <article><span>03</span><h3>Nhất quán</h3><p>Một ngôn ngữ thị giác xuyên suốt toàn trang.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel contact" id="contact">
+        <footer class="copy copy--center reveal">
+          <p class="eyebrow">Bắt đầu một câu chuyện mới</p>
+          <h2>Hãy tạo điều gì đó<br /><em>đáng nhớ.</em></h2>
+          <a class="contact__link" href="tel:0888889805">0888889805</a>
+          <nav aria-label="Liên kết cuối trang">
+            <a href="https://zalo.me/0888889805" target="_blank" rel="noopener noreferrer">Zalo</a>
+            <a href="mailto:hello@ximitech.vn">Email</a>
+            <a href="#top">Lên đầu trang</a>
+          </nav>
+        </footer>
+      </section>
+    </main>
+
+    <noscript>Trải nghiệm này cần JavaScript và WebGL để hoạt động.</noscript>
+    <script>
+      window.__webs4vLoadingWatchdog = window.setTimeout(function () {
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('is-ready');
+      }, 4000);
+    </script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
