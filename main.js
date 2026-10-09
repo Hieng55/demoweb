@@ -1,9 +1,17 @@
 import * as THREE from 'three';
+import { createIcons, SearchCheck, PenTool, CodeXml, Rocket } from 'lucide';
+import 'sweetalert2/dist/sweetalert2.min.css';
 import iceUrl from './image/ice.jpg';
 import iceDisplacementUrl from './image/iced.jpg';
 import iceNormalUrl from './image/icen.jpg';
 import noiseUrl from './image/noises.jpg';
 import wavesUrl from './image/waves.jpg';
+
+const projectImageModules = import.meta.glob('./image/project/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
 
 const body = document.body;
 const canvas = document.querySelector('#webgl-canvas');
@@ -19,6 +27,419 @@ const compactLayout = window.matchMedia('(max-width: 760px), (pointer: coarse)')
 const deviceMemory = navigator.deviceMemory ?? 8;
 const hardwareConcurrency = navigator.hardwareConcurrency ?? 8;
 const lowPowerDevice = compactLayout || deviceMemory <= 4 || hardwareConcurrency <= 4;
+
+createIcons({
+  icons: { SearchCheck, PenTool, CodeXml, Rocket },
+  attrs: {
+    'aria-hidden': 'true',
+    'stroke-width': 1.7,
+  },
+});
+
+function initializeProjectMarquee() {
+  const groups = document.querySelectorAll('[data-project-group]');
+  if (!groups.length) return;
+
+  const featuredOrder = [
+    'featured-tablet.jpg',
+    'featured-4503766.jpg',
+    'featured-7288248.jpg',
+    'featured-16-1.jpg',
+    'featured-restaurant.jpg',
+  ];
+  const collator = new Intl.Collator('vi', { numeric: true, sensitivity: 'base' });
+  const images = Object.entries(projectImageModules).sort(([pathA], [pathB]) => {
+    const nameA = pathA.split('/').pop();
+    const nameB = pathB.split('/').pop();
+    const rankA = featuredOrder.indexOf(nameA);
+    const rankB = featuredOrder.indexOf(nameB);
+    if (rankA !== -1 || rankB !== -1) {
+      if (rankA === -1) return 1;
+      if (rankB === -1) return -1;
+      return rankA - rankB;
+    }
+    return collator.compare(nameA, nameB);
+  });
+
+  groups.forEach((group, rowIndex) => {
+    const track = group.closest('[data-project-track]');
+    const rowImages = images.filter((_, imageIndex) => imageIndex % groups.length === rowIndex);
+    if (!track) return;
+
+    rowImages.forEach(([, source], cardIndex) => {
+      const projectNumber = cardIndex * groups.length + rowIndex + 1;
+      const card = document.createElement('figure');
+      const image = document.createElement('img');
+      const caption = document.createElement('figcaption');
+      const number = document.createElement('span');
+      const label = document.createElement('strong');
+
+      card.className = 'project-card';
+      image.src = source;
+      image.alt = `Dự án website Webs4V ${projectNumber}`;
+      image.loading = cardIndex < 2 ? 'eager' : 'lazy';
+      image.decoding = 'async';
+      number.textContent = String(projectNumber).padStart(2, '0');
+      label.textContent = 'Webs4V Project';
+      caption.append(number, label);
+      card.append(image, caption);
+      group.append(card);
+    });
+
+    const duplicate = group.cloneNode(true);
+    duplicate.removeAttribute('data-project-group');
+    duplicate.setAttribute('aria-hidden', 'true');
+    duplicate.querySelectorAll('img').forEach((image) => {
+      image.alt = '';
+      image.loading = 'lazy';
+    });
+    track.style.setProperty('--marquee-duration', `${Math.max(48, rowImages.length * 4.2)}s`);
+    track.append(duplicate);
+  });
+}
+
+initializeProjectMarquee();
+
+function initializeAboutParallax() {
+  const visual = document.querySelector('.about__visual');
+  if (!visual || reducedMotion || compactLayout) return;
+
+  const layers = visual.querySelectorAll('[data-about-depth]');
+
+  visual.addEventListener('pointermove', (event) => {
+    const bounds = visual.getBoundingClientRect();
+    const offsetX = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const offsetY = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+    layers.forEach((layer) => {
+      const depth = Number(layer.dataset.aboutDepth) || 1;
+      layer.style.setProperty('--about-shift-x', `${offsetX * 22 * depth}px`);
+      layer.style.setProperty('--about-shift-y', `${offsetY * 17 * depth}px`);
+    });
+  }, { passive: true });
+
+  visual.addEventListener('pointerleave', () => {
+    layers.forEach((layer) => {
+      layer.style.setProperty('--about-shift-x', '0px');
+      layer.style.setProperty('--about-shift-y', '0px');
+    });
+  });
+}
+
+initializeAboutParallax();
+
+function initializeQuoteBuilder() {
+  const builder = document.querySelector('[data-quote-builder]');
+  if (!builder) return;
+
+  const packageButtons = [...builder.querySelectorAll('[data-package]')];
+  const addonButtons = [...builder.querySelectorAll('[data-addon]')];
+  const presetButtons = [...builder.querySelectorAll('[data-preset]')];
+  const totalElement = builder.querySelector('[data-quote-total]');
+  const selectionElement = builder.querySelector('[data-quote-selection]');
+  const formatPrice = (value) => `${new Intl.NumberFormat('vi-VN').format(value)}đ`;
+
+  function setPressed(button, pressed) {
+    button.classList.toggle('is-selected', pressed);
+    button.setAttribute('aria-pressed', String(pressed));
+  }
+
+  function selectPackage(packageName) {
+    packageButtons.forEach((button) => setPressed(button, button.dataset.package === packageName));
+  }
+
+  function selectAddon(label, selected = true) {
+    const button = addonButtons.find((item) => item.dataset.label === label);
+    if (!button) return;
+    if (selected && button.dataset.group) {
+      addonButtons
+        .filter((item) => item !== button && item.dataset.group === button.dataset.group)
+        .forEach((item) => setPressed(item, false));
+    }
+    setPressed(button, selected);
+  }
+
+  function updateQuote() {
+    const selectedPackage = packageButtons.find((button) => button.classList.contains('is-selected')) || packageButtons[0];
+    const selectedAddons = addonButtons.filter((button) => button.classList.contains('is-selected'));
+    const packagePrice = Number(selectedPackage.dataset.price);
+    const total = selectedAddons.reduce((sum, button) => sum + Number(button.dataset.price), packagePrice);
+
+    totalElement.textContent = formatPrice(total);
+    selectionElement.replaceChildren();
+
+    [selectedPackage, ...selectedAddons].forEach((button, index) => {
+      const item = document.createElement('li');
+      const label = document.createElement('span');
+      const price = document.createElement('b');
+      label.textContent = button.dataset.label;
+      price.textContent = `${index === 0 ? '' : '+'}${formatPrice(Number(button.dataset.price))}`;
+      item.append(label, price);
+      selectionElement.append(item);
+    });
+  }
+
+  packageButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      selectPackage(button.dataset.package);
+      updateQuote();
+    });
+  });
+
+  addonButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const willSelect = !button.classList.contains('is-selected');
+      selectAddon(button.dataset.label, willSelect);
+      updateQuote();
+    });
+  });
+
+  presetButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      addonButtons.forEach((addon) => setPressed(addon, false));
+
+      if (button.dataset.preset === 'business-blog') {
+        selectPackage('business');
+        selectAddon('Blog / Tin tức');
+      }
+
+      if (button.dataset.preset === 'full-commerce') {
+        selectPackage('commerce');
+        selectAddon('Giỏ hàng & quản lý đơn');
+        selectAddon('QR thanh toán');
+      }
+
+      if (button.dataset.preset === 'growth-commerce') {
+        selectPackage('commerce');
+        selectAddon('Blog / Tin tức');
+        selectAddon('Giỏ hàng & quản lý đơn');
+        selectAddon('QR thanh toán');
+        selectAddon('GEO nâng cao');
+      }
+
+      updateQuote();
+    });
+  });
+
+  updateQuote();
+}
+
+initializeQuoteBuilder();
+
+function initializeFaq() {
+  const faq = document.querySelector('[data-faq]');
+  if (!faq) return;
+
+  const items = [...faq.querySelectorAll('.faq-item')];
+
+  items.forEach((item) => {
+    const button = item.querySelector('button');
+    if (!button) return;
+
+    button.addEventListener('click', () => {
+      const willOpen = !item.classList.contains('is-open');
+
+      items.forEach((otherItem) => {
+        otherItem.classList.remove('is-open');
+        otherItem.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      });
+
+      if (willOpen) {
+        item.classList.add('is-open');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+initializeFaq();
+
+async function initializeProcessLight() {
+  const timeline = document.querySelector('.process__timeline');
+  if (!timeline) return;
+
+  const cards = [...timeline.querySelectorAll('.process-card')];
+  const nodes = [...timeline.querySelectorAll('.process__nodes i')];
+
+  if (reducedMotion) {
+    timeline.style.setProperty('--process-progress', '1');
+    cards.forEach((card) => card.classList.add('is-lit'));
+    nodes.forEach((node) => node.classList.add('is-lit'));
+    return;
+  }
+
+  const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+    import('gsap'),
+    import('gsap/ScrollTrigger'),
+  ]);
+  gsap.registerPlugin(ScrollTrigger);
+  const processCardOffset = window.matchMedia('(max-width: 760px)').matches ? 26 : 90;
+
+  gsap.set(timeline, { '--process-progress': 0 });
+  gsap.set(cards, {
+    autoAlpha: 0.12,
+    x: (index) => (index % 2 === 0 ? -processCardOffset : processCardOffset),
+    y: 26,
+    scale: 0.97,
+    filter: 'grayscale(35%) brightness(82%)',
+    '--card-light-x': '-160%',
+    '--card-glow': 0,
+  });
+
+  const sequenceDuration = 4;
+  const processAnimation = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: {
+      trigger: timeline,
+      start: 'top 78%',
+      end: 'bottom 22%',
+      scrub: 0.65,
+      invalidateOnRefresh: true,
+      onUpdate: ({ progress }) => {
+        cards.forEach((card, index) => {
+          const step = (index + 0.5) / cards.length;
+          const nextStep = Math.min(1, (index + 1.5) / cards.length);
+          const isLit = progress >= Math.max(0, step - 0.08);
+          const isCurrent = progress >= Math.max(0, step - 0.025) && (index === cards.length - 1 || progress < nextStep - 0.025);
+          card.classList.toggle('is-lit', isLit);
+          card.classList.toggle('is-current', isCurrent);
+          nodes[index]?.classList.toggle('is-lit', progress >= step);
+          nodes[index]?.classList.toggle('is-current', isCurrent);
+        });
+      },
+    },
+  });
+
+  processAnimation.to(timeline, { '--process-progress': 1, duration: sequenceDuration }, 0);
+
+  cards.forEach((card, index) => {
+    const stepTime = ((index + 0.5) / cards.length) * sequenceDuration;
+    const revealAt = Math.max(0, stepTime - 0.34);
+
+    processAnimation.to(card, {
+      autoAlpha: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      filter: 'grayscale(0%) brightness(100%)',
+      duration: 0.34,
+      ease: 'power2.out',
+    }, revealAt);
+    processAnimation.to(card, {
+      '--card-light-x': '80%',
+      '--card-glow': 1,
+      duration: 0.17,
+    }, revealAt);
+    processAnimation.to(card, {
+      '--card-light-x': '360%',
+      '--card-glow': 0,
+      duration: 0.2,
+    }, revealAt + 0.17);
+  });
+
+  window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+}
+
+initializeProcessLight();
+
+function initializeContactForm() {
+  const form = document.querySelector('[data-contact-form]');
+  if (!form) return;
+
+  const status = form.querySelector('[data-contact-status]');
+  const submitButton = form.querySelector('[data-contact-submit]');
+  const endpoint = form.dataset.contactEndpoint?.trim() || '';
+  const cooldownKey = 'webs4v-contact-last-submit';
+  let formStartedAt = Date.now();
+  let isSubmitting = false;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (isSubmitting || !form.reportValidity()) return;
+
+    let lastSubmittedAt = 0;
+    try {
+      lastSubmittedAt = Number(window.localStorage.getItem(cooldownKey)) || 0;
+    } catch {
+      lastSubmittedAt = 0;
+    }
+
+    if (Date.now() - lastSubmittedAt < 30000) {
+      status.textContent = 'Yêu cầu vừa được gửi. Vui lòng chờ một chút trước khi gửi lại.';
+      status.classList.remove('is-success');
+      status.classList.add('is-error');
+      return;
+    }
+
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get('name') || '').trim(),
+      phone: String(data.get('phone') || '').trim(),
+      service: String(data.get('service') || '').trim(),
+      message: String(data.get('message') || '').trim(),
+      website: String(data.get('website') || '').trim(),
+      startedAt: String(formStartedAt),
+    };
+
+    if (!endpoint.startsWith('https://script.google.com/macros/s/') || endpoint.includes('THAY_BANG_URL_CUA_BAN')) {
+      status.textContent = 'Biểu mẫu chưa được kết nối. Vui lòng nhắn Zalo hoặc gọi 0364 003 638.';
+      status.classList.remove('is-success');
+      status.classList.add('is-error');
+      return;
+    }
+
+    isSubmitting = true;
+    submitButton.disabled = true;
+    submitButton.querySelector('span').textContent = 'Đang gửi...';
+    status.textContent = 'Đang chuyển yêu cầu đến Webs4V.';
+    status.classList.remove('is-success', 'is-error');
+
+    try {
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(payload),
+      });
+
+      form.reset();
+      formStartedAt = Date.now();
+      try {
+        window.localStorage.setItem(cooldownKey, String(Date.now()));
+      } catch {
+        // The server-side rate limit remains active when local storage is unavailable.
+      }
+      status.textContent = 'Đã gửi thành công. Webs4V sẽ liên hệ với bạn trong thời gian sớm nhất.';
+      status.classList.add('is-success');
+      submitButton.querySelector('span').textContent = 'Đã gửi yêu cầu';
+      const { default: Swal } = await import('sweetalert2');
+      Swal.fire({
+        icon: 'success',
+        title: 'Đã gửi yêu cầu',
+        text: 'Cảm ơn bạn đã liên hệ. Webs4V sẽ phản hồi trong thời gian sớm nhất.',
+        confirmButtonText: 'Hoàn tất',
+        buttonsStyling: false,
+        heightAuto: false,
+        returnFocus: false,
+        customClass: {
+          popup: 'contact-alert',
+          title: 'contact-alert__title',
+          htmlContainer: 'contact-alert__content',
+          confirmButton: 'contact-alert__button',
+        },
+      });
+    } catch (error) {
+      console.error('Không thể gửi yêu cầu liên hệ.', error);
+      status.textContent = 'Chưa thể gửi tự động. Vui lòng nhắn Zalo hoặc gọi 0364 003 638.';
+      status.classList.add('is-error');
+      submitButton.querySelector('span').textContent = 'Thử gửi lại';
+    } finally {
+      isSubmitting = false;
+      submitButton.disabled = false;
+    }
+  });
+}
+
+initializeContactForm();
 
 let loadingFinished = false;
 
@@ -418,10 +839,10 @@ const backgroundMaterial = new THREE.ShaderMaterial({
     }
 
     vec3 sampleWaterNormal(vec2 uv) {
-      vec2 uv0 = uv * 0.74 + vec2(uTime / 170.0, uTime / 290.0);
-      vec2 uv1 = uv * 0.93 - vec2(uTime / 190.0, -uTime / 310.0);
-      vec2 uv2 = uv * vec2(0.18, 0.21) + vec2(uTime / 1010.0, uTime / 970.0);
-      vec2 uv3 = uv * vec2(0.46, 0.52) - vec2(uTime / 1090.0, -uTime / 1130.0);
+      vec2 uv0 = uv * 0.74 + vec2(uTime / 42.0, uTime / 68.0);
+      vec2 uv1 = uv * 0.93 - vec2(uTime / 51.0, -uTime / 76.0);
+      vec2 uv2 = uv * vec2(0.18, 0.21) + vec2(uTime / 210.0, uTime / 185.0);
+      vec2 uv3 = uv * vec2(0.46, 0.52) - vec2(uTime / 235.0, -uTime / 260.0);
       vec3 waves = texture2D(uWaves, uv0).rgb + texture2D(uWaves, uv1).rgb + texture2D(uWaves, uv2).rgb + texture2D(uWaves, uv3).rgb;
       waves = waves * 0.5 - 1.0;
       vec3 iceNormal = texture2D(uIceNormal, uv * 0.78 + waves.xy * 0.015).rgb * 2.0 - 1.0;
@@ -455,7 +876,22 @@ const backgroundMaterial = new THREE.ShaderMaterial({
       vec2 interactionGradient = trailNormal * 0.86 + rippleNormal * 1.48;
       float interactionStrength = clamp(length(interactionGradient) * 2.4 + abs(rippleHeight) * 0.18, 0.0, 1.0);
       vec3 waterNormal = sampleWaterNormal(uv * aspectScale + trailNormal * 0.1 + uScroll * vec2(0.015, -0.02));
-      vec2 distortion = waterNormal.xy * 0.0045 + interactionGradient * 0.046;
+
+      vec2 autoOriginA = vec2(0.24, 0.32);
+      vec2 autoOriginB = vec2(0.78, 0.68);
+      vec2 autoVectorA = (uv - autoOriginA) * aspectScale;
+      vec2 autoVectorB = (uv - autoOriginB) * aspectScale;
+      float autoDistanceA = length(autoVectorA);
+      float autoDistanceB = length(autoVectorB);
+      float autoWaveA = cos(autoDistanceA * 27.0 - uTime * 1.15) * 0.5 + 0.5;
+      float autoWaveB = cos(autoDistanceB * 32.0 - uTime * 0.92) * 0.5 + 0.5;
+      vec2 autoRipple = normalize(autoVectorA + vec2(0.0001)) * (autoWaveA - 0.5)
+        + normalize(autoVectorB + vec2(0.0001)) * (autoWaveB - 0.5);
+      vec2 ambientSwell = vec2(
+        sin(uv.y * 12.0 + uTime * 0.42),
+        cos(uv.x * 10.0 - uTime * 0.36)
+      ) * 0.0018;
+      vec2 distortion = waterNormal.xy * 0.007 + ambientSwell + autoRipple * 0.0045 + interactionGradient * 0.046;
       vec2 waterUv = uv + distortion;
 
       vec3 lightTop = vec3(0.91, 0.86, 0.97);
@@ -466,7 +902,7 @@ const backgroundMaterial = new THREE.ShaderMaterial({
 
       vec3 color = lightColor;
 
-      float iceDark = texture2D(uIce, waterUv * 0.62 + vec2(uTime * 0.00045, -uTime * 0.0003)).r;
+      float iceDark = texture2D(uIce, waterUv * 0.62 + vec2(uTime * 0.0018, -uTime * 0.0012)).r;
       float iceLight = texture2D(uIceDisplacement, waterUv * 0.62 + waterNormal.xy * 0.012).r;
       float noise = texture2D(uNoise, waterUv * 1.35 + uTime * 0.00025).r;
       float caustic = smoothstep(0.56, 0.93, iceDark) * 0.34 + smoothstep(0.72, 1.0, iceLight) * 0.12;
@@ -474,7 +910,7 @@ const backgroundMaterial = new THREE.ShaderMaterial({
       color += causticTint * caustic * 0.1;
       color += (noise - 0.5) * 0.012;
 
-      vec3 surfaceNormal = normalize(vec3(-(waterNormal.xy * 0.3 + interactionGradient * 3.2), 1.0));
+      vec3 surfaceNormal = normalize(vec3(-(waterNormal.xy * 0.3 + autoRipple * 0.1 + interactionGradient * 3.2), 1.0));
       vec3 viewDirection = normalize(vec3((vec2(0.5) - uv) * aspectScale * 0.18, 1.0));
       vec3 lightDirection = normalize(vec3((sunPosition - uv) * aspectScale, 0.38));
       vec3 halfDirection = normalize(viewDirection + lightDirection);
@@ -589,11 +1025,45 @@ window.addEventListener('resize', () => {
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry) => entry.target.classList.toggle('is-visible', entry.isIntersecting));
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    });
   },
   { threshold: 0.2 },
 );
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+const typewriter = document.querySelector('.typewriter');
+
+if (typewriter && !reducedMotion) {
+  const phrase = typewriter.textContent.trim();
+  const characters = Array.from(phrase);
+  const wait = (duration) => new Promise((resolve) => window.setTimeout(resolve, duration));
+
+  async function loopTypewriter() {
+    await wait(900);
+
+    while (true) {
+      for (let index = characters.length; index >= 0; index -= 1) {
+        typewriter.textContent = characters.slice(0, index).join('');
+        await wait(45);
+      }
+
+      await wait(450);
+
+      for (let index = 1; index <= characters.length; index += 1) {
+        typewriter.textContent = characters.slice(0, index).join('');
+        await wait(85);
+      }
+
+      await wait(2200);
+    }
+  }
+
+  loopTypewriter();
+}
 
 function render() {
   const delta = Math.min(clock.getDelta(), 0.05);

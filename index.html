@@ -81,7 +81,7 @@
       <section class="panel hero">
         <div class="copy copy--hero reveal">
           <p class="eyebrow">Webs4V · Thiết kế website cao cấp</p>
-          <h1>Website khác biệt.<br /><span>Kinh doanh hiệu quả.</span></h1>
+          <h1 aria-label="Website khác biệt. Kinh doanh hiệu quả.">Website khác biệt.<br /><span class="typewriter" aria-hidden="true">Kinh doanh hiệu quả.</span></h1>
           <p class="hero__description">Thiết kế riêng theo thương hiệu, nền tảng kỹ thuật tốt và quy trình rõ ràng để doanh nghiệp tự tin phát triển trên môi trường số.</p>
           <div class="hero__actions">
             <a class="hero__primary" href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">
@@ -92,46 +92,420 @@
           </div>
           <div class="hero__proof" aria-label="Năng lực Webs4V">
             <div><strong>200+</strong><span>Website đã thực hiện</span></div>
-            <div><strong>01 năm</strong><span>Bảo hành kỹ thuật</span></div>
-            <div><strong>03 lần</strong><span>Chỉnh sửa thiết kế</span></div>
+            <div><strong>Chuẩn SEO</strong><span>Tối ưu nền tảng tìm kiếm</span></div>
+            <div><strong>Bắt trend</strong><span>Giao diện hiện đại, đúng xu hướng</span></div>
           </div>
-          <p class="hero__note">Di chuyển con trỏ để tương tác với mặt nước và logo.</p>
         </div>
       </section>
 
-      <section class="panel story" id="story">
-        <div class="copy copy--center reveal">
-          <p class="eyebrow">Một không gian, một nhịp điệu</p>
-          <h2>Trong một thế giới<br />luôn <em>đổi thay,</em></h2>
-          <p>Ánh sáng, màu sắc và chuyển động cùng tồn tại trong một dòng chảy liên tục.</p>
+      <section class="panel story projects" id="story">
+        <div class="projects__intro reveal">
+          <p class="eyebrow">Dự án đã thực hiện</p>
+          <h2>Ý tưởng thành hình.<br /><em>Thương hiệu cất tiếng.</em></h2>
+          <p>Mỗi website là một trải nghiệm riêng, được tạo nên từ chiến lược, thẩm mỹ và công nghệ.</p>
+        </div>
+
+        <div class="project-marquee" aria-label="Các dự án tiêu biểu của Webs4V, hàng một">
+          <div class="project-marquee__track" data-project-track>
+            <div class="project-marquee__group" data-project-group="0"></div>
+          </div>
+        </div>
+        <div class="project-marquee project-marquee--reverse" aria-label="Các dự án tiêu biểu của Webs4V, hàng hai">
+          <div class="project-marquee__track" data-project-track>
+            <div class="project-marquee__group" data-project-group="1"></div>
+          </div>
+        </div>
+
+        <div class="projects__action reveal">
+          <a class="projects__cta" href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">
+            <span>Nhận tư vấn ngay</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5m0 0H7m8 0v8" /></svg>
+          </a>
         </div>
       </section>
 
-      <section class="panel approach" id="approach">
-        <div class="copy reveal">
-          <p class="eyebrow">Cách chúng tôi tạo trải nghiệm</p>
-          <h2>Ít chi tiết hơn.<br /><em>Nhiều cảm giác hơn.</em></h2>
-          <div class="principles">
-            <article><span>01</span><h3>Ánh sáng</h3><p>Phản chiếu dịu, trong và có chiều sâu.</p></article>
-            <article><span>02</span><h3>Chuyển động</h3><p>Phản hồi tự nhiên theo từng lần chạm.</p></article>
-            <article><span>03</span><h3>Nhất quán</h3><p>Một ngôn ngữ thị giác xuyên suốt toàn trang.</p></article>
+      <section class="panel about" id="approach">
+        <div class="about__shell">
+          <div class="about__content reveal">
+            <p class="eyebrow">Về Webs4V</p>
+            <h2>Không chỉ làm website.<br /><em>Chúng tôi xây nền tảng tăng trưởng.</em></h2>
+            <p class="about__lead">Webs4V là đội ngũ chiến lược, thiết kế và công nghệ cùng chung một mục tiêu: biến mỗi điểm chạm số thành lợi thế kinh doanh bền vững cho doanh nghiệp.</p>
+
+            <div class="about__values">
+              <article><span>01</span><div><h3>Hiểu đúng bài toán</h3><p>Bắt đầu từ mục tiêu kinh doanh, không chỉ từ giao diện.</p></div></article>
+              <article><span>02</span><div><h3>Thiết kế có chủ đích</h3><p>Mỗi chi tiết đều dẫn dắt trải nghiệm và tạo chuyển đổi.</p></div></article>
+              <article><span>03</span><div><h3>Đồng hành dài hạn</h3><p>Một nền tảng tốt phải tiếp tục lớn lên cùng thương hiệu.</p></div></article>
+            </div>
+
+            <a class="about__link" href="https://webs4v.vn/ve-chung-toi/">
+              <span>Khám phá Webs4V</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5m0 0H7m8 0v8" /></svg>
+            </a>
+          </div>
+
+          <div class="about__visual reveal">
+            <figure class="about__image about__image--main" data-about-depth="0.45"><img src="./image/business team/team-work.jpg" alt="Đội ngũ cùng trao đổi về một dự án" loading="lazy" /></figure>
+            <figure class="about__image about__image--top" data-about-depth="0.9"><img src="./image/business team/team-culture.jpg" alt="Đội ngũ doanh nghiệp Webs4V" loading="lazy" /></figure>
+            <figure class="about__image about__image--bottom" data-about-depth="1.15"><img src="./image/business team/team-spirit.jpg" alt="Một đội ngũ cùng chung mục tiêu" loading="lazy" /></figure>
+            <div class="about__badge"><span><i></i> One team</span><strong>Cùng tư duy.<br />Cùng tạo khác biệt.</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel services" id="services">
+        <div class="services__shell">
+          <header class="services__heading reveal">
+            <div>
+              <p class="eyebrow">Giải pháp dành cho doanh nghiệp</p>
+              <h2>Chúng tôi có thể giúp gì<br />cho <em>doanh nghiệp của bạn?</em></h2>
+            </div>
+            <div class="services__summary">
+              <p>Từ một ý tưởng mới đến một nền tảng đang cần tăng trưởng, Webs4V đồng hành bằng giải pháp đúng mục tiêu và đúng giai đoạn.</p>
+              <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>Trao đổi nhu cầu</span><b>↗</b></a>
+            </div>
+          </header>
+
+          <div class="service-bento reveal">
+            <article class="service-tile service-tile--primary">
+              <img src="./image/help for you/service-design.jpg" alt="Thiết kế website chuyên nghiệp cho doanh nghiệp" loading="lazy" />
+              <div class="service-tile__content"><span>01 · Strategy / UI/UX</span><h3>Website doanh nghiệp</h3><p>Một diện mạo số khác biệt, kể đúng câu chuyện thương hiệu và dẫn dắt khách hàng hành động.</p></div>
+            </article>
+            <article class="service-tile service-tile--seo">
+              <img src="./image/help for you/service-seo.jpg" alt="Tối ưu SEO và tăng trưởng website" loading="lazy" />
+              <div class="service-tile__content"><span>02 · SEO / Growth</span><h3>Chăm sóc &amp; tăng trưởng</h3><p>SEO kỹ thuật, bảo trì và cải tiến liên tục.</p></div>
+            </article>
+            <article class="service-tile service-tile--tech">
+              <img src="./image/help for you/service-tech.jpg" alt="Phát triển nền tảng thương mại điện tử" loading="lazy" />
+              <div class="service-tile__content"><span>03 · Technology / Scale</span><h3>Thương mại điện tử</h3><p>Trải nghiệm mua sắm liền mạch, sẵn sàng mở rộng.</p></div>
+            </article>
+          </div>
+
+          <article class="service-banner reveal">
+            <span class="service-banner__number">04</span>
+            <div><small>Campaign / Conversion</small><h3>Landing page bán hàng</h3></div>
+            <p>Thông điệp rõ, tốc độ nhanh và cấu trúc được tối ưu để biến lượt truy cập thành khách hàng.</p>
+            <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">Khởi động chiến dịch <b>↗</b></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel ecosystem" id="ecosystem">
+        <div class="ecosystem__shell">
+          <header class="ecosystem__heading reveal">
+            <p class="eyebrow">Hệ sinh thái Webs4V</p>
+            <h2>Một đối tác.<br /><em>Đủ giải pháp để tăng trưởng.</em></h2>
+            <p>Từ nền tảng thương hiệu đến bán hàng, nội dung và tối ưu dài hạn — mọi giải pháp đều được kết nối trong cùng một chiến lược.</p>
+          </header>
+
+          <div class="ecosystem__map reveal">
+            <div class="ecosystem__orbit ecosystem__orbit--outer" aria-hidden="true"></div>
+            <div class="ecosystem__orbit ecosystem__orbit--inner" aria-hidden="true"></div>
+            <div class="ecosystem__line ecosystem__line--one" aria-hidden="true"></div>
+            <div class="ecosystem__line ecosystem__line--two" aria-hidden="true"></div>
+            <div class="ecosystem__line ecosystem__line--three" aria-hidden="true"></div>
+            <div class="ecosystem__line ecosystem__line--four" aria-hidden="true"></div>
+            <div class="ecosystem__line ecosystem__line--five" aria-hidden="true"></div>
+            <div class="ecosystem__line ecosystem__line--six" aria-hidden="true"></div>
+
+            <div class="ecosystem__hub">
+              <span>Giải pháp trung tâm</span>
+              <img src="./image/logo-webs4v-2-1.png" alt="Webs4V" />
+              <small>Strategy · Design · Technology</small>
+            </div>
+
+            <article class="solution-node solution-node--one" style="--accent: #1269dd">
+              <div class="solution-node__icon"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="17" rx="3"/><path d="M11 27h10M16 23v4M8 11h16"/></svg></div>
+              <div><span>01 · Brand platform</span><h3>Website doanh nghiệp</h3><p>Xây dựng uy tín, giới thiệu thương hiệu và tạo điểm chạm chuyên nghiệp.</p></div>
+            </article>
+
+            <article class="solution-node solution-node--two" style="--accent: #7359c7">
+              <div class="solution-node__icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 9h18l-2 11H9L7 9Z"/><path d="M11 9a5 5 0 0 1 10 0M11 25h.01M21 25h.01"/></svg></div>
+              <div><span>02 · Commerce</span><h3>Website bán hàng</h3><p>Quản lý sản phẩm, giỏ hàng, đơn hàng và trải nghiệm mua sắm liền mạch.</p></div>
+            </article>
+
+            <article class="solution-node solution-node--three" style="--accent: #0a93b9">
+              <div class="solution-node__icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 25 18 7l2 8 7 3L6 25Z"/><path d="m14 19-5 5M20 15l-6 4"/></svg></div>
+              <div><span>03 · Conversion</span><h3>Landing page</h3><p>Tập trung thông điệp, thu hút khách hàng tiềm năng và tối ưu chuyển đổi.</p></div>
+            </article>
+
+            <article class="solution-node solution-node--four" style="--accent: #17795f">
+              <div class="solution-node__icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="14" cy="14" r="8"/><path d="m20 20 7 7M10 15l3 3 6-7"/></svg></div>
+              <div><span>04 · Visibility</span><h3>SEO &amp; GEO</h3><p>Giúp Google và các hệ thống AI hiểu rõ doanh nghiệp, dịch vụ và nội dung.</p></div>
+            </article>
+
+            <article class="solution-node solution-node--five" style="--accent: #ca7b22">
+              <div class="solution-node__icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h12l5 5v19H8V4Z"/><path d="M20 4v6h5M12 15h9M12 20h9"/></svg></div>
+              <div><span>05 · Content</span><h3>Blog &amp; nội dung</h3><p>Xây dựng hệ thống nội dung lâu dài, hỗ trợ chuyên môn và tăng trưởng SEO.</p></div>
+            </article>
+
+            <article class="solution-node solution-node--six" style="--accent: #c24383">
+              <div class="solution-node__icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 26 8v7c0 6-4 10-10 13C10 25 6 21 6 15V8l10-4Z"/><path d="m11 16 3 3 7-8"/></svg></div>
+              <div><span>06 · Operation</span><h3>Chăm sóc &amp; tự động hóa</h3><p>Bảo mật, bảo trì, thanh toán và cải tiến để website vận hành ổn định.</p></div>
+            </article>
+          </div>
+
+          <a class="ecosystem__cta reveal" href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>Tìm giải pháp phù hợp với bạn</span><b>↗</b></a>
+        </div>
+      </section>
+
+      <section class="panel process" id="process">
+        <div class="process__shell">
+          <header class="process__heading reveal">
+            <div>
+              <p class="eyebrow">Quy trình hợp tác</p>
+              <h2>Từ một ý tưởng.<br /><em>Đến một website hoạt động.</em></h2>
+            </div>
+            <p>Mỗi giai đoạn đều có mục tiêu, đầu ra và thời gian rõ ràng. Bạn luôn biết dự án đang ở đâu và bước tiếp theo là gì.</p>
+          </header>
+
+          <div class="process__timeline">
+            <div class="process__nodes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <article class="process-card">
+              <div class="process-card__top"><span>01</span><small>1–2 ngày</small></div>
+              <div class="process-card__icon" aria-hidden="true"><i data-lucide="search-check"></i></div>
+              <h3>Khám phá &amp; định hướng</h3>
+              <p>Lắng nghe mục tiêu, khách hàng và lợi thế thương hiệu để xác định cấu trúc phù hợp.</p>
+              <strong>Đầu ra: Brief dự án</strong>
+            </article>
+            <article class="process-card">
+              <div class="process-card__top"><span>02</span><small>3–5 ngày</small></div>
+              <div class="process-card__icon" aria-hidden="true"><i data-lucide="pen-tool"></i></div>
+              <h3>Thiết kế trải nghiệm</h3>
+              <p>Xây dựng bố cục, nội dung và ngôn ngữ hình ảnh riêng, ưu tiên sự rõ ràng và chuyển đổi.</p>
+              <strong>Đầu ra: Giao diện duyệt</strong>
+            </article>
+            <article class="process-card">
+              <div class="process-card__top"><span>03</span><small>5–10 ngày</small></div>
+              <div class="process-card__icon" aria-hidden="true"><i data-lucide="code-xml"></i></div>
+              <h3>Lập trình &amp; kiểm thử</h3>
+              <p>Phát triển responsive, tối ưu tốc độ, SEO nền tảng và kiểm tra kỹ trên nhiều thiết bị.</p>
+              <strong>Đầu ra: Website hoàn chỉnh</strong>
+            </article>
+            <article class="process-card">
+              <div class="process-card__top"><span>04</span><small>Đồng hành</small></div>
+              <div class="process-card__icon" aria-hidden="true"><i data-lucide="rocket"></i></div>
+              <h3>Bàn giao &amp; phát triển</h3>
+              <p>Hướng dẫn quản trị, đưa website vận hành và tiếp tục hỗ trợ khi doanh nghiệp cần mở rộng.</p>
+              <strong>Đầu ra: Chủ động vận hành</strong>
+            </article>
+          </div>
+
+          <div class="process__promise reveal">
+            <p><span>Luôn rõ ràng.</span> Đúng tiến độ, đúng phạm vi và đồng hành đến khi website vận hành.</p>
+            <a href="#contact">Bắt đầu trao đổi <b>→</b></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel pricing" id="pricing">
+        <div class="pricing__shell">
+          <header class="pricing__heading reveal">
+            <p class="eyebrow">Chi phí rõ ràng · Không gói thừa tính năng</p>
+            <h2>Bắt đầu vừa đủ.<br /><em>Lớn lên khi bạn sẵn sàng.</em></h2>
+            <p>Chọn đúng nền tảng hôm nay và chỉ thêm những gì doanh nghiệp thực sự cần. Không giao diện đại trà, không chi phí mập mờ.</p>
+            <div class="pricing__assurances"><span>Thiết kế riêng</span><span>SEO sẵn từ nền tảng</span><span>Bàn giao quyền quản trị</span></div>
+          </header>
+
+          <div class="quote-builder reveal" data-quote-builder>
+            <div class="quote-builder__choices">
+              <section class="quote-step">
+                <div class="quote-step__heading"><span>01</span><div><h3>Chọn nền tảng</h3><p>Bắt đầu từ mục tiêu chính của website.</p></div></div>
+                <div class="quote-plans">
+                  <button class="quote-plan is-selected" type="button" aria-pressed="true" data-package="business" data-price="3000000" data-label="Website doanh nghiệp">
+                    <span>Giới thiệu doanh nghiệp</span><strong>3.000.000<sup>đ</sup></strong><p>05 trang thiết kế riêng, responsive, SEO nền tảng và quản trị WordPress.</p><small>Phù hợp để xây dựng uy tín &amp; nhận liên hệ</small>
+                  </button>
+                  <button class="quote-plan" type="button" aria-pressed="false" data-package="commerce" data-price="7000000" data-label="Website sản phẩm">
+                    <i>Được chọn nhiều</i><span>Bán hàng / Sản phẩm</span><strong>7.000.000<sup>đ</sup></strong><p>Quản lý sản phẩm, danh mục, tìm kiếm, bộ lọc và liên hệ mua hàng.</p><small>Phù hợp để trưng bày &amp; mở rộng bán hàng</small>
+                  </button>
+                </div>
+              </section>
+
+              <section class="quote-step">
+                <div class="quote-step__heading"><span>02</span><div><h3>Thêm tính năng</h3><p>Chạm để chọn. Tổng dự toán sẽ cập nhật ngay.</p></div></div>
+                <div class="quote-addons">
+                  <button type="button" aria-pressed="false" data-addon data-price="3000000" data-label="Blog / Tin tức"><span>Blog / Tin tức</span><strong>+3.000.000đ</strong><i>+</i></button>
+                  <button type="button" aria-pressed="false" data-addon data-price="3500000" data-label="Giỏ hàng &amp; quản lý đơn"><span>Giỏ hàng &amp; quản lý đơn</span><strong>+3.500.000đ</strong><i>+</i></button>
+                  <button type="button" aria-pressed="false" data-addon data-price="1500000" data-label="QR thanh toán"><span>QR theo giá trị đơn</span><strong>+1.500.000đ</strong><i>+</i></button>
+                  <button type="button" aria-pressed="false" data-addon data-price="5000000" data-label="Xác nhận thanh toán tự động"><span>Xác nhận thanh toán</span><strong>Từ +5.000.000đ</strong><i>+</i></button>
+                  <button type="button" aria-pressed="false" data-addon data-group="geo" data-price="500000" data-label="GEO cơ bản"><span>GEO cơ bản</span><strong>+500.000đ</strong><i>+</i></button>
+                  <button type="button" aria-pressed="false" data-addon data-group="geo" data-price="1500000" data-label="GEO nâng cao"><span>GEO nâng cao</span><strong>+1.500.000đ</strong><i>+</i></button>
+                  <button type="button" aria-pressed="false" data-addon data-price="500000" data-label="01 bài viết SEO"><span>01 bài viết SEO</span><strong>+500.000đ</strong><i>+</i></button>
+                  <button type="button" aria-pressed="false" data-addon data-price="1000000" data-label="Bảo mật &amp; HTTPS"><span>Bảo mật &amp; HTTPS</span><strong>+1.000.000đ</strong><i>+</i></button>
+                </div>
+              </section>
+
+              <section class="quote-presets">
+                <span>Cấu hình gợi ý</span>
+                <div><button type="button" data-preset="business-blog">Doanh nghiệp + Blog <strong>6 triệu</strong></button><button type="button" data-preset="full-commerce">Bán hàng đầy đủ <strong>12 triệu</strong></button><button type="button" data-preset="growth-commerce">Bán hàng tăng trưởng <strong>16,5 triệu</strong></button></div>
+              </section>
+            </div>
+
+            <aside class="quote-summary">
+              <span class="quote-summary__eyebrow">Dự toán của bạn</span>
+              <strong class="quote-summary__total" data-quote-total>3.000.000đ</strong>
+              <small>Chi phí dự kiến từ</small>
+              <div class="quote-summary__line"></div>
+              <p>Đã chọn</p>
+              <ul data-quote-selection><li><span>Website doanh nghiệp</span><b>3.000.000đ</b></li></ul>
+              <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>Nhận báo giá chi tiết</span><b>↗</b></a>
+              <em>Miễn phí tư vấn · Không ràng buộc</em>
+            </aside>
+          </div>
+
+          <p class="pricing__note reveal">Dự toán mang tính tham khảo theo phạm vi hiện tại. Giá chưa bao gồm tên miền, hosting, phí ngân hàng, cổng thanh toán, API hoặc dịch vụ bên thứ ba. Trang và chức năng riêng sẽ được báo giá sau khi xác định yêu cầu.</p>
+        </div>
+      </section>
+
+      <section class="panel faq" id="faq">
+        <div class="faq__shell">
+          <header class="faq__heading reveal">
+            <p class="eyebrow">Bạn có thể đang thắc mắc</p>
+            <h2>Trước khi bắt đầu,<br /><em>hãy làm rõ mọi thứ.</em></h2>
+            <p>Nếu câu hỏi của bạn chưa có ở đây, hãy gửi yêu cầu. Webs4V sẽ phản hồi với tư vấn phù hợp, không ràng buộc.</p>
+            <a href="#contact"><span>Đặt câu hỏi riêng</span><b>↗</b></a>
+          </header>
+
+          <div class="faq__list reveal" data-faq>
+            <article class="faq-item is-open">
+              <button type="button" aria-expanded="true" aria-controls="faq-answer-1"><span><small>01</small>Thiết kế website mất bao lâu?</span><i aria-hidden="true"></i></button>
+              <div class="faq-item__answer" id="faq-answer-1"><div><p>Website doanh nghiệp cơ bản thường cần khoảng 10–20 ngày làm việc. Thời gian cụ thể phụ thuộc số trang, tính năng và tốc độ duyệt nội dung của hai bên.</p></div></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false" aria-controls="faq-answer-2"><span><small>02</small>Chi phí có phát sinh trong quá trình làm không?</span><i aria-hidden="true"></i></button>
+              <div class="faq-item__answer" id="faq-answer-2"><div><p>Không phát sinh nếu phạm vi không thay đổi. Mọi hạng mục, chi phí bên thứ ba và yêu cầu bổ sung đều được thông báo trước khi thực hiện.</p></div></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false" aria-controls="faq-answer-3"><span><small>03</small>Website có chuẩn SEO và hiển thị tốt trên điện thoại?</span><i aria-hidden="true"></i></button>
+              <div class="faq-item__answer" id="faq-answer-3"><div><p>Có. Website được xây dựng responsive, có cấu trúc heading, metadata, sitemap và các thiết lập SEO nền tảng ngay từ đầu.</p></div></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false" aria-controls="faq-answer-4"><span><small>04</small>Tôi có tự cập nhật nội dung được không?</span><i aria-hidden="true"></i></button>
+              <div class="faq-item__answer" id="faq-answer-4"><div><p>Có. Bạn được bàn giao quyền quản trị và hướng dẫn cập nhật các nội dung thường dùng như bài viết, hình ảnh, sản phẩm và thông tin liên hệ.</p></div></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false" aria-controls="faq-answer-5"><span><small>05</small>Sau bàn giao có được hỗ trợ không?</span><i aria-hidden="true"></i></button>
+              <div class="faq-item__answer" id="faq-answer-5"><div><p>Webs4V hỗ trợ kỹ thuật theo chính sách của từng gói và có thể tiếp tục đồng hành với dịch vụ bảo trì, nội dung hoặc tối ưu tăng trưởng.</p></div></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false" aria-controls="faq-answer-6"><span><small>06</small>Tôi chưa có nội dung thì có làm website được không?</span><i aria-hidden="true"></i></button>
+              <div class="faq-item__answer" id="faq-answer-6"><div><p>Được. Chúng tôi sẽ gợi ý cấu trúc và hướng dẫn bạn chuẩn bị nội dung. Nếu cần, Webs4V có thể báo giá thêm hạng mục biên tập hoặc viết nội dung SEO.</p></div></div>
+            </article>
           </div>
         </div>
       </section>
 
       <section class="panel contact" id="contact">
-        <footer class="copy copy--center reveal">
-          <p class="eyebrow">Bắt đầu một câu chuyện mới</p>
-          <h2>Hãy tạo điều gì đó<br /><em>đáng nhớ.</em></h2>
-          <a class="contact__link" href="tel:0888889805">0888889805</a>
-          <nav aria-label="Liên kết cuối trang">
-            <a href="https://zalo.me/0888889805" target="_blank" rel="noopener noreferrer">Zalo</a>
-            <a href="mailto:hello@ximitech.vn">Email</a>
-            <a href="#top">Lên đầu trang</a>
-          </nav>
-        </footer>
+        <div class="contact__shell">
+          <header class="contact__heading reveal">
+            <div>
+              <p class="eyebrow">Bắt đầu một dự án mới</p>
+              <h2>Kể chúng tôi nghe<br /><em>ý tưởng của bạn.</em></h2>
+            </div>
+            <p>Dù bạn đang cần một website đầu tiên hay muốn làm mới toàn bộ trải nghiệm số, Webs4V sẽ cùng bạn tìm ra điểm bắt đầu phù hợp nhất.</p>
+          </header>
+
+          <div class="contact__layout reveal">
+            <aside class="contact-card">
+              <span class="contact-card__status"><i></i> Đang nhận dự án mới</span>
+              <div class="contact-card__intro">
+                <p>Bạn muốn trao đổi nhanh?</p>
+                <h3>Nói chuyện trực tiếp với chúng tôi.</h3>
+                <a class="contact-card__phone" href="tel:0364003638">0364 003 638</a>
+              </div>
+
+              <div class="contact-card__actions">
+                <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>Nhắn qua Zalo</span><b>↗</b></a>
+                <a href="tel:0364003638"><span>Gọi tư vấn</span><b>→</b></a>
+              </div>
+
+              <div class="contact-card__promises">
+                <span><b>01</b> Tư vấn miễn phí</span>
+                <span><b>02</b> Phản hồi nhanh</span>
+                <span><b>03</b> Báo giá rõ ràng</span>
+              </div>
+            </aside>
+
+            <form class="contact-form" data-contact-form data-contact-endpoint="https://script.google.com/macros/s/AKfycbzuxoXZeX1gfzgg8tn0r4SVjqPpRorXTOJOL-9CGplnwNGXosK4d3nslDgbvDji5BWAtQ/exec">
+              <div class="contact-form__heading">
+                <span>Gửi yêu cầu</span>
+                <h3>Cho chúng tôi vài thông tin về dự án</h3>
+              </div>
+
+              <div class="contact-form__row">
+                <label>Họ và tên<input name="name" type="text" autocomplete="name" placeholder="Tên của bạn" required /></label>
+                <label>Số điện thoại<input name="phone" type="tel" autocomplete="tel" placeholder="09xx xxx xxx" required /></label>
+              </div>
+
+              <label>Bạn đang quan tâm đến
+                <select name="service" required>
+                  <option value="" selected disabled>Chọn một giải pháp</option>
+                  <option>Website doanh nghiệp</option>
+                  <option>Website bán hàng</option>
+                  <option>Landing page</option>
+                  <option>SEO &amp; GEO</option>
+                  <option>Thiết kế lại website</option>
+                  <option>Tư vấn giải pháp tổng thể</option>
+                </select>
+              </label>
+
+              <label>Mô tả ngắn về dự án<textarea name="message" rows="4" placeholder="Mục tiêu, lĩnh vực hoặc điều bạn đang muốn cải thiện..."></textarea></label>
+
+              <label class="contact-form__honeypot" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off" /></label>
+
+              <button type="submit" data-contact-submit><span>Gửi yêu cầu</span><b>↗</b></button>
+              <p class="contact-form__note" data-contact-status aria-live="polite">Thông tin được gửi trực tiếp và bảo mật đến đội ngũ Webs4V.</p>
+            </form>
+          </div>
+
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__shell">
+        <div class="site-footer__top">
+          <div class="site-footer__identity">
+            <a class="site-footer__brand" href="#top" aria-label="Webs4V — Lên đầu trang"><img src="./image/logo-webs4v-2-1.png" alt="Webs4V" /></a>
+            <p>Thiết kế website khác biệt, xây dựng nền tảng số giúp doanh nghiệp phát triển dài hạn.</p>
+            <span class="site-footer__status"><i></i> Đang nhận dự án mới</span>
+          </div>
+
+          <nav class="site-footer__links" aria-label="Điều hướng cuối trang">
+            <div>
+              <span>Khám phá</span>
+              <a href="#about">Về chúng tôi</a>
+              <a href="#projects">Dự án đã thực hiện</a>
+              <a href="#services">Giải pháp</a>
+              <a href="#pricing">Bảng giá</a>
+            </div>
+            <div>
+              <span>Dịch vụ</span>
+              <a href="#ecosystem">Website doanh nghiệp</a>
+              <a href="#ecosystem">Website bán hàng</a>
+              <a href="#ecosystem">Landing page</a>
+              <a href="#ecosystem">SEO &amp; GEO</a>
+            </div>
+            <div>
+              <span>Liên hệ</span>
+              <a href="tel:0364003638">0364 003 638</a>
+              <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">Nhắn Zalo ↗</a>
+              <a href="mailto:hello@ximitech.vn">Gửi email ↗</a>
+              <a href="#contact">Form tư vấn</a>
+            </div>
+          </nav>
+        </div>
+
+        <div class="site-footer__cta">
+          <div><span>Bạn đã sẵn sàng?</span><h2>Cùng biến ý tưởng<br /><em>thành một website đáng nhớ.</em></h2></div>
+          <a href="#contact"><span>Bắt đầu dự án</span><b>↗</b></a>
+        </div>
+
+        <div class="site-footer__bottom">
+          <p>© 2026 Webs4V. All rights reserved.</p>
+          <div><a href="https://webs4v.vn/chinh-sach-bao-mat/">Chính sách bảo mật</a><a href="#top">Lên đầu trang ↑</a></div>
+        </div>
+      </div>
+    </footer>
 
     <noscript>Trải nghiệm này cần JavaScript và WebGL để hoạt động.</noscript>
     <script>
