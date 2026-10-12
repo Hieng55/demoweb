@@ -15,6 +15,7 @@ const projectImageModules = import.meta.glob('./image/project/*.{jpg,jpeg,png,we
 
 const body = document.body;
 const canvas = document.querySelector('#webgl-canvas');
+const loader = document.querySelector('.loader');
 const loaderBar = document.querySelector('.loader__track span');
 const loaderValue = document.querySelector('.loader__value');
 const cursor = document.querySelector('.cursor');
@@ -254,94 +255,6 @@ function initializeFaq() {
 
 initializeFaq();
 
-async function initializeProcessLight() {
-  const timeline = document.querySelector('.process__timeline');
-  if (!timeline) return;
-
-  const cards = [...timeline.querySelectorAll('.process-card')];
-  const nodes = [...timeline.querySelectorAll('.process__nodes i')];
-
-  if (reducedMotion) {
-    timeline.style.setProperty('--process-progress', '1');
-    cards.forEach((card) => card.classList.add('is-lit'));
-    nodes.forEach((node) => node.classList.add('is-lit'));
-    return;
-  }
-
-  const [{ gsap }, { ScrollTrigger }] = await Promise.all([
-    import('gsap'),
-    import('gsap/ScrollTrigger'),
-  ]);
-  gsap.registerPlugin(ScrollTrigger);
-  const processCardOffset = window.matchMedia('(max-width: 760px)').matches ? 26 : 90;
-
-  gsap.set(timeline, { '--process-progress': 0 });
-  gsap.set(cards, {
-    autoAlpha: 0.12,
-    x: (index) => (index % 2 === 0 ? -processCardOffset : processCardOffset),
-    y: 26,
-    scale: 0.97,
-    filter: 'grayscale(35%) brightness(82%)',
-    '--card-light-x': '-160%',
-    '--card-glow': 0,
-  });
-
-  const sequenceDuration = 4;
-  const processAnimation = gsap.timeline({
-    defaults: { ease: 'none' },
-    scrollTrigger: {
-      trigger: timeline,
-      start: 'top 78%',
-      end: 'bottom 22%',
-      scrub: 0.65,
-      invalidateOnRefresh: true,
-      onUpdate: ({ progress }) => {
-        cards.forEach((card, index) => {
-          const step = (index + 0.5) / cards.length;
-          const nextStep = Math.min(1, (index + 1.5) / cards.length);
-          const isLit = progress >= Math.max(0, step - 0.08);
-          const isCurrent = progress >= Math.max(0, step - 0.025) && (index === cards.length - 1 || progress < nextStep - 0.025);
-          card.classList.toggle('is-lit', isLit);
-          card.classList.toggle('is-current', isCurrent);
-          nodes[index]?.classList.toggle('is-lit', progress >= step);
-          nodes[index]?.classList.toggle('is-current', isCurrent);
-        });
-      },
-    },
-  });
-
-  processAnimation.to(timeline, { '--process-progress': 1, duration: sequenceDuration }, 0);
-
-  cards.forEach((card, index) => {
-    const stepTime = ((index + 0.5) / cards.length) * sequenceDuration;
-    const revealAt = Math.max(0, stepTime - 0.34);
-
-    processAnimation.to(card, {
-      autoAlpha: 1,
-      x: 0,
-      y: 0,
-      scale: 1,
-      filter: 'grayscale(0%) brightness(100%)',
-      duration: 0.34,
-      ease: 'power2.out',
-    }, revealAt);
-    processAnimation.to(card, {
-      '--card-light-x': '80%',
-      '--card-glow': 1,
-      duration: 0.17,
-    }, revealAt);
-    processAnimation.to(card, {
-      '--card-light-x': '360%',
-      '--card-glow': 0,
-      duration: 0.2,
-    }, revealAt + 0.17);
-  });
-
-  window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
-}
-
-initializeProcessLight();
-
 function initializeContactForm() {
   const form = document.querySelector('[data-contact-form]');
   if (!form) return;
@@ -449,8 +362,11 @@ function finishLoading() {
   window.clearTimeout(window.__webs4vLoadingWatchdog);
   if (loaderBar) loaderBar.style.width = '100%';
   if (loaderValue) loaderValue.textContent = '100%';
-  body.classList.remove('is-loading');
-  body.classList.add('is-ready');
+  loader?.style.setProperty('--loader-progress', '100');
+  window.setTimeout(() => {
+    body.classList.remove('is-loading');
+    body.classList.add('is-ready');
+  }, reducedMotion ? 0 : 180);
 }
 
 function getPixelRatio() {
@@ -474,8 +390,9 @@ renderer.toneMappingExposure = 0.76;
 const loadingManager = new THREE.LoadingManager();
 loadingManager.onProgress = (_url, loaded, total) => {
   const progress = Math.round((loaded / Math.max(total, 1)) * 100);
-  loaderBar.style.width = `${progress}%`;
-  loaderValue.textContent = `${progress}%`;
+  if (loaderBar) loaderBar.style.width = `${progress}%`;
+  if (loaderValue) loaderValue.textContent = `${progress}%`;
+  loader?.style.setProperty('--loader-progress', String(progress));
 };
 
 const textureLoader = new THREE.TextureLoader(loadingManager);
@@ -978,13 +895,40 @@ function updateScroll() {
   siteHeader?.classList.toggle('is-scrolled', window.scrollY > 18);
 }
 
+function updateMenuRevealOrigin() {
+  if (!menuToggle) return;
+
+  const rect = menuToggle.getBoundingClientRect();
+  const originX = rect.left + rect.width / 2;
+  const originY = rect.top + rect.height / 2;
+  const radius = Math.ceil(Math.max(
+    Math.hypot(originX, originY),
+    Math.hypot(window.innerWidth - originX, originY),
+    Math.hypot(originX, window.innerHeight - originY),
+    Math.hypot(window.innerWidth - originX, window.innerHeight - originY),
+  )) + 4;
+
+  document.documentElement.style.setProperty('--menu-origin-x', `${originX}px`);
+  document.documentElement.style.setProperty('--menu-origin-y', `${originY}px`);
+  document.documentElement.style.setProperty('--menu-radius', `${radius}px`);
+}
+
 function setMenuOpen(open) {
+  if (open) updateMenuRevealOrigin();
+
   menuToggle?.setAttribute('aria-expanded', String(open));
   menuToggle?.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
   mobileMenu?.setAttribute('aria-hidden', String(!open));
   mobileMenu?.classList.toggle('is-open', open);
   menuBackdrop?.classList.toggle('is-open', open);
   body.classList.toggle('menu-open', open);
+
+  if (open) {
+    window.setTimeout(
+      () => mobileMenu?.querySelector('a')?.focus({ preventScroll: true }),
+      reducedMotion ? 0 : 460,
+    );
+  }
 }
 
 const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
@@ -1012,6 +956,12 @@ document.addEventListener('keydown', (event) => {
 });
 
 window.addEventListener('resize', () => {
+  if (window.innerWidth > 1050 && menuToggle?.getAttribute('aria-expanded') === 'true') {
+    setMenuOpen(false);
+  } else if (menuToggle?.getAttribute('aria-expanded') === 'true') {
+    updateMenuRevealOrigin();
+  }
+
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(getPixelRatio());
   pointerTrail.resize(window.innerWidth, window.innerHeight);
