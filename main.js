@@ -46,7 +46,7 @@ function initializeProjectMarquee() {
     'featured-4503766.jpg',
     'featured-7288248.jpg',
     'featured-16-1.jpg',
-    'featured-restaurant.jpg',
+    'featured-restaurant.webp',
   ];
   const collator = new Intl.Collator('vi', { numeric: true, sensitivity: 'base' });
   const images = Object.entries(projectImageModules).sort(([pathA], [pathB]) => {
@@ -226,6 +226,151 @@ function initializeQuoteBuilder() {
 }
 
 initializeQuoteBuilder();
+
+function initializeGrowthStudio() {
+  const section = document.querySelector('[data-growth-studio]');
+  if (!section || reducedMotion) return;
+
+  async function startAnimations() {
+    const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+      import('gsap'),
+      import('gsap/ScrollTrigger'),
+    ]);
+    gsap.registerPlugin(ScrollTrigger);
+
+  const projects = section.querySelectorAll('[data-growth-project]');
+  const callToAction = section.querySelector('[data-growth-cta]');
+
+  projects.forEach((project) => {
+    gsap.from(project, {
+      y: 52,
+      opacity: 0,
+      duration: 1.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: project,
+        start: 'top 86%',
+        once: true,
+      },
+    });
+  });
+
+  gsap.from(callToAction?.children ?? [], {
+    y: 45,
+    opacity: 0,
+    duration: 0.9,
+    stagger: 0.16,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: callToAction,
+      start: 'top 84%',
+      once: true,
+    },
+  });
+
+    if (document.readyState === 'complete') {
+      ScrollTrigger.refresh();
+    } else {
+      window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+    }
+  }
+
+  const animationObserver = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    animationObserver.disconnect();
+    startAnimations().catch((error) => console.error('Không thể khởi tạo hiệu ứng studio.', error));
+  }, { rootMargin: '800px 0px' });
+
+  animationObserver.observe(section);
+}
+
+initializeGrowthStudio();
+
+function initializeServiceCarousel() {
+  const carousel = document.querySelector('[data-service-carousel]');
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.service-carousel__track');
+  const cards = [...track?.querySelectorAll('.service-solution-card') ?? []];
+  if (!track || !cards.length) return;
+
+  cards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.classList.add('service-solution-card--clone');
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('a, button').forEach((element) => element.setAttribute('tabindex', '-1'));
+    track.append(clone);
+  });
+
+  function updateLoopDistance() {
+    const firstClone = track.children[cards.length];
+    if (!firstClone) return;
+    const distance = firstClone.offsetLeft - track.children[0].offsetLeft;
+    track.style.setProperty('--service-loop-distance', `${-distance}px`);
+  }
+
+  updateLoopDistance();
+  window.addEventListener('load', updateLoopDistance, { once: true });
+  window.addEventListener('resize', updateLoopDistance, { passive: true });
+}
+
+initializeServiceCarousel();
+
+function initializeMobileDragScroll() {
+  const scrollers = document.querySelectorAll('[data-service-viewport], .poster-slider');
+
+  scrollers.forEach((scroller) => {
+    let isDragging = false;
+    let didMove = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    scroller.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || window.innerWidth > 760) return;
+
+      isDragging = true;
+      didMove = false;
+      startX = event.clientX;
+      startScrollLeft = scroller.scrollLeft;
+      scroller.classList.add('is-dragging');
+      scroller.setPointerCapture(event.pointerId);
+    });
+
+    scroller.addEventListener('pointermove', (event) => {
+      if (!isDragging) return;
+
+      const distance = event.clientX - startX;
+      if (Math.abs(distance) > 4) didMove = true;
+      scroller.scrollLeft = startScrollLeft - distance;
+
+      if (didMove) event.preventDefault();
+    });
+
+    const stopDragging = (event) => {
+      if (!isDragging) return;
+      isDragging = false;
+      scroller.classList.remove('is-dragging');
+
+      if (scroller.hasPointerCapture(event.pointerId)) {
+        scroller.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    scroller.addEventListener('pointerup', stopDragging);
+    scroller.addEventListener('pointercancel', stopDragging);
+    scroller.addEventListener('dragstart', (event) => {
+      if (window.innerWidth <= 760) event.preventDefault();
+    });
+    scroller.addEventListener('click', (event) => {
+      if (!didMove) return;
+      event.preventDefault();
+      event.stopPropagation();
+      didMove = false;
+    }, true);
+  });
+}
+
+initializeMobileDragScroll();
 
 function initializeFaq() {
   const faq = document.querySelector('[data-faq]');
@@ -931,11 +1076,30 @@ function setMenuOpen(open) {
   }
 }
 
-const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
-document.querySelectorAll('.primary-nav a, .mobile-menu nav a').forEach((link) => {
-  const linkPath = new URL(link.href).pathname.replace(/\/+$/, '') || '/';
-  if (linkPath === currentPath) link.setAttribute('aria-current', 'page');
-});
+const navigationLinks = [...document.querySelectorAll('.primary-nav a, .mobile-menu nav a')];
+const normalizePath = (path) => path.replace(/\/+$/, '') || '/';
+
+function updateActiveNavigation() {
+  const currentUrl = new URL(window.location.href);
+  const currentPath = normalizePath(currentUrl.pathname);
+  const matchingPathLinks = navigationLinks.filter((link) => {
+    const linkUrl = new URL(link.href, window.location.href);
+    return normalizePath(linkUrl.pathname) === currentPath;
+  });
+  const exactHashMatches = matchingPathLinks.filter((link) => {
+    const linkUrl = new URL(link.href, window.location.href);
+    return linkUrl.hash === currentUrl.hash;
+  });
+  const activeLinks = exactHashMatches.length
+    ? exactHashMatches
+    : matchingPathLinks.filter((link) => !new URL(link.href, window.location.href).hash);
+
+  navigationLinks.forEach((link) => link.removeAttribute('aria-current'));
+  activeLinks.forEach((link) => link.setAttribute('aria-current', 'page'));
+}
+
+updateActiveNavigation();
+window.addEventListener('hashchange', updateActiveNavigation);
 
 function updatePointer(event) {
   pointer.set(event.clientX / window.innerWidth, 1 - event.clientY / window.innerHeight);

@@ -4,15 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#edf2ff" />
-    <meta name="description" content="XimiTech — trải nghiệm web tương tác với ánh sáng, mặt nước và chuyển động." />
-    <title>XimiTech — Ánh sáng trong chuyển động</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2320294d'/%3E%3Cpath d='M16 14l16 18 16-18M16 50l16-18 16 18' fill='none' stroke='white' stroke-width='6'/%3E%3C/svg%3E" />
+    <meta name="description" content="Webs4V thiết kế website doanh nghiệp, website bán hàng và landing page theo thương hiệu, tối ưu SEO và chuyển đổi." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:site_name" content="Webs4V" />
+    <meta property="og:title" content="Webs4V — Thiết kế website khác biệt, kinh doanh hiệu quả" />
+    <meta property="og:description" content="Thiết kế website theo thương hiệu, nền tảng kỹ thuật tốt và quy trình rõ ràng cho doanh nghiệp." />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://webs4v.vn/" />
+    <title>Webs4V — Thiết kế website khác biệt, kinh doanh hiệu quả</title>
+    <link rel="icon" href="./image/logo-webs4v-2-1.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="is-loading">
+    <div id="root">
     <canvas id="webgl-canvas" aria-hidden="true"></canvas>
     <div class="grain" aria-hidden="true"></div>
 
@@ -39,21 +46,21 @@
 
     <header class="site-header" data-header>
       <div class="header-glass">
-        <a class="brand" href="https://webs4v.vn/" aria-label="Webs4V — Trang chủ">
+        <a class="brand" href="/" aria-label="Webs4V — Trang chủ">
           <img src="./image/logo-webs4v-2-1.png" alt="Webs4V" width="1310" height="672" />
         </a>
 
         <nav class="primary-nav" aria-label="Điều hướng chính">
-          <a href="https://webs4v.vn/">Trang chủ</a>
-          <a href="https://webs4v.vn/ve-chung-toi/">Về chúng tôi</a>
-          <a href="https://webs4v.vn/dich-vu/">Dịch vụ</a>
-          <a href="https://webs4v.vn/chinh-sach-bao-mat/">Chính sách</a>
-          <a href="https://webs4v.vn/tuyen-dung/">Tuyển dụng</a>
-          <a href="https://webs4v.vn/lien-he/">Liên hệ</a>
+          <a href="/">Trang chủ</a>
+          <a href="/ve-chung-toi/">Về chúng tôi</a>
+          <a href="/dich-vu/">Dịch vụ</a>
+          <a href="/chinh-sach-bao-mat/">Chính sách</a>
+          <a href="/tuyen-dung/">Tuyển dụng</a>
+          <a href="/#contact">Liên hệ</a>
         </nav>
 
         <div class="header-actions">
-          <a class="header-cta" href="https://webs4v.vn/lien-he/">
+          <a class="header-cta" href="/#contact">
             <span>Bắt đầu dự án</span>
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5m0 0H7m8 0v8" /></svg>
           </a>
@@ -66,14 +73,14 @@
       <div class="mobile-menu" id="mobile-navigation" aria-hidden="true">
         <p class="mobile-menu__label">Khám phá Webs4V</p>
         <nav aria-label="Điều hướng trên thiết bị di động">
-          <a href="https://webs4v.vn/"><span>01</span>Trang chủ</a>
-          <a href="https://webs4v.vn/ve-chung-toi/"><span>02</span>Về chúng tôi</a>
-          <a href="https://webs4v.vn/dich-vu/"><span>03</span>Dịch vụ</a>
-          <a href="https://webs4v.vn/chinh-sach-bao-mat/"><span>04</span>Chính sách</a>
-          <a href="https://webs4v.vn/tuyen-dung/"><span>05</span>Tuyển dụng</a>
-          <a href="https://webs4v.vn/lien-he/"><span>06</span>Liên hệ</a>
+          <a href="/"><span>01</span>Trang chủ</a>
+          <a href="/ve-chung-toi/"><span>02</span>Về chúng tôi</a>
+          <a href="/dich-vu/"><span>03</span>Dịch vụ</a>
+          <a href="/chinh-sach-bao-mat/"><span>04</span>Chính sách</a>
+          <a href="/tuyen-dung/"><span>05</span>Tuyển dụng</a>
+          <a href="/#contact"><span>06</span>Liên hệ</a>
         </nav>
-        <a class="mobile-menu__cta" href="https://webs4v.vn/lien-he/">
+        <a class="mobile-menu__cta" href="/#contact">
           <span>Trao đổi về dự án</span>
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5m0 0H7m8 0v8" /></svg>
         </a>
@@ -136,18 +143,18 @@
       <section class="panel about" id="approach">
         <div class="about__shell">
           <div class="about__content reveal">
-            <p class="eyebrow">Về Webs4V</p>
-            <h2>Không chỉ làm website.<br /><em>Chúng tôi xây nền tảng tăng trưởng.</em></h2>
-            <p class="about__lead">Webs4V là đội ngũ chiến lược, thiết kế và công nghệ cùng chung một mục tiêu: biến mỗi điểm chạm số thành lợi thế kinh doanh bền vững cho doanh nghiệp.</p>
+            <p class="eyebrow">Doanh nghiệp Việt Nam · Đối tác quốc tế</p>
+            <h2>Am hiểu doanh nghiệp Việt.<br /><em>Sẵn sàng theo tiêu chuẩn quốc tế.</em></h2>
+            <p class="about__lead">Webs4V đã đồng hành cùng nhiều doanh nghiệp Việt Nam và các đối tác nước ngoài, trong đó có thế mạnh nổi bật tại thị trường Mỹ. Từ nail salon, nhà hàng, công ty xây dựng đến hair salon, lash studio và tattoo studio, mỗi website đều được xây dựng theo đúng đặc thù ngành và thị trường.</p>
 
             <div class="about__values">
-              <article><span>01</span><div><h3>Hiểu đúng bài toán</h3><p>Bắt đầu từ mục tiêu kinh doanh, không chỉ từ giao diện.</p></div></article>
-              <article><span>02</span><div><h3>Thiết kế có chủ đích</h3><p>Mỗi chi tiết đều dẫn dắt trải nghiệm và tạo chuyển đổi.</p></div></article>
-              <article><span>03</span><div><h3>Đồng hành dài hạn</h3><p>Một nền tảng tốt phải tiếp tục lớn lên cùng thương hiệu.</p></div></article>
+              <article><span>01</span><div><h3>Kinh nghiệm tại Việt Nam và Mỹ</h3><p>Hiểu nhu cầu thực tế của doanh nghiệp trong nước lẫn các mô hình kinh doanh địa phương quốc tế.</p></div></article>
+              <article><span>02</span><div><h3>Quy trình chuyên nghiệp, minh bạch</h3><p>Phạm vi, tiến độ, mốc duyệt và đầu ra luôn được thống nhất rõ ràng.</p></div></article>
+              <article><span>03</span><div><h3>Thiết kế để khách hàng hành động</h3><p>Tối ưu trải nghiệm mobile, cuộc gọi, chỉ đường, đặt lịch và yêu cầu tư vấn.</p></div></article>
             </div>
 
-            <a class="about__link" href="https://webs4v.vn/ve-chung-toi/">
-              <span>Khám phá Webs4V</span>
+            <a class="about__link" href="/ve-chung-toi/">
+              <span>Hiểu thêm về Webs4V</span>
               <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5m0 0H7m8 0v8" /></svg>
             </a>
           </div>
@@ -399,59 +406,159 @@
       <section class="panel pricing" id="pricing">
         <div class="pricing__shell">
           <header class="pricing__heading reveal">
-            <p class="eyebrow">Chi phí rõ ràng · Không gói thừa tính năng</p>
-            <h2>Bắt đầu vừa đủ.<br /><em>Lớn lên khi bạn sẵn sàng.</em></h2>
-            <p>Chọn đúng nền tảng hôm nay và chỉ thêm những gì doanh nghiệp thực sự cần. Không giao diện đại trà, không chi phí mập mờ.</p>
-            <div class="pricing__assurances"><span>Thiết kế riêng</span><span>SEO sẵn từ nền tảng</span><span>Bàn giao quyền quản trị</span></div>
+            <p class="eyebrow">Bảng giá tham khảo</p>
+            <h2>Chi phí nền tảng.<br />Phạm vi rõ ràng.</h2>
+            <p>Mức giá dưới đây áp dụng cho phạm vi nền tảng được mô tả. Chi phí chính xác được xác nhận sau khi thống nhất nội dung, số lượng trang và chức năng thực tế.</p>
           </header>
 
-          <div class="quote-builder reveal" data-quote-builder>
-            <div class="quote-builder__choices">
-              <section class="quote-step">
-                <div class="quote-step__heading"><span>01</span><div><h3>Chọn nền tảng</h3><p>Bắt đầu từ mục tiêu chính của website.</p></div></div>
-                <div class="quote-plans">
-                  <button class="quote-plan is-selected" type="button" aria-pressed="true" data-package="business" data-price="3000000" data-label="Website doanh nghiệp">
-                    <span>Giới thiệu doanh nghiệp</span><strong>3.000.000<sup>đ</sup></strong><p>05 trang thiết kế riêng, responsive, SEO nền tảng và quản trị WordPress.</p><small>Phù hợp để xây dựng uy tín &amp; nhận liên hệ</small>
-                  </button>
-                  <button class="quote-plan" type="button" aria-pressed="false" data-package="commerce" data-price="7000000" data-label="Website sản phẩm">
-                    <i>Được chọn nhiều</i><span>Bán hàng / Sản phẩm</span><strong>7.000.000<sup>đ</sup></strong><p>Quản lý sản phẩm, danh mục, tìm kiếm, bộ lọc và liên hệ mua hàng.</p><small>Phù hợp để trưng bày &amp; mở rộng bán hàng</small>
-                  </button>
-                </div>
-              </section>
-
-              <section class="quote-step">
-                <div class="quote-step__heading"><span>02</span><div><h3>Thêm tính năng</h3><p>Chạm để chọn. Tổng dự toán sẽ cập nhật ngay.</p></div></div>
-                <div class="quote-addons">
-                  <button type="button" aria-pressed="false" data-addon data-price="3000000" data-label="Blog / Tin tức"><span>Blog / Tin tức</span><strong>+3.000.000đ</strong><i>+</i></button>
-                  <button type="button" aria-pressed="false" data-addon data-price="3500000" data-label="Giỏ hàng &amp; quản lý đơn"><span>Giỏ hàng &amp; quản lý đơn</span><strong>+3.500.000đ</strong><i>+</i></button>
-                  <button type="button" aria-pressed="false" data-addon data-price="1500000" data-label="QR thanh toán"><span>QR theo giá trị đơn</span><strong>+1.500.000đ</strong><i>+</i></button>
-                  <button type="button" aria-pressed="false" data-addon data-price="5000000" data-label="Xác nhận thanh toán tự động"><span>Xác nhận thanh toán</span><strong>Từ +5.000.000đ</strong><i>+</i></button>
-                  <button type="button" aria-pressed="false" data-addon data-group="geo" data-price="500000" data-label="GEO cơ bản"><span>GEO cơ bản</span><strong>+500.000đ</strong><i>+</i></button>
-                  <button type="button" aria-pressed="false" data-addon data-group="geo" data-price="1500000" data-label="GEO nâng cao"><span>GEO nâng cao</span><strong>+1.500.000đ</strong><i>+</i></button>
-                  <button type="button" aria-pressed="false" data-addon data-price="500000" data-label="01 bài viết SEO"><span>01 bài viết SEO</span><strong>+500.000đ</strong><i>+</i></button>
-                  <button type="button" aria-pressed="false" data-addon data-price="1000000" data-label="Bảo mật &amp; HTTPS"><span>Bảo mật &amp; HTTPS</span><strong>+1.000.000đ</strong><i>+</i></button>
-                </div>
-              </section>
-
-              <section class="quote-presets">
-                <span>Cấu hình gợi ý</span>
-                <div><button type="button" data-preset="business-blog">Doanh nghiệp + Blog <strong>6 triệu</strong></button><button type="button" data-preset="full-commerce">Bán hàng đầy đủ <strong>12 triệu</strong></button><button type="button" data-preset="growth-commerce">Bán hàng tăng trưởng <strong>16,5 triệu</strong></button></div>
-              </section>
+          <div class="pricing-scope reveal">
+            <strong>Cần hiểu đúng về mức giá</strong>
+            <div>
+              <p><span>01</span>Đây là chi phí nền tảng, không phải gói bao gồm mọi chức năng.</p>
+              <p><span>02</span>Tính năng ngoài danh sách sẽ được xác nhận và báo riêng trước khi triển khai.</p>
+              <p><span>03</span>Tên miền, hosting và phí dịch vụ bên thứ ba chưa nằm trong mức giá này.</p>
             </div>
-
-            <aside class="quote-summary">
-              <span class="quote-summary__eyebrow">Dự toán của bạn</span>
-              <strong class="quote-summary__total" data-quote-total>3.000.000đ</strong>
-              <small>Chi phí dự kiến từ</small>
-              <div class="quote-summary__line"></div>
-              <p>Đã chọn</p>
-              <ul data-quote-selection><li><span>Website doanh nghiệp</span><b>3.000.000đ</b></li></ul>
-              <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>Nhận báo giá chi tiết</span><b>↗</b></a>
-              <em>Miễn phí tư vấn · Không ràng buộc</em>
-            </aside>
           </div>
 
-          <p class="pricing__note reveal">Dự toán mang tính tham khảo theo phạm vi hiện tại. Giá chưa bao gồm tên miền, hosting, phí ngân hàng, cổng thanh toán, API hoặc dịch vụ bên thứ ba. Trang và chức năng riêng sẽ được báo giá sau khi xác định yêu cầu.</p>
+          <div class="pricing-plans reveal">
+            <article class="pricing-plan-clear">
+              <header><span>01</span><p>Chi phí nền tảng</p><h3>Landing Page</h3><div><small>Từ</small><strong>2.500.000đ</strong></div></header>
+              <p class="pricing-plan-clear__fit">Dành cho một sản phẩm, dịch vụ, chương trình quảng cáo hoặc chiến dịch cụ thể.</p>
+              <section><h4>Bao gồm trong phạm vi</h4><ul><li>01 trang dài, tập trung một mục tiêu</li><li>WordPress và trang quản trị cơ bản</li><li>Giao diện thiết kế riêng theo thương hiệu</li><li>CTA và form liên hệ cơ bản</li><li>Responsive trên điện thoại, tablet và máy tính</li><li>SEO nền tảng và hỗ trợ Google phát hiện trang</li></ul></section>
+              <section class="pricing-plan-clear__excluded"><h4>Chưa bao gồm</h4><p>Blog, hệ thống sản phẩm, giỏ hàng, quản lý đơn và các chức năng nâng cao.</p></section>
+              <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">Nhận tư vấn &amp; báo giá <b>↗</b></a>
+            </article>
+
+            <article class="pricing-plan-clear">
+              <header><span>02</span><p>Chi phí nền tảng</p><h3>Website doanh nghiệp</h3><div><small>Từ</small><strong>3.000.000đ</strong></div></header>
+              <p class="pricing-plan-clear__fit">Dành cho công ty, cửa hàng hoặc cá nhân cần giới thiệu thương hiệu và dịch vụ.</p>
+              <section><h4>Bao gồm trong phạm vi</h4><ul><li>05 trang: Trang chủ, Giới thiệu, Dịch vụ, Liên hệ, Chính sách</li><li>WordPress và trang quản trị cơ bản</li><li>Giao diện thiết kế riêng theo thương hiệu</li><li>Responsive trên điện thoại, tablet và máy tính</li><li>SEO nền tảng cho cấu trúc, tiêu đề và đường dẫn</li><li>Hỗ trợ khai báo website và gửi sitemap</li></ul></section>
+              <section class="pricing-plan-clear__excluded"><h4>Chưa bao gồm</h4><p>Blog và các trang ngoài 05 trang nền tảng; phần phát sinh được báo theo nội dung và độ phức tạp.</p></section>
+              <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">Nhận tư vấn &amp; báo giá <b>↗</b></a>
+            </article>
+
+            <article class="pricing-plan-clear">
+              <header><span>03</span><p>Chi phí nền tảng</p><h3>Website sản phẩm</h3><div><small>Từ</small><strong>7.000.000đ</strong></div></header>
+              <p class="pricing-plan-clear__fit">Dành cho doanh nghiệp cần trưng bày, tìm kiếm, lọc và nhận liên hệ mua sản phẩm.</p>
+              <section><h4>Bao gồm trong phạm vi</h4><ul><li>Quản lý sản phẩm, giá, hình ảnh, mô tả và danh mục</li><li>Trang danh sách và chi tiết sản phẩm</li><li>Tìm kiếm và lọc sản phẩm</li><li>Nút liên hệ mua hàng và gọi trực tiếp</li><li>Giao diện riêng, responsive và trang quản trị</li><li>SEO nền tảng cho danh mục và sản phẩm</li></ul></section>
+              <section class="pricing-plan-clear__excluded"><h4>Chưa bao gồm</h4><p>Giỏ hàng, quản lý đơn, QR thanh toán, xác nhận thanh toán tự động và hệ thống Blog.</p></section>
+              <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">Nhận tư vấn &amp; báo giá <b>↗</b></a>
+            </article>
+          </div>
+
+          <section class="pricing-addons reveal" aria-labelledby="pricing-addons-title">
+            <header><p class="eyebrow">Hạng mục cộng thêm</p><h3 id="pricing-addons-title">Chỉ bổ sung khi doanh nghiệp thực sự cần</h3><p>Các hạng mục dưới đây không tự động nằm trong ba mức giá nền tảng.</p></header>
+            <div>
+              <p><span>Hệ thống Blog / Tin tức</span><strong>+3.000.000đ</strong></p>
+              <p><span>Giỏ hàng, đặt hàng, quản lý &amp; tra cứu đơn</span><strong>+3.500.000đ</strong></p>
+              <p><span>QR thanh toán theo giá trị đơn</span><strong>+1.500.000đ</strong></p>
+              <p><span>Xác nhận thanh toán tự động</span><strong>Từ +5.000.000đ</strong></p>
+              <p><span>Tối ưu GEO cơ bản</span><strong>+500.000đ</strong></p>
+              <p><span>Tối ưu GEO nâng cao</span><strong>+1.500.000đ</strong></p>
+              <p><span>Viết bài chuẩn SEO</span><strong>500.000đ / bài</strong></p>
+              <p><span>Cấu hình bảo mật &amp; HTTPS</span><strong>+1.000.000đ</strong></p>
+              <p><span>Thiết kế thêm trang</span><strong>Báo giá theo yêu cầu</strong></p>
+            </div>
+          </section>
+
+          <div class="pricing-disclaimer reveal">
+            <div><p class="eyebrow">Lưu ý phạm vi</p><h3>Báo giá cuối cùng được xác nhận trước khi triển khai</h3></div>
+            <ul><li>Giá chưa bao gồm tên miền và hosting.</li><li>Số lượng sản phẩm hoặc nội dung nhập ban đầu được xác nhận theo từng dự án.</li><li>Phí ngân hàng, cổng thanh toán, API và dịch vụ bên thứ ba được tính riêng.</li><li>SEO và GEO không phải cam kết thứ hạng cụ thể trên Google hoặc nền tảng AI.</li><li>Thay đổi lớn về cấu trúc hoặc chức năng có thể làm thay đổi chi phí.</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel growth-studio" id="growth-studio" data-growth-studio>
+        <div class="growth-studio__shell">
+          <section class="service-solutions" data-service-carousel aria-labelledby="service-solutions-title">
+            <header class="service-solutions__heading">
+              <div><p class="eyebrow">Giải pháp theo từng mục tiêu</p><h3 id="service-solutions-title">Một đội ngũ. Sáu dịch vụ đồng hành.</h3></div>
+            </header>
+            <p class="service-solutions__note">Mỗi giải pháp được đề xuất theo mục tiêu, phạm vi và hiện trạng thương hiệu. Liên hệ Webs4V để nhận tư vấn và báo giá phù hợp.</p>
+            <div class="service-carousel__viewport" data-service-viewport>
+              <div class="service-carousel__track">
+                <article class="service-solution-card">
+                  <header><span>01</span><div class="service-solution-card__icons"><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google-ads/default.svg" alt="" /></div><small>Search intent</small></header>
+                  <h4>Google Ads</h4><p class="service-solution-card__lead">Đưa thương hiệu đến trước người đang chủ động tìm kiếm sản phẩm hoặc dịch vụ của bạn.</p>
+                  <div class="service-solution-card__body"><span>Chúng tôi hỗ trợ</span><p>Nghiên cứu từ khóa, cấu trúc chiến dịch, viết mẫu quảng cáo, thiết lập chuyển đổi và tối ưu theo dữ liệu.</p><span>Bạn nhận được</span><ul><li>Bộ chiến dịch rõ mục tiêu</li><li>Báo cáo minh bạch, dễ hiểu</li><li>Ngân sách được kiểm soát</li></ul></div>
+                  <footer><span>Lợi ích mang lại</span><strong>Tiếp cận đúng nhu cầu, tăng cơ hội nhận cuộc gọi và khách hàng tiềm năng.</strong><a href="#contact">Liên hệ ngay <b>↗</b></a></footer>
+                </article>
+                <article class="service-solution-card">
+                  <header><span>02</span><div class="service-solution-card__icons"><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/meta/default.svg" alt="" /></div><small>Social reach</small></header>
+                  <h4>Facebook &amp;<br />Instagram Ads</h4><p class="service-solution-card__lead">Tạo nhu cầu và đưa thông điệp thương hiệu đến đúng nhóm khách hàng trên mạng xã hội.</p>
+                  <div class="service-solution-card__body"><span>Chúng tôi hỗ trợ</span><p>Xác định tệp khách hàng, xây nội dung quảng cáo, thiết kế creative, triển khai A/B test và tối ưu hiệu quả.</p><span>Bạn nhận được</span><ul><li>Thông điệp và hình ảnh đồng bộ</li><li>Nhiều mẫu quảng cáo để thử nghiệm</li><li>Theo dõi chi phí theo mục tiêu</li></ul></div>
+                  <footer><span>Lợi ích mang lại</span><strong>Mở rộng độ phủ, tăng tương tác và tạo thêm tin nhắn từ khách hàng phù hợp.</strong><a href="#contact">Liên hệ ngay <b>↗</b></a></footer>
+                </article>
+                <article class="service-solution-card">
+                  <header><span>03</span><div class="service-solution-card__icons"><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/facebook/default.svg" alt="" /></div><small>Always on</small></header>
+                  <h4>Chăm sóc<br />Fanpage</h4><p class="service-solution-card__lead">Giúp Fanpage hoạt động đều đặn và thể hiện hình ảnh chuyên nghiệp thay vì đăng bài rời rạc.</p>
+                  <div class="service-solution-card__body"><span>Chúng tôi hỗ trợ</span><p>Lên kế hoạch nội dung, viết bài, thiết kế poster social và duy trì giọng điệu nhất quán theo thương hiệu.</p><span>Bạn nhận được</span><ul><li>Lịch nội dung theo tháng</li><li>Bài viết và thiết kế hoàn chỉnh</li><li>Hình ảnh Fanpage đồng bộ</li></ul></div>
+                  <footer><span>Lợi ích mang lại</span><strong>Duy trì sự hiện diện, tăng độ tin cậy và giúp khách hàng nhớ đến thương hiệu.</strong><a href="#contact">Liên hệ ngay <b>↗</b></a></footer>
+                </article>
+                <article class="service-solution-card">
+                  <header><span>04</span><div class="service-solution-card__icons"><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/photoshop/default.svg" alt="" /><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/illustrator/default.svg" alt="" /><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/indesign/default.svg" alt="" /></div><small>Brand system</small></header>
+                  <h4>Nhận diện<br />thương hiệu</h4><p class="service-solution-card__lead">Xây dựng ngôn ngữ hình ảnh rõ ràng để thương hiệu xuất hiện nhất quán ở mọi điểm chạm.</p>
+                  <div class="service-solution-card__body"><span>Chúng tôi hỗ trợ</span><p>Thiết kế logo, màu sắc, typography, quy chuẩn hình ảnh và các ứng dụng nhận diện cần thiết.</p><span>Bạn nhận được</span><ul><li>Bộ tài sản thương hiệu</li><li>Quy chuẩn sử dụng dễ áp dụng</li><li>Thiết kế sẵn sàng cho digital</li></ul></div>
+                  <footer><span>Lợi ích mang lại</span><strong>Tăng tính chuyên nghiệp, khả năng nhận biết và sự nhất quán của doanh nghiệp.</strong><a href="#contact">Liên hệ ngay <b>↗</b></a></footer>
+                </article>
+                <article class="service-solution-card">
+                  <header><span>05</span><div class="service-solution-card__icons"><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google-maps/default.svg" alt="" /></div><small>Local presence</small></header>
+                  <h4>Google<br />Business</h4><p class="service-solution-card__lead">Hoàn thiện hiện diện địa phương để khách hàng dễ tìm, gọi điện và đến đúng địa điểm kinh doanh.</p>
+                  <div class="service-solution-card__body"><span>Chúng tôi hỗ trợ</span><p>Khởi tạo, thiết lập, xác minh, chuẩn hóa thông tin và hỗ trợ xử lý các vấn đề cơ bản của hồ sơ.</p><span>Bạn nhận được</span><ul><li>Hồ sơ đầy đủ, nhất quán</li><li>Thông tin liên hệ chính xác</li><li>Hướng dẫn quản lý lâu dài</li></ul></div>
+                  <footer><span>Lợi ích mang lại</span><strong>Tăng khả năng xuất hiện trên Maps và giúp khách hàng hành động nhanh hơn.</strong><a href="#contact">Liên hệ ngay <b>↗</b></a></footer>
+                </article>
+                <article class="service-solution-card">
+                  <header><span>06</span><div class="service-solution-card__icons"><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google/default.svg" alt="" /></div><small>Organic growth</small></header>
+                  <h4>SEO<br />Google</h4><p class="service-solution-card__lead">Cải thiện nền tảng website để khách hàng dễ tìm thấy doanh nghiệp trên kết quả tìm kiếm tự nhiên.</p>
+                  <div class="service-solution-card__body"><span>Chúng tôi hỗ trợ</span><p>Kiểm tra kỹ thuật, nghiên cứu từ khóa, tối ưu cấu trúc và nội dung on-page, đồng thời kết nối công cụ đo lường Google.</p><span>Bạn nhận được</span><ul><li>Báo cáo hiện trạng website</li><li>Bộ từ khóa theo nhu cầu tìm kiếm</li><li>Lộ trình tối ưu theo mức ưu tiên</li></ul></div>
+                  <footer><span>Lợi ích mang lại</span><strong>Tăng khả năng xuất hiện bền vững và thu hút khách hàng mà không phụ thuộc hoàn toàn vào quảng cáo.</strong><a href="#contact">Liên hệ ngay <b>↗</b></a></footer>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <div class="poster-showcase" data-growth-project>
+            <header class="poster-showcase__heading">
+              <div class="poster-showcase__intro">
+                <p class="eyebrow">Thiết kế poster social</p>
+                <h3>Fanpage đăng đều.<br />Khách vẫn <em>lướt qua?</em></h3>
+                <p class="poster-showcase__lead">Vấn đề không phải doanh nghiệp thiếu nội dung. Nội dung chưa đủ rõ để dừng ánh nhìn, tạo ghi nhớ và dẫn khách hàng đến hành động.</p>
+              </div>
+              <div class="poster-showcase__benefits">
+                <ul>
+                  <li><span>01</span><strong>Dừng mắt nhanh</strong></li>
+                  <li><span>02</span><strong>Nhận diện nhất quán</strong></li>
+                  <li><span>03</span><strong>Thúc đẩy hành động</strong></li>
+                </ul>
+                <a href="#contact"><span>Tư vấn nội dung social</span><b>↗</b></a>
+              </div>
+            </header>
+            <div class="poster-slider" aria-label="Các thiết kế poster nổi bật">
+              <div class="poster-slider__track">
+                <div class="poster-slider__group">
+                  <figure class="poster-card poster-card--portrait"><div class="poster-card__frame"><img src="./image/social-post/bamboo/798136582_122112590049327458_4130066504310037684_n.jpg" alt="Poster Asian Flavors cho New Boston House" loading="eager" decoding="async" /></div><figcaption><span>New Boston House</span><b>Asian Flavors</b><em>01</em></figcaption></figure>
+                  <figure class="poster-card poster-card--square"><div class="poster-card__frame"><img src="./image/social-post/bamboo/790400605_122111900109327458_8618582478662668120_n.jpg" alt="Poster Orange Chicken cho New Boston House" loading="eager" decoding="async" /></div><figcaption><span>New Boston House</span><b>Orange Chicken</b><em>02</em></figcaption></figure>
+                  <figure class="poster-card poster-card--square"><div class="poster-card__frame"><img src="./image/social-post/bamboo/763944363_122109109449327458_3644348095213498708_n.jpg" alt="Poster Wonton Soup cho New Boston House" loading="eager" decoding="async" /></div><figcaption><span>New Boston House</span><b>Wonton Soup</b><em>03</em></figcaption></figure>
+                  <figure class="poster-card poster-card--square"><div class="poster-card__frame"><img src="./image/social-post/mad/809183877_1522892663199129_768506283320804217_n.jpg" alt="Poster Flavor on Your Terms cho The Mad Crab" loading="eager" decoding="async" /></div><figcaption><span>The Mad Crab</span><b>Flavor on Your Terms</b><em>04</em></figcaption></figure>
+                  <figure class="poster-card poster-card--portrait"><div class="poster-card__frame"><img src="./image/social-post/mad/829549858_1531823518972710_6468779338816364256_n.jpg" alt="Poster Crab or Lobster cho The Mad Crab" loading="eager" decoding="async" /></div><figcaption><span>The Mad Crab</span><b>Crab or Lobster</b><em>05</em></figcaption></figure>
+                  <figure class="poster-card poster-card--square"><div class="poster-card__frame"><img src="./image/social-post/mad/848633320_1543233607831701_5548484268806016360_n.jpg" alt="Poster Crack Into Flavor cho The Mad Crab" loading="eager" decoding="async" /></div><figcaption><span>The Mad Crab</span><b>Crack Into Flavor</b><em>06</em></figcaption></figure>
+                </div>
+                <div class="poster-slider__group" aria-hidden="true">
+                  <figure class="poster-card poster-card--portrait"><div class="poster-card__frame"><img src="./image/social-post/bamboo/798136582_122112590049327458_4130066504310037684_n.jpg" alt="" loading="eager" decoding="async" /></div><figcaption><span>New Boston House</span><b>Asian Flavors</b><em>01</em></figcaption></figure>
+                  <figure class="poster-card poster-card--square"><div class="poster-card__frame"><img src="./image/social-post/bamboo/790400605_122111900109327458_8618582478662668120_n.jpg" alt="" loading="eager" decoding="async" /></div><figcaption><span>New Boston House</span><b>Orange Chicken</b><em>02</em></figcaption></figure>
+                  <figure class="poster-card poster-card--square"><div class="poster-card__frame"><img src="./image/social-post/bamboo/763944363_122109109449327458_3644348095213498708_n.jpg" alt="" loading="eager" decoding="async" /></div><figcaption><span>New Boston House</span><b>Wonton Soup</b><em>03</em></figcaption></figure>
+                  <figure class="poster-card poster-card--square"><div class="poster-card__frame"><img src="./image/social-post/mad/809183877_1522892663199129_768506283320804217_n.jpg" alt="" loading="eager" decoding="async" /></div><figcaption><span>The Mad Crab</span><b>Flavor on Your Terms</b><em>04</em></figcaption></figure>
+                  <figure class="poster-card poster-card--portrait"><div class="poster-card__frame"><img src="./image/social-post/mad/829549858_1531823518972710_6468779338816364256_n.jpg" alt="" loading="eager" decoding="async" /></div><figcaption><span>The Mad Crab</span><b>Crab or Lobster</b><em>05</em></figcaption></figure>
+                  <figure class="poster-card poster-card--square"><div class="poster-card__frame"><img src="./image/social-post/mad/848633320_1543233607831701_5548484268806016360_n.jpg" alt="" loading="eager" decoding="async" /></div><figcaption><span>The Mad Crab</span><b>Crack Into Flavor</b><em>06</em></figcaption></figure>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="growth-studio__cta" data-growth-cta>
+            <div><span>Từ website đến tăng trưởng</span><h3>Một đội ngũ cho mọi<br /><em>điểm chạm thương hiệu.</em></h3></div>
+            <a href="#contact"><span>Trao đổi nhu cầu</span><b>↗</b></a>
+          </div>
         </div>
       </section>
 
@@ -542,6 +649,11 @@
                   <option>Website bán hàng</option>
                   <option>Landing page</option>
                   <option>SEO &amp; GEO</option>
+                  <option>Google / Facebook / Instagram Ads</option>
+                  <option>Chăm sóc Fanpage &amp; Social</option>
+                  <option>Thiết kế nhận diện thương hiệu</option>
+                  <option>Google Business Profile</option>
+                  <option>Video editing &amp; Social poster</option>
                   <option>Thiết kế lại website</option>
                   <option>Tư vấn giải pháp tổng thể</option>
                 </select>
@@ -564,7 +676,7 @@
       <div class="site-footer__shell">
         <div class="site-footer__top">
           <div class="site-footer__identity">
-            <a class="site-footer__brand" href="#top" aria-label="Webs4V — Lên đầu trang"><img src="./image/logo-webs4v-2-1.png" alt="Webs4V" /></a>
+            <a class="site-footer__brand" href="#top" aria-label="Webs4V — Lên đầu trang"><img src="/image/logo-webs4v-2-1.png" alt="Webs4V" /></a>
             <p>Thiết kế website khác biệt, xây dựng nền tảng số giúp doanh nghiệp phát triển dài hạn.</p>
             <span class="site-footer__status"><i></i> Đang nhận dự án mới</span>
           </div>
@@ -572,39 +684,41 @@
           <nav class="site-footer__links" aria-label="Điều hướng cuối trang">
             <div>
               <span>Khám phá</span>
-              <a href="#about">Về chúng tôi</a>
-              <a href="#projects">Dự án đã thực hiện</a>
-              <a href="#services">Giải pháp</a>
-              <a href="#pricing">Bảng giá</a>
+              <a href="/">Trang chủ</a>
+              <a href="/ve-chung-toi/">Về chúng tôi</a>
+              <a href="/#story">Dự án đã thực hiện</a>
+              <a href="/#pricing">Bảng giá</a>
             </div>
             <div>
               <span>Dịch vụ</span>
-              <a href="#ecosystem">Website doanh nghiệp</a>
-              <a href="#ecosystem">Website bán hàng</a>
-              <a href="#ecosystem">Landing page</a>
-              <a href="#ecosystem">SEO &amp; GEO</a>
+              <a href="/dich-vu/#website-doanh-nghiep">Website doanh nghiệp</a>
+              <a href="/dich-vu/#website-ban-hang">Website bán hàng</a>
+              <a href="/dich-vu/#bang-gia">Landing page</a>
+              <a href="/dich-vu/#seo-geo">SEO &amp; GEO</a>
             </div>
             <div>
               <span>Liên hệ</span>
               <a href="tel:0364003638">0364 003 638</a>
               <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">Nhắn Zalo ↗</a>
-              <a href="mailto:hello@ximitech.vn">Gửi email ↗</a>
-              <a href="#contact">Form tư vấn</a>
+              <a href="mailto:hello@webs4v.vn">Gửi email ↗</a>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=1104%20%C4%90.%20Ph%E1%BA%A1m%20V%C4%83n%20%C4%90%E1%BB%93ng%2C%20Th%E1%BB%A7%20%C4%90%E1%BB%A9c%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh" target="_blank" rel="noopener noreferrer">1104 Đ. Phạm Văn Đồng, Thủ Đức, TP.HCM ↗</a>
+              <a href="/#contact">Form tư vấn</a>
             </div>
           </nav>
         </div>
 
         <div class="site-footer__cta">
           <div><span>Bạn đã sẵn sàng?</span><h2>Cùng biến ý tưởng<br /><em>thành một website đáng nhớ.</em></h2></div>
-          <a href="#contact"><span>Bắt đầu dự án</span><b>↗</b></a>
+          <a href="/#contact"><span>Bắt đầu dự án</span><b>↗</b></a>
         </div>
 
         <div class="site-footer__bottom">
           <p>© 2026 Webs4V. All rights reserved.</p>
-          <div><a href="https://webs4v.vn/chinh-sach-bao-mat/">Chính sách bảo mật</a><a href="#top">Lên đầu trang ↑</a></div>
+          <div><a href="/chinh-sach-bao-mat/">Chính sách bảo mật</a><a href="#top">Lên đầu trang ↑</a></div>
         </div>
       </div>
     </footer>
+    </div>
 
     <noscript>Trải nghiệm này cần JavaScript và WebGL để hoạt động.</noscript>
     <script>
@@ -613,6 +727,6 @@
         document.body.classList.add('is-ready');
       }, 4000);
     </script>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="./src/main.jsx"></script>
   </body>
 </html>
