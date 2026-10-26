@@ -4,6 +4,10 @@ import { flushSync } from 'react-dom';
 import App from './App';
 import '../style.css';
 
+// Prevent the server-rendered logos from flashing before Vite has applied the
+// stylesheet. This runs only after the imported CSS is ready.
+document.documentElement.classList.remove('css-pending');
+
 const rootElement = document.getElementById('root');
 const staticMain = rootElement?.querySelector('main');
 const mainMarkup = staticMain?.innerHTML ?? '';

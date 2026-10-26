@@ -36,14 +36,14 @@ export function SiteFooter() {
               <a href="https://www.google.com/maps/search/?api=1&query=1104%20%C4%90.%20Ph%E1%BA%A1m%20V%C4%83n%20%C4%90%E1%BB%93ng%2C%20Th%E1%BB%A7%20%C4%90%E1%BB%A9c%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh" target="_blank" rel="noopener noreferrer">
                 1104 Đ. Phạm Văn Đồng, Thủ Đức, TP.HCM ↗
               </a>
-              <a href="/#contact">Form tư vấn</a>
+              <a href="/lien-he/">Form tư vấn</a>
             </div>
           </nav>
         </div>
 
         <div className="site-footer__cta">
           <div><span>Bạn đã sẵn sàng?</span><h2>Cùng biến ý tưởng<br /><em>thành một website đáng nhớ.</em></h2></div>
-          <a href="/#contact"><span>Bắt đầu dự án</span><b>↗</b></a>
+          <a href="/lien-he/"><span>Bắt đầu dự án</span><b>↗</b></a>
         </div>
 
         <div className="site-footer__bottom">
