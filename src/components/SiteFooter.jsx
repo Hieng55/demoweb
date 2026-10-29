@@ -9,7 +9,7 @@ export function SiteFooter() {
             <a className="site-footer__brand" href="#top" aria-label="Webs4V — Lên đầu trang">
               <img src="/image/logo-webs4v-2-1.png" alt="Webs4V" />
             </a>
-            <p>Thiết kế website khác biệt, xây dựng nền tảng số giúp doanh nghiệp phát triển dài hạn.</p>
+            <p>Thiết kế website doanh nghiệp và website thương mại điện tử, xây dựng nền tảng số giúp thương hiệu bán hàng và phát triển dài hạn.</p>
             <span className="site-footer__status"><i /> Đang nhận dự án mới</span>
           </div>
 
@@ -18,13 +18,14 @@ export function SiteFooter() {
               <span>Khám phá</span>
               <a href="/">Trang chủ</a>
               <a href="/ve-chung-toi/">Về chúng tôi</a>
+              <a href="/blog/">Blog kiến thức &amp; tin tức</a>
               <a href="/#story">Dự án đã thực hiện</a>
               <a href="/#pricing">Bảng giá</a>
             </div>
             <div>
               <span>Dịch vụ</span>
               <a href="/dich-vu/#website-doanh-nghiep">Website doanh nghiệp</a>
-              <a href="/dich-vu/#website-ban-hang">Website bán hàng</a>
+              <a href="/dich-vu/thiet-ke-website/#pricing">Website thương mại điện tử</a>
               <a href="/dich-vu/#bang-gia">Landing page</a>
               <a href="/dich-vu/#seo-geo">SEO &amp; GEO</a>
             </div>
@@ -44,6 +45,11 @@ export function SiteFooter() {
         <div className="site-footer__cta">
           <div><span>Bạn đã sẵn sàng?</span><h2>Cùng biến ý tưởng<br /><em>thành một website đáng nhớ.</em></h2></div>
           <a href="/lien-he/"><span>Bắt đầu dự án</span><b>↗</b></a>
+        </div>
+
+        <div className="site-footer__company">
+          <strong>CÔNG TY TNHH CÔNG NGHỆ WEBS4V.VN</strong>
+          <span>MST: 0319765116</span>
         </div>
 
         <div className="site-footer__bottom">

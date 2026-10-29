@@ -10,11 +10,11 @@ import indesignIcon from '../../image/service-indesign.svg';
 
 export const serviceItems = [
   {
-    slug: 'thiet-ke-website', index: '01', short: 'Web', title: 'Thiết kế website',
-    lead: 'Xây dựng website theo thương hiệu, rõ mục tiêu và sẵn sàng phục vụ hoạt động kinh doanh.',
-    support: 'Làm rõ mục tiêu, xây cấu trúc nội dung, thiết kế UI/UX, phát triển responsive, SEO nền tảng và bàn giao quản trị.',
-    outcomes: ['Website thiết kế riêng theo thương hiệu', 'Trải nghiệm tốt trên mọi thiết bị', 'Nền tảng dễ quản trị và mở rộng'],
-    benefit: 'Một nền tảng số chuyên nghiệp để giới thiệu, bán hàng và tạo liên hệ.',
+    slug: 'thiet-ke-website', index: '01', short: 'Web / Commerce', title: 'Thiết kế website & E-commerce',
+    lead: 'Xây dựng website doanh nghiệp, landing page và website thương mại điện tử theo thương hiệu, rõ mục tiêu kinh doanh.',
+    support: 'Từ chiến lược nội dung, UI/UX và responsive đến danh mục sản phẩm, giỏ hàng, đơn hàng, thanh toán, SEO nền tảng và bàn giao quản trị.',
+    outcomes: ['Website thiết kế riêng theo thương hiệu', 'Trải nghiệm mua sắm tốt trên mọi thiết bị', 'Nền tảng dễ quản trị và mở rộng'],
+    benefit: 'Một nền tảng số chuyên nghiệp để giới thiệu thương hiệu, bán hàng và vận hành thương mại điện tử.',
     icon: serviceWebIcon,
   },
   {
@@ -71,7 +71,7 @@ const packages = [
   { id: 'website-doanh-nghiep', name: 'Website doanh nghiệp', price: '3.000.000đ', note: 'Nền tảng thương hiệu', fit: 'Cần website giới thiệu công ty và nhận liên hệ', description: 'Dành cho doanh nghiệp cần một website chuyên nghiệp để giới thiệu thương hiệu, dịch vụ và nhận liên hệ.', features: ['05 trang thiết kế riêng', 'Giao diện responsive', 'SEO nền tảng', 'Quản trị WordPress', 'Form liên hệ & kết nối Zalo'] },
   { id: 'website-blog', name: 'Website doanh nghiệp + Blog', price: '6.000.000đ', note: 'Nội dung dài hạn', fit: 'Muốn làm nội dung và phát triển SEO lâu dài', description: 'Bổ sung hệ thống nội dung để doanh nghiệp chia sẻ chuyên môn và phát triển khả năng tìm kiếm.', features: ['Toàn bộ gói Doanh nghiệp', 'Chuyên mục Blog / Tin tức', 'Trang bài viết chuẩn SEO', 'Quản lý danh mục bài viết', 'Hướng dẫn đăng nội dung'], popular: true },
   { id: 'website-ban-hang', name: 'Website sản phẩm', price: '7.000.000đ', note: 'Trưng bày & tư vấn', fit: 'Cần giới thiệu nhiều sản phẩm nhưng chưa cần đặt hàng', description: 'Phù hợp doanh nghiệp cần danh mục sản phẩm rõ ràng và dẫn khách hàng đến bước liên hệ mua hàng.', features: ['Quản lý sản phẩm & danh mục', 'Tìm kiếm và bộ lọc', 'Trang chi tiết sản phẩm', 'Liên hệ mua hàng', 'Responsive & SEO nền tảng'] },
-  { id: 'website-ban-hang-day-du', name: 'Website bán hàng', price: '12.000.000đ', note: 'Đặt hàng trực tuyến', fit: 'Muốn khách đặt hàng trực tiếp trên website', description: 'Giải pháp đầy đủ hơn cho doanh nghiệp cần giỏ hàng, đơn hàng và quy trình đặt mua trực tuyến.', features: ['Toàn bộ gói Website sản phẩm', 'Giỏ hàng & quản lý đơn', 'QR theo giá trị đơn hàng', 'Thông báo đơn hàng', 'Hướng dẫn quản trị bán hàng'] },
+  { id: 'website-ban-hang-day-du', name: 'Website thương mại điện tử', price: '12.000.000đ', note: 'E-commerce trọn bộ', fit: 'Muốn khách mua và thanh toán trực tiếp trên website', description: 'Giải pháp e-commerce cho doanh nghiệp cần quản lý sản phẩm, giỏ hàng, đơn hàng và quy trình thanh toán trực tuyến.', features: ['Toàn bộ gói Website sản phẩm', 'WooCommerce, giỏ hàng & quản lý đơn', 'QR theo giá trị đơn hàng', 'Tích hợp thanh toán & vận chuyển theo nhu cầu', 'Hướng dẫn quản trị bán hàng'] },
 ];
 
 function ServiceMenu({ current }) {
@@ -84,8 +84,7 @@ function ServiceMenu({ current }) {
 function ServicesHub() {
   return <main id="top" className="services-hub">
     <section className="services-hub__hero">
-      <div className="reveal"><p className="eyebrow">Hệ dịch vụ Webs4V</p><h1>Mỗi mục tiêu.<br /><em>Một giải pháp chuyên sâu.</em></h1></div>
-      <p className="reveal">Khám phá từng nhóm dịch vụ Webs4V đang cung cấp và chọn giải pháp phù hợp với mục tiêu hiện tại của doanh nghiệp.</p>
+      <div className="services-hub__hero-copy reveal"><h1>Mỗi mục tiêu.<br /><em>Một giải pháp chuyên sâu.</em></h1><p>Khám phá từng nhóm dịch vụ Webs4V đang cung cấp và chọn giải pháp phù hợp với mục tiêu hiện tại của doanh nghiệp.</p></div>
     </section>
     <section className="services-hub__grid" aria-label="Các dịch vụ của Webs4V">
       {serviceItems.map(item => <a className="service-hub-card reveal" href={`/dich-vu/${item.slug}/`} key={item.slug}>

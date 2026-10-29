@@ -1,5 +1,18 @@
 import * as THREE from 'three';
-import { createIcons, SearchCheck, PenTool, CodeXml, Rocket } from 'lucide';
+import { defineMorphIcon } from 'morphicons/element';
+import {
+  Menu, X,
+  SearchCheck, Sparkles,
+  PenTool, Palette,
+  CodeXml, Terminal,
+  Rocket, Zap,
+  Monitor, Layout,
+  ShoppingBag, CreditCard,
+  MousePointerClick, Target,
+  Globe,
+  FileText, BookOpen,
+  ShieldCheck, Cpu
+} from 'lucide';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import iceUrl from './image/ice.jpg';
 import iceDisplacementUrl from './image/iced.jpg';
@@ -19,6 +32,8 @@ const loader = document.querySelector('.loader');
 const loaderBar = document.querySelector('.loader__track span');
 const loaderValue = document.querySelector('.loader__value');
 const cursor = document.querySelector('.cursor');
+const hero = document.querySelector('.hero');
+const heroVideo = document.querySelector('.hero__background-video');
 const siteHeader = document.querySelector('[data-header]');
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
@@ -29,13 +44,109 @@ const deviceMemory = navigator.deviceMemory ?? 8;
 const hardwareConcurrency = navigator.hardwareConcurrency ?? 8;
 const lowPowerDevice = compactLayout || deviceMemory <= 4 || hardwareConcurrency <= 4;
 
-createIcons({
-  icons: { SearchCheck, PenTool, CodeXml, Rocket },
-  attrs: {
-    'aria-hidden': 'true',
-    'stroke-width': 1.7,
-  },
-});
+defineMorphIcon();
+
+function initializeMorphIcons() {
+  const processConfigs = [
+    {
+      panel: document.querySelector('.process-panel:nth-child(1)'),
+      iconEl: document.querySelector('[data-process-icon="search-check"]'),
+      base: SearchCheck,
+      morph: Sparkles,
+    },
+    {
+      panel: document.querySelector('.process-panel:nth-child(2)'),
+      iconEl: document.querySelector('[data-process-icon="pen-tool"]'),
+      base: PenTool,
+      morph: Palette,
+    },
+    {
+      panel: document.querySelector('.process-panel:nth-child(3)'),
+      iconEl: document.querySelector('[data-process-icon="code-xml"]'),
+      base: CodeXml,
+      morph: Terminal,
+    },
+    {
+      panel: document.querySelector('.process-panel:nth-child(4)'),
+      iconEl: document.querySelector('[data-process-icon="rocket"]'),
+      base: Rocket,
+      morph: Zap,
+    },
+  ];
+
+  processConfigs.forEach(({ panel, iconEl, base, morph }) => {
+    if (!iconEl) return;
+    iconEl.icon = base;
+    iconEl.spring = 'snappy';
+
+    if (panel) {
+      panel.addEventListener('pointerenter', () => iconEl.morphTo(morph));
+      panel.addEventListener('pointerleave', () => iconEl.morphTo(base));
+      panel.addEventListener('focusin', () => iconEl.morphTo(morph));
+      panel.addEventListener('focusout', () => iconEl.morphTo(base));
+    }
+  });
+
+  const solutionConfigs = [
+    {
+      node: document.querySelector('.solution-node--one'),
+      iconEl: document.querySelector('[data-solution-icon="brand"]'),
+      base: Monitor,
+      morph: Layout,
+    },
+    {
+      node: document.querySelector('.solution-node--two'),
+      iconEl: document.querySelector('[data-solution-icon="commerce"]'),
+      base: ShoppingBag,
+      morph: CreditCard,
+    },
+    {
+      node: document.querySelector('.solution-node--three'),
+      iconEl: document.querySelector('[data-solution-icon="conversion"]'),
+      base: MousePointerClick,
+      morph: Target,
+    },
+    {
+      node: document.querySelector('.solution-node--four'),
+      iconEl: document.querySelector('[data-solution-icon="visibility"]'),
+      base: SearchCheck,
+      morph: Globe,
+    },
+    {
+      node: document.querySelector('.solution-node--five'),
+      iconEl: document.querySelector('[data-solution-icon="content"]'),
+      base: FileText,
+      morph: BookOpen,
+    },
+    {
+      node: document.querySelector('.solution-node--six'),
+      iconEl: document.querySelector('[data-solution-icon="operation"]'),
+      base: ShieldCheck,
+      morph: Cpu,
+    },
+  ];
+
+  solutionConfigs.forEach(({ node, iconEl, base, morph }) => {
+    if (!iconEl) return;
+    iconEl.icon = base;
+    iconEl.spring = 'bouncy';
+
+    if (node) {
+      node.addEventListener('pointerenter', () => iconEl.morphTo(morph));
+      node.addEventListener('pointerleave', () => iconEl.morphTo(base));
+      node.addEventListener('focusin', () => iconEl.morphTo(morph));
+      node.addEventListener('focusout', () => iconEl.morphTo(base));
+    }
+  });
+
+  const menuIconEls = document.querySelectorAll('.menu-toggle morph-icon');
+  menuIconEls.forEach((el) => {
+    el.icon = Menu;
+    el.spring = 'snappy';
+  });
+}
+
+initializeMorphIcons();
 
 function initializeProjectMarquee() {
   const groups = document.querySelectorAll('[data-project-group]');
@@ -255,18 +366,19 @@ function initializeGrowthStudio() {
     });
   });
 
-  gsap.from(callToAction?.children ?? [], {
-    y: 45,
-    opacity: 0,
-    duration: 0.9,
-    stagger: 0.16,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: callToAction,
-      start: 'top 84%',
-      once: true,
-    },
-  });
+  if (callToAction) {
+    gsap.from(callToAction, {
+      y: 36,
+      opacity: 0,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: callToAction,
+        start: 'top 86%',
+        once: true,
+      },
+    });
+  }
 
     if (document.readyState === 'complete') {
       ScrollTrigger.refresh();
@@ -1061,6 +1173,11 @@ function updateMenuRevealOrigin() {
 function setMenuOpen(open) {
   if (open) updateMenuRevealOrigin();
 
+  const menuIconEls = document.querySelectorAll('.menu-toggle morph-icon');
+  menuIconEls.forEach((el) => {
+    el.morphTo(open ? X : Menu);
+  });
+
   menuToggle?.setAttribute('aria-expanded', String(open));
   menuToggle?.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
   mobileMenu?.setAttribute('aria-hidden', String(!open));
@@ -1096,10 +1213,100 @@ function updateActiveNavigation() {
 
   navigationLinks.forEach((link) => link.removeAttribute('aria-current'));
   activeLinks.forEach((link) => link.setAttribute('aria-current', 'page'));
+
+  const isServicesPath = currentPath === '/dich-vu' || currentPath.startsWith('/dich-vu/');
+  const servicesTrigger = document.querySelector('[data-services-trigger]');
+  if (isServicesPath) servicesTrigger?.setAttribute('aria-current', 'page');
+  else servicesTrigger?.removeAttribute('aria-current');
+  document.querySelector('.mobile-services-menu')?.classList.toggle('is-current', isServicesPath);
 }
 
 updateActiveNavigation();
 window.addEventListener('hashchange', updateActiveNavigation);
+
+function initializePrivacyScrollSpy() {
+  const tocLinks = [...document.querySelectorAll('.privacy-toc a[href^="#"]')];
+  const items = tocLinks
+    .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
+    .filter(({ section }) => section);
+
+  if (!items.length) return;
+
+  let activeId = '';
+  let frameId = 0;
+
+  const setActive = (id) => {
+    if (!id || id === activeId) return;
+    activeId = id;
+
+    items.forEach(({ link, section }) => {
+      const isActive = section.id === id;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const update = () => {
+    frameId = 0;
+    const activationLine = Math.min(window.innerHeight * 0.34, 260);
+    let current = items[0];
+
+    items.forEach((item) => {
+      if (item.section.getBoundingClientRect().top <= activationLine) current = item;
+    });
+
+    const atPageEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (atPageEnd) current = items[items.length - 1];
+    setActive(current.section.id);
+  };
+
+  const requestUpdate = () => {
+    if (!frameId) frameId = window.requestAnimationFrame(update);
+  };
+
+  items.forEach(({ link, section }) => {
+    link.addEventListener('click', () => setActive(section.id));
+  });
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  window.addEventListener('hashchange', requestUpdate);
+  requestUpdate();
+}
+
+initializePrivacyScrollSpy();
+
+function initializeBlogFilters() {
+  const filterButtons = [...document.querySelectorAll('[data-blog-filter]')];
+  const cards = [...document.querySelectorAll('[data-blog-category]')];
+  const emptyState = document.querySelector('[data-blog-empty]');
+
+  if (!filterButtons.length || !cards.length) return;
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.blogFilter;
+      let visibleCount = 0;
+
+      filterButtons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-pressed', String(isActive));
+      });
+
+      cards.forEach((card) => {
+        const isVisible = category === 'all' || card.dataset.blogCategory === category;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      if (emptyState) emptyState.hidden = visibleCount > 0;
+    });
+  });
+}
+
+initializeBlogFilters();
 
 function updatePointer(event) {
   pointer.set(event.clientX / window.innerWidth, 1 - event.clientY / window.innerHeight);
@@ -1108,6 +1315,58 @@ function updatePointer(event) {
   body.classList.add('has-pointer');
   if (cursor) cursor.style.transform = `translate3d(${event.clientX - 26}px, ${event.clientY - 26}px, 0)`;
 }
+
+function initializeHeroVideoInteraction() {
+  if (!hero || !heroVideo || reducedMotion || compactLayout) return;
+
+  let lastX = null;
+  let lastY = null;
+  let lastTime = null;
+  let playbackResetTimer;
+
+  const updateHeroPointer = (event) => {
+    const now = performance.now();
+    const bounds = hero.getBoundingClientRect();
+    const localX = event.clientX - bounds.left;
+    const localY = event.clientY - bounds.top;
+    const normalizedX = Math.max(-1, Math.min(1, (localX / bounds.width - 0.5) * 2));
+    const normalizedY = Math.max(-1, Math.min(1, (localY / bounds.height - 0.5) * 2));
+
+    hero.style.setProperty('--hero-shift-x', `${normalizedX * -12}px`);
+    hero.style.setProperty('--hero-shift-y', `${normalizedY * -8}px`);
+
+    if (lastTime !== null) {
+      const distance = Math.hypot(event.clientX - lastX, event.clientY - lastY);
+      const elapsed = Math.max(8, now - lastTime);
+      const velocity = distance / elapsed;
+      heroVideo.playbackRate = Math.min(3, 1 + velocity * 1.35);
+    }
+
+    lastX = event.clientX;
+    lastY = event.clientY;
+    lastTime = now;
+
+    window.clearTimeout(playbackResetTimer);
+    playbackResetTimer = window.setTimeout(() => {
+      heroVideo.playbackRate = 1;
+    }, 140);
+  };
+
+  const resetHeroPointer = () => {
+    hero.style.setProperty('--hero-shift-x', '0px');
+    hero.style.setProperty('--hero-shift-y', '0px');
+    heroVideo.playbackRate = 1;
+    lastX = null;
+    lastY = null;
+    lastTime = null;
+    window.clearTimeout(playbackResetTimer);
+  };
+
+  hero.addEventListener('pointermove', updateHeroPointer, { passive: true });
+  hero.addEventListener('pointerleave', resetHeroPointer, { passive: true });
+}
+
+initializeHeroVideoInteraction();
 
 window.addEventListener('pointermove', updatePointer, { passive: true });
 window.addEventListener('scroll', updateScroll, { passive: true });
@@ -1148,36 +1407,6 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.2 },
 );
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
-
-const typewriter = document.querySelector('.typewriter');
-
-if (typewriter && !reducedMotion) {
-  const phrase = typewriter.textContent.trim();
-  const characters = Array.from(phrase);
-  const wait = (duration) => new Promise((resolve) => window.setTimeout(resolve, duration));
-
-  async function loopTypewriter() {
-    await wait(900);
-
-    while (true) {
-      for (let index = characters.length; index >= 0; index -= 1) {
-        typewriter.textContent = characters.slice(0, index).join('');
-        await wait(45);
-      }
-
-      await wait(450);
-
-      for (let index = 1; index <= characters.length; index += 1) {
-        typewriter.textContent = characters.slice(0, index).join('');
-        await wait(85);
-      }
-
-      await wait(2200);
-    }
-  }
-
-  loopTypewriter();
-}
 
 function render() {
   const delta = Math.min(clock.getDelta(), 0.05);

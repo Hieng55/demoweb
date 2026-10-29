@@ -19,6 +19,7 @@ export default defineConfig({
         privacyPolicy: resolve(__dirname, 'chinh-sach-bao-mat/index.html'),
         careers: resolve(__dirname, 'tuyen-dung/index.html'),
         contact: resolve(__dirname, 'lien-he/index.html'),
+        blog: resolve(__dirname, 'blog/index.html'),
       },
     },
   },
