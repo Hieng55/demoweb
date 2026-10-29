@@ -6557,6 +6557,14 @@ body.has-pointer .cursor {
 }
 
 @media (hover: none), (pointer: coarse) {
+  .hero__background-video {
+    display: none;
+  }
+
+  .hero {
+    background: linear-gradient(145deg, #07142f 0%, #102b5d 54%, #193d78 100%);
+  }
+
   .cursor {
     display: none;
   }
@@ -15137,9 +15145,11 @@ main > .panel + .panel {
 
 @media (max-width: 760px) {
   .hero__background-video {
-    opacity: 1;
-    object-position: 50% center;
-    filter: none;
+    display: none;
+  }
+
+  .hero {
+    background: linear-gradient(145deg, #07142f 0%, #102b5d 54%, #193d78 100%);
   }
 
   .about {

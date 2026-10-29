@@ -26,11 +26,13 @@ flushSync(() => {
   root.render(<App page={page} mainMarkup={mainMarkup} />);
 });
 
-// The homepage keeps the full WebGL experience. Content pages use a much
-// smaller interaction bundle so they do not download Three.js and five large
-// background textures before the visitor can read the page.
-if (document.querySelector('.hero')) {
-  import('../main.js');
-} else {
+// Phones and coarse-pointer devices use the lightweight bundle. This prevents
+// Three.js, the water shaders, and their five textures from being downloaded.
+const hasHero = Boolean(document.querySelector('.hero'));
+const mobileStaticExperience = window.matchMedia('(max-width: 760px), (hover: none), (pointer: coarse)').matches;
+
+if (!hasHero || mobileStaticExperience) {
   import('../main-lite.js');
+} else {
+  import('../main.js');
 }
