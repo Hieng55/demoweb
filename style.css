@@ -15847,6 +15847,36 @@ main > .panel + .panel {
   body.is-compact-experience .grain {
     opacity: 0.035;
   }
+
+  .ecosystem__hub {
+    width: 220px;
+    min-width: 220px;
+    height: 220px;
+    min-height: 220px;
+    max-height: 220px;
+    aspect-ratio: 1 / 1;
+    margin: 10px auto 28px;
+    padding: 30px;
+    align-self: start;
+    justify-self: center;
+    flex: none;
+  }
+
+  .ecosystem__hub img {
+    width: 112px;
+    height: auto;
+    flex: none;
+    object-fit: contain;
+  }
+
+  .ecosystem__hub span {
+    margin-bottom: 12px;
+  }
+
+  .ecosystem__hub small {
+    margin-top: 10px;
+    line-height: 1.35;
+  }
 }
 
 @media (hover: none), (pointer: coarse) {
