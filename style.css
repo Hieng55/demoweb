@@ -1146,7 +1146,7 @@ h2 {
 .projects {
   display: block;
   min-height: auto;
-  padding: clamp(56px, 6vh, 80px) 0 var(--section-space);
+  padding: clamp(56px, 6vh, 80px) 0 clamp(24px, 3vw, 42px);
   overflow: hidden;
 }
 
@@ -4998,7 +4998,7 @@ body.has-pointer .cursor {
 
   .projects {
     min-height: auto;
-    padding: max(72px, calc(56px + env(safe-area-inset-top))) 0 80px;
+    padding: max(72px, calc(56px + env(safe-area-inset-top))) 0 20px;
   }
 
   .projects__intro {
@@ -5025,6 +5025,10 @@ body.has-pointer .cursor {
   .project-card {
     flex-basis: min(78vw, 360px);
     border-radius: 20px;
+  }
+
+  .projects__action {
+    margin-top: 24px;
   }
 
   .copy--hero {
@@ -5099,7 +5103,7 @@ body.has-pointer .cursor {
 
   .about {
     min-height: auto;
-    padding: 68px max(20px, env(safe-area-inset-right));
+    padding: 16px max(20px, env(safe-area-inset-right)) 56px;
   }
 
   .about__shell {
@@ -15001,7 +15005,7 @@ main > .panel + .panel {
 
 /* About section — refined editorial composition. */
 .about {
-  padding: clamp(88px, 9vw, 150px) clamp(24px, 5vw, 80px);
+  padding: clamp(32px, 3.8vw, 56px) clamp(24px, 5vw, 80px) clamp(88px, 9vw, 150px);
 }
 
 .about .about__shell {
@@ -15204,7 +15208,7 @@ main > .panel + .panel {
   }
 
   .about {
-    padding: 64px 14px;
+    padding: 16px 14px 56px;
   }
 
   .about .about__shell {
