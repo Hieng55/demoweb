@@ -4355,11 +4355,18 @@ b > morph-icon.external-link-icon {
 .site-footer__bottom-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.site-footer__bottom .dmca-badge {
+.site-footer__badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-footer__badges a {
   display: inline-flex;
   align-items: center;
   line-height: 0;
@@ -4367,16 +4374,23 @@ b > morph-icon.external-link-icon {
   transition: opacity 220ms ease, transform 220ms ease;
 }
 
-.site-footer__bottom .dmca-badge:hover {
+.site-footer__badges a:hover {
   opacity: 0.85;
   transform: translateY(-1px);
 }
 
-.site-footer__bottom .dmca-badge img {
+.site-footer__badges img {
   display: block;
-  height: 24px;
+  height: 28px;
+  max-height: 28px;
   width: auto;
-  border-radius: 3px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.site-footer__badges .dmca-badge img {
+  height: 24px;
+  max-height: 24px;
 }
 
 .site-footer__bottom p,

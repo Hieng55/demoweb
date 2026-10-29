@@ -65,16 +65,46 @@ export function SiteFooter() {
         <div className="site-footer__bottom">
           <div className="site-footer__bottom-left">
             <p>© 2026 Webs4V. All rights reserved.</p>
-            <a
-              href="//www.dmca.com/Protection/Status.aspx?ID=ec93968c-f25a-474c-953f-56886ce341d5"
-              title="DMCA.com Protection Status"
-              className="dmca-badge"
-            >
-              <img
-                src="https://images.dmca.com/Badges/dmca_protected_sml_120b.png?ID=ec93968c-f25a-474c-953f-56886ce341d5"
-                alt="DMCA.com Protection Status"
-              />
-            </a>
+            <div className="site-footer__badges">
+              <a
+                href="//www.dmca.com/Protection/Status.aspx?ID=ec93968c-f25a-474c-953f-56886ce341d5"
+                title="DMCA.com Protection Status"
+                className="dmca-badge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://images.dmca.com/Badges/dmca_protected_sml_120b.png?ID=ec93968c-f25a-474c-953f-56886ce341d5"
+                  alt="DMCA.com Protection Status"
+                />
+              </a>
+              <a
+                href="https://sslcanary.com/en/tools/ssl-checker?host=webs4v.vn"
+                title="SSL monitored by SSLCanary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://sslcanary.com/badge/webs4v.vn.svg"
+                  alt="SSL monitored by SSLCanary"
+                  height="28"
+                />
+              </a>
+              <a
+                href="https://xlogs.com/verified/webs4v.vn"
+                title="Scanned by xlogs"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://xlogs.com/badge/scanned.svg"
+                  alt="Scanned by xlogs"
+                  width="150"
+                  height="40"
+                  loading="lazy"
+                />
+              </a>
+            </div>
           </div>
           <div><a href="/chinh-sach-bao-mat/">Chính sách bảo mật</a><a href="#top">Lên đầu trang ↑</a></div>
         </div>
