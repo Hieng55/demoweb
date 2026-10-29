@@ -4,6 +4,10 @@ export function initializeDirectionalIcons(root = document) {
   const targets = root.querySelectorAll('a, button');
 
   targets.forEach((target) => {
+    // Footer navigation links are compact, wrapping text links. Keeping their
+    // arrow as a text glyph avoids custom-element sizing overflow on mobile.
+    if (target.closest('.site-footer__links')) return;
+
     const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
     const arrowNodes = [];
 

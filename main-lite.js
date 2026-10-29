@@ -1,5 +1,17 @@
 import { defineMorphIcon } from 'morphicons/element';
-import { Menu, X } from 'lucide';
+import {
+  Menu,
+  X,
+  SearchCheck,
+  PenTool,
+  CodeXml,
+  Rocket,
+  Monitor,
+  ShoppingBag,
+  MousePointerClick,
+  FileText,
+  ShieldCheck,
+} from 'lucide';
 import { initializeDirectionalIcons } from './ui-icons.js';
 import projectFeaturedTablet from './image/project/featured-tablet.jpg';
 import projectFeaturedBusiness from './image/project/featured-4503766.jpg';
@@ -36,10 +48,34 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const menuBackdrop = document.querySelector('.menu-backdrop');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-body.classList.add('is-lite-experience');
+body.classList.add('is-lite-experience', 'is-compact-experience');
 
 defineMorphIcon();
 initializeDirectionalIcons();
+
+function initializeStaticContentIcons() {
+  const iconConfigs = [
+    ['[data-process-icon="search-check"]', SearchCheck],
+    ['[data-process-icon="pen-tool"]', PenTool],
+    ['[data-process-icon="code-xml"]', CodeXml],
+    ['[data-process-icon="rocket"]', Rocket],
+    ['[data-solution-icon="brand"]', Monitor],
+    ['[data-solution-icon="commerce"]', ShoppingBag],
+    ['[data-solution-icon="conversion"]', MousePointerClick],
+    ['[data-solution-icon="visibility"]', SearchCheck],
+    ['[data-solution-icon="content"]', FileText],
+    ['[data-solution-icon="operation"]', ShieldCheck],
+  ];
+
+  iconConfigs.forEach(([selector, icon]) => {
+    const element = document.querySelector(selector);
+    if (!element) return;
+    element.icon = icon;
+    element.spring = 'snappy';
+  });
+}
+
+initializeStaticContentIcons();
 document.querySelectorAll('.menu-toggle morph-icon').forEach((icon) => {
   icon.icon = Menu;
   icon.spring = 'snappy';
@@ -310,7 +346,12 @@ function initializeReveals() {
       entry.target.classList.add('is-visible');
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.2 });
+  }, {
+    // Some reveal wrappers (such as the mobile pricing plans) are several
+    // viewports tall, so a percentage threshold may never be reachable.
+    threshold: 0.01,
+    rootMargin: '0px 0px -8% 0px',
+  });
   elements.forEach((element) => observer.observe(element));
 }
 

@@ -1437,7 +1437,12 @@ const revealObserver = new IntersectionObserver(
       revealObserver.unobserve(entry.target);
     });
   },
-  { threshold: 0.2 },
+  {
+    // Tall reveal wrappers can never reach a large intersection ratio on a
+    // short viewport. Reveal them as soon as their leading edge enters view.
+    threshold: 0.01,
+    rootMargin: '0px 0px -8% 0px',
+  },
 );
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
