@@ -13,7 +13,6 @@ import {
   FileText, BookOpen,
   ShieldCheck, Cpu
 } from 'lucide';
-import 'sweetalert2/dist/sweetalert2.min.css';
 import iceUrl from './image/ice.jpg';
 import iceDisplacementUrl from './image/iced.jpg';
 import iceNormalUrl from './image/icen.jpg';
@@ -581,7 +580,10 @@ function initializeContactForm() {
       status.textContent = 'Đã gửi thành công. Webs4V sẽ liên hệ với bạn trong thời gian sớm nhất.';
       status.classList.add('is-success');
       submitButton.querySelector('span').textContent = 'Đã gửi yêu cầu';
-      const { default: Swal } = await import('sweetalert2');
+      const [{ default: Swal }] = await Promise.all([
+        import('sweetalert2'),
+        import('sweetalert2/dist/sweetalert2.min.css'),
+      ]);
       Swal.fire({
         icon: 'success',
         title: 'Đã gửi yêu cầu',

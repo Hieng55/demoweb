@@ -68,6 +68,17 @@ body.is-ready #webgl-canvas {
   opacity: 1;
 }
 
+body.is-lite-experience {
+  background:
+    radial-gradient(circle at 14% 8%, rgba(255, 255, 255, 0.82), transparent 34%),
+    radial-gradient(circle at 88% 18%, rgba(221, 216, 245, 0.72), transparent 38%),
+    linear-gradient(145deg, #f1effa 0%, #e7ecfb 52%, #dcecf8 100%);
+}
+
+body.is-lite-experience #webgl-canvas {
+  display: none;
+}
+
 .grain {
   position: fixed;
   inset: 0;

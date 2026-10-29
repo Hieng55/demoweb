@@ -26,4 +26,11 @@ flushSync(() => {
   root.render(<App page={page} mainMarkup={mainMarkup} />);
 });
 
-import('../main.js');
+// The homepage keeps the full WebGL experience. Content pages use a much
+// smaller interaction bundle so they do not download Three.js and five large
+// background textures before the visitor can read the page.
+if (document.querySelector('.hero')) {
+  import('../main.js');
+} else {
+  import('../main-lite.js');
+}
