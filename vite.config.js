@@ -28,6 +28,7 @@ export default defineConfig({
         blogRestaurant: resolve(__dirname, 'blog/website-nha-hang-nen-uu-tien-gi/index.html'),
         blogEcommerce: resolve(__dirname, 'blog/chuan-bi-lam-website-ecommerce/index.html'),
         blogResponsive: resolve(__dirname, 'blog/responsive-khong-chi-la-thu-nho-giao-dien/index.html'),
+        notFound: resolve(__dirname, '404.html'),
       },
     },
   },

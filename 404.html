@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#050d24" />
+    <meta name="description" content="Trang bạn tìm kiếm không tồn tại hoặc đã được chuyển dời. Quay về trang chủ Webs4V để khám phá các dịch vụ thiết kế website và SEO chuyên nghiệp." />
+    <title>404 — Không tìm thấy trang | Webs4V</title>
+    <link rel="icon" href="/image/logo/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;family=Lora:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      :root {
+        --bg-deep: #050d24;
+        --bg-surface: rgba(14, 25, 60, 0.65);
+        --accent-blue: #0862fd;
+        --accent-cyan: #00d2ff;
+        --text-primary: #ffffff;
+        --text-secondary: rgba(220, 235, 255, 0.72);
+        --text-muted: rgba(200, 220, 255, 0.45);
+        --glass-border: rgba(255, 255, 255, 0.14);
+        --glass-highlight: rgba(255, 255, 255, 0.85);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body.error-404-page {
+        margin: 0;
+        padding: 0;
+        font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--bg-deep);
+        color: var(--text-primary);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-x: hidden;
+        position: relative;
+        background-image:
+          radial-gradient(circle at 50% 18%, rgba(8, 98, 253, 0.22) 0%, transparent 55%),
+          radial-gradient(circle at 15% 45%, rgba(0, 210, 255, 0.12) 0%, transparent 45%),
+          radial-gradient(circle at 85% 75%, rgba(138, 58, 255, 0.14) 0%, transparent 50%);
+        background-attachment: fixed;
+      }
+
+      /* Noise texture overlay */
+      .page-404-grain {
+        position: fixed;
+        inset: 0;
+        background-image: url('/image/noises.jpg');
+        opacity: 0.035;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Header */
+      .page-404-header {
+        position: relative;
+        z-index: 10;
+        padding: 24px max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .page-404-header__brand {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 250ms ease, filter 250ms ease;
+      }
+
+      .page-404-header__brand:hover {
+        transform: translateY(-1px);
+        filter: drop-shadow(0 6px 16px rgba(8, 98, 253, 0.35));
+      }
+
+      .page-404-header__brand img {
+        height: 42px;
+        width: auto;
+        display: block;
+      }
+
+      .page-404-header__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 90px;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #fff;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+        transition: all 250ms ease;
+      }
+
+      .page-404-header__cta:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.45);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(8, 98, 253, 0.25);
+      }
+
+      /* Main container */
+      .page-404-main {
+        position: relative;
+        z-index: 5;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 24px;
+        text-align: center;
+        max-width: 1080px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* Big 404 visual */
+      .page-404-visual {
+        position: relative;
+        margin-bottom: 8px;
+        user-select: none;
+      }
+
+      .page-404-number {
+        font-size: clamp(120px, 20vw, 220px);
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -0.06em;
+        margin: 0;
+        background: linear-gradient(135deg, #ffffff 20%, #9bc7ff 55%, #00d2ff 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 80px rgba(8, 98, 253, 0.45);
+        display: inline-block;
+        filter: drop-shadow(0 20px 40px rgba(8, 98, 253, 0.3));
+        animation: float404 6s ease-in-out infinite alternate;
+      }
+
+      @keyframes float404 {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-8px); }
+      }
+
+      .page-404-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: 99px;
+        background: rgba(8, 98, 253, 0.18);
+        border: 1px solid rgba(140, 185, 255, 0.35);
+        color: #9cd0ff;
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        backdrop-filter: blur(12px);
+      }
+
+      .page-404-badge i {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #00d2ff;
+        box-shadow: 0 0 10px #00d2ff;
+      }
+
+      /* Copy */
+      .page-404-title {
+        font-size: clamp(28px, 4.2vw, 46px);
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        margin: 0 0 16px 0;
+        color: #fff;
+      }
+
+      .page-404-title em {
+        font-family: 'Lora', serif;
+        font-style: italic;
+        font-weight: 400;
+        color: #9ec5fe;
+      }
+
+      .page-404-desc {
+        font-size: clamp(15px, 1.8vw, 17px);
+        font-weight: 300;
+        line-height: 1.7;
+        color: var(--text-secondary);
+        max-width: 620px;
+        margin: 0 auto 36px auto;
+      }
+
+      /* Actions */
+      .page-404-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 56px;
+      }
+
+      .page-404-btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 28px;
+        border-radius: 90px;
+        font-size: 14.5px;
+        font-weight: 600;
+        color: #fff;
+        text-decoration: none;
+        background: linear-gradient(135deg, #071a44, #0a49c9 55%, #0878ff);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow:
+          0 12px 32px rgba(8, 98, 253, 0.38),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        transition: all 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .page-404-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 18px 42px rgba(8, 98, 253, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.85);
+        border-color: rgba(255, 255, 255, 0.75);
+      }
+
+      .page-404-btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 24px;
+        border-radius: 90px;
+        font-size: 14.5px;
+        font-weight: 500;
+        color: var(--text-primary);
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(14px);
+        transition: all 250ms ease;
+      }
+
+      .page-404-btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.35);
+        transform: translateY(-2px);
+      }
+
+      /* Quick Links Grid */
+      .page-404-grid-title {
+        font-size: 12.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin: 0 0 18px 0;
+        font-weight: 500;
+      }
+
+      .page-404-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        width: 100%;
+        max-width: 980px;
+        margin: 0 auto;
+      }
+
+      .page-404-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        padding: 20px 22px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        text-decoration: none;
+        color: inherit;
+        transition: all 280ms ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-404-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 30% -20%, rgba(8, 98, 253, 0.35), transparent 70%);
+        opacity: 0;
+        transition: opacity 300ms ease;
+        pointer-events: none;
+      }
+
+      .page-404-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(140, 185, 255, 0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      }
+
+      .page-404-card:hover::before {
+        opacity: 1;
+      }
+
+      .page-404-card__icon {
+        font-size: 22px;
+        margin-bottom: 12px;
+        line-height: 1;
+      }
+
+      .page-404-card__title {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0 0 6px 0;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .page-404-card__title span {
+        font-size: 13px;
+        color: #00d2ff;
+        opacity: 0;
+        transform: translateX(-4px);
+        transition: all 250ms ease;
+      }
+
+      .page-404-card:hover .page-404-card__title span {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .page-404-card__desc {
+        font-size: 12.5px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+
+      /* Footer */
+      .page-404-footer {
+        position: relative;
+        z-index: 10;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 24px max(24px, env(safe-area-inset-right)) 28px max(24px, env(safe-area-inset-left));
+        width: 100%;
+      }
+
+      .page-404-footer__shell {
+        max-width: 1240px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .page-404-footer__copy {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      .page-404-footer__badges {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .page-404-footer__badges a {
+        display: inline-flex;
+        align-items: center;
+        line-height: 0;
+        transition: opacity 200ms ease, transform 200ms ease;
+      }
+
+      .page-404-footer__badges a:hover {
+        opacity: 0.85;
+        transform: translateY(-1px);
+      }
+
+      .page-404-footer__badges img {
+        height: 24px;
+        max-height: 24px;
+        width: auto;
+        border-radius: 4px;
+        object-fit: contain;
+      }
+
+      /* Responsive */
+      @media (max-width: 960px) {
+        .page-404-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .page-404-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page-404-header {
+          padding-top: 18px;
+        }
+
+        .page-404-actions {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .page-404-btn-primary,
+        .page-404-btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .page-404-footer__shell {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body class="error-404-page">
+    <div class="page-404-grain" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header class="page-404-header">
+      <a class="page-404-header__brand" href="/" aria-label="Webs4V — Trang chủ">
+        <img src="/image/logo/logo.png" alt="Webs4V" />
+      </a>
+      <a class="page-404-header__cta" href="/">
+        <span>Về trang chủ</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-404-main">
+      <div class="page-404-visual">
+        <h1 class="page-404-number">404</h1>
+      </div>
+
+      <div class="page-404-badge">
+        <i></i>
+        <span>Lỗi đường dẫn · Không tìm thấy trang</span>
+      </div>
+
+      <h2 class="page-404-title">
+        Có vẻ bạn đang đi lạc hướng.<br />
+        <em>Trang này không tồn tại.</em>
+      </h2>
+
+      <p class="page-404-desc">
+        Nội dung bạn đang tìm kiếm có thể đã được dời sang địa chỉ mới, bị gỡ bỏ hoặc đường dẫn URL chưa chính xác. Đừng lo, hãy chọn một trong các lối tắt bên dưới.
+      </p>
+
+      <div class="page-404-actions">
+        <a class="page-404-btn-primary" href="/">
+          <span>Quay lại trang chủ</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a class="page-404-btn-secondary" href="/lien-he/">
+          <span>Liên hệ hỗ trợ</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <p class="page-404-grid-title">Lối tắt khám phá nhanh</p>
+      <div class="page-404-grid">
+        <a class="page-404-card" href="/dich-vu/thiet-ke-website/">
+          <div class="page-404-card__icon" aria-hidden="true">🌐</div>
+          <div class="page-404-card__title">Thiết kế website <span>↗</span></div>
+          <p class="page-404-card__desc">Website doanh nghiệp &amp; sàn thương mại điện tử chuyên sâu.</p>
+        </a>
+
+        <a class="page-404-card" href="/dich-vu/seo-google/">
+          <div class="page-404-card__icon" aria-hidden="true">📈</div>
+          <div class="page-404-card__title">SEO Google <span>↗</span></div>
+          <p class="page-404-card__desc">Nền tảng tối ưu hóa thứ hạng tìm kiếm tự nhiên bền vững.</p>
+        </a>
+
+        <a class="page-404-card" href="/dich-vu/#bang-gia">
+          <div class="page-404-card__icon" aria-hidden="true">💳</div>
+          <div class="page-404-card__title">Bảng giá dịch vụ <span>↗</span></div>
+          <p class="page-404-card__desc">Chi phí minh bạch, phạm vi rõ ràng theo từng quy mô.</p>
+        </a>
+
+        <a class="page-404-card" href="/blog/">
+          <div class="page-404-card__icon" aria-hidden="true">📚</div>
+          <div class="page-404-card__title">Blog kiến thức <span>↗</span></div>
+          <p class="page-404-card__desc">Cẩm nang, kinh nghiệm và chiến lược phát triển web.</p>
+        </a>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-404-footer">
+      <div class="page-404-footer__shell">
+        <p class="page-404-footer__copy">© 2026 Webs4V. All rights reserved.</p>
+
+        <div class="page-404-footer__badges">
+          <a href="https://www.dmca.com/site-report/webs4v.vn" title="DMCA.com Protection Status" class="dmca-badge" target="_blank" rel="noopener noreferrer">
+            <img src="https://images.dmca.com/Badges/dmca-badge-w100-2x1-02.png?ID=ec93968c-f25a-474c-953f-56886ce341d5" alt="DMCA.com Protection Status" />
+          </a>
+          <a href="https://sslcanary.com/en/tools/ssl-checker?host=webs4v.vn" title="SSL monitored by SSLCanary" target="_blank" rel="noopener noreferrer">
+            <img src="https://sslcanary.com/badge/webs4v.vn.svg" alt="SSL monitored by SSLCanary" height="24" />
+          </a>
+          <a href="https://xlogs.com/verified/webs4v.vn" title="Scanned by xlogs" target="_blank" rel="noopener noreferrer">
+            <img src="https://xlogs.com/badge/scanned.svg" alt="Scanned by xlogs" width="120" height="24" loading="lazy" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
