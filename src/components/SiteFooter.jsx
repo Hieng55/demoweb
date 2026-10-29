@@ -104,20 +104,6 @@ export function SiteFooter() {
                   loading="lazy"
                 />
               </a>
-              <a
-                href="https://slapmyweb.com/report/webs4v-vn"
-                title="SEO Score by SlapMyWeb"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="https://slapmyweb.com/badge/webs4v-vn"
-                  alt="SlapMyWeb SEO Score for webs4v.vn"
-                  width="260"
-                  height="64"
-                  loading="lazy"
-                />
-              </a>
             </div>
           </div>
           <div><a href="/chinh-sach-bao-mat/">Chính sách bảo mật</a><a href="#top">Lên đầu trang ↑</a></div>
