@@ -1187,6 +1187,7 @@ h2 {
 .project-marquee__track {
   display: flex;
   width: max-content;
+  will-change: transform;
   animation: project-marquee var(--marquee-duration, 58s) linear infinite;
 }
 
@@ -1211,7 +1212,7 @@ h2 {
   aspect-ratio: 16 / 10;
   margin: 0;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.24);
+  background: #152244;
   border-radius: clamp(18px, 2vw, 30px);
   transform: translateZ(0);
 }
@@ -1263,7 +1264,10 @@ h2 {
 }
 
 @keyframes project-marquee {
-  to {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
     transform: translateX(-50%);
   }
 }
@@ -4999,7 +5003,7 @@ body.has-pointer .cursor {
 
   .projects__intro {
     width: calc(100% - 40px);
-    margin-bottom: 38px;
+    margin-bottom: 24px;
   }
 
   .projects__intro > p:last-child {

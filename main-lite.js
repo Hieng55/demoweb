@@ -439,6 +439,11 @@ function initializeProjectMarquee() {
     ));
     if (!track) return;
 
+    group.innerHTML = '';
+    [...track.children].forEach((child) => {
+      if (child !== group) child.remove();
+    });
+
     rowImages.forEach((source, cardIndex) => {
       const projectNumber = cardIndex * groups.length + rowIndex + 1;
       const card = document.createElement('figure');
@@ -450,7 +455,7 @@ function initializeProjectMarquee() {
       card.className = 'project-card';
       image.src = source;
       image.alt = `Dự án website Webs4V ${projectNumber}`;
-      image.loading = cardIndex === 0 ? 'eager' : 'lazy';
+      image.loading = 'eager';
       image.decoding = 'async';
       number.textContent = String(projectNumber).padStart(2, '0');
       label.textContent = 'Webs4V Project';
@@ -464,7 +469,8 @@ function initializeProjectMarquee() {
     duplicate.setAttribute('aria-hidden', 'true');
     duplicate.querySelectorAll('img').forEach((image) => {
       image.alt = '';
-      image.loading = 'lazy';
+      image.loading = 'eager';
+      image.decoding = 'async';
     });
     track.style.setProperty('--marquee-duration', `${Math.max(42, rowImages.length * 7)}s`);
     track.append(duplicate);
