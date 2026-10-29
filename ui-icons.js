@@ -25,6 +25,11 @@ export function initializeDirectionalIcons(root = document) {
 
         const icon = document.createElement('morph-icon');
         icon.className = 'external-link-icon';
+        icon.style.display = 'inline-flex';
+        icon.style.width = '1.15em';
+        icon.style.height = '1.15em';
+        icon.style.flex = 'none';
+        icon.style.verticalAlign = '-0.14em';
         icon.setAttribute('aria-hidden', 'true');
         icon.setAttribute('size', '18');
         icon.setAttribute('stroke-width', '1.8');
