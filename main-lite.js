@@ -163,6 +163,79 @@ function updateActiveNavigation() {
   document.querySelector('.mobile-services-menu')?.classList.toggle('is-current', isServicesPath);
 }
 
+
+function initializeArticleTocScrollSpy() {
+  const tocLinks = [...document.querySelectorAll('.article-toc a[href^="#"]')];
+  const items = tocLinks
+    .map((link) => {
+      const href = link.getAttribute('href');
+      const section = document.querySelector(href);
+      return section ? { link, section } : null;
+    })
+    .filter(Boolean);
+
+  if (!items.length) return;
+
+  let activeId = '';
+  let frameId = 0;
+
+  const setActive = (id) => {
+    if (!id || id === activeId) return;
+    activeId = id;
+
+    items.forEach(({ link, section }) => {
+      const isActive = section.id === id;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const update = () => {
+    frameId = 0;
+    const activationLine = Math.min(window.innerHeight * 0.35, 240);
+    let current = items[0];
+
+    items.forEach((item) => {
+      if (item.section.getBoundingClientRect().top <= activationLine) {
+        current = item;
+      }
+    });
+
+    const atPageEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+    if (atPageEnd) current = items[items.length - 1];
+    setActive(current.section.id);
+  };
+
+  const requestUpdate = () => {
+    if (!frameId) frameId = window.requestAnimationFrame(update);
+  };
+
+  items.forEach(({ link, section }) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const headerOffset = 110;
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+
+      setActive(section.id);
+      if (history.pushState) {
+        history.pushState(null, '', '#' + section.id);
+      }
+    });
+  });
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  window.addEventListener('hashchange', requestUpdate);
+  requestUpdate();
+}
+
 function initializePrivacyScrollSpy() {
   const items = [...document.querySelectorAll('.privacy-toc a[href^="#"]')]
     .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
@@ -400,6 +473,7 @@ function initializeProjectMarquee() {
 
 updateActiveNavigation();
 initializePrivacyScrollSpy();
+initializeArticleTocScrollSpy();
 initializeBlogFilters();
 initializeFaq();
 initializeContactForm();
