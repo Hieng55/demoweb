@@ -43,6 +43,8 @@ const deviceMemory = navigator.deviceMemory ?? 8;
 const hardwareConcurrency = navigator.hardwareConcurrency ?? 8;
 const lowPowerDevice = compactLayout || deviceMemory <= 4 || hardwareConcurrency <= 4;
 
+body.classList.toggle('is-compact-experience', compactLayout);
+
 defineMorphIcon();
 
 function initializeMorphIcons() {
@@ -696,6 +698,9 @@ class WaterRipple {
         uOldPointer: { value: previousPointer.clone() },
         uRenderPointer: { value: 0 },
         uTime: { value: 0 },
+        uRadius: { value: compactLayout ? 0.058 : 0.035 },
+        uImpulse: { value: compactLayout ? 2.85 : 2.0 },
+        uDamping: { value: compactLayout ? 0.985 : 0.98 },
       },
       vertexShader: `
         varying vec2 vUv;
@@ -719,6 +724,9 @@ class WaterRipple {
         uniform vec2 uOldPointer;
         uniform float uRenderPointer;
         uniform float uTime;
+        uniform float uRadius;
+        uniform float uImpulse;
+        uniform float uDamping;
 
         float distanceToSegment(vec2 point, vec2 start, vec2 end) {
           vec2 segment = end - start;
@@ -732,7 +740,7 @@ class WaterRipple {
           vec2 oldPointerAspect = uOldPointer * uAspect;
           float movement = distance(pointerAspect, oldPointerAspect);
           float distanceToStroke = distanceToSegment(vUvAspect, oldPointerAspect, pointerAspect);
-          float radius = 0.035 + sin(uTime * 12.5663706) * 0.02;
+          float radius = uRadius + sin(uTime * 12.5663706) * uRadius * 0.36;
           float ripple = smoothstep(radius, 0.0, distanceToStroke) * smoothstep(0.0, 0.01, movement) * uRenderPointer;
 
           vec2 offset = 3.6 * uTexelSize;
@@ -741,8 +749,8 @@ class WaterRipple {
           float left = texture2D(uPrevious, vUv - vec2(offset.x, 0.0)).r;
           float right = texture2D(uPrevious, vUv + vec2(offset.x, 0.0)).r;
           vec2 history = texture2D(uPrevious, vUv).rg;
-          float result = ripple * 2.0 + (top + right + bottom + left) * 0.5 - history.g;
-          result *= 0.98;
+          float result = ripple * uImpulse + (top + right + bottom + left) * 0.5 - history.g;
+          result *= uDamping;
 
           gl_FragColor = vec4(result, history.r, 0.0, 1.0);
         }
@@ -969,6 +977,7 @@ const backgroundUniforms = {
   uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
   uPointer: { value: pointer.clone() },
   uPointerEnergy: { value: 0 },
+  uInteractionBoost: { value: compactLayout ? 1.55 : 1.0 },
   uScroll: { value: 0 },
   uRipple: { value: waterRipple.read.texture },
   uRippleTexel: { value: new THREE.Vector2(1 / waterRipple.read.width, 1 / waterRipple.read.height) },
@@ -997,6 +1006,7 @@ const backgroundMaterial = new THREE.ShaderMaterial({
     varying vec2 vUv;
     uniform float uTime;
     uniform float uPointerEnergy;
+    uniform float uInteractionBoost;
     uniform float uScroll;
     uniform vec2 uResolution;
     uniform vec2 uPointer;
@@ -1050,7 +1060,7 @@ const backgroundMaterial = new THREE.ShaderMaterial({
       vec2 rippleNormal = vec2(rippleRight - rippleLeft, rippleTop - rippleBottom);
 
       vec2 interactionGradient = trailNormal * 0.86 + rippleNormal * 1.48;
-      float interactionStrength = clamp(length(interactionGradient) * 2.4 + abs(rippleHeight) * 0.18, 0.0, 1.0);
+      float interactionStrength = clamp((length(interactionGradient) * 2.4 + abs(rippleHeight) * 0.18) * uInteractionBoost, 0.0, 1.0);
       vec3 waterNormal = sampleWaterNormal(uv * aspectScale + trailNormal * 0.1 + uScroll * vec2(0.015, -0.02));
 
       vec2 autoOriginA = vec2(0.24, 0.32);
@@ -1067,7 +1077,7 @@ const backgroundMaterial = new THREE.ShaderMaterial({
         sin(uv.y * 12.0 + uTime * 0.42),
         cos(uv.x * 10.0 - uTime * 0.36)
       ) * 0.0018;
-      vec2 distortion = waterNormal.xy * 0.007 + ambientSwell + autoRipple * 0.0045 + interactionGradient * 0.046;
+      vec2 distortion = waterNormal.xy * 0.007 + ambientSwell + autoRipple * (0.0045 * uInteractionBoost) + interactionGradient * (0.046 * uInteractionBoost);
       vec2 waterUv = uv + distortion;
 
       vec3 lightTop = vec3(0.91, 0.86, 0.97);
@@ -1086,7 +1096,7 @@ const backgroundMaterial = new THREE.ShaderMaterial({
       color += causticTint * caustic * 0.1;
       color += (noise - 0.5) * 0.012;
 
-      vec3 surfaceNormal = normalize(vec3(-(waterNormal.xy * 0.3 + autoRipple * 0.1 + interactionGradient * 3.2), 1.0));
+      vec3 surfaceNormal = normalize(vec3(-(waterNormal.xy * 0.3 + autoRipple * (0.1 * uInteractionBoost) + interactionGradient * (3.2 * uInteractionBoost)), 1.0));
       vec3 viewDirection = normalize(vec3((vec2(0.5) - uv) * aspectScale * 0.18, 1.0));
       vec3 lightDirection = normalize(vec3((sunPosition - uv) * aspectScale, 0.38));
       vec3 halfDirection = normalize(viewDirection + lightDirection);
@@ -1130,9 +1140,9 @@ const backgroundMaterial = new THREE.ShaderMaterial({
       float cursorRadius = 0.072 + sin(uTime * 2.2) * 0.004;
       float cursorRing = exp(-abs(pointerDistance - cursorRadius) * 115.0) * uPointerEnergy;
       float rippleEnergy = smoothstep(0.025, 0.34, abs(rippleHeight) + length(rippleNormal));
-      rippleEnergy = min(rippleEnergy, 0.36);
+      rippleEnergy = min(rippleEnergy * uInteractionBoost, 0.36 * uInteractionBoost);
       vec3 rippleSpectrum = spectrum(atan(rippleNormal.y, rippleNormal.x) / 6.2831853 + rippleHeight * 0.18 + uTime * 0.006);
-      vec3 lightRipple = (rippleSpectrum - vec3(0.42)) * rippleEnergy * 0.038;
+      vec3 lightRipple = (rippleSpectrum - vec3(0.42)) * rippleEnergy * (0.038 * uInteractionBoost);
       color += lightRipple;
       color += spectrum(pointerDistance * 1.7 - uTime * 0.008) * cursorRing * 0.018;
       color += vec3(0.94, 0.98, 1.0) * max(rippleNormal.x - rippleNormal.y, 0.0) * 0.018;
@@ -1310,12 +1320,30 @@ function initializeBlogFilters() {
 
 initializeBlogFilters();
 
+let lastPointerActivity = performance.now();
+let nextAmbientRippleAt = lastPointerActivity + 1800;
+
 function updatePointer(event) {
   pointer.set(event.clientX / window.innerWidth, 1 - event.clientY / window.innerHeight);
   pointerMoved = true;
   pointerEnergy = 1;
+  lastPointerActivity = performance.now();
+  nextAmbientRippleAt = lastPointerActivity + 4200;
   body.classList.add('has-pointer');
   if (cursor) cursor.style.transform = `translate3d(${event.clientX - 26}px, ${event.clientY - 26}px, 0)`;
+}
+
+function emitAmbientMobileRipple(now) {
+  if (!compactLayout || reducedMotion || now < nextAmbientRippleAt || now - lastPointerActivity < 4000) return;
+
+  const phase = now * 0.00042;
+  pointer.set(
+    0.5 + Math.sin(phase * 1.7) * 0.27,
+    0.5 + Math.cos(phase * 1.3) * 0.22,
+  );
+  pointerMoved = true;
+  pointerEnergy = Math.max(pointerEnergy, 0.48);
+  nextAmbientRippleAt = now + 3800;
 }
 
 function initializeHeroVideoInteraction() {
@@ -1371,6 +1399,7 @@ function initializeHeroVideoInteraction() {
 initializeHeroVideoInteraction();
 
 window.addEventListener('pointermove', updatePointer, { passive: true });
+window.addEventListener('pointerdown', updatePointer, { passive: true });
 window.addEventListener('scroll', updateScroll, { passive: true });
 window.addEventListener('pointerleave', () => body.classList.remove('has-pointer'));
 menuToggle?.addEventListener('click', () => setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true'));
@@ -1410,9 +1439,18 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-function render() {
+let lastRenderTimestamp = 0;
+
+function render(timestamp = 0) {
+  if (compactLayout && lastRenderTimestamp && timestamp - lastRenderTimestamp < 1000 / 30) {
+    requestAnimationFrame(render);
+    return;
+  }
+  lastRenderTimestamp = timestamp;
+
   const delta = Math.min(clock.getDelta(), 0.05);
   const elapsed = clock.elapsedTime;
+  emitAmbientMobileRipple(timestamp || performance.now());
   smoothPointer.lerp(pointer, 1 - Math.exp(-delta * 5));
   pointerEnergy = THREE.MathUtils.damp(pointerEnergy, 0, 1.7, delta);
 
