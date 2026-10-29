@@ -1,18 +1,194 @@
-<!doctype html><html lang="vi" class="css-pending"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" /><style>html.css-pending{background:#050d24}html.css-pending #root{visibility:hidden}</style><noscript><style>html.css-pending #root{visibility:visible}</style></noscript><meta name="description" content="Quy trình triển khai website theo mốc duyệt giúp kiểm soát phạm vi, nội dung, thiết kế, phát triển, kiểm thử và bàn giao." /><meta property="og:type" content="article" /><meta property="og:locale" content="vi_VN" /><meta property="og:site_name" content="Webs4V" /><meta property="og:title" content="Quy trình triển khai website theo từng mốc duyệt" /><meta property="og:description" content="Cách chia dự án thành các đầu ra có thể kiểm tra trước khi chuyển giai đoạn." /><link rel="canonical" href="https://webs4v.vn/blog/quy-trinh-trien-khai-website-theo-moc-duyet/" /><title>Quy trình triển khai website theo mốc duyệt | Webs4V</title><link rel="icon" href="/assets/logo-BIpMZfZF.png" type="image/png" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&amp;family=Lora:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" /><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Quy trình triển khai website theo từng mốc duyệt","datePublished":"2026-10-12","dateModified":"2026-10-30","inLanguage":"vi-VN","mainEntityOfPage":"https://webs4v.vn/blog/quy-trinh-trien-khai-website-theo-moc-duyet/","author":{"@type":"Organization","name":"Webs4V"},"publisher":{"@type":"Organization","name":"Webs4V"}}</script>  <script type="module" crossorigin src="/assets/main-BPKAWC2F.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-DeKfXO_l.css">
+<!doctype html>
+<html lang="vi" class="css-pending">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <style>html.css-pending{background:#050d24}html.css-pending #root{visibility:hidden}</style><noscript><style>html.css-pending #root{visibility:visible}</style></noscript>
+  <meta name="description" content="Quy trình triển khai website chuẩn mực theo 7 mốc duyệt: kiểm soát phạm vi, nội dung, giao diện UI/UX, lập trình, kiểm thử UAT và bàn giao toàn quyền tài sản số." />
+  <meta property="og:type" content="article" /><meta property="og:locale" content="vi_VN" /><meta property="og:site_name" content="Webs4V" />
+  <meta property="og:title" content="Quy trình triển khai website theo từng mốc duyệt | Webs4V" /><meta property="og:description" content="Cách phân chia dự án làm web thành các đầu ra cụ thể, giúp doanh nghiệp kiểm soát chặt chẽ tiến độ và chất lượng." />
+  <link rel="canonical" href="https://webs4v.vn/blog/quy-trinh-trien-khai-website-theo-moc-duyet/" />
+  <title>Quy trình triển khai website theo mốc duyệt chuẩn mực | Webs4V</title>
+  <link rel="icon" href="/assets/logo-BIpMZfZF.png" type="image/png" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&amp;family=Lora:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Triển khai website theo từng mốc duyệt: Kiểm soát phạm vi và tiến độ","description":"Hướng dẫn chi tiết quy trình 7 mốc nghiệm thu website: từ khảo sát brief, cấu trúc sitemap, wireframe, thiết kế UI/UX, phát triển mã nguồn, kiểm thử UAT đến bàn giao 100% quyền sở hữu hệ thống.","datePublished":"2026-10-12","dateModified":"2026-10-30","inLanguage":"vi-VN","mainEntityOfPage":"https://webs4v.vn/blog/quy-trinh-trien-khai-website-theo-moc-duyet/","author":{"@type":"Organization","name":"Webs4V"},"publisher":{"@type":"Organization","name":"Webs4V","url":"https://webs4v.vn/"}}</script>
+  <script type="module" crossorigin src="/assets/main-Dr30aFur.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BXhm_pLY.css">
 </head>
-<body class="blog-page article-page is-loading"><div id="root"><main id="top"><article class="article-shell"><header class="article-hero"><p class="article-kicker">Quy trình Webs4V</p><h1>Triển khai website theo từng mốc duyệt</h1><p class="article-lead">Mốc duyệt không chỉ để báo tiến độ. Mỗi mốc phải có đầu ra, tiêu chí chấp nhận và người chịu trách nhiệm rõ ràng.</p><div class="article-meta"><time datetime="2026-10-12">12.10.2026</time><span>·</span><span>7 phút đọc</span></div></header>
-<div class="article-layout"><div class="article-body"><div class="article-answer"><strong>Nguyên tắc cốt lõi</strong><p>Không chuyển sang thiết kế khi chưa duyệt cấu trúc; không phát triển khi chưa thống nhất giao diện; không xuất bản khi chưa kiểm tra nội dung, chức năng, tracking và quyền sở hữu tài khoản.</p></div>
-<h2 id="discovery">Mốc 1: Làm rõ bài toán và phạm vi</h2><p>Hai bên thống nhất khách hàng, mục tiêu, CTA, loại trang, chức năng, nội dung cần cung cấp, người duyệt và giới hạn dự án. Đầu ra nên là brief cùng danh sách hạng mục có và không có trong phạm vi.</p><h3>Tiêu chí duyệt</h3><ul><li>Mục tiêu chính có thể đo được.</li><li>Vai trò của hai bên và kênh phản hồi rõ ràng.</li><li>Rủi ro phụ thuộc bên thứ ba đã được ghi nhận.</li></ul>
-<h2 id="architecture">Mốc 2: Cấu trúc và hành trình</h2><p>Xây sitemap, vai trò từng URL, điều hướng và luồng từ nội dung đến CTA. Với website bán hàng, cần thêm cấu trúc danh mục, thuộc tính sản phẩm, giỏ hàng và trạng thái đơn.</p><h3>Tiêu chí duyệt</h3><p>Người dùng có thể tìm nội dung quan trọng, mỗi trang có mục đích riêng và không có nhiều URL cùng giải quyết một ý định.</p>
-<h2 id="content">Mốc 3: Nội dung và wireframe</h2><p>Nội dung nên được soạn trước hoặc song song với wireframe. Wireframe xác định thứ tự thông tin, không phải bản trang trí. Ở mốc này cần kiểm tra câu trả lời chính, bằng chứng, câu hỏi còn lo ngại và CTA.</p>
-<h2 id="design">Mốc 4: Thiết kế giao diện</h2><p>Duyệt hướng thị giác, desktop và mobile trên các trang đại diện trước khi nhân rộng. Phản hồi nên gắn với mục tiêu: “CTA chưa đủ nổi bật trên mobile” hữu ích hơn “tôi chưa thích màu này”.</p>
-<h2 id="development">Mốc 5: Phát triển và tích hợp</h2><p>Chuyển thiết kế thành website hoạt động, kết nối form, quản trị, analytics và các dịch vụ cần thiết. Dữ liệu mẫu phải đủ gần thực tế để phát hiện trường hợp tiêu đề dài, ảnh dọc hoặc sản phẩm hết hàng.</p>
-<h2 id="qa">Mốc 6: Kiểm thử và nghiệm thu</h2><p>Kiểm tra chức năng, nội dung, responsive, bàn phím, form, email nhận lead, HTTP, canonical, index directives và event chuyển đổi. Danh sách lỗi cần có mức độ ảnh hưởng và trạng thái xử lý, tránh gom tất cả thành một danh sách không ưu tiên.</p>
-<h2 id="launch">Mốc 7: Xuất bản và bàn giao</h2><p>Sao lưu, cấu hình tên miền, kiểm tra URL thật, gửi sitemap và theo dõi log hoặc analytics sau ra mắt. Doanh nghiệp cần nhận quyền quản trị, tài khoản liên quan, tài liệu sử dụng và phạm vi hỗ trợ sau bàn giao.</p>
-<h2 id="feedback">Phản hồi thế nào để mỗi vòng duyệt có giá trị?</h2><p>Mỗi phản hồi nên chỉ rõ vị trí, vấn đề, tác động và kết quả mong muốn. Ví dụ: “Ở trang dịch vụ trên điện thoại, khách chưa thấy nút đặt lịch trước phần bảng giá; cần đưa hành động chính lên sớm hơn” rõ hơn “bố cục chưa ổn”. Ảnh chụp kèm kích thước màn hình giúp đội triển khai tái hiện vấn đề.</p><p>Nên gom phản hồi vào một nơi và gửi theo từng vòng thay vì nhắn rải rác qua nhiều kênh. Người phụ trách phía doanh nghiệp cần xử lý ý kiến mâu thuẫn trước khi chuyển cho đội dự án. Việc này giảm sửa đi sửa lại và giữ được lý do đằng sau mỗi quyết định.</p>
-<h2 id="change">Quản lý yêu cầu phát sinh mà không làm vỡ dự án</h2><p>Yêu cầu mới không mặc nhiên là xấu. Vấn đề là chưa đánh giá nó ảnh hưởng gì. Mỗi phát sinh cần được phân loại: thay thế một hạng mục cũ, bổ sung trong phạm vi nhỏ hay tạo một nhánh chức năng mới. Sau đó mới xác định tác động đến nội dung, thiết kế, code, kiểm thử và lịch ra mắt.</p><h3>Khi nào nên đưa sang giai đoạn sau?</h3><p>Nếu chức năng chưa phục vụ hành trình chính, phụ thuộc dữ liệu chưa sẵn sàng hoặc làm chậm toàn bộ ngày ra mắt, nên ghi vào backlog có thứ tự ưu tiên. Một phiên bản đầu gọn nhưng đo được thường hữu ích hơn dự án kéo dài để hoàn thành mọi ý tưởng.</p>
-<h2 id="after-launch">30 ngày đầu sau khi website hoạt động</h2><p>Kiểm tra form và email nhận lead hằng ngày trong tuần đầu; theo dõi lỗi 404, tốc độ, index và event chuyển đổi; ghi nhận câu hỏi khách vẫn phải gọi để hỏi. Đây là nguồn dữ liệu để cải thiện nội dung. Sau 30 ngày, nên họp đánh giá dựa trên dữ liệu thay vì chỉ dựa vào cảm nhận giao diện.</p>
-<div class="article-note"><strong>Lưu ý</strong><p>Duyệt một mốc nghĩa là chấp nhận đầu ra đã thống nhất, không có nghĩa mọi thay đổi về sau đều bị từ chối. Thay đổi mới cần được đánh giá ảnh hưởng đến chi phí, thời gian và những phần đã hoàn thành.</p></div><p>Trước khi bắt đầu, bạn có thể dùng <a href="/blog/7-cau-hoi-truoc-khi-lam-website/">7 câu hỏi chuẩn bị dự án website</a> và tham khảo <a href="/dich-vu/thiet-ke-website/">các phạm vi thiết kế website</a>.</p></div>
-<aside class="article-toc" aria-label="Mục lục"><strong>Các mốc duyệt</strong><a href="#discovery">Bài toán và phạm vi</a><a href="#architecture">Cấu trúc</a><a href="#content">Nội dung</a><a href="#design">Thiết kế</a><a href="#development">Phát triển</a><a href="#qa">Kiểm thử</a><a href="#launch">Bàn giao</a><a href="#feedback">Cách phản hồi</a><a href="#change">Yêu cầu phát sinh</a><a href="#after-launch">Sau khi ra mắt</a></aside></div>
-<section class="article-related"><h2>Một đầu mối, từng đầu ra rõ ràng</h2><p>Webs4V tổ chức dự án theo phạm vi và mốc kiểm tra để doanh nghiệp biết phần nào đã hoàn thành, phần nào cần quyết định.</p><a href="/lien-he/">Trao đổi quy trình dự án</a></section></article></main></div><script>window.__webs4vLoadingWatchdog=setTimeout(function(){document.documentElement.classList.remove('css-pending');document.body.classList.remove('is-loading');document.body.classList.add('is-ready')},4000)</script></body></html>
+<body class="blog-page article-page is-loading"><div id="root"><main id="top"><article class="article-shell">
+  <header class="article-hero">
+    <p class="article-kicker">Quy trình triển khai Webs4V</p>
+    <h1>Triển khai website theo từng mốc duyệt: Kiểm soát phạm vi và tiến độ</h1>
+    <p class="article-lead">Mốc duyệt không chỉ đơn thuần là thông báo tiến độ. Mỗi mốc phải là một cam kết về đầu ra có thể kiểm chứng, tiêu chí chấp thuận rõ ràng và trách nhiệm cụ thể của cả hai bên.</p>
+    <div class="article-meta"><time datetime="2026-10-12">12.10.2026</time><span>·</span><span>13 phút đọc chuyên sâu</span></div>
+  </header>
+  <div class="article-layout">
+    <div class="article-body">
+      <div class="article-answer">
+        <strong>Nguyên tắc cốt lõi</strong>
+        <p>Để một dự án làm web về đích đúng hạn và đúng ngân sách, doanh nghiệp và đơn vị triển khai cần tuân thủ 3 nguyên tắc bất di bất dịch: <em>không thiết kế giao diện khi chưa duyệt cấu trúc thông tin; không lập trình khi chưa thống nhất bản vẽ thiết kế; và không xuất bản khi chưa vượt qua biên bản kiểm thử toàn diện.</em> Nghiệm thu cuốn chiếu theo từng mốc giúp phát hiện sai lệch ngay từ sớm, tránh tình trạng đập đi xây lại khi dự án sắp đến ngày bàn giao.</p>
+      </div>
+
+      <h2 id="discovery">Mốc 1: Khảo sát nghiệp vụ, Xác định mục tiêu &amp; Thống nhất Phạm vi (Scope Brief)</h2>
+      <p>Mốc khởi động là giai đoạn quan trọng nhất nhưng lại thường bị xem nhẹ. Nếu mục tiêu và phạm vi công việc không được làm rõ ngay từ đầu, dự án chắc chắn sẽ rơi vào tình trạng phát sinh liên tục (Scope Creep), gây mâu thuẫn về chi phí và thời gian hoàn thành.</p>
+      <p>Tại mốc này, hai bên cùng ngồi lại để thống nhất các nội dung cốt lõi:</p>
+      <ul>
+        <li><strong>Bài toán kinh doanh:</strong> Doanh nghiệp cần website để làm gì? Ưu tiên thu lead tư vấn B2B, nhận cuộc gọi khẩn cấp hay bán lẻ trực tiếp?</li>
+        <li><strong>Khách hàng mục tiêu:</strong> Ai là người sử dụng chính? Nỗi băn khoăn lớn nhất khiến họ chưa quyết định mua hàng là gì?</li>
+        <li><strong>Ranh giới phạm vi (In-scope vs. Out-of-scope):</strong> Liệt kê chính xác những chức năng nào nằm trong hợp đồng lần này và những chức năng nào sẽ để dành cho giai đoạn nâng cấp tiếp theo.</li>
+      </ul>
+      <p><strong>Đầu ra mốc 1:</strong> Bản yêu cầu dự án (Project Brief) hoàn chỉnh, ma trận chức năng, kế hoạch tiến độ tổng thể và danh sách nhân sự phụ trách của hai bên.</p>
+
+      <h2 id="architecture">Mốc 2: Kiến trúc thông tin (Information Architecture) &amp; Sơ đồ luồng người dùng (User Flows)</h2>
+      <p>Kiến trúc thông tin là xương sống của toàn bộ website. Nó quy định các trang sẽ được tổ chức như thế nào, người dùng sẽ điều hướng qua các danh mục ra sao và liên kết nội bộ sẽ dẫn dắt người đọc tới bước chuyển đổi bằng con đường ngắn nhất.</p>
+      <p>Nội dung công việc bao gồm:</p>
+      <ul>
+        <li><strong>Sơ đồ phân cấp trang (Sitemap):</strong> Liệt kê toàn bộ các trang cần xây dựng (Trang chủ, Dịch vụ, Dự án tiêu biểu, Giới thiệu, Blog kiến thức, Bảng giá, Liên hệ).</li>
+        <li><strong>Quy chuẩn cấu trúc URL:</strong> Đảm bảo đường dẫn ngắn gọn, đồng nhất chữ thường không dấu và phản ánh đúng nhóm chủ đề (ví dụ: <code>/dich-vu/thiet-ke-website/</code>).</li>
+        <li><strong>Luồng hành trình người dùng (User Journey):</strong> Vẽ rõ đường đi từ lúc khách hàng nhấp vào từ kết quả tìm kiếm Google cho đến khi hoàn tất gửi form tư vấn hoặc bấm nút gọi hotline.</li>
+      </ul>
+      <p><strong>Đầu ra mốc 2:</strong> Bản vẽ sơ đồ sitemap chi tiết và tài liệu mô tả vai trò chuyển đổi của từng URL trong hệ thống.</p>
+
+      <h2 id="content">Mốc 3: Bố cục khung xương (Wireframe) &amp; Soạn thảo nội dung (Content-First)</h2>
+      <p>Một trong những nguyên nhân khiến giao diện website bị xấu sau khi bàn giao là việc nhà thiết kế dùng văn bản giả lập (Lorem Ipsum). Khi doanh nghiệp đưa nội dung tiếng Việt thực tế vào, các khối chữ dài ngắn khác nhau làm vỡ toàn bộ bố cục ban đầu.</p>
+      <p>Tại mốc 3, hai việc sau phải được triển khai song song:</p>
+      <ul>
+        <li><strong>Xây dựng Wireframe trắng đen:</strong> Bản vẽ phác thảo cấu trúc từng khối nội dung từ trên xuống dưới của mỗi trang. Wireframe giúp mọi người tập trung vào thông điệp cốt lõi, thứ tự ưu tiên của thông tin và vị trí nút bấm CTA mà không bị phân tâm bởi màu sắc hay đồ họa.</li>
+        <li><strong>Chuẩn bị tài sản nội dung thật:</strong> Doanh nghiệp cung cấp hoặc phối hợp biên soạn văn bản giới thiệu dịch vụ, bảng giá, quy trình làm việc, hình ảnh thực tế của đội ngũ và ít nhất 3 bài phân tích dự án thành công (case studies).</li>
+      </ul>
+      <p><strong>Đầu ra mốc 3:</strong> Bộ Wireframe chi tiết cho các trang chính kèm tập tin nội dung hoàn chỉnh đã được duyệt về mặt câu từ và thông điệp.</p>
+
+      <h2 id="design">Mốc 4: Thiết kế giao diện trực quan (UI/UX Design)</h2>
+      <p>Sau khi khung xương và nội dung đã vững chắc, giai đoạn thiết kế giao diện (UI) sẽ khoác lên website lớp nhận diện thương hiệu chuyên nghiệp, mang lại cảm xúc tin cậy và thúc đẩy người dùng tương tác.</p>
+      <p>Quy trình nghiệm thu thiết kế UI chuẩn mực:</p>
+      <ul>
+        <li><strong>Thiết kế song song Desktop và Mobile:</strong> Không chỉ duyệt trên máy tính bàn. Đơn vị thiết kế bắt buộc phải cung cấp bản vẽ giao diện trên màn hình điện thoại (thường ở kích thước 375px) cho tất cả các trang quan trọng.</li>
+        <li><strong>Xây dựng hệ thống thiết kế (Design System):</strong> Thống nhất bảng màu thương hiệu, quy tắc font chữ (Typography), kích thước tiêu đề, kiểu dáng nút bấm và trạng thái khi rê chuột (hover, active, disabled).</li>
+        <li><strong>Nguyên tắc góp ý giao diện:</strong> Doanh nghiệp nên đưa ra nhận xét dựa trên mục tiêu và hành vi người dùng (ví dụ: “Nút gọi trên điện thoại đang bị chìm, cần làm nổi bật hơn”) thay vì nhận xét cảm tính theo sở thích cá nhân.</li>
+      </ul>
+      <p><strong>Đầu ra mốc 4:</strong> Liên kết Figma hoặc bản thiết kế giao diện hoàn chỉnh có đầy đủ trạng thái tương tác trên cả desktop và mobile.</p>
+
+      <h2 id="development">Mốc 5: Lập trình kỹ thuật (Front-end, Back-end) &amp; Tích hợp tính năng</h2>
+      <p>Tại mốc này, bản vẽ thiết kế được chuyển hóa thành mã nguồn website sống động. Đội ngũ lập trình sẽ viết mã chuẩn HTML5/CSS3/JavaScript, tối ưu tốc độ tải trang và xây dựng hệ thống quản trị (CMS) để doanh nghiệp dễ dàng tự cập nhật nội dung sau này.</p>
+      <p>Các hạng mục kỹ thuật cần hoàn thành:</p>
+      <ul>
+        <li><strong>Mã nguồn chuẩn ngữ nghĩa và tối ưu hiệu năng:</strong> HTML sạch, semantic, tối ưu hình ảnh định dạng WebP, mã CSS và JS được nén gọn để đạt điểm Core Web Vitals tốt.</li>
+        <li><strong>Tích hợp biểu mẫu và luồng thông báo tự động:</strong> Cài đặt form liên hệ có chống thư rác (reCAPTCHA hoặc Cloudflare Turnstile). Khi khách gửi thông tin, hệ thống tự động gửi email thông báo ngay lập tức cho bộ phận kinh doanh và hiển thị trang cảm ơn riêng biệt cho khách hàng.</li>
+        <li><strong>Bảo mật máy chủ:</strong> Cấu hình chứng chỉ bảo mật HTTPS (SSL), thiết lập tường lửa cơ bản và phân quyền tài khoản quản trị theo vai trò.</li>
+      </ul>
+      <p><strong>Đầu ra mốc 5:</strong> Bản website chạy thử nghiệm (Staging/Demo) trên tên miền phụ để doanh nghiệp thao tác thực tế và kiểm tra chức năng.</p>
+
+      <h2 id="qa">Mốc 6: Kiểm thử toàn diện (QA/QC) &amp; Nghiệm thu người dùng (UAT)</h2>
+      <p>Kiểm thử là chốt chặn cuối cùng trước khi đưa website ra mắt công chúng. Mọi lỗi về hiển thị, đường dẫn gãy hoặc sự cố biểu mẫu cần được phát hiện và xử lý triệt để trong môi trường thử nghiệm.</p>
+      <p>Quy trình kiểm thử UAT gồm 4 nhóm bài kiểm tra bắt buộc:</p>
+      <div class="article-table-wrap">
+        <table class="article-table">
+          <thead>
+            <tr>
+              <th>Nhóm kiểm thử</th>
+              <th>Nội dung kiểm tra cụ thể</th>
+              <th>Tiêu chí đạt (Pass)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Đa thiết bị &amp; Trình duyệt</td>
+              <td>Kiểm tra trên Chrome, Safari, Firefox, Edge; trên iPhone, điện thoại Android, iPad và màn hình desktop.</td>
+              <td>Không vỡ bố cục, không cuộn ngang ngoài ý muốn, chữ đọc rõ ràng ở mọi kích thước.</td>
+            </tr>
+            <tr>
+              <td>2. Chức năng biểu mẫu &amp; Hotline</td>
+              <td>Thực hiện gửi form với dữ liệu thật, dữ liệu sai định dạng; bấm thử nút gọi điện thoại và chat Zalo.</td>
+              <td>Form báo lỗi đúng trường, gửi thành công có chuyển trang cảm ơn, email thông báo về đúng hòm thư trong vòng 1 phút.</td>
+            </tr>
+            <tr>
+              <td>3. Kỹ thuật SEO &amp; Đường dẫn</td>
+              <td>Quét toàn bộ link nội bộ, kiểm tra mã HTTP 200, kiểm tra thẻ canonical, tiêu đề title và thẻ mô tả meta.</td>
+              <td>Không có link gãy 404, mỗi trang có một thẻ H1 duy nhất, sitemap.xml hoạt động chuẩn xác.</td>
+            </tr>
+            <tr>
+              <td>4. Theo dõi chuyển đổi (Tracking)</td>
+              <td>Kiểm tra kết nối Google Analytics 4 và Google Tag Manager ở chế độ DebugView.</td>
+              <td>Ghi nhận chính xác sự kiện khi bấm nút gọi và gửi form thành công; cơ chế chống đếm trùng hoạt động tốt.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Đầu ra mốc 6:</strong> Bảng báo cáo kiểm thử (QA Bug Report) với 100% lỗi nghiêm trọng đã được khắc phục và biên bản chấp thuận nghiệm thu UAT có chữ ký hai bên.</p>
+
+      <h2 id="launch">Mốc 7: Xuất bản tên miền chính thức (Go-live), Bàn giao tài sản &amp; Đào tạo</h2>
+      <p>Khi mọi bài kiểm tra đã đạt chuẩn, website sẵn sàng xuất bản trên tên miền chính thức của doanh nghiệp. Đây là mốc đánh dấu sản phẩm chính thức đi vào hoạt động kinh doanh.</p>
+      <p>Các công việc trong ngày ra mắt:</p>
+      <ul>
+        <li><strong>Trỏ DNS và cấu hình SSL chính thức:</strong> Đảm bảo toàn bộ lưu lượng truy cập được chuyển hướng an toàn về <code>https://</code>.</li>
+        <li><strong>Khai báo máy tìm kiếm:</strong> Gửi sơ đồ trang web (Sitemap) lên Google Search Console để yêu cầu lập chỉ mục; kiểm tra lại file robots.txt để chắc chắn bot không bị chặn.</li>
+        <li><strong>Bàn giao toàn diện quyền sở hữu số:</strong> Bàn giao tài khoản quản trị cấp cao nhất của Hosting/Server, mã nguồn đầy đủ, tài khoản Google Search Console, GA4 và mã quản lý tên miền.</li>
+        <li><strong>Đào tạo và tài liệu hướng dẫn:</strong> Cung cấp video hoặc buổi hướng dẫn trực tiếp giúp nhân viên của doanh nghiệp nắm vững cách đăng bài viết mới, cập nhật sản phẩm và theo dõi danh sách khách hàng gửi thông tin.</li>
+      </ul>
+
+      <h2 id="feedback">Quy tắc vàng khi phản hồi ý kiến giữa Doanh nghiệp và Đơn vị triển khai</h2>
+      <p>Để các vòng duyệt diễn ra nhanh chóng và không gây ức chế cho cả hai bên, doanh nghiệp nên áp dụng quy tắc phản hồi có cấu trúc:</p>
+      <ul>
+        <li><strong>Chỉ ra vị trí và bối cảnh cụ thể:</strong> Chụp ảnh màn hình kèm ghi chú rõ ràng về trang, đoạn văn hoặc nút bấm cần điều chỉnh. Tránh nhận xét chung chung như “nhìn tổng thể chưa ưng lắm”.</li>
+        <li><strong>Nêu rõ nguyên nhân gắn với mục tiêu:</strong> Ví dụ: “Ở trang bảng giá trên điện thoại, khách chưa thấy nút nhận tư vấn trước khi cuộn hết danh sách; hãy đưa nút này lên sớm hơn”. Nhận xét này giúp đội thiết kế hiểu rõ lý do đằng sau thay đổi.</li>
+        <li><strong>Gom phản hồi thành từng đợt chính thức:</strong> Tránh tình trạng mỗi người trong công ty nhắn một tin nhắn riêng qua Zalo vào các thời điểm khác nhau. Hãy tập hợp toàn bộ ý kiến vào một văn bản duy nhất để đơn vị triển khai xử lý đồng bộ trong một lần sửa.</li>
+      </ul>
+
+      <h2 id="change">Cách quản lý yêu cầu phát sinh (Change Requests) mà không làm vỡ dự án</h2>
+      <p>Trong quá trình làm web, việc phát sinh ý tưởng mới là điều hoàn toàn bình thường. Vấn đề là nếu không có quy trình kiểm soát, các ý tưởng này sẽ kéo dài thời gian dự án vô tận.</p>
+      <p>Khi có một yêu cầu mới xuất hiện giữa chừng, hãy phân loại theo 3 nhóm:</p>
+      <ol>
+        <li><strong>Thay thế tương đương:</strong> Đổi một nội dung hoặc tính năng cũ sang tính năng mới có khối lượng công việc tương đương mà không làm tăng thời gian triển khai.</li>
+        <li><strong>Phát sinh nhỏ trong khả năng:</strong> Những chỉnh sửa văn bản hoặc tinh chỉnh màu sắc nhỏ có thể hấp thu vào mốc hiện tại.</li>
+        <li><strong>Phát sinh lớn (Major Change):</strong> Thêm một module hoàn toàn mới (ví dụ: thêm cổng thanh toán trực tuyến trong khi ban đầu chỉ làm web giới thiệu). Yêu cầu này bắt buộc phải được lập phụ lục hợp đồng, đánh giá lại chi phí và thời hạn bàn giao, hoặc tốt nhất là đưa vào danh sách phát triển cho Giai đoạn 2 sau khi website đã ra mắt ổn định.</li>
+      </ol>
+
+      <h2 id="after-launch">Kế hoạch theo dõi 30 ngày vàng sau khi website Go-live</h2>
+      <p>Sau ngày xuất bản, công việc chưa dừng lại. 30 ngày đầu tiên là giai đoạn vàng để đo lường phản ứng thực tế của thị trường và tinh chỉnh hệ thống:</p>
+      <ul>
+        <li><strong>Tuần 1 — Giám sát ổn định vận hành:</strong> Hằng ngày gửi thử 1 form và kiểm tra hòm thư nhận lead; theo dõi xem có lỗi 5xx trên máy chủ hoặc cảnh báo bảo mật nào không.</li>
+        <li><strong>Tuần 2 — Theo dõi lập chỉ mục:</strong> Vào Google Search Console kiểm tra xem Googlebot đã lập chỉ mục các trang quan trọng chưa; xử lý sớm nếu có cảnh báo lỗi thu thập.</li>
+        <li><strong>Tuần 3 &amp; 4 — Phân tích hành vi &amp; Đo lường chuyển đổi:</strong> Quan sát dữ liệu GA4: khách vào trang nào nhiều nhất, họ dừng lại ở đâu, có gặp khó khăn khi điền form hay không. Ghi nhận các thắc mắc mà khách hàng vẫn phải gọi điện thoại hỏi để bổ sung ngay vào phần FAQ trên website.</li>
+      </ul>
+
+      <section class="article-checklist">
+        <h2>Checklist nghiệm thu tổng thể dự án trước khi thanh lý hợp đồng</h2>
+        <ul>
+          <li>Toàn bộ 7 mốc nghiệm thu đều có biên bản xác nhận đầu ra rõ ràng.</li>
+          <li>Website hiển thị chuẩn trên cả máy tính bàn và mọi dòng điện thoại di động.</li>
+          <li>Các form liên hệ, nút gọi hotline và chat trực tuyến hoạt động 100%.</li>
+          <li>Hệ thống gửi email thông báo khách mới về đúng hòm thư phụ trách.</li>
+          <li>Trang web đã được cài mã Google Analytics 4 và đo lường sự kiện chuyển đổi chuẩn.</li>
+          <li>Doanh nghiệp nắm toàn quyền tài khoản tên miền, máy chủ và tài khoản Google.</li>
+          <li>Đã nhận video hoặc tài liệu hướng dẫn tự quản trị nội dung website.</li>
+          <li>Đã thống nhất chính sách bảo hành kỹ thuật và hỗ trợ sau bàn giao.</li>
+        </ul>
+      </section>
+
+      <p>Một quy trình triển khai theo mốc duyệt chặt chẽ là chìa khóa giúp doanh nghiệp sở hữu một website chất lượng, đúng tiến độ và tối ưu chi phí đầu tư.</p>
+      <p>Tham khảo <a href="/dich-vu/thiet-ke-website/">dịch vụ thiết kế website theo chuẩn mốc duyệt</a> tại Webs4V hoặc đọc thêm <a href="/blog/7-cau-hoi-truoc-khi-lam-website/">7 câu hỏi doanh nghiệp nên chuẩn bị trước khi làm website</a> để khởi động dự án một cách tự tin nhất.</p>
+    </div>
+
+    <aside class="article-toc" aria-label="Mục lục bài viết">
+      <strong>7 mốc triển khai</strong>
+      <a href="#discovery">Mốc 1: Khảo sát &amp; Phạm vi</a>
+      <a href="#architecture">Mốc 2: Kiến trúc Sitemap</a>
+      <a href="#content">Mốc 3: Wireframe &amp; Nội dung</a>
+      <a href="#design">Mốc 4: Thiết kế UI/UX</a>
+      <a href="#development">Mốc 5: Lập trình &amp; Tính năng</a>
+      <a href="#qa">Mốc 6: Kiểm thử UAT</a>
+      <a href="#launch">Mốc 7: Xuất bản &amp; Bàn giao</a>
+      <a href="#feedback">Quy tắc phản hồi</a>
+      <a href="#change">Quản lý phát sinh</a>
+      <a href="#after-launch">30 ngày sau Go-live</a>
+    </aside>
+  </div>
+
+  <section class="article-related">
+    <h2>Dự án minh bạch, từng đầu ra rõ ràng</h2>
+    <p>Webs4V cam kết quy trình làm việc chuyên nghiệp theo mốc duyệt cụ thể. Bạn luôn biết chính xác dự án đang ở giai đoạn nào, phần nào đã hoàn thành và phần nào sắp triển khai.</p>
+    <a href="/lien-he/">Đặt lịch trao đổi quy trình dự án</a>
+  </section>
+</article></main></div>
+<script>window.__webs4vLoadingWatchdog=setTimeout(function(){document.documentElement.classList.remove('css-pending');document.body.classList.remove('is-loading');document.body.classList.add('is-ready')},4000)</script>
+</body>
+</html>
