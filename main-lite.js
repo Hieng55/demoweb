@@ -1,5 +1,6 @@
 import { defineMorphIcon } from 'morphicons/element';
 import { Menu, X } from 'lucide';
+import { initializeDirectionalIcons } from './ui-icons.js';
 
 const body = document.body;
 const loader = document.querySelector('.loader');
@@ -15,6 +16,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 body.classList.add('is-lite-experience');
 
 defineMorphIcon();
+initializeDirectionalIcons();
 document.querySelectorAll('.menu-toggle morph-icon').forEach((icon) => {
   icon.icon = Menu;
   icon.spring = 'snappy';

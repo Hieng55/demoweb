@@ -2256,6 +2256,19 @@ morph-icon svg {
   display: block;
 }
 
+.external-link-icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: -0.14em;
+}
+
+.external-link-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .solution-node__icon morph-icon,
 .solution-node__icon svg {
   width: 35px;

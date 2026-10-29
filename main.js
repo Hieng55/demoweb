@@ -18,6 +18,7 @@ import iceDisplacementUrl from './image/iced.jpg';
 import iceNormalUrl from './image/icen.jpg';
 import noiseUrl from './image/noises.jpg';
 import wavesUrl from './image/waves.jpg';
+import { initializeDirectionalIcons } from './ui-icons.js';
 
 const projectImageModules = import.meta.glob('./image/project/*.{jpg,jpeg,png,webp}', {
   eager: true,
@@ -46,6 +47,7 @@ const lowPowerDevice = compactLayout || deviceMemory <= 4 || hardwareConcurrency
 body.classList.toggle('is-compact-experience', compactLayout);
 
 defineMorphIcon();
+initializeDirectionalIcons();
 
 function initializeMorphIcons() {
   const processConfigs = [
