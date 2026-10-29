@@ -15901,3 +15901,40 @@ main > .panel + .panel {
     transform: scale(0.99);
   }
 }
+
+/* Keep the homepage introduction calm and editorial on narrow screens. */
+@media (max-width: 760px) {
+  .about .about__content > .eyebrow {
+    display: block;
+    width: min(100%, 300px);
+    min-height: 0;
+    margin: 0 0 20px;
+    padding: 0;
+    color: rgba(40, 55, 104, 0.68);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: 10px !important;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1.55;
+  }
+
+  .about .about__content h2 {
+    max-width: 310px;
+    font-size: clamp(33px, 9.2vw, 40px) !important;
+    letter-spacing: -0.048em;
+    line-height: 1.08;
+  }
+
+  .about .about__content h2 em {
+    margin-top: 12px;
+    font-size: 0.64em;
+    letter-spacing: -0.025em;
+    line-height: 1.28;
+  }
+
+  .about .about__lead {
+    margin-top: 28px;
+  }
+}
