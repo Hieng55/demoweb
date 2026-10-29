@@ -67,7 +67,7 @@ export function SiteFooter() {
             <p>© 2026 Webs4V. All rights reserved.</p>
             <div className="site-footer__badges">
               <a
-                href="//www.dmca.com/Protection/Status.aspx?ID=ec93968c-f25a-474c-953f-56886ce341d5"
+                href="https://www.dmca.com/Protection/Status.aspx?ID=ec93968c-f25a-474c-953f-56886ce341d5&fs=share_copy&refurl=https://webs4v.vn/"
                 title="DMCA.com Protection Status"
                 className="dmca-badge"
                 target="_blank"
