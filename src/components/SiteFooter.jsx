@@ -74,7 +74,7 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="https://images.dmca.com/Badges/dmca_protected_sml_120b.png?ID=ec93968c-f25a-474c-953f-56886ce341d5"
+                  src="https://images.dmca.com/Badges/dmca-badge-w100-2x1-02.png?ID=ec93968c-f25a-474c-953f-56886ce341d5"
                   alt="DMCA.com Protection Status"
                 />
               </a>
