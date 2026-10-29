@@ -1,6 +1,29 @@
 import { defineMorphIcon } from 'morphicons/element';
 import { Menu, X } from 'lucide';
 import { initializeDirectionalIcons } from './ui-icons.js';
+import projectFeaturedTablet from './image/project/featured-tablet.jpg';
+import projectFeaturedBusiness from './image/project/featured-4503766.jpg';
+import projectFeaturedPortfolio from './image/project/featured-7288248.jpg';
+import projectFeaturedBrand from './image/project/featured-16-1.jpg';
+import projectFeaturedRestaurant from './image/project/featured-restaurant.webp';
+import projectOne from './image/project/1.webp';
+import projectTwo from './image/project/2.webp';
+import projectThree from './image/project/3.webp';
+import projectFour from './image/project/4.webp';
+import projectFive from './image/project/5.webp';
+
+const mobileProjectImages = [
+  projectFeaturedTablet,
+  projectFeaturedBusiness,
+  projectFeaturedPortfolio,
+  projectFeaturedBrand,
+  projectFeaturedRestaurant,
+  projectOne,
+  projectTwo,
+  projectThree,
+  projectFour,
+  projectFive,
+];
 
 const body = document.body;
 const loader = document.querySelector('.loader');
@@ -291,11 +314,55 @@ function initializeReveals() {
   elements.forEach((element) => observer.observe(element));
 }
 
+function initializeProjectMarquee() {
+  const groups = [...document.querySelectorAll('[data-project-group]')];
+  if (!groups.length) return;
+
+  groups.forEach((group, rowIndex) => {
+    const track = group.closest('[data-project-track]');
+    const rowImages = mobileProjectImages.filter((_, imageIndex) => (
+      imageIndex % groups.length === rowIndex
+    ));
+    if (!track) return;
+
+    rowImages.forEach((source, cardIndex) => {
+      const projectNumber = cardIndex * groups.length + rowIndex + 1;
+      const card = document.createElement('figure');
+      const image = document.createElement('img');
+      const caption = document.createElement('figcaption');
+      const number = document.createElement('span');
+      const label = document.createElement('strong');
+
+      card.className = 'project-card';
+      image.src = source;
+      image.alt = `Dự án website Webs4V ${projectNumber}`;
+      image.loading = cardIndex === 0 ? 'eager' : 'lazy';
+      image.decoding = 'async';
+      number.textContent = String(projectNumber).padStart(2, '0');
+      label.textContent = 'Webs4V Project';
+      caption.append(number, label);
+      card.append(image, caption);
+      group.append(card);
+    });
+
+    const duplicate = group.cloneNode(true);
+    duplicate.removeAttribute('data-project-group');
+    duplicate.setAttribute('aria-hidden', 'true');
+    duplicate.querySelectorAll('img').forEach((image) => {
+      image.alt = '';
+      image.loading = 'lazy';
+    });
+    track.style.setProperty('--marquee-duration', `${Math.max(42, rowImages.length * 7)}s`);
+    track.append(duplicate);
+  });
+}
+
 updateActiveNavigation();
 initializePrivacyScrollSpy();
 initializeBlogFilters();
 initializeFaq();
 initializeContactForm();
+initializeProjectMarquee();
 initializeReveals();
 updateScroll();
 

@@ -1,5 +1,5 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/sweetalert2-DIgqIc3D.css"])))=>i.map(i=>d[i]);
-import{_ as or}from"./main-BPP53uHt.js";import{d as rc,i as sc,M as ao,X as ac}from"./ui-icons-DwxACEW7.js";/**
+import{_ as or}from"./main-DvIBiYLE.js";import{d as rc,i as sc,M as ao,X as ac}from"./ui-icons-CG1RgXPJ.js";/**
  * @license lucide v1.53.0 - ISC
  *
  * This source code is licensed under the ISC license.
