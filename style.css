@@ -106,17 +106,24 @@ body.is-lite-experience #webgl-canvas {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   width: 100%;
-  max-width: 1060px;
-  min-height: 58px;
+  max-width: 1140px;
+  min-height: 64px;
   margin: 0 auto;
-  padding: 5px 10px 5px 16px;
+  padding: 6px 12px 6px 20px;
   overflow: visible;
-  background: linear-gradient(112deg, rgba(255, 255, 255, 0.6), rgba(235, 237, 255, 0.34) 48%, rgba(220, 244, 255, 0.42));
-  border: 1px solid rgba(255, 255, 255, 0.78);
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(255, 255, 255, 0.95), transparent 70%),
+    linear-gradient(112deg, rgba(255, 255, 255, 0.84) 0%, rgba(246, 249, 255, 0.72) 48%, rgba(240, 246, 255, 0.78) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 90px;
-  box-shadow: 0 18px 52px rgba(42, 56, 112, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(81, 112, 205, 0.07);
-  -webkit-backdrop-filter: blur(26px) saturate(1.52);
-  backdrop-filter: blur(26px) saturate(1.52);
+  box-shadow:
+    0 20px 50px -12px rgba(18, 42, 110, 0.2),
+    0 8px 24px -4px rgba(0, 0, 0, 0.08),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 1px 0 rgba(140, 185, 255, 0.4),
+    inset 0 0 20px 0 rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8) brightness(1.12);
+  backdrop-filter: blur(28px) saturate(1.8) brightness(1.12);
   transition: max-width 600ms cubic-bezier(0.22, 1, 0.36, 1), min-height 500ms cubic-bezier(0.22, 1, 0.36, 1), padding 500ms cubic-bezier(0.22, 1, 0.36, 1), border-radius 500ms ease, background 350ms ease, box-shadow 350ms ease;
   isolation: isolate;
 }
@@ -124,15 +131,15 @@ body.is-lite-experience #webgl-canvas {
 .header-glass::before {
   position: absolute;
   top: 0;
-  right: 7%;
-  left: 7%;
+  right: 6%;
+  left: 6%;
   z-index: 1;
   width: auto;
-  height: 1px;
+  height: 1.5px;
   content: "";
-  background: linear-gradient(90deg, transparent, rgba(87, 128, 255, 0.64), rgba(229, 144, 255, 0.48), rgba(102, 225, 255, 0.66), transparent);
-  filter: none;
-  opacity: 0.72;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 1) 25%, rgba(175, 215, 255, 0.95) 50%, rgba(255, 255, 255, 1) 75%, transparent);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+  opacity: 0.92;
   pointer-events: none;
 }
 
@@ -145,12 +152,18 @@ body.is-lite-experience #webgl-canvas {
 }
 
 .site-header.is-scrolled .header-glass {
-  max-width: 1020px;
-  min-height: 54px;
-  padding-block: 4px;
-  background: linear-gradient(112deg, rgba(255, 255, 255, 0.72), rgba(230, 234, 255, 0.46), rgba(218, 244, 255, 0.54));
+  max-width: 1080px;
+  min-height: 58px;
+  padding-block: 5px;
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(255, 255, 255, 0.95), transparent 70%),
+    linear-gradient(112deg, rgba(255, 255, 255, 0.88), rgba(246, 250, 255, 0.78) 50%, rgba(255, 255, 255, 0.88));
   border-radius: 90px;
-  box-shadow: 0 15px 42px rgba(35, 51, 105, 0.17), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 16px 42px -8px rgba(18, 42, 110, 0.22),
+    0 8px 18px -4px rgba(0, 0, 0, 0.08),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 1px 0 rgba(140, 185, 255, 0.4);
 }
 
 .brand {
@@ -159,7 +172,7 @@ body.is-lite-experience #webgl-canvas {
   grid-column: 1;
   align-items: center;
   width: auto;
-  min-height: 44px;
+  min-height: 48px;
   padding: 3px 10px 3px 2px;
   overflow: visible;
   transition: width 500ms cubic-bezier(0.22, 1, 0.36, 1), min-height 500ms cubic-bezier(0.22, 1, 0.36, 1), padding 500ms cubic-bezier(0.22, 1, 0.36, 1), transform 250ms ease, filter 250ms ease;
@@ -178,7 +191,7 @@ body.is-lite-experience #webgl-canvas {
   display: block;
   width: auto;
   max-width: 100%;
-  max-height: 38px;
+  max-height: 42px;
   object-fit: contain;
   transition: filter 350ms ease;
 }
@@ -228,11 +241,11 @@ body.is-lite-experience #webgl-canvas {
 
 .primary-nav a {
   position: relative;
-  padding: 8px 12px;
+  padding: 9px 13px;
   border: 1px solid transparent;
   border-radius: 26px;
-  color: rgba(12, 25, 67, 0.9);
-  font-size: 13px;
+  color: rgba(10, 22, 60, 0.92);
+  font-size: 13.5px;
   font-weight: 500;
   white-space: nowrap;
   transition: padding 500ms cubic-bezier(0.22, 1, 0.36, 1), color 220ms ease, background 220ms ease, border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
@@ -436,8 +449,8 @@ body.is-lite-experience #webgl-canvas {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 44px;
-  padding: 0 16px;
+  min-height: 46px;
+  padding: 0 18px;
   overflow: visible;
   color: #fff;
   background: linear-gradient(135deg, #071a44, #0a49c9 58%, #0878ff);
@@ -457,22 +470,22 @@ body.is-lite-experience #webgl-canvas {
 @media (min-width: 1051px) {
   .site-header.is-scrolled .brand {
     width: auto;
-    min-height: 38px;
+    min-height: 42px;
     padding-block: 2px;
   }
 
   .site-header.is-scrolled .brand img {
-    max-height: 32px;
+    max-height: 36px;
   }
 
   .site-header.is-scrolled .primary-nav a {
-    padding: 6px 10px;
-    font-size: 12.5px;
+    padding: 7px 11px;
+    font-size: 13px;
   }
 
   .site-header.is-scrolled .header-cta {
-    min-height: 38px;
-    padding-inline: 14px;
+    min-height: 40px;
+    padding-inline: 16px;
   }
 }
 
