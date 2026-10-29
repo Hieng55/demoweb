@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/websvvn/public_html/
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/cp -a out/. "$DEPLOYPATH"

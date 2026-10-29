@@ -4,6 +4,8 @@ import { resolve } from 'node:path';
 export default defineConfig({
   publicDir: false,
   build: {
+    outDir: 'out',
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         home: resolve(__dirname, 'index.html'),
