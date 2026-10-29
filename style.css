@@ -958,21 +958,25 @@ h1 {
 
 .typewriter {
   display: inline-block;
-  min-height: 1em;
+  min-height: 1.1em;
+  vertical-align: bottom;
 }
 
 .typewriter::after {
-  display: none;
-  width: 2px;
-  height: 0.82em;
+  display: inline-block;
+  width: 2.5px;
+  height: 0.85em;
   margin-left: 0.08em;
   vertical-align: -0.06em;
   content: "";
   background: currentColor;
-  animation: typewriter-caret 700ms steps(1) infinite;
+  animation: typewriter-caret 750ms steps(1) infinite;
 }
 
 @keyframes typewriter-caret {
+  0%, 100% {
+    opacity: 1;
+  }
   50% {
     opacity: 0;
   }

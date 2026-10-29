@@ -407,6 +407,42 @@ function initializeContactForm() {
   });
 }
 
+function initializeTypewriter() {
+  const typewriter = document.querySelector('.typewriter');
+  if (!typewriter) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) return;
+
+  const phrase = (typewriter.textContent || '').trim();
+  if (!phrase) return;
+
+  const characters = Array.from(phrase.normalize('NFC'));
+  const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+  async function loopTypewriter() {
+    await wait(2000);
+
+    while (document.body.contains(typewriter)) {
+      for (let i = characters.length; i >= 0; i -= 1) {
+        typewriter.textContent = characters.slice(0, i).join('');
+        await wait(45);
+      }
+
+      await wait(450);
+
+      for (let i = 1; i <= characters.length; i += 1) {
+        typewriter.textContent = characters.slice(0, i).join('');
+        await wait(80);
+      }
+
+      await wait(2400);
+    }
+  }
+
+  loopTypewriter();
+}
+
 function initializeReveals() {
   const elements = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
@@ -485,6 +521,7 @@ initializeFaq();
 initializeContactForm();
 initializeProjectMarquee();
 initializeReveals();
+initializeTypewriter();
 updateScroll();
 
 window.addEventListener('hashchange', updateActiveNavigation);
