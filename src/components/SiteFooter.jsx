@@ -1,4 +1,5 @@
 import React from 'react';
+import brandLogo from '../../image/logo/logo.png';
 
 export function SiteFooter() {
   return (
@@ -7,7 +8,7 @@ export function SiteFooter() {
         <div className="site-footer__top">
           <div className="site-footer__identity">
             <a className="site-footer__brand" href="#top" aria-label="Webs4V — Lên đầu trang">
-              <img src="/image/logo-webs4v-2-1.png" alt="Webs4V" />
+              <img src={brandLogo} alt="Webs4V" />
             </a>
             <p>Thiết kế website doanh nghiệp và website thương mại điện tử, xây dựng nền tảng số giúp thương hiệu bán hàng và phát triển dài hạn.</p>
             <span className="site-footer__status"><i /> Đang nhận dự án mới</span>

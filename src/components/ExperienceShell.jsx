@@ -1,4 +1,5 @@
 import React from 'react';
+import brandLogo from '../../image/logo/logo.png';
 
 export function ExperienceShell({ page }) {
   const isAbout = page === 'about';
@@ -17,7 +18,7 @@ export function ExperienceShell({ page }) {
         <div className="loader__content">
           <div className="loader__portal" aria-hidden="true">
             <span className="loader__wave" /><span className="loader__orbit" />
-            <span className="loader__core"><img src="/image/logo-webs4v-2-1.png" alt="" /></span>
+            <span className="loader__core"><img src={brandLogo} alt="" /></span>
           </div>
           <div className="loader__copy">
             <div className="loader__status"><p><i /> Đang khởi tạo trải nghiệm</p><strong className="loader__value">0%</strong></div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import brandLogo from '../../image/logo/logo.png';
 
 const mainLinks = [
   ['/', 'Trang chủ'],
@@ -58,7 +59,7 @@ export function SiteHeader() {
   return <>
     <header className="site-header" data-header>
       <div className="header-glass">
-        <a className="brand" href="/" aria-label="Webs4V — Trang chủ"><img src="/image/logo-webs4v-2-1.png" alt="Webs4V" width="1310" height="672" /></a>
+        <a className="brand" href="/" aria-label="Webs4V — Trang chủ"><img src={brandLogo} alt="Webs4V" width="940" height="489" /></a>
         <nav className="primary-nav" aria-label="Điều hướng chính">
           {desktopLinks.map(([href, label]) => <a href={href} key={href}>{label}</a>)}
           <ServicesDropdown />
