@@ -183,8 +183,7 @@ body.is-lite-experience #webgl-canvas {
 
 :is(.about-page, .policy-page, .contact-page, .blog-page, .career-page, .service-page) .brand img,
 .site-header.is-scrolled .brand img,
-.loader__core img,
-.ecosystem__hub img {
+.loader__core img {
   filter: brightness(0) saturate(100%) invert(12%) sepia(32%) saturate(1885%) hue-rotate(190deg) brightness(83%) contrast(109%);
 }
 
