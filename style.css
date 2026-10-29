@@ -4352,6 +4352,33 @@ b > morph-icon.external-link-icon {
   padding-top: 30px;
 }
 
+.site-footer__bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-footer__bottom .dmca-badge {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  vertical-align: middle;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.site-footer__bottom .dmca-badge:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.site-footer__bottom .dmca-badge img {
+  display: block;
+  height: 24px;
+  width: auto;
+  border-radius: 3px;
+}
+
 .site-footer__bottom p,
 .site-footer__bottom a {
   color: rgba(210, 226, 250, 0.48);

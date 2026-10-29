@@ -2,6 +2,15 @@ import React from 'react';
 import brandLogo from '../../image/logo/logo.png';
 
 export function SiteFooter() {
+  React.useEffect(() => {
+    if (!document.querySelector('script[src*="DMCABadgeHelper"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://images.dmca.com/Badges/DMCABadgeHelper.min.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
   return (
     <footer className="site-footer">
       <div className="site-footer__shell">
@@ -54,7 +63,19 @@ export function SiteFooter() {
         </div>
 
         <div className="site-footer__bottom">
-          <p>© 2026 Webs4V. All rights reserved.</p>
+          <div className="site-footer__bottom-left">
+            <p>© 2026 Webs4V. All rights reserved.</p>
+            <a
+              href="//www.dmca.com/Protection/Status.aspx?ID=ec93968c-f25a-474c-953f-56886ce341d5"
+              title="DMCA.com Protection Status"
+              className="dmca-badge"
+            >
+              <img
+                src="https://images.dmca.com/Badges/dmca_protected_sml_120b.png?ID=ec93968c-f25a-474c-953f-56886ce341d5"
+                alt="DMCA.com Protection Status"
+              />
+            </a>
+          </div>
           <div><a href="/chinh-sach-bao-mat/">Chính sách bảo mật</a><a href="#top">Lên đầu trang ↑</a></div>
         </div>
       </div>
