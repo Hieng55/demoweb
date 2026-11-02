@@ -5,8 +5,15 @@ function doPost(event) {
     const data = event && event.parameter ? event.parameter : {};
     const name = clean_(data.name, 100);
     const phone = clean_(data.phone, 30);
+    const industry = clean_(data.industry, 120);
+    const goal = clean_(data.goal, 160);
+    const budget = clean_(data.budget, 100);
     const service = clean_(data.service, 120);
     const message = clean_(data.message, 1200);
+    const landingPage = clean_(data.landingPage, 250);
+    const utmSource = clean_(data.utmSource, 100);
+    const utmMedium = clean_(data.utmMedium, 100);
+    const utmCampaign = clean_(data.utmCampaign, 150);
     const honeypot = clean_(data.website, 120);
     const startedAt = Number(data.startedAt || 0);
     const elapsed = Date.now() - startedAt;
@@ -14,7 +21,7 @@ function doPost(event) {
 
     if (honeypot) return json_({ ok: true });
     if (!startedAt || elapsed < 1500 || elapsed > 7200000) return json_({ ok: true });
-    if (name.length < 2 || phoneDigits.length < 9 || phoneDigits.length > 15 || !service) {
+    if (name.length < 2 || phoneDigits.length < 9 || phoneDigits.length > 15 || !industry || !goal || !budget || !service) {
       return json_({ ok: false, error: 'invalid_contact' });
     }
 
@@ -24,7 +31,7 @@ function doPost(event) {
     if (!botToken || !chatId) throw new Error('Missing Telegram configuration.');
 
     const cache = CacheService.getScriptCache();
-    const duplicateKey = 'duplicate-' + hash_(name + '|' + phoneDigits + '|' + service + '|' + message);
+    const duplicateKey = 'duplicate-' + hash_(name + '|' + phoneDigits + '|' + industry + '|' + goal + '|' + budget + '|' + service + '|' + message);
     const phoneRateKey = 'phone-' + hash_(phoneDigits);
     const globalRateKey = 'global-' + Math.floor(Date.now() / 60000);
     const lock = LockService.getScriptLock();
@@ -52,8 +59,13 @@ function doPost(event) {
       '',
       '<b>Khách hàng:</b> ' + escapeHtml_(name),
       '<b>Điện thoại:</b> ' + escapeHtml_(phone),
+      '<b>Ngành nghề:</b> ' + escapeHtml_(industry),
+      '<b>Mục tiêu:</b> ' + escapeHtml_(goal),
+      '<b>Ngân sách:</b> ' + escapeHtml_(budget),
       '<b>Dịch vụ:</b> ' + escapeHtml_(service),
       '<b>Nội dung:</b> ' + escapeHtml_(message || 'Chưa cung cấp'),
+      '<b>Trang gửi:</b> ' + escapeHtml_(landingPage || 'Không xác định'),
+      '<b>Nguồn:</b> ' + escapeHtml_([utmSource, utmMedium, utmCampaign].filter(Boolean).join(' / ') || 'Truy cập trực tiếp hoặc không gắn UTM'),
       '',
       '<i>Gửi lúc ' + escapeHtml_(submittedAt) + '</i>',
     ].join('\n');

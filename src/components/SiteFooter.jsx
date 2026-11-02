@@ -19,7 +19,7 @@ export function SiteFooter() {
             <a className="site-footer__brand" href="#top" aria-label="Webs4V — Lên đầu trang">
               <img src={brandLogo} alt="Webs4V" />
             </a>
-            <p>Thiết kế website doanh nghiệp và website thương mại điện tử, xây dựng nền tảng số giúp thương hiệu bán hàng và phát triển dài hạn.</p>
+            <p>Web cho người Việt — giải pháp website vừa sức, dễ vận hành và có thể phát triển cùng mọi quy mô kinh doanh.</p>
             <span className="site-footer__status"><i /> Đang nhận dự án mới</span>
           </div>
 
@@ -42,7 +42,7 @@ export function SiteFooter() {
             <div>
               <span>Liên hệ</span>
               <a href="tel:0364003638">0364 003 638</a>
-              <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer">Nhắn Zalo ↗</a>
+              <a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer">Nhắn Zalo ↗</a>
               <a href="mailto:hello@webs4v.vn">Gửi email ↗</a>
               <a href="https://www.google.com/maps/search/?api=1&query=1104%20%C4%90.%20Ph%E1%BA%A1m%20V%C4%83n%20%C4%90%E1%BB%93ng%2C%20Th%E1%BB%A7%20%C4%90%E1%BB%A9c%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh" target="_blank" rel="noopener noreferrer">
                 1104 Đ. Phạm Văn Đồng, Thủ Đức, TP.HCM ↗
@@ -53,8 +53,8 @@ export function SiteFooter() {
         </div>
 
         <div className="site-footer__cta">
-          <div><span>Bạn đã sẵn sàng?</span><h2>Cùng biến ý tưởng<br /><em>thành một website đáng nhớ.</em></h2></div>
-          <a href="/lien-he/"><span>Bắt đầu dự án</span><b>↗</b></a>
+          <div><span>Bắt đầu từ nhu cầu thực tế</span><h2>Bắt đầu vừa sức.<br /><em>Phát triển đúng lúc.</em></h2></div>
+          <a href="/lien-he/"><span>Tìm điểm bắt đầu</span><b>↗</b></a>
         </div>
 
         <div className="site-footer__company">

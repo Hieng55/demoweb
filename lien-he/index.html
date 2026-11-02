@@ -1,10 +1,9 @@
 <!doctype html>
-<html lang="vi" class="css-pending">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <style>html.css-pending{background:#050d24}html.css-pending #root{visibility:hidden}</style>
-    <noscript><style>html.css-pending #root{visibility:visible}</style></noscript>
+
     <meta name="theme-color" content="#edf4ff" />
     <meta name="description" content="Liên hệ Webs4V để trao đổi về website doanh nghiệp, website thương mại điện tử, SEO, quảng cáo và giải pháp thương hiệu." />
     <meta property="og:type" content="website" />
@@ -21,8 +20,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&amp;family=Lora:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
-  <body class="contact-page is-loading">
+  <body class="contact-page">
     <div id="root">
       <main id="top">
         <div class="contact-page-content">
@@ -30,10 +30,10 @@
             <div class="contact-page-hero__copy reveal">
               <p class="eyebrow">Liên hệ Webs4V</p>
               <h1>Bắt đầu bằng điều<br /><em>bạn đang muốn cải thiện.</em></h1>
-              <p>Bạn không cần chuẩn bị một bản yêu cầu hoàn chỉnh. Hãy chia sẻ mục tiêu, vấn đề hoặc ý tưởng hiện có; Webs4V sẽ cùng bạn xác định hướng đi và phạm vi phù hợp.</p>
+              <p>Dù bạn là cá nhân mới bắt đầu, hộ kinh doanh hay doanh nghiệp đang mở rộng, bạn không cần chuẩn bị một bản yêu cầu hoàn chỉnh. Hãy chia sẻ mục tiêu và nguồn lực hiện có; Webs4V sẽ cùng xác định hướng đi vừa sức và phù hợp.</p>
               <div class="contact-page-hero__actions">
                 <a href="#gui-yeu-cau"><span>Gửi yêu cầu tư vấn</span><b>↓</b></a>
-                <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>Nhắn Zalo</span><b>↗</b></a>
+                <a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer"><span>Nhắn Zalo</span><b>↗</b></a>
               </div>
             </div>
 
@@ -48,7 +48,7 @@
 
           <section class="contact-page-channels" aria-label="Các cách liên hệ Webs4V">
             <a class="reveal" href="tel:0364003638"><span>01 · Gọi điện</span><h2>Cần trao đổi ngay?</h2><p>Gọi trực tiếp để nói nhanh về nhu cầu và bước tiếp theo.</p><b>0364 003 638 →</b></a>
-            <a class="reveal" href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>02 · Zalo</span><h2>Muốn gửi tài liệu?</h2><p>Nhắn brief, hình ảnh hoặc đường dẫn để đội ngũ xem trước.</p><b>Mở cuộc trò chuyện ↗</b></a>
+            <a class="reveal" href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer"><span>02 · Zalo</span><h2>Muốn gửi tài liệu?</h2><p>Nhắn brief, hình ảnh hoặc đường dẫn để đội ngũ xem trước.</p><b>Mở cuộc trò chuyện ↗</b></a>
             <a class="reveal" href="mailto:hello@webs4v.vn"><span>03 · Email</span><h2>Cần trình bày chi tiết?</h2><p>Gửi yêu cầu, phạm vi và thông tin cần trao đổi qua email.</p><b>hello@webs4v.vn ↗</b></a>
           </section>
 
@@ -68,7 +68,7 @@
                     <a class="contact-card__phone" href="tel:0364003638">0364 003 638</a>
                   </div>
                   <div class="contact-card__actions">
-                    <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>Nhắn qua Zalo</span><b>↗</b></a>
+                    <a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer"><span>Nhắn qua Zalo</span><b>↗</b></a>
                     <a href="mailto:hello@webs4v.vn"><span>Gửi email</span><b>↗</b></a>
                   </div>
                   <div class="contact-card__promises">
@@ -84,6 +84,19 @@
                     <label>Họ và tên<input name="name" type="text" autocomplete="name" placeholder="Tên của bạn" required /></label>
                     <label>Số điện thoại<input name="phone" type="tel" autocomplete="tel" placeholder="09xx xxx xxx" required /></label>
                   </div>
+                  <div class="contact-form__row">
+                    <label>Ngành nghề<input name="industry" type="text" autocomplete="organization-title" placeholder="Ví dụ: nail, nhà hàng, nội thất..." required /></label>
+                    <label>Mục tiêu chính
+                      <select name="goal" required>
+                        <option value="" selected disabled>Chọn mục tiêu</option>
+                        <option>Giới thiệu doanh nghiệp</option>
+                        <option>Quảng bá dịch vụ và tìm khách hàng</option>
+                        <option>Trưng bày sản phẩm</option>
+                        <option>Bán hàng online</option>
+                        <option>Thiết kế lại website hiện có</option>
+                      </select>
+                    </label>
+                  </div>
                   <label>Bạn đang quan tâm đến
                     <select name="service" required>
                       <option value="" selected disabled>Chọn một giải pháp</option>
@@ -96,6 +109,16 @@
                       <option>Nhận diện thương hiệu</option>
                       <option>Google Business Profile</option>
                       <option>Tư vấn giải pháp tổng thể</option>
+                    </select>
+                  </label>
+                  <label>Ngân sách dự kiến
+                    <select name="budget" required>
+                      <option value="" selected disabled>Chọn khoảng ngân sách</option>
+                      <option>Dưới 5 triệu đồng</option>
+                      <option>Từ 5 đến dưới 10 triệu đồng</option>
+                      <option>Từ 10 đến dưới 20 triệu đồng</option>
+                      <option>Từ 20 triệu đồng trở lên</option>
+                      <option>Cần Webs4V tư vấn trước</option>
                     </select>
                   </label>
                   <label>Mô tả ngắn về nhu cầu<textarea name="message" rows="4" placeholder="Mục tiêu, lĩnh vực, vấn đề cần giải quyết hoặc thời gian dự kiến..."></textarea></label>
@@ -125,13 +148,12 @@
 
         <nav class="contact-app-dock" aria-label="Liên hệ nhanh">
           <a href="tel:0364003638"><span aria-hidden="true">☎</span><strong>Gọi ngay</strong></a>
-          <a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">Z</span><strong>Zalo</strong></a>
+          <a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">Z</span><strong>Zalo</strong></a>
           <a href="#gui-yeu-cau"><span aria-hidden="true">✦</span><strong>Gửi yêu cầu</strong></a>
         </nav>
       </main>
     </div>
     <noscript>Trang web cần JavaScript để hiển thị đầy đủ trải nghiệm.</noscript>
-    <script>window.__webs4vLoadingWatchdog=setTimeout(function(){document.documentElement.classList.remove('css-pending');document.body.classList.remove('is-loading');document.body.classList.add('is-ready')},4000)</script>
-    <script type="module" src="../src/main.jsx"></script>
+<script type="module" src="../src/main.jsx"></script>
   </body>
 </html>

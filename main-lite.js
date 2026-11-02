@@ -20,21 +20,21 @@ import projectFeaturedBrand from './image/project/featured-16-1.jpg';
 import projectFeaturedRestaurant from './image/project/featured-restaurant.webp';
 import projectOne from './image/project/1.webp';
 import projectTwo from './image/project/2.webp';
-import projectThree from './image/project/3.webp';
-import projectFour from './image/project/4.webp';
-import projectFive from './image/project/5.webp';
+import projectKingsen from './image/project/kingsen.png';
+import projectOrfarm from './image/project/orfarm.webp';
+import projectAdInk from './image/project/ad-tattoo-studio.png';
 
 const mobileProjectImages = [
-  projectFeaturedTablet,
-  projectFeaturedBusiness,
-  projectFeaturedPortfolio,
-  projectFeaturedBrand,
-  projectFeaturedRestaurant,
-  projectOne,
-  projectTwo,
-  projectThree,
-  projectFour,
-  projectFive,
+  { source: projectFeaturedTablet, label: 'Mẫu website responsive', alt: 'Mẫu website hiển thị trên máy tính bảng và điện thoại' },
+  { source: projectFeaturedBusiness, label: 'Mẫu website doanh nghiệp', alt: 'Mẫu giao diện website giới thiệu doanh nghiệp' },
+  { source: projectFeaturedPortfolio, label: 'Mẫu website portfolio', alt: 'Mẫu giao diện website portfolio giới thiệu năng lực' },
+  { source: projectFeaturedBrand, label: 'Mẫu website thương hiệu', alt: 'Mẫu giao diện website xây dựng hình ảnh thương hiệu' },
+  { source: projectFeaturedRestaurant, label: 'Mẫu website nhà hàng', alt: 'Mẫu giao diện website nhà hàng trên desktop và mobile' },
+  { source: projectKingsen, label: 'Kingsen · Website thương hiệu', alt: 'Giao diện dự án website thương hiệu Kingsen' },
+  { source: projectOrfarm, label: 'Orfarm · Website sản phẩm', alt: 'Giao diện dự án website sản phẩm Orfarm' },
+  { source: projectAdInk, label: 'AD Ink · Website dịch vụ', alt: 'Giao diện dự án website dịch vụ AD Ink Tattoo Studio' },
+  { source: projectOne, label: 'Mẫu giao diện Webs4V 09', alt: 'Mẫu giao diện website Webs4V số 9' },
+  { source: projectTwo, label: 'Mẫu giao diện Webs4V 10', alt: 'Mẫu giao diện website Webs4V số 10' },
 ];
 
 const body = document.body;
@@ -49,6 +49,44 @@ const menuBackdrop = document.querySelector('.menu-backdrop');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 body.classList.add('is-lite-experience', 'is-compact-experience');
+
+function trackConversion(eventName, parameters = {}) {
+  const payload = {
+    page_path: window.location.pathname,
+    ...parameters,
+  };
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, payload);
+  } else {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: eventName, ...payload });
+  }
+
+  document.dispatchEvent(new CustomEvent('webs4v:conversion', { detail: { eventName, ...payload } }));
+}
+
+function initializeConversionTracking() {
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    const href = link.getAttribute('href') || '';
+    let eventName = link.dataset.track || '';
+    if (!eventName && href.startsWith('tel:')) eventName = 'click_hotline';
+    else if (!eventName && href.includes('zalo.me')) eventName = 'click_zalo';
+    else if (!eventName && href.includes('#pricing')) eventName = 'view_pricing';
+    else if (!eventName && href.includes('#story')) eventName = 'view_projects';
+    else if (!eventName && (href.includes('#contact') || href.includes('/lien-he/'))) eventName = 'click_consultation';
+    if (!eventName) return;
+
+    trackConversion(eventName, {
+      link_text: (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100),
+    });
+  });
+}
+
+initializeConversionTracking();
 
 defineMorphIcon();
 initializeDirectionalIcons();
@@ -345,12 +383,20 @@ function initializeContactForm() {
     }
 
     const data = new FormData(form);
+    const searchParams = new URLSearchParams(window.location.search);
     const payload = {
       name: String(data.get('name') || '').trim(),
       phone: String(data.get('phone') || '').trim(),
+      industry: String(data.get('industry') || '').trim(),
+      goal: String(data.get('goal') || '').trim(),
+      budget: String(data.get('budget') || '').trim(),
       service: String(data.get('service') || '').trim(),
       message: String(data.get('message') || '').trim(),
       website: String(data.get('website') || '').trim(),
+      landingPage: window.location.pathname,
+      utmSource: String(searchParams.get('utm_source') || '').slice(0, 100),
+      utmMedium: String(searchParams.get('utm_medium') || '').slice(0, 100),
+      utmCampaign: String(searchParams.get('utm_campaign') || '').slice(0, 150),
       startedAt: String(formStartedAt),
     };
     if (!endpoint.startsWith('https://script.google.com/macros/s/') || endpoint.includes('THAY_BANG_URL_CUA_BAN')) {
@@ -376,6 +422,11 @@ function initializeContactForm() {
       status.textContent = 'Đã gửi thành công. Webs4V sẽ liên hệ với bạn trong thời gian sớm nhất.';
       status.className = 'contact-form__status is-success';
       submitButton.querySelector('span').textContent = 'Đã gửi yêu cầu';
+      trackConversion('submit_form', {
+        service: payload.service,
+        goal: payload.goal,
+        budget: payload.budget,
+      });
       const [{ default: Swal }] = await Promise.all([
         import('sweetalert2'),
         import('sweetalert2/dist/sweetalert2.min.css'),
@@ -480,7 +531,7 @@ function initializeProjectMarquee() {
       if (child !== group) child.remove();
     });
 
-    rowImages.forEach((source, cardIndex) => {
+    rowImages.forEach((project, cardIndex) => {
       const projectNumber = cardIndex * groups.length + rowIndex + 1;
       const card = document.createElement('figure');
       const image = document.createElement('img');
@@ -489,12 +540,12 @@ function initializeProjectMarquee() {
       const label = document.createElement('strong');
 
       card.className = 'project-card';
-      image.src = source;
-      image.alt = `Dự án website Webs4V ${projectNumber}`;
-      image.loading = 'eager';
+      image.src = project.source;
+      image.alt = project.alt;
+      image.loading = 'lazy';
       image.decoding = 'async';
       number.textContent = String(projectNumber).padStart(2, '0');
-      label.textContent = 'Webs4V Project';
+      label.textContent = project.label;
       caption.append(number, label);
       card.append(image, caption);
       group.append(card);
@@ -505,7 +556,7 @@ function initializeProjectMarquee() {
     duplicate.setAttribute('aria-hidden', 'true');
     duplicate.querySelectorAll('img').forEach((image) => {
       image.alt = '';
-      image.loading = 'eager';
+      image.loading = 'lazy';
       image.decoding = 'async';
     });
     track.style.setProperty('--marquee-duration', `${Math.max(42, rowImages.length * 7)}s`);

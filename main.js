@@ -26,6 +26,24 @@ const projectImageModules = import.meta.glob('./image/project/*.{jpg,jpeg,png,we
   import: 'default',
 });
 
+const projectMetadata = {
+  'featured-tablet.jpg': { label: 'Mẫu website responsive', alt: 'Mẫu website hiển thị trên máy tính bảng và điện thoại' },
+  'featured-4503766.jpg': { label: 'Mẫu website doanh nghiệp', alt: 'Mẫu giao diện website giới thiệu doanh nghiệp' },
+  'featured-7288248.jpg': { label: 'Mẫu website portfolio', alt: 'Mẫu giao diện website portfolio giới thiệu năng lực' },
+  'featured-16-1.jpg': { label: 'Mẫu website thương hiệu', alt: 'Mẫu giao diện website xây dựng hình ảnh thương hiệu' },
+  'featured-restaurant.webp': { label: 'Mẫu website nhà hàng', alt: 'Mẫu giao diện website nhà hàng trên desktop và mobile' },
+  'kingsen.png': { label: 'Kingsen · Website thương hiệu', alt: 'Giao diện dự án website thương hiệu Kingsen' },
+  'orfarm.webp': { label: 'Orfarm · Website sản phẩm', alt: 'Giao diện dự án website sản phẩm Orfarm' },
+  'ad-tattoo-studio.png': { label: 'AD Ink · Website dịch vụ', alt: 'Giao diện dự án website dịch vụ AD Ink Tattoo Studio' },
+};
+
+function getProjectMetadata(fileName, projectNumber) {
+  return projectMetadata[fileName] || {
+    label: `Mẫu giao diện Webs4V ${String(projectNumber).padStart(2, '0')}`,
+    alt: `Mẫu giao diện website Webs4V số ${projectNumber}`,
+  };
+}
+
 const body = document.body;
 const canvas = document.querySelector('#webgl-canvas');
 const loader = document.querySelector('.loader');
@@ -45,6 +63,44 @@ const hardwareConcurrency = navigator.hardwareConcurrency ?? 8;
 const lowPowerDevice = compactLayout || deviceMemory <= 4 || hardwareConcurrency <= 4;
 
 body.classList.toggle('is-compact-experience', compactLayout);
+
+function trackConversion(eventName, parameters = {}) {
+  const payload = {
+    page_path: window.location.pathname,
+    ...parameters,
+  };
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, payload);
+  } else {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: eventName, ...payload });
+  }
+
+  document.dispatchEvent(new CustomEvent('webs4v:conversion', { detail: { eventName, ...payload } }));
+}
+
+function initializeConversionTracking() {
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    const href = link.getAttribute('href') || '';
+    let eventName = link.dataset.track || '';
+    if (!eventName && href.startsWith('tel:')) eventName = 'click_hotline';
+    else if (!eventName && href.includes('zalo.me')) eventName = 'click_zalo';
+    else if (!eventName && href.includes('#pricing')) eventName = 'view_pricing';
+    else if (!eventName && href.includes('#story')) eventName = 'view_projects';
+    else if (!eventName && (href.includes('#contact') || href.includes('/lien-he/'))) eventName = 'click_consultation';
+    if (!eventName) return;
+
+    trackConversion(eventName, {
+      link_text: (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100),
+    });
+  });
+}
+
+initializeConversionTracking();
 
 defineMorphIcon();
 initializeDirectionalIcons();
@@ -186,8 +242,10 @@ function initializeProjectMarquee() {
       if (child !== group) child.remove();
     });
 
-    rowImages.forEach(([, source], cardIndex) => {
+    rowImages.forEach(([path, source], cardIndex) => {
       const projectNumber = cardIndex * groups.length + rowIndex + 1;
+      const fileName = path.split('/').pop();
+      const metadata = getProjectMetadata(fileName, projectNumber);
       const card = document.createElement('figure');
       const image = document.createElement('img');
       const caption = document.createElement('figcaption');
@@ -196,11 +254,11 @@ function initializeProjectMarquee() {
 
       card.className = 'project-card';
       image.src = source;
-      image.alt = `Dự án website Webs4V ${projectNumber}`;
-      image.loading = 'eager';
+      image.alt = metadata.alt;
+      image.loading = 'lazy';
       image.decoding = 'async';
       number.textContent = String(projectNumber).padStart(2, '0');
-      label.textContent = 'Webs4V Project';
+      label.textContent = metadata.label;
       caption.append(number, label);
       card.append(image, caption);
       group.append(card);
@@ -211,7 +269,7 @@ function initializeProjectMarquee() {
     duplicate.setAttribute('aria-hidden', 'true');
     duplicate.querySelectorAll('img').forEach((image) => {
       image.alt = '';
-      image.loading = 'eager';
+      image.loading = 'lazy';
       image.decoding = 'async';
     });
     track.style.setProperty('--marquee-duration', `${Math.max(48, rowImages.length * 4.2)}s`);
@@ -551,12 +609,20 @@ function initializeContactForm() {
     }
 
     const data = new FormData(form);
+    const searchParams = new URLSearchParams(window.location.search);
     const payload = {
       name: String(data.get('name') || '').trim(),
       phone: String(data.get('phone') || '').trim(),
+      industry: String(data.get('industry') || '').trim(),
+      goal: String(data.get('goal') || '').trim(),
+      budget: String(data.get('budget') || '').trim(),
       service: String(data.get('service') || '').trim(),
       message: String(data.get('message') || '').trim(),
       website: String(data.get('website') || '').trim(),
+      landingPage: window.location.pathname,
+      utmSource: String(searchParams.get('utm_source') || '').slice(0, 100),
+      utmMedium: String(searchParams.get('utm_medium') || '').slice(0, 100),
+      utmCampaign: String(searchParams.get('utm_campaign') || '').slice(0, 150),
       startedAt: String(formStartedAt),
     };
 
@@ -590,6 +656,11 @@ function initializeContactForm() {
       status.textContent = 'Đã gửi thành công. Webs4V sẽ liên hệ với bạn trong thời gian sớm nhất.';
       status.classList.add('is-success');
       submitButton.querySelector('span').textContent = 'Đã gửi yêu cầu';
+      trackConversion('submit_form', {
+        service: payload.service,
+        goal: payload.goal,
+        budget: payload.budget,
+      });
       const [{ default: Swal }] = await Promise.all([
         import('sweetalert2'),
         import('sweetalert2/dist/sweetalert2.min.css'),

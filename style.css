@@ -1958,6 +1958,29 @@ h2 {
   line-height: 1.6;
 }
 
+.service-tile__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding-bottom: 5px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, .55);
+  font-size: 11px;
+  font-weight: 500;
+  transition: gap 180ms ease, border-color 180ms ease;
+}
+
+.service-tile__link:hover {
+  gap: 15px;
+  border-color: #fff;
+}
+
+.service-tile__link b {
+  font-size: 15px;
+  font-weight: 400;
+}
+
 .service-tile:hover img {
   filter: saturate(1.08) contrast(1.04);
   transform: scale(1.045);
@@ -9029,6 +9052,76 @@ main > .panel + .panel {
   font-weight: 500;
 }
 
+.pricing-annual {
+  margin-top: clamp(64px, 8vw, 110px);
+  padding: clamp(30px, 4.5vw, 62px);
+  color: #f6f3ec;
+  background: #252621;
+}
+
+.pricing-annual > header {
+  display: grid;
+  align-items: end;
+  gap: 24px 60px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+}
+
+.pricing-annual > header .eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+  color: #d8a48e;
+}
+
+.pricing-annual h3 {
+  margin: 0;
+  font-size: clamp(31px, 3.6vw, 54px);
+  font-weight: 400;
+  letter-spacing: -.05em;
+  line-height: 1.08;
+}
+
+.pricing-annual > header > p:last-child {
+  margin: 0;
+  color: rgba(246, 243, 236, .68);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.pricing-annual__grid {
+  display: grid;
+  margin-top: clamp(34px, 5vw, 60px);
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  border-left: 1px solid rgba(255, 255, 255, .18);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pricing-annual__grid article {
+  padding: clamp(24px, 3vw, 38px);
+  border-right: 1px solid rgba(255, 255, 255, .18);
+  border-bottom: 1px solid rgba(255, 255, 255, .18);
+}
+
+.pricing-annual__grid span {
+  color: #d8a48e;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+
+.pricing-annual__grid h4 {
+  margin: 22px 0 12px;
+  color: #fff;
+  font-size: clamp(18px, 1.6vw, 23px);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.pricing-annual__grid p {
+  margin: 0;
+  color: rgba(246, 243, 236, .68);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
 .pricing-disclaimer {
   display: grid;
   margin-top: clamp(70px, 8vw, 110px);
@@ -9084,7 +9177,12 @@ main > .panel + .panel {
 @media (max-width: 820px) {
   .pricing-scope,
   .pricing-addons,
-  .pricing-disclaimer {
+  .pricing-disclaimer,
+  .pricing-annual > header {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-annual__grid {
     grid-template-columns: 1fr;
   }
 
@@ -15477,7 +15575,15 @@ main > .panel + .panel {
   display: inline-block;
   font-family: "Be Vietnam Pro", sans-serif;
   font-style: normal;
-  white-space: nowrap;
+  white-space: normal;
+}
+
+.hero h1 .hero__headline-emphasis {
+  display: inline-block;
+  margin-top: .08em;
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
 @media (max-width: 760px) {
@@ -15491,8 +15597,13 @@ main > .panel + .panel {
   }
 
   .hero h1 .hero__headline-main {
-    font-size: clamp(29px, 8.6vw, 36px);
+    font-size: clamp(31px, 8.8vw, 38px);
     letter-spacing: -0.06em;
+  }
+
+  .hero h1 .hero__headline-emphasis {
+    font-size: clamp(31px, 9vw, 39px);
+    line-height: 1.08;
   }
 }
 

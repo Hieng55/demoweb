@@ -136,7 +136,7 @@ function GenericServicePage({ item }) {
 }
 
 function ServiceContact({ title }) {
-  return <section className="service-page-cta reveal" id="contact"><div><p className="eyebrow">Trao đổi cùng Webs4V</p><h2>{title}<br /><em>Bắt đầu bằng nhu cầu thực tế của bạn.</em></h2></div><a href="https://zalo.me/0364003638" target="_blank" rel="noopener noreferrer"><span>Nhắn Zalo tư vấn</span><b>↗</b></a></section>;
+  return <section className="service-page-cta reveal" id="contact"><div><p className="eyebrow">Trao đổi cùng Webs4V</p><h2>{title}<br /><em>Bắt đầu bằng nhu cầu thực tế của bạn.</em></h2></div><a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer"><span>Nhắn Zalo tư vấn</span><b>↗</b></a></section>;
 }
 
 export function ServicesPage({ markup }) {
