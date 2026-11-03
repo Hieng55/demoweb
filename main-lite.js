@@ -312,28 +312,57 @@ function initializePrivacyScrollSpy() {
 }
 
 function initializeBlogFilters() {
-  const buttons = [...document.querySelectorAll('[data-blog-filter]')];
+  const filterButtons = [...document.querySelectorAll('[data-blog-filter]')];
+  const sortButtons = [...document.querySelectorAll('[data-blog-sort]')];
   const cards = [...document.querySelectorAll('[data-blog-category]')];
+  const grid = document.querySelector('[data-blog-grid]');
   const emptyState = document.querySelector('[data-blog-empty]');
-  if (!buttons.length || !cards.length) return;
+  if (!filterButtons.length || !cards.length) return;
 
-  buttons.forEach((button) => {
+  let activeCategory = 'all';
+
+  function applyFilter() {
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const isVisible = activeCategory === 'all' || card.dataset.blogCategory === activeCategory;
+      card.hidden = !isVisible;
+      if (isVisible) visibleCount += 1;
+    });
+    if (emptyState) emptyState.hidden = visibleCount > 0;
+  }
+
+  filterButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      let visibleCount = 0;
-      buttons.forEach((item) => {
+      activeCategory = button.dataset.blogFilter;
+      filterButtons.forEach((item) => {
         const isActive = item === button;
         item.classList.toggle('is-active', isActive);
         item.setAttribute('aria-pressed', String(isActive));
       });
-      cards.forEach((card) => {
-        const visible = button.dataset.blogFilter === 'all'
-          || card.dataset.blogCategory === button.dataset.blogFilter;
-        card.hidden = !visible;
-        if (visible) visibleCount += 1;
-      });
-      if (emptyState) emptyState.hidden = visibleCount > 0;
+      applyFilter();
     });
   });
+
+  if (sortButtons.length && grid) {
+    sortButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const order = button.dataset.blogSort;
+        sortButtons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle('is-active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+
+        cards.sort((a, b) => {
+          const dateA = a.dataset.blogDate || a.querySelector('time')?.getAttribute('datetime') || '';
+          const dateB = b.dataset.blogDate || b.querySelector('time')?.getAttribute('datetime') || '';
+          return order === 'oldest' ? dateA.localeCompare(dateB) : dateB.localeCompare(dateA);
+        });
+
+        cards.forEach((card) => grid.appendChild(card));
+      });
+    });
+  }
 }
 
 function initializeFaq() {
