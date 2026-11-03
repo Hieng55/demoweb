@@ -1,6 +1,6 @@
 # Bộ quy tắc SEO website bền vững
 
-> Phiên bản: 1.16
+> Phiên bản: 1.17
 > Cập nhật: 04/11/2026
 > Mục đích: Dùng làm rule, checklist và tiêu chuẩn nghiệm thu SEO cho mọi website được xây dựng hoặc tối ưu sau này.
 
@@ -1554,6 +1554,10 @@ Phần này được bổ sung từ audit thực tế trang chủ Webs4V ngày 0
 ### 14.7. Performance và thời gian phản hồi
 
 - **MUST** phân biệt server response/TTFB với thời gian tải tài nguyên, render và Core Web Vitals.
+- LCP **SHOULD** đạt tối đa 2,5 giây ở phân vị 75 theo dữ liệu thực tế khi đủ mẫu; dữ liệu lab chỉ dùng để chẩn đoán và so sánh trước/sau.
+- **MUST** ghi lại phần tử LCP thực tế trên desktop và mobile; không tự đoán logo, hero hay H1 là LCP.
+- **MUST** kiểm tra render-blocking resource trong waterfall. CSS critical cần cho bố cục **MAY** chặn render; font, CSS phụ và script không cần cho màn hình đầu **SHOULD** được preload/async/defer hoặc tách khỏi critical path.
+- **MUST** không chuyển toàn bộ stylesheet sang async nếu việc đó gây FOUC, CLS hoặc giao diện không sử dụng được trước khi CSS tải xong.
 - TTFB chậm **MUST** được đo trên website live, nhiều lần và từ vị trí phù hợp trước khi kết luận do mã nguồn.
 - Nếu nguyên nhân thuộc hosting, DNS, khoảng cách địa lý hoặc CDN, task **MUST** được ghi đúng owner; không tuyên bố đã sửa chỉ bằng minify HTML.
 - Tài nguyên tĩnh **SHOULD** có nén, cache header và định dạng/dung lượng phù hợp.
@@ -1564,10 +1568,25 @@ Phần này được bổ sung từ audit thực tế trang chủ Webs4V ngày 0
 - Tài nguyên LCP **MUST** được xác định bằng đo lường. Ảnh LCP **SHOULD** có `fetchpriority="high"` và không lazy-load; không gắn ưu tiên cao cho nhiều ảnh cùng lúc.
 - Font bên thứ ba **SHOULD** dùng `font-display: swap` và chiến lược preload/async phù hợp; phải có fallback font để nội dung xuất hiện sớm.
 - Pipeline dự án **SHOULD** có lệnh tạo ảnh hiện đại, biến thể responsive và audit kích thước để lỗi không quay lại khi thêm ảnh mới.
+- Ảnh được sinh bằng JavaScript/React, ảnh clone của carousel và ảnh trong menu động **MUST** được audit trên rendered DOM; kiểm tra source HTML đơn thuần là chưa đủ.
+- Build **MUST** được kiểm tra để bảo đảm không vô tình đóng gói cả ảnh gốc dung lượng lớn khi giao diện chỉ dùng biến thể nhỏ.
 - Video hero, ảnh LCP, font và script bên thứ ba **MUST** có chiến lược tải rõ ràng; không lazy-load tài nguyên LCP một cách máy móc.
 - **SHOULD** ưu tiên giảm request ngoài và script không cần thiết trước khi cài thêm plugin audit, social share hoặc widget.
 
-### 14.8. Social sharing và backlink
+### 14.8. Meta description và tín hiệu tin cậy
+
+- Mỗi trang indexable **MUST** có meta description riêng, đúng nội dung và phù hợp Search Intent; không sao chép hàng loạt giữa các URL.
+- Webs4V **SHOULD** dùng khoảng 150–160 ký tự như ngưỡng biên tập ban đầu cho trang dịch vụ/trang chủ. Đây là rule dự án, không phải giới hạn xếp hạng cố định; Google có thể cắt hoặc viết lại snippet.
+- **MUST** ưu tiên thông tin hữu ích và lời hứa chính xác hơn việc kéo chuỗi lên đúng số ký tự mà công cụ đề xuất.
+- Content Trust Score của công cụ bên thứ ba **MUST** được xem là chỉ số chẩn đoán, không phải tín hiệu xếp hạng đã được Google xác nhận.
+- Trang doanh nghiệp **MUST** công khai thông tin pháp lý/liên hệ có thể kiểm chứng phù hợp với ngữ cảnh: tên doanh nghiệp, địa chỉ, email, điện thoại và chính sách.
+- Bài chuyên môn **SHOULD** có tác giả hoặc đơn vị chịu trách nhiệm, ngày cập nhật và cách kiểm chứng dữ liệu khi các yếu tố này có giá trị cho người đọc.
+- Hồ sơ đội ngũ, tên người phụ trách, chứng chỉ, khách hàng và testimonial **MUST** là dữ liệu thật, được phép công bố và có khả năng đối chiếu.
+- **MUST** không sáng tác tên người, chức danh, số năm kinh nghiệm, testimonial, logo khách hàng, rating hoặc case study chỉ để tăng điểm trust.
+- Badge bảo mật/DMCA **MAY** là tín hiệu hỗ trợ nhưng **MUST NOT** được xem là thay thế cho bằng chứng năng lực, con người thật, quy trình, chính sách và dự án có thể xác minh.
+- Khi thiếu dữ liệu tin cậy cần thiết, task **MUST** được ghi là yêu cầu dữ liệu từ chủ doanh nghiệp; developer không được tự điền nội dung giả.
+
+### 14.9. Social sharing và backlink
 
 - Nút chia sẻ mạng xã hội là **MAY**, không phải yêu cầu SEO bắt buộc cho mọi trang.
 - **MUST** không cài plugin hoặc script social nặng chỉ để vượt cảnh báo “few sharing options”.
@@ -1575,7 +1594,7 @@ Phần này được bổ sung từ audit thực tế trang chủ Webs4V ngày 0
 - Kế hoạch backlink **SHOULD** dựa trên tài sản có giá trị, quan hệ thật, hồ sơ doanh nghiệp, báo chí/ngành nghề phù hợp và local citation nhất quán.
 - Cảnh báo “ít backlink” **MUST** được đưa vào kế hoạch off-page riêng, không giao cho developer như lỗi HTML.
 
-### 14.9. Preflight bắt buộc trước khi push/deploy
+### 14.10. Preflight bắt buộc trước khi push/deploy
 
 - [ ] Build production thành công và output chứa đủ trang/tài nguyên.
 - [ ] Không ảnh nào thiếu thuộc tính `alt`; alt rỗng đã được xác minh là có chủ đích.
@@ -1587,5 +1606,11 @@ Phần này được bổ sung từ audit thực tế trang chủ Webs4V ngày 0
 - [ ] `www`/non-`www`, HTTPS, canonical, sitemap và internal link thống nhất.
 - [ ] Link ngoài có mục đích và quan hệ `rel` phù hợp; không xóa CTA chuyển đổi chỉ để giảm số lượng.
 - [ ] TTFB được đánh giá riêng với tải/render; lỗi hạ tầng có owner cụ thể.
+- [ ] Đã xác định LCP trên desktop/mobile; mục tiêu dự án không vượt 2,5 giây ở p75 khi có dữ liệu thực tế.
+- [ ] Render-blocking resource đã được phân loại thành critical, có thể trì hoãn hoặc phụ thuộc bên thứ ba.
+- [ ] Ảnh raster dùng định dạng hiện đại; ảnh responsive có `srcset`/`sizes` hoặc kích thước file gần kích thước hiển thị.
+- [ ] Ảnh do React/JavaScript sinh ra đã được kiểm tra trong rendered DOM, không chỉ source HTML.
+- [ ] Meta description duy nhất, đúng intent; nếu lệch ngưỡng nội bộ 150–160 ký tự phải có lý do nội dung rõ ràng.
+- [ ] Thông tin trust đều có nguồn thật; không có tác giả, testimonial, chứng chỉ, khách hàng hoặc số liệu được tạo để làm đẹp audit.
 - [ ] Backlink và social sharing không bị “sửa giả” trong source.
 - [ ] Audit lại URL live sau deploy; lưu ngày, công cụ, kết quả và các false positive đã xác minh.
