@@ -378,6 +378,15 @@ Nếu không trả lời được câu 3 hoặc 4, liên kết cần được xe
 - **SHOULD** bổ sung ví dụ thực tế, quy trình, hình ảnh gốc, dữ liệu, tác giả hoặc bằng chứng khi chúng giúp người đọc tin và hành động.
 - **SHOULD** cập nhật hoặc hợp nhất nội dung cũ thay vì tiếp tục xuất bản các trang cạnh tranh cùng một ý định.
 
+#### Khớp Search Intent với vai trò trang
+
+- **MUST** xác định intent từ ngôn ngữ truy vấn, SERP thực tế, hành vi khách hàng và mục tiêu kinh doanh; không gán intent chỉ từ một nhãn từ khóa do công cụ cung cấp.
+- **MUST** chọn một vai trò chính cho URL — tìm hiểu, so sánh, kiểm chứng, xem giá hoặc hành động — đồng thời ghi nhận intent phụ nếu SERP và hành trình ra quyết định có tính hỗn hợp.
+- Trang dịch vụ hoặc truy vấn có intent thương mại/chuyển đổi **MUST** giúp người đọc đánh giá offer, đối tượng phù hợp, phạm vi, quy trình, bằng chứng, rủi ro, cách xác định giá và phương thức liên hệ; không được biến thành một bài kiến thức chung chỉ để kéo traffic.
+- Bài kiến thức **MUST** hoàn thành câu trả lời trước khi đưa CTA và không được giả dạng nội dung hướng dẫn để che một trang bán hàng thiếu thông tin.
+- Khi người tìm kiếm cần báo giá hoặc hành động, trang **MUST** có CTA rõ ràng và cho biết người dùng cần cung cấp gì, sẽ nhận lại gì và bước tiếp theo diễn ra như thế nào.
+- **MUST** xem xét lại intent khi URL có impression nhưng CTR thấp, có traffic nhưng không hoàn thành nhiệm vụ, hoặc SERP đã chuyển sang loại trang khác; không mặc định vấn đề nằm ở mật độ từ khóa.
+
 #### Customer-first SEO: khách hàng là trọng tâm, từ khóa là công cụ
 
 Thứ tự ra quyết định bắt buộc:
