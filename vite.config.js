@@ -3,6 +3,9 @@ import { resolve } from 'node:path';
 
 export default defineConfig({
   publicDir: 'public',
+  esbuild: {
+    legalComments: 'none',
+  },
   build: {
     outDir: 'out',
     emptyOutDir: true,

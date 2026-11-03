@@ -5152,10 +5152,29 @@ body.has-pointer .cursor {
 
   .hero__actions {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
     align-items: stretch;
     width: min(100%, 390px);
     margin-inline: auto;
+  }
+
+  .hero__phone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero__phone span {
+    display: none;
+  }
+
+  .hero__phone strong {
+    margin-top: 0;
+    font-size: 13px;
+    line-height: 1.25;
+    text-align: center;
   }
 
   .hero__primary,
@@ -16348,6 +16367,36 @@ main > .panel + .panel {
     letter-spacing: 0.01em;
     line-height: 1.3;
     touch-action: manipulation;
+  }
+
+  .hero__primary,
+  .hero__phone {
+    min-height: 48px;
+    padding-inline: 10px !important;
+  }
+
+  .hero__primary {
+    gap: 6px !important;
+    font-size: 13px !important;
+    text-align: center !important;
+  }
+
+  .hero__phone {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .hero__phone span {
+    display: none !important;
+  }
+
+  .hero__phone strong {
+    margin-top: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
   }
 
   :is(button, [role="button"], .menu-toggle, .blog-filters button) {
