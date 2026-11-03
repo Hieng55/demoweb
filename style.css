@@ -1140,12 +1140,12 @@ h2 {
   transform: translateY(-2px);
 }
 
-.hero__proof strong,
+.hero__proof-title,
 .hero__proof span {
   display: block;
 }
 
-.hero__proof strong {
+.hero__proof-title {
   color: #090b12;
   font-family: "Lora", serif;
   font-size: clamp(24px, 2.2vw, 34px);
@@ -1155,7 +1155,7 @@ h2 {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.62);
 }
 
-.hero__proof div:first-child strong {
+.hero__proof div:first-child .hero__proof-title {
   font-size: clamp(29px, 2.65vw, 41px);
 }
 
@@ -2354,7 +2354,7 @@ b > morph-icon.external-link-icon {
   text-transform: uppercase;
 }
 
-.solution-node h3 {
+.solution-node__title {
   margin: 5px 0 7px;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: clamp(19px, 1.55vw, 24px);
@@ -5177,7 +5177,7 @@ body.has-pointer .cursor {
     padding: 14px 6px;
   }
 
-  .hero__proof strong {
+  .hero__proof-title {
     font-size: 23px;
   }
 
@@ -5370,7 +5370,7 @@ body.has-pointer .cursor {
     width: 25px;
   }
 
-  .solution-node h3 {
+  .solution-node__title {
     font-size: 21px;
   }
 
@@ -5842,8 +5842,8 @@ body.has-pointer .cursor {
     padding: 12px 3px;
   }
 
-  .hero__proof strong,
-  .hero__proof div:first-child strong {
+  .hero__proof-title,
+  .hero__proof div:first-child .hero__proof-title {
     font-size: clamp(20px, 6.3vw, 27px);
   }
 
@@ -7676,7 +7676,7 @@ body.has-pointer .cursor {
 .tech-chip--dark-mark .tech-chip__mark { color: #102044; }
 .tech-chip > div { position: relative; z-index: 1; min-width: 0; }
 .tech-chip small { display: block; margin-bottom: 6px; color: rgba(218,232,255,.48); font-size: 7px; letter-spacing: .13em; text-transform: uppercase; }
-.tech-chip strong { display: block; overflow: hidden; color: #fff; font-family: "Lora", serif; font-size: 20px; font-style: italic; font-weight: 400; letter-spacing: -.025em; text-overflow: ellipsis; white-space: nowrap; }
+.tech-chip__name { display: block; overflow: hidden; color: #fff; font-family: "Lora", serif; font-size: 20px; font-style: italic; font-weight: 400; letter-spacing: -.025em; text-overflow: ellipsis; white-space: nowrap; }
 .technologies__note {
   display: flex;
   align-items: center;
@@ -7707,7 +7707,7 @@ body.has-pointer .cursor {
   @keyframes techMarquee { to { transform: translateX(calc(-50% - 5px)); } }
   .tech-chip { flex-basis: 198px; min-height: 82px; padding: 13px 15px; border-radius: 19px; }
   .tech-chip__mark { flex-basis: 47px; width: 47px; height: 47px; border-radius: 14px; font-size: 13px; }
-  .tech-chip strong { font-size: 18px; }
+  .tech-chip__name { font-size: 18px; }
   .technologies__note { align-items: flex-start; flex-direction: column; gap: 14px; margin: 28px 20px 0; }
   .technologies__note p { text-align: left; }
 }
@@ -8918,7 +8918,7 @@ main > .panel + .panel {
   margin-top: 8px;
 }
 
-.pricing-plan-clear h4 {
+.pricing-plan-clear__label {
   margin: 0 0 14px;
   color: #8b4b32;
   font-size: 10px;
@@ -9402,7 +9402,7 @@ main > .panel + .panel {
   padding-top: 28px;
 }
 
-.service-solution-card footer strong {
+.service-solution-card__benefit {
   display: block;
   color: #282924;
   font-family: "Lora", serif;
@@ -11909,7 +11909,7 @@ main > .panel + .panel {
 .service-solutions__heading h3,
 .service-solution-card,
 .service-solution-card h4,
-.service-solution-card footer strong,
+.service-solution-card__benefit,
 .poster-showcase__heading h3,
 .poster-showcase__benefits li strong,
 .poster-card figcaption b,
@@ -11939,7 +11939,7 @@ main > .panel + .panel {
 }
 
 .pricing-plan-clear > header > span,
-.pricing-plan-clear h4,
+.pricing-plan-clear__label,
 .pricing-addons > div strong,
 .service-solution-card > header > span,
 .service-solution-card__body > span,
@@ -15568,13 +15568,13 @@ main > .panel + .panel {
 }
 
 .hero__proof,
-.hero__proof strong,
+.hero__proof-title,
 .hero__proof span {
   color: #0f1117;
   text-shadow: none;
 }
 
-.hero__proof strong {
+.hero__proof-title {
   font-weight: 500;
 }
 
@@ -15624,11 +15624,11 @@ main > .panel + .panel {
 }
 
 .hero__proof,
-.hero__proof strong {
+.hero__proof-title {
   color: #ffffff;
 }
 
-.hero__proof strong {
+.hero__proof-title {
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.52);
 }
 
@@ -16261,7 +16261,7 @@ main > .panel + .panel {
     line-height: 1.65;
   }
 
-  .hero__proof strong {
+  .hero__proof-title {
     font-size: 17px;
   }
 
