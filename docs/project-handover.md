@@ -11,13 +11,13 @@ Website **đạt phần lớn yêu cầu SEO nền tảng**, nhưng **chưa đ�
 
 Các phần đang tốt:
 
-- 23 URL nguồn có thể index và một trang 404.
-- 23/23 URL indexable có title, meta description, canonical, `lang="vi"`, viewport và Open Graph cơ bản.
+- 24 URL nguồn có thể index và một trang 404.
+- 24/24 URL indexable có title, meta description, canonical, `lang="vi"`, viewport và Open Graph cơ bản.
 - Mỗi file HTML nguồn có đúng một H1.
 - Title và meta description không bị trùng giữa các URL.
-- 23 canonical khớp đầy đủ với 23 URL trong sitemap.
+- 24 canonical khớp đầy đủ với 24 URL trong sitemap.
 - `robots.txt` cho phép crawl và khai báo sitemap đúng.
-- 14 trang có JSON-LD; toàn bộ JSON-LD hiện parse hợp lệ.
+- 15 trang có JSON-LD; toàn bộ JSON-LD hiện parse hợp lệ.
 - Không phát hiện ảnh thiếu thuộc tính `alt`; ảnh trang trí dùng `alt=""` ở nhiều vị trí.
 - Internal link nguồn không có link gãy thật. `/duong-dan/` xuất hiện trong bài SEO chỉ là ví dụ code, không phải link điều hướng.
 - Form có label, trường bắt buộc, consent, honeypot, cooldown và trạng thái `aria-live`.
@@ -107,12 +107,12 @@ Không nhầm `Webs4V` với `Web4s`. Trụ sở thật ở Thủ Đức; Dĩ An
 
 | Hạng mục | Kết quả |
 |---|---:|
-| File HTML nguồn | 24, gồm 23 URL indexable + 404 |
-| URL trong sitemap | 23 |
-| Canonical khớp sitemap | 23/23 |
+| File HTML nguồn | 25, gồm 24 URL indexable + 404 |
+| URL trong sitemap | 24 |
+| Canonical khớp sitemap | 24/24 |
 | H1 | 1 H1/file |
 | Title/meta description trùng | 0 |
-| JSON-LD hợp lệ | 14 block trên 14 trang |
+| JSON-LD hợp lệ | 15 block trên 15 trang |
 | Ảnh thiếu `alt` | 0 |
 | Internal link gãy thật | 0 |
 | `target="_blank"` ngoài site thiếu `noopener` | 0 |
