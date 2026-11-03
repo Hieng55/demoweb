@@ -627,7 +627,7 @@ function initializeContactForm() {
     };
 
     if (!endpoint.startsWith('https://script.google.com/macros/s/') || endpoint.includes('THAY_BANG_URL_CUA_BAN')) {
-      status.textContent = 'Biểu mẫu chưa được kết nối. Vui lòng nhắn Zalo hoặc gọi 0364 003 638.';
+      status.textContent = 'Biểu mẫu chưa được kết nối. Vui lòng nhắn Zalo để được hỗ trợ.';
       status.classList.remove('is-success');
       status.classList.add('is-error');
       return;
@@ -682,7 +682,7 @@ function initializeContactForm() {
       });
     } catch (error) {
       console.error('Không thể gửi yêu cầu liên hệ.', error);
-      status.textContent = 'Chưa thể gửi tự động. Vui lòng nhắn Zalo hoặc gọi 0364 003 638.';
+      status.textContent = 'Chưa thể gửi tự động. Vui lòng nhắn Zalo để được hỗ trợ.';
       status.classList.add('is-error');
       submitButton.querySelector('span').textContent = 'Thử gửi lại';
     } finally {
