@@ -14,3 +14,12 @@ test-results/
 *.log
 .DS_Store
 Thumbs.db
+# Locally generated image variants that are not shipped by the homepage build.
+/image/*-480.webp
+/image/*-960.webp
+/image/logo-webs4v-2-1.webp
+/image/business team/1 (*)*.webp
+/image/project/*.webp
+!/image/project/*-480.webp
+/image/project/*-960.webp
+/image/project/*-1600.webp

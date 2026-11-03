@@ -1557,6 +1557,13 @@ Phần này được bổ sung từ audit thực tế trang chủ Webs4V ngày 0
 - TTFB chậm **MUST** được đo trên website live, nhiều lần và từ vị trí phù hợp trước khi kết luận do mã nguồn.
 - Nếu nguyên nhân thuộc hosting, DNS, khoảng cách địa lý hoặc CDN, task **MUST** được ghi đúng owner; không tuyên bố đã sửa chỉ bằng minify HTML.
 - Tài nguyên tĩnh **SHOULD** có nén, cache header và định dạng/dung lượng phù hợp.
+- Ảnh raster trên giao diện **SHOULD** ưu tiên WebP/AVIF khi trình duyệt mục tiêu hỗ trợ; PNG chỉ giữ khi cần đặc tính mà định dạng thay thế không đáp ứng.
+- Ảnh responsive **MUST** có `srcset`/`sizes` hoặc được phục vụ ở kích thước gần với kích thước hiển thị thực tế; không gửi ảnh 1600–2000px cho card rộng khoảng 300–400px.
+- `<img>` **MUST** khai báo `width` và `height` theo tỷ lệ nội tại để giảm layout shift.
+- Ảnh ngoài màn hình **SHOULD** dùng `loading="lazy"`; không đánh dấu `eager` cho toàn bộ carousel hoặc gallery nằm dưới hero.
+- Tài nguyên LCP **MUST** được xác định bằng đo lường. Ảnh LCP **SHOULD** có `fetchpriority="high"` và không lazy-load; không gắn ưu tiên cao cho nhiều ảnh cùng lúc.
+- Font bên thứ ba **SHOULD** dùng `font-display: swap` và chiến lược preload/async phù hợp; phải có fallback font để nội dung xuất hiện sớm.
+- Pipeline dự án **SHOULD** có lệnh tạo ảnh hiện đại, biến thể responsive và audit kích thước để lỗi không quay lại khi thêm ảnh mới.
 - Video hero, ảnh LCP, font và script bên thứ ba **MUST** có chiến lược tải rõ ràng; không lazy-load tài nguyên LCP một cách máy móc.
 - **SHOULD** ưu tiên giảm request ngoài và script không cần thiết trước khi cài thêm plugin audit, social share hoặc widget.
 

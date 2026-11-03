@@ -13,28 +13,28 @@ import {
   FileText, BookOpen,
   ShieldCheck, Cpu
 } from 'lucide';
-import iceUrl from './image/ice.jpg';
-import iceDisplacementUrl from './image/iced.jpg';
-import iceNormalUrl from './image/icen.jpg';
-import noiseUrl from './image/noises.jpg';
-import wavesUrl from './image/waves.jpg';
+import iceUrl from './image/ice.webp';
+import iceDisplacementUrl from './image/iced.webp';
+import iceNormalUrl from './image/icen.webp';
+import noiseUrl from './image/noises.webp';
+import wavesUrl from './image/waves.webp';
 import { initializeDirectionalIcons } from './ui-icons.js';
 
-const projectImageModules = import.meta.glob('./image/project/*.{jpg,jpeg,png,webp}', {
+const projectImageModules = import.meta.glob('./image/project/*-480.webp', {
   eager: true,
   query: '?url',
   import: 'default',
 });
 
 const projectMetadata = {
-  'featured-tablet.jpg': { label: 'Mẫu website responsive', alt: 'Mẫu website hiển thị trên máy tính bảng và điện thoại' },
-  'featured-4503766.jpg': { label: 'Mẫu website doanh nghiệp', alt: 'Mẫu giao diện website giới thiệu doanh nghiệp' },
-  'featured-7288248.jpg': { label: 'Mẫu website portfolio', alt: 'Mẫu giao diện website portfolio giới thiệu năng lực' },
-  'featured-16-1.jpg': { label: 'Mẫu website thương hiệu', alt: 'Mẫu giao diện website xây dựng hình ảnh thương hiệu' },
+  'featured-tablet.webp': { label: 'Mẫu website responsive', alt: 'Mẫu website hiển thị trên máy tính bảng và điện thoại' },
+  'featured-4503766.webp': { label: 'Mẫu website doanh nghiệp', alt: 'Mẫu giao diện website giới thiệu doanh nghiệp' },
+  'featured-7288248.webp': { label: 'Mẫu website portfolio', alt: 'Mẫu giao diện website portfolio giới thiệu năng lực' },
+  'featured-16-1.webp': { label: 'Mẫu website thương hiệu', alt: 'Mẫu giao diện website xây dựng hình ảnh thương hiệu' },
   'featured-restaurant.webp': { label: 'Mẫu website nhà hàng', alt: 'Mẫu giao diện website nhà hàng trên desktop và mobile' },
-  'kingsen.png': { label: 'Kingsen · Website thương hiệu', alt: 'Giao diện dự án website thương hiệu Kingsen' },
+  'kingsen.webp': { label: 'Kingsen · Website thương hiệu', alt: 'Giao diện dự án website thương hiệu Kingsen' },
   'orfarm.webp': { label: 'Orfarm · Website sản phẩm', alt: 'Giao diện dự án website sản phẩm Orfarm' },
-  'ad-tattoo-studio.png': { label: 'AD Ink · Website dịch vụ', alt: 'Giao diện dự án website dịch vụ AD Ink Tattoo Studio' },
+  'ad-tattoo-studio.webp': { label: 'AD Ink · Website dịch vụ', alt: 'Giao diện dự án website dịch vụ AD Ink Tattoo Studio' },
 };
 
 function getProjectMetadata(fileName, projectNumber) {
@@ -212,16 +212,16 @@ function initializeProjectMarquee() {
   if (!groups.length) return;
 
   const featuredOrder = [
-    'featured-tablet.jpg',
-    'featured-4503766.jpg',
-    'featured-7288248.jpg',
-    'featured-16-1.jpg',
+    'featured-tablet.webp',
+    'featured-4503766.webp',
+    'featured-7288248.webp',
+    'featured-16-1.webp',
     'featured-restaurant.webp',
   ];
   const collator = new Intl.Collator('vi', { numeric: true, sensitivity: 'base' });
   const images = Object.entries(projectImageModules).sort(([pathA], [pathB]) => {
-    const nameA = pathA.split('/').pop();
-    const nameB = pathB.split('/').pop();
+    const nameA = pathA.split('/').pop().replace('-480.webp', '.webp');
+    const nameB = pathB.split('/').pop().replace('-480.webp', '.webp');
     const rankA = featuredOrder.indexOf(nameA);
     const rankB = featuredOrder.indexOf(nameB);
     if (rankA !== -1 || rankB !== -1) {
@@ -244,7 +244,7 @@ function initializeProjectMarquee() {
 
     rowImages.forEach(([path, source], cardIndex) => {
       const projectNumber = cardIndex * groups.length + rowIndex + 1;
-      const fileName = path.split('/').pop();
+      const fileName = path.split('/').pop().replace('-480.webp', '.webp');
       const metadata = getProjectMetadata(fileName, projectNumber);
       const card = document.createElement('figure');
       const image = document.createElement('img');

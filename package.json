@@ -4,6 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "images:audit": "node scripts/audit-home-images.mjs",
+    "images:markup": "node scripts/apply-home-image-markup.mjs",
+    "images:optimize": "node scripts/optimize-home-images.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -16,6 +19,7 @@
     "three": "^0.160.0"
   },
   "devDependencies": {
+    "sharp": "^0.35.5",
     "vite": "^5.0.0"
   }
 }

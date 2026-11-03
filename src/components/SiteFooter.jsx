@@ -1,5 +1,5 @@
 import React from 'react';
-import brandLogo from '../../image/logo/logo.png';
+import brandLogo from '../../image/logo/logo.webp';
 
 export function SiteFooter() {
   React.useEffect(() => {
@@ -17,7 +17,7 @@ export function SiteFooter() {
         <div className="site-footer__top">
           <div className="site-footer__identity">
             <a className="site-footer__brand" href="#top" aria-label="Webs4V — Lên đầu trang">
-              <img src={brandLogo} alt="Webs4V" />
+              <img src={brandLogo} alt="Webs4V" width="940" height="489" loading="lazy" decoding="async" />
             </a>
             <p>Web cho người Việt — giải pháp website vừa sức, dễ vận hành và có thể phát triển cùng mọi quy mô kinh doanh.</p>
             <span className="site-footer__status"><i /> Đang nhận dự án mới</span>
@@ -76,6 +76,10 @@ export function SiteFooter() {
                 <img
                   src="https://images.dmca.com/Badges/dmca-badge-w100-2x1-02.png?ID=ec93968c-f25a-474c-953f-56886ce341d5"
                   alt="DMCA.com Protection Status"
+                  width="100"
+                  height="50"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
               <a
@@ -87,7 +91,10 @@ export function SiteFooter() {
                 <img
                   src="https://sslcanary.com/badge/webs4v.vn.svg"
                   alt="SSL monitored by SSLCanary"
+                  width="120"
                   height="28"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
               <a

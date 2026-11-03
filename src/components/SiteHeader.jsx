@@ -1,5 +1,5 @@
 import React from 'react';
-import brandLogo from '../../image/logo/logo (1).png';
+import brandLogo from '../../image/logo/logo (1).webp';
 
 const mainLinks = [
   ['/', 'Trang chủ'],
@@ -31,7 +31,7 @@ function ServicesDropdown() {
       <header><span>Hệ dịch vụ Webs4V</span><a href="/dich-vu/">Xem tất cả <b>↗</b></a></header>
       <div>
         {serviceLinks.map(([href, label, icon]) => <a href={href} key={href}>
-          <span className="services-dropdown__icon"><img src={theSvgIcon(icon)} alt="" /></span><strong>{label}</strong><b>↗</b>
+          <span className="services-dropdown__icon"><img src={theSvgIcon(icon)} alt={`Biểu tượng ${label}`} aria-hidden="true" width="24" height="24" /></span><strong>{label}</strong><b>↗</b>
         </a>)}
       </div>
     </div>
@@ -44,7 +44,7 @@ function MobileServicesMenu() {
     <div>
       <a href="/dich-vu/"><span>00</span>Tất cả dịch vụ</a>
       {serviceLinks.map(([href, label, icon]) => <a href={href} key={href}>
-        <img src={theSvgIcon(icon)} alt="" />{label}
+        <img src={theSvgIcon(icon)} alt={`Biểu tượng ${label}`} aria-hidden="true" width="24" height="24" />{label}
       </a>)}
     </div>
   </details>;

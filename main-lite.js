@@ -13,16 +13,16 @@ import {
   ShieldCheck,
 } from 'lucide';
 import { initializeDirectionalIcons } from './ui-icons.js';
-import projectFeaturedTablet from './image/project/featured-tablet.jpg';
-import projectFeaturedBusiness from './image/project/featured-4503766.jpg';
-import projectFeaturedPortfolio from './image/project/featured-7288248.jpg';
-import projectFeaturedBrand from './image/project/featured-16-1.jpg';
-import projectFeaturedRestaurant from './image/project/featured-restaurant.webp';
-import projectOne from './image/project/1.webp';
-import projectTwo from './image/project/2.webp';
-import projectKingsen from './image/project/kingsen.png';
-import projectOrfarm from './image/project/orfarm.webp';
-import projectAdInk from './image/project/ad-tattoo-studio.png';
+import projectFeaturedTablet from './image/project/featured-tablet-480.webp';
+import projectFeaturedBusiness from './image/project/featured-4503766-480.webp';
+import projectFeaturedPortfolio from './image/project/featured-7288248-480.webp';
+import projectFeaturedBrand from './image/project/featured-16-1-480.webp';
+import projectFeaturedRestaurant from './image/project/featured-restaurant-480.webp';
+import projectOne from './image/project/1-480.webp';
+import projectTwo from './image/project/2-480.webp';
+import projectKingsen from './image/project/kingsen-480.webp';
+import projectOrfarm from './image/project/orfarm-480.webp';
+import projectAdInk from './image/project/ad-tattoo-studio-480.webp';
 
 const mobileProjectImages = [
   { source: projectFeaturedTablet, label: 'Mẫu website responsive', alt: 'Mẫu website hiển thị trên máy tính bảng và điện thoại' },
