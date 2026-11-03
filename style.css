@@ -12240,18 +12240,20 @@ main > .panel + .panel {
 }
 
 .about-page .company-hero h1 {
-  max-width: 900px;
-  margin: 0 0 32px;
-  font-size: clamp(56px, 5.4vw, 88px);
-  line-height: .98;
+  max-width: 780px;
+  margin: 0 0 28px;
+  font-size: clamp(48px, 4.25vw, 68px);
+  letter-spacing: -.055em;
+  line-height: 1.04;
   text-wrap: balance;
 }
 
 .about-page .company-hero h1 em {
-  max-width: 840px;
-  margin-top: .22em;
-  font-size: .62em;
-  line-height: 1.1;
+  max-width: 720px;
+  margin-top: .28em;
+  font-size: .56em;
+  letter-spacing: -.045em;
+  line-height: 1.16;
 }
 
 .about-page .company-hero__lead {
@@ -12513,6 +12515,11 @@ main > .panel + .panel {
     grid-template-columns: 1fr;
   }
 
+  .about-page .company-hero h1 {
+    max-width: 720px;
+    font-size: clamp(46px, 6.2vw, 62px);
+  }
+
   .about-page .company-hero__principles {
     margin-top: 48px;
     grid-template-columns: repeat(3, 1fr);
@@ -12565,12 +12572,13 @@ main > .panel + .panel {
   }
 
   .about-page .company-hero h1 {
-    font-size: clamp(43px, 12vw, 56px);
-    line-height: 1;
+    font-size: clamp(36px, 10vw, 46px);
+    line-height: 1.04;
   }
 
   .about-page .company-hero h1 em {
-    font-size: .76em;
+    font-size: .68em;
+    line-height: 1.14;
   }
 
   .about-page .company-hero__principles {
