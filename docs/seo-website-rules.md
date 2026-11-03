@@ -410,6 +410,8 @@ Thứ tự ra quyết định bắt buộc:
 Một nội dung SEO phải có giá trị sử dụng độc lập, kể cả khi người đọc không đăng ký, không mua hàng và không trở thành khách hàng.
 
 - **MUST** xác định người đọc sẽ hiểu thêm, làm được hoặc quyết định tốt hơn điều gì sau khi đọc.
+- **MUST** viết bằng ngôn ngữ người đọc có thể hiểu và sử dụng; bước tối ưu từ khóa không được làm câu chữ gượng ép, sai nghĩa hoặc che khuất câu trả lời chính.
+- **MUST** không spin, xáo câu hoặc diễn đạt lại nội dung cũ chỉ để tạo cảm giác “mới”. Chỉ cập nhật khi có dữ kiện, trải nghiệm, ví dụ, bối cảnh hoặc khuyến nghị mới tạo thêm giá trị thực.
 - **MUST** không cố tình giấu bước thiết yếu để ép người đọc mua khóa học, để lại thông tin hoặc thuê dịch vụ.
 - **MUST** giải thích đủ bốn lớp khi nội dung mang tính hướng dẫn:
   - **What:** Cần làm việc gì?
@@ -497,6 +499,7 @@ DLN mô tả hành trình website **chủ đích thiết kế**; Path Exploratio
 
 - **MUST** không dùng heatmap hoặc session recording làm nguồn dữ liệu duy nhất để quyết định thay đổi UX/CRO.
 - **MUST** không kết luận một URL cuối phiên là điểm rơi có vấn đề trước khi kiểm tra người dùng đã hoàn thành mục tiêu hay chưa.
+- **MUST** không coi Bounce Rate, Time on Page hoặc một chỉ số tương tác đơn lẻ là tín hiệu xếp hạng trực tiếp, cũng không kết luận Google hạ hạng chỉ từ biến động của các chỉ số này. Chúng chỉ là dữ liệu chẩn đoán và phải được đọc cùng intent, task completion, nguồn traffic, chuyển đổi và dữ liệu Search Console.
 - **MUST** xác định vai trò của mỗi URL, internal link và CTA trong hành trình DLN.
 - **MUST** kiểm tra nguồn vào, chuỗi trang, hành động, điểm dừng và trạng thái conversion trước khi đưa ra giả thuyết tối ưu.
 - **MUST** phân biệt:
