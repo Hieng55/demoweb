@@ -12267,6 +12267,57 @@ main > .panel + .panel {
   justify-content: flex-start;
 }
 
+.about-page .company-hero__actions a:last-child {
+  position: relative;
+  isolation: isolate;
+  width: auto;
+  min-height: 56px;
+  padding: 0 24px;
+  overflow: hidden;
+  color: #172957;
+  border: 1px solid rgba(255, 255, 255, .96);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .82), rgba(229, 239, 255, .52)),
+    rgba(255, 255, 255, .42);
+  box-shadow:
+    0 16px 38px rgba(35, 66, 139, .16),
+    0 4px 12px rgba(35, 66, 139, .08),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(80, 122, 205, .18),
+    inset 0 0 0 1px rgba(97, 139, 220, .08);
+  justify-content: center;
+  gap: 22px;
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  backdrop-filter: blur(24px) saturate(1.4);
+  transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
+}
+
+.about-page .company-hero__actions a:last-child::before {
+  position: absolute;
+  top: 1px;
+  right: 12%;
+  left: 12%;
+  z-index: -1;
+  height: 48%;
+  border-radius: 999px 999px 45% 45%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0));
+  content: "";
+  pointer-events: none;
+}
+
+.about-page .company-hero__actions a:last-child:hover {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .94), rgba(220, 235, 255, .68)),
+    rgba(255, 255, 255, .56);
+  box-shadow:
+    0 20px 46px rgba(29, 72, 170, .22),
+    0 6px 16px rgba(35, 66, 139, .1),
+    inset 0 1.5px 0 #fff,
+    inset 0 -1px 0 rgba(65, 111, 202, .22);
+  transform: translateY(-2px);
+}
+
 .about-page .company-hero__principles {
   width: 100%;
   margin: 0 0 5px;
@@ -12579,6 +12630,13 @@ main > .panel + .panel {
   .about-page .company-hero h1 em {
     font-size: .68em;
     line-height: 1.14;
+  }
+
+  .about-page .company-hero__actions a:last-child {
+    width: 100%;
+    min-height: 52px;
+    padding-inline: 20px;
+    justify-content: space-between;
   }
 
   .about-page .company-hero__principles {
