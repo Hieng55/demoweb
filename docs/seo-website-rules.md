@@ -433,6 +433,14 @@ Một nội dung SEO phải có giá trị sử dụng độc lập, kể cả k
 - **SHOULD** để người đọc có thể tự thực hiện những việc phù hợp với năng lực và mức độ rủi ro của họ.
 - **SHOULD** làm rõ giá trị khác biệt của dịch vụ chuyên nghiệp: chiến lược, kinh nghiệm, xử lý tình huống phức tạp, tốc độ và trách nhiệm triển khai — không phải quyền tiếp cận một bước kiến thức bị cố tình che giấu.
 
+#### Nội dung evergreen và vòng đời tài sản
+
+- **MUST** phân loại nội dung là evergreen, nhạy thời gian hay theo sự kiện để xác định kỳ vọng tuổi thọ và lịch kiểm tra phù hợp; không mặc định mọi bài viết có thể tạo traffic hoặc khách hàng lâu dài.
+- Nội dung evergreen **MUST** được rà soát khi dữ kiện, giá, sản phẩm, quy định, intent/SERP, liên kết hoặc hiệu quả chuyển đổi thay đổi. “Evergreen” không có nghĩa là xuất bản một lần rồi không cần bảo trì.
+- **MUST** không đổi ngày xuất bản/cập nhật chỉ để tạo tín hiệu freshness. `dateModified` chỉ thay đổi khi nội dung có chỉnh sửa thực chất và phần thay đổi phải kiểm tra được.
+- **MUST** đánh giá giá trị dài hạn bằng traffic phù hợp, task completion, assisted conversion, lead/doanh thu và chi phí sản xuất–duy trì; không gọi organic traffic là “miễn phí” và không cam kết một bài sẽ giữ hạng hoặc mang khách trong một khoảng thời gian cố định.
+- Khi so sánh SEO với quảng cáo trả phí, **MUST** xem xét thời gian tạo kết quả, khả năng kiểm soát phân phối, chi phí duy trì, biên lợi nhuận, rủi ro nền tảng và vai trò của từng kênh; không mô tả hai kênh như lựa chọn loại trừ nhau.
+
 #### Bảy dạng nội dung tạo giá trị và niềm tin
 
 1. **Kể chuyện thật:** Trình bày bài toán, bối cảnh, cách xử lý, kết quả, giới hạn và điều chưa làm tốt.
