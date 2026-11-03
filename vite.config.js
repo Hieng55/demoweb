@@ -35,6 +35,7 @@ export default defineConfig({
         blogWebsiteThuDuc: resolve(__dirname, 'blog/thiet-ke-website-thu-duc/index.html'),
         blogWebsiteEasternOutskirts: resolve(__dirname, 'blog/thiet-ke-website-vung-ven-phia-dong/index.html'),
         blogGoogleAdsClicksNoCustomers: resolve(__dirname, 'blog/google-ads-co-click-khong-co-khach/index.html'),
+        blogWebsiteHocMon: resolve(__dirname, 'blog/thiet-ke-website-hoc-mon/index.html'),
         notFound: resolve(__dirname, '404.html'),
       },
     },
