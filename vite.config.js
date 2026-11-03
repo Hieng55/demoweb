@@ -29,6 +29,7 @@ export default defineConfig({
         blogEcommerce: resolve(__dirname, 'blog/chuan-bi-lam-website-ecommerce/index.html'),
         blogResponsive: resolve(__dirname, 'blog/responsive-khong-chi-la-thu-nho-giao-dien/index.html'),
         blogCompanyIdentity: resolve(__dirname, 'blog/cong-ty-tnhh-cong-nghe-webs4v-vn/index.html'),
+        blogWebsiteThuDuc: resolve(__dirname, 'blog/thiet-ke-website-thu-duc/index.html'),
         notFound: resolve(__dirname, '404.html'),
       },
     },
