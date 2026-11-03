@@ -1,5 +1,7 @@
 # Quy chuẩn typography Webs4V
 
+> Đây là phụ lục chuyên sâu về chữ. Chuẩn màu sắc, spacing, liquid glass, component, hình ảnh, responsive và motion nằm tại `docs/design-system.md`.
+
 Ngày kiểm tra: 04/11/2026  
 Nguồn chuẩn: `style.css` và font được nạp trong các file HTML nguồn. Không lấy CSS đã build trong `out/` làm nơi chỉnh sửa.
 

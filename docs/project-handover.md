@@ -41,6 +41,7 @@ Các phần chưa đạt hoặc chưa thể xác minh:
 | Build output | `out/`; thư mục này đang được track trong Git |
 | Form backend | Google Apps Script trong `apps-script/Code.gs`; chuyển thông báo qua Telegram theo cấu hình Script Properties |
 | SEO rule | `docs/seo-website-rules.md` |
+| Design system | `docs/design-system.md` |
 | Typography | `docs/typography-system.md` |
 
 Các thư mục quan trọng:
@@ -183,6 +184,7 @@ Việc cần kiểm tra thủ công sau mỗi deploy:
 Trước khi sửa:
 
 - Đọc `docs/seo-website-rules.md`.
+- Đọc `docs/design-system.md`.
 - Đọc `docs/typography-system.md`.
 - Chạy `git status`; không ghi đè thay đổi chưa rõ chủ sở hữu.
 - Chỉnh source, không chỉnh trực tiếp `out/`.
