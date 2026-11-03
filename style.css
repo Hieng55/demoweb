@@ -15922,8 +15922,8 @@ main > .panel + .panel {
   box-shadow: 0 18px 50px rgba(38, 58, 119, .07);
 }
 
-.article-answer strong,
-.article-note strong { display: block; margin-bottom: 8px; color: #175fc4; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.article-answer > strong,
+.article-note > strong { display: block; margin-bottom: 8px; color: #175fc4; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .article-checklist h2 { margin-top: 0; }
 .article-checklist li::marker { color: #1b67cd; }
 
