@@ -1141,28 +1141,26 @@ h2 {
 }
 
 .hero__proof-title,
-.hero__proof span {
+.hero__proof-desc,
+.hero__proof span:not(.hero__proof-title) {
   display: block;
 }
 
 .hero__proof-title {
   color: #090b12;
   font-family: "Lora", serif;
-  font-size: clamp(24px, 2.2vw, 34px);
+  font-size: clamp(22px, 1.85vw, 28px);
   font-style: italic;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.15;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.62);
 }
 
-.hero__proof div:first-child .hero__proof-title {
-  font-size: clamp(29px, 2.65vw, 41px);
-}
-
-.hero__proof span {
+.hero__proof-desc,
+.hero__proof span:not(.hero__proof-title) {
   margin-top: 8px;
   color: #1d1c22;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.4;
 }
@@ -5197,11 +5195,12 @@ body.has-pointer .cursor {
   }
 
   .hero__proof-title {
-    font-size: 23px;
+    font-size: 20px;
   }
 
-  .hero__proof span {
-    font-size: 9px;
+  .hero__proof-desc,
+  .hero__proof span:not(.hero__proof-title) {
+    font-size: 11px;
   }
 
   h2 {
@@ -5861,14 +5860,14 @@ body.has-pointer .cursor {
     padding: 12px 3px;
   }
 
-  .hero__proof-title,
-  .hero__proof div:first-child .hero__proof-title {
-    font-size: clamp(20px, 6.3vw, 27px);
+  .hero__proof-title {
+    font-size: clamp(17px, 4.4vw, 20px);
   }
 
-  .hero__proof span {
-    margin-top: 6px;
-    font-size: 8px;
+  .hero__proof-desc,
+  .hero__proof span:not(.hero__proof-title) {
+    margin-top: 5px;
+    font-size: 10px;
   }
 
   .projects__intro,
@@ -15588,7 +15587,8 @@ main > .panel + .panel {
 
 .hero__proof,
 .hero__proof-title,
-.hero__proof span {
+.hero__proof-desc,
+.hero__proof span:not(.hero__proof-title) {
   color: #0f1117;
   text-shadow: none;
 }
@@ -15597,8 +15597,9 @@ main > .panel + .panel {
   font-weight: 500;
 }
 
-.hero__proof span {
-  font-size: 11px;
+.hero__proof-desc,
+.hero__proof span:not(.hero__proof-title) {
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -15648,11 +15649,14 @@ main > .panel + .panel {
 }
 
 .hero__proof-title {
+  font-size: clamp(22px, 1.85vw, 28px);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.52);
 }
 
-.hero__proof span {
+.hero__proof-desc,
+.hero__proof span:not(.hero__proof-title) {
   color: rgba(255, 255, 255, 0.76);
+  font-size: 12px;
   text-shadow: 0 1px 7px rgba(0, 0, 0, 0.64);
 }
 
@@ -16317,11 +16321,12 @@ main > .panel + .panel {
   }
 
   .hero__proof-title {
-    font-size: 17px;
+    font-size: 18px !important;
   }
 
-  .hero__proof span {
-    font-size: 12px;
+  .hero__proof-desc,
+  .hero__proof span:not(.hero__proof-title) {
+    font-size: 11.5px !important;
     line-height: 1.4;
   }
 
