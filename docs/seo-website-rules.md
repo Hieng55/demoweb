@@ -1,7 +1,7 @@
 # Bộ quy tắc SEO website bền vững
 
-> Phiên bản: 1.15  
-> Cập nhật: 30/10/2026  
+> Phiên bản: 1.16
+> Cập nhật: 04/11/2026
 > Mục đích: Dùng làm rule, checklist và tiêu chuẩn nghiệm thu SEO cho mọi website được xây dựng hoặc tối ưu sau này.
 
 ## 1. Tư tưởng cốt lõi
@@ -1490,3 +1490,95 @@ Khi mở rộng thư viện 112+ phần tử, mỗi bản ghi **SHOULD** có:
 11. Nguồn WHATWG/WAI/Google chính thức và ngày kiểm tra.
 
 Thư viện **MUST** được cập nhật theo tiêu chuẩn sống; không coi một danh sách 112 phần tử tại một thời điểm là cố định vĩnh viễn.
+
+## 14. Quy tắc phòng ngừa lỗi từ công cụ audit tự động
+
+Phần này được bổ sung từ audit thực tế trang chủ Webs4V ngày 04/11/2026. Mục tiêu là ngăn lỗi lặp lại trong source và bản build, đồng thời tránh làm hỏng semantic, accessibility hoặc chuyển đổi chỉ để tăng điểm công cụ.
+
+### 14.1. Nguyên tắc đọc kết quả audit
+
+- **MUST** mở chi tiết từng cảnh báo và xác minh trên HTML đầu ra trước khi sửa.
+- **MUST** phân biệt lỗi kỹ thuật thật, vấn đề chất lượng, giới hạn hạ tầng, hạng mục off-page và false positive của công cụ.
+- **MUST** không coi điểm số hoặc màu xanh của một công cụ là mục tiêu SEO cuối cùng.
+- **MUST** kiểm tra cả source và thư mục build/deploy; source đúng nhưng output sai vẫn được coi là lỗi.
+- **MUST** chạy lại build sau thay đổi và kiểm tra lại đúng URL/canonical host đã audit.
+- **SHOULD** ghi lại lý do giữ nguyên cảnh báo khi việc “sửa” sẽ làm giảm accessibility, UX, chuyển đổi hoặc tính chính xác của nội dung.
+
+### 14.2. Hình ảnh và `alt`
+
+- Mọi `<img>` **MUST** có thuộc tính `alt`.
+- Ảnh mang thông tin **MUST** có alt ngắn gọn, mô tả điều người dùng cần hiểu từ ảnh; không lấy tiêu đề bài hoặc danh sách từ khóa làm alt nếu ảnh không thể hiện nội dung đó.
+- Ảnh trang trí theo chuẩn accessibility **SHOULD** dùng `alt=""`; đây không phải ảnh bị thiếu alt.
+- Khi công cụ bên thứ ba báo `alt=""` là “không có alt”, người kiểm tra **MUST** xác minh vai trò ảnh trước khi thay đổi.
+- Nếu yêu cầu nghiệm thu bắt buộc alt khác rỗng cho icon đã có nhãn bên cạnh, icon **MAY** dùng mô tả trung tính và `aria-hidden="true"` để tránh trình đọc màn hình đọc lặp.
+- Nhóm slider/carousel nhân bản **MUST** có `aria-hidden="true"` ở bản sao. Nếu công cụ không hiểu trạng thái này và dự án bắt buộc vượt audit, bản sao **MAY** dùng lại alt của ảnh gốc nhưng vẫn phải nằm trong vùng `aria-hidden`.
+- **MUST** không dùng alt để giấu từ khóa địa phương, tên dịch vụ hoặc biến thể truy vấn không xuất hiện trong hình.
+- Preflight **MUST** thống kê riêng ba nhóm: thiếu thuộc tính alt, alt rỗng có chủ đích và alt có nội dung.
+
+### 14.3. Heading
+
+- Heading **MUST** biểu diễn cấu trúc nội dung, không dùng chỉ để tạo cỡ chữ hoặc kiểu chữ.
+- Nhãn lặp trong card như “Bao gồm”, “Chưa bao gồm”, “Lợi ích” **SHOULD** dùng `<p>` hoặc `<span>` có class nếu không mở đầu một section độc lập.
+- Card phụ hoặc node trình bày **MAY** dùng text element có class thay cho heading khi toàn bộ nhóm đã có heading chung rõ ràng.
+- **MUST** tránh heading trùng nguyên văn trong cùng trang khi chúng đại diện cho các phần khác nhau; nếu bắt buộc lặp, cấu trúc và accessible context phải giải thích được.
+- **MUST** kiểm tra heading sau render, bao gồm nội dung carousel, component lặp và phiên bản desktop/mobile.
+- **MUST** không áp dụng một giới hạn số heading cứng cho mọi trang. Cảnh báo “quá nhiều heading” là tín hiệu để rà semantic, không phải lý do xóa heading hợp lệ.
+- Preflight **SHOULD** báo tổng số heading, heading rỗng, heading trùng và trường hợp nhảy cấp để review thủ công.
+
+### 14.4. `<strong>`, `<b>` và nhấn mạnh thị giác
+
+- `<strong>` **MUST** chỉ dùng cho nội dung có mức độ quan trọng ngữ nghĩa; `<b>` chỉ dùng khi cần thu hút chú ý mà không tăng mức quan trọng.
+- Tên công nghệ, con số giá, label card và text cần in đậm chỉ vì thiết kế **SHOULD** dùng `<span>`/`<p>` với class CSS.
+- **MUST** không bọc cả câu dài trong `<strong>` chỉ để tăng font-weight.
+- **MUST** tránh lặp cùng một từ trong hàng loạt thẻ nhấn mạnh do carousel hoặc component nhân bản.
+- Với Webs4V, preflight trang chủ **SHOULD** cảnh báo khi tổng `<strong>` và `<b>` vượt 69. Đây là ngưỡng kiểm soát misuse của dự án, không phải giới hạn xếp hạng chung của Google.
+
+### 14.5. Internal link, external link và anchor text
+
+- Anchor **MUST** mô tả đúng mục đích hoặc trang đích; CTA cùng loại **SHOULD** được viết theo ngữ cảnh khi điều đó giúp người dùng phân biệt lựa chọn.
+- Link lặp trong menu desktop/mobile hoặc CTA chuyển đổi **MAY** được giữ khi cần cho UX; không xóa chỉ để làm xanh cảnh báo.
+- External link **MUST** có mục đích rõ ràng. Link mở tab mới **MUST** dùng `rel="noopener noreferrer"`; link quảng cáo/tài trợ **MUST** dùng quan hệ phù hợp.
+- **MUST** không đặt giới hạn external link cứng cho mọi trang. Số lượng chỉ là tín hiệu rà soát tài nguyên ngoài, uy tín nguồn, hiệu năng và hành trình chuyển đổi.
+- CTA Zalo, Maps, chứng nhận và kênh liên hệ **MAY** được giữ khi phục vụ hành động thật của khách hàng.
+- **SHOULD** tự host icon/tài nguyên tĩnh bên thứ ba khi hợp pháp và khi việc đó giảm phụ thuộc mạng ngoài rõ ràng.
+
+### 14.6. Charset, biểu tượng thiết bị và URL chuẩn
+
+- Mọi trang **MUST** có `<meta charset="UTF-8">` ở đầu `<head>`.
+- Máy chủ **MUST** trả charset UTF-8 trong HTTP `Content-Type` hoặc cấu hình tương đương; meta charset không thay thế kiểm tra HTTP header.
+- Website **MUST** chọn một hostname chuẩn (`www` hoặc non-`www`) và dùng 301 từ phiên bản còn lại.
+- Canonical, sitemap, internal link, structured data và redirect **MUST** thống nhất hostname chuẩn.
+- Mọi trang **SHOULD** khai báo favicon và `apple-touch-icon`; tài nguyên phải tồn tại trong bản deploy.
+- Cấu hình server như `.htaccess` **MUST** được đưa vào thư mục build/deploy và được kiểm tra sau build.
+
+### 14.7. Performance và thời gian phản hồi
+
+- **MUST** phân biệt server response/TTFB với thời gian tải tài nguyên, render và Core Web Vitals.
+- TTFB chậm **MUST** được đo trên website live, nhiều lần và từ vị trí phù hợp trước khi kết luận do mã nguồn.
+- Nếu nguyên nhân thuộc hosting, DNS, khoảng cách địa lý hoặc CDN, task **MUST** được ghi đúng owner; không tuyên bố đã sửa chỉ bằng minify HTML.
+- Tài nguyên tĩnh **SHOULD** có nén, cache header và định dạng/dung lượng phù hợp.
+- Video hero, ảnh LCP, font và script bên thứ ba **MUST** có chiến lược tải rõ ràng; không lazy-load tài nguyên LCP một cách máy móc.
+- **SHOULD** ưu tiên giảm request ngoài và script không cần thiết trước khi cài thêm plugin audit, social share hoặc widget.
+
+### 14.8. Social sharing và backlink
+
+- Nút chia sẻ mạng xã hội là **MAY**, không phải yêu cầu SEO bắt buộc cho mọi trang.
+- **MUST** không cài plugin hoặc script social nặng chỉ để vượt cảnh báo “few sharing options”.
+- Backlink là tín hiệu off-page; **MUST** không tạo link giả, backlink bẩn, mạng site hoặc link không liên quan để tăng số lượng.
+- Kế hoạch backlink **SHOULD** dựa trên tài sản có giá trị, quan hệ thật, hồ sơ doanh nghiệp, báo chí/ngành nghề phù hợp và local citation nhất quán.
+- Cảnh báo “ít backlink” **MUST** được đưa vào kế hoạch off-page riêng, không giao cho developer như lỗi HTML.
+
+### 14.9. Preflight bắt buộc trước khi push/deploy
+
+- [ ] Build production thành công và output chứa đủ trang/tài nguyên.
+- [ ] Không ảnh nào thiếu thuộc tính `alt`; alt rỗng đã được xác minh là có chủ đích.
+- [ ] Không có heading rỗng hoặc heading trùng không giải thích được.
+- [ ] Heading dùng cho cấu trúc; label/style dùng class CSS.
+- [ ] `<strong>`/`<b>` được dùng đúng ngữ nghĩa; trang chủ Webs4V không vượt ngưỡng cảnh báo nội bộ 69 nếu không có lý do ghi nhận.
+- [ ] Charset có trong HTML và HTTP header.
+- [ ] Apple touch icon, favicon và các asset được tham chiếu tồn tại trong output.
+- [ ] `www`/non-`www`, HTTPS, canonical, sitemap và internal link thống nhất.
+- [ ] Link ngoài có mục đích và quan hệ `rel` phù hợp; không xóa CTA chuyển đổi chỉ để giảm số lượng.
+- [ ] TTFB được đánh giá riêng với tải/render; lỗi hạ tầng có owner cụ thể.
+- [ ] Backlink và social sharing không bị “sửa giả” trong source.
+- [ ] Audit lại URL live sau deploy; lưu ngày, công cụ, kết quả và các false positive đã xác minh.
