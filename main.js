@@ -19,6 +19,7 @@ import iceNormalUrl from './image/icen.webp';
 import noiseUrl from './image/noises.webp';
 import wavesUrl from './image/waves.webp';
 import { initializeDirectionalIcons } from './ui-icons.js';
+import { submitWithVerifiedResponse } from './verified-form-submit.js';
 
 const projectImageModules = import.meta.glob('./image/project/*-480.webp', {
   eager: true,
@@ -640,11 +641,7 @@ function initializeContactForm() {
     status.classList.remove('is-success', 'is-error');
 
     try {
-      await fetch(endpoint, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: new URLSearchParams(payload),
-      });
+      await submitWithVerifiedResponse(endpoint, payload);
 
       form.reset();
       formStartedAt = Date.now();

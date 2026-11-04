@@ -1,6 +1,6 @@
 # Bàn giao website Webs4V
 
-Ngày cập nhật: 04/11/2026  
+Ngày cập nhật: 05/11/2026
 Repository: `https://github.com/Hieng55/demoweb.git`  
 Nhánh chính: `main`  
 Tên miền chính: `https://webs4v.vn/`
@@ -11,11 +11,11 @@ Website **đạt phần lớn yêu cầu SEO nền tảng**, nhưng **chưa đ�
 
 Các phần đang tốt:
 
-- 24 URL nguồn có thể index và một trang 404.
-- 24/24 URL indexable có title, meta description, canonical, `lang="vi"`, viewport và Open Graph cơ bản.
+- 29 URL nguồn có thể index và một trang 404.
+- 29/29 URL indexable có title, meta description, canonical, `lang="vi"`, viewport và Open Graph cơ bản.
 - Mỗi file HTML nguồn có đúng một H1.
 - Title và meta description không bị trùng giữa các URL.
-- 24 canonical khớp đầy đủ với 24 URL trong sitemap.
+- 29 canonical khớp đầy đủ với 29 URL trong sitemap.
 - `robots.txt` cho phép crawl và khai báo sitemap đúng.
 - 15 trang có JSON-LD; toàn bộ JSON-LD hiện parse hợp lệ.
 - Không phát hiện ảnh thiếu thuộc tính `alt`; ảnh trang trí dùng `alt=""` ở nhiều vị trí.
@@ -39,7 +39,7 @@ Các phần chưa đạt hoặc chưa thể xác minh:
 | JavaScript chính | `main.js`; bản nhẹ `main-lite.js`; icon helper tại `ui-icons.js` |
 | Nội dung | HTML theo thư mục route; blog và trang dịch vụ có URL vật lý riêng |
 | Build output | `out/`; thư mục này đang được track trong Git |
-| Form backend | Google Apps Script trong `apps-script/Code.gs`; chuyển thông báo qua Telegram theo cấu hình Script Properties |
+| Form backend | Google Apps Script trong `apps-script/Code.gs`; form tư vấn gửi thông báo Telegram, form tuyển dụng lưu tệp vào Google Drive rồi gửi liên kết qua Telegram |
 | SEO rule | `docs/seo-website-rules.md` |
 | Design system | `docs/design-system.md` |
 | Typography | `docs/typography-system.md` |
@@ -95,7 +95,7 @@ Kết quả phải xuất hiện trong `out/`. Sau build cần kiểm tra `git s
 | Mã số thuế | 0319765116 |
 | Website | https://webs4v.vn/ |
 | Email | support@webs4v.vn |
-| Zalo/điện thoại | 0364 003 638 |
+| Zalo/điện thoại | 0363 644 495 |
 | Zalo URL | https://zalo.me/4281504816084070079 |
 | Địa chỉ | 1104 Đ. Phạm Văn Đồng, Thủ Đức, TP. Hồ Chí Minh |
 
@@ -107,9 +107,9 @@ Không nhầm `Webs4V` với `Web4s`. Trụ sở thật ở Thủ Đức; Dĩ An
 
 | Hạng mục | Kết quả |
 |---|---:|
-| File HTML nguồn | 25, gồm 24 URL indexable + 404 |
-| URL trong sitemap | 24 |
-| Canonical khớp sitemap | 24/24 |
+| File HTML nguồn | 30, gồm 29 URL indexable + 404 |
+| URL trong sitemap | 29 |
+| Canonical khớp sitemap | 29/29 |
 | H1 | 1 H1/file |
 | Title/meta description trùng | 0 |
 | JSON-LD hợp lệ | 15 block trên 15 trang |
@@ -171,13 +171,34 @@ Người dùng gửi form
 
 Không commit Telegram bot token hoặc chat ID vào repo. Chúng phải nằm trong Google Apps Script Properties.
 
+Form tuyển dụng tồn tại tại:
+
+- `/tuyen-dung/website-developer-intern/`;
+- `/tuyen-dung/website-developer-fresher/`;
+- `/tuyen-dung/marketing-executive/`;
+- `/tuyen-dung/sales-website/`.
+
+Luồng hồ sơ tuyển dụng:
+
+```text
+Ứng viên điền form + chọn một tệp CV
+→ recruitment-form.js kiểm tra định dạng và dung lượng, mã hóa tệp
+→ POST no-cors tới Google Apps Script
+→ Apps Script tạo thư mục ứng viên trong Google Drive
+→ lưu CV và thong-tin-ung-vien.txt
+→ Telegram nhận thông tin ứng viên + liên kết Drive, không nhận binary của tệp
+```
+
+Ngoài `TELEGRAM_BOT_TOKEN` và `TELEGRAM_CHAT_ID`, Script Properties phải có `RECRUITMENT_DRIVE_FOLDER_ID` và `ALLOWED_SITE_ORIGIN=https://webs4v.vn`. Nên đặt `RECRUITMENT_RETENTION_DAYS=180`, sau đó chạy một lần `installRecruitmentCleanupTrigger`. Xem `apps-script/README.md`. Thư mục Drive phải để riêng tư và chỉ chia sẻ với người phụ trách tuyển dụng.
+
 Việc cần kiểm tra thủ công sau mỗi deploy:
 
 1. Gửi một lead thật từ trang chủ.
 2. Gửi một lead thật từ trang liên hệ.
 3. Xác nhận Telegram nhận đủ trường và UTM.
 4. Kiểm tra spam/honeypot và cooldown.
-5. Kiểm tra event conversion chỉ ghi nhận sau khi backend xác nhận thành công — hiện chưa đạt.
+5. Gửi thử một hồ sơ tuyển dụng có một CV PDF; xác nhận Drive tạo đúng thư mục, website chỉ báo thành công sau phản hồi Apps Script và Telegram mở được liên kết.
+6. Kiểm tra event conversion chỉ ghi nhận sau khi backend xác nhận thành công — hiện chưa đạt do request `no-cors` trả response opaque.
 
 ## 8. Checklist cho người tiếp quản
 

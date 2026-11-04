@@ -13,6 +13,7 @@ import {
   ShieldCheck,
 } from 'lucide';
 import { initializeDirectionalIcons } from './ui-icons.js';
+import { submitWithVerifiedResponse } from './verified-form-submit.js';
 import projectFeaturedTablet from './image/project/featured-tablet-480.webp';
 import projectFeaturedBusiness from './image/project/featured-4503766-480.webp';
 import projectFeaturedPortfolio from './image/project/featured-7288248-480.webp';
@@ -440,7 +441,7 @@ function initializeContactForm() {
     status.textContent = 'Đang chuyển yêu cầu đến Webs4V.';
     status.className = 'contact-form__status';
     try {
-      await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(payload) });
+      await submitWithVerifiedResponse(endpoint, payload);
       form.reset();
       formStartedAt = Date.now();
       try {
