@@ -3,7 +3,7 @@
 `Code.gs` xử lý hai loại biểu mẫu qua cùng một Web App:
 
 - form tư vấn hiện có;
-- form ứng tuyển Developer, Marketing và Sales Website có một tệp CV PDF.
+- form ứng tuyển Developer, Marketing, Sales Website và Graphic Designer có một tệp CV PDF.
 
 ## Script Properties bắt buộc
 
@@ -12,11 +12,17 @@ Trong Google Apps Script, mở **Project Settings → Script Properties** và c�
 ```text
 TELEGRAM_BOT_TOKEN
 TELEGRAM_CHAT_ID
-RECRUITMENT_DRIVE_FOLDER_ID
 ALLOWED_SITE_ORIGIN
 ```
 
-`RECRUITMENT_DRIVE_FOLDER_ID` là phần ID trong URL của thư mục Google Drive dùng để nhận hồ sơ. Nên dùng một thư mục riêng, chỉ chia sẻ với người phụ trách tuyển dụng; code không tự chuyển tệp thành công khai.
+Hồ sơ được chia vào bốn thư mục Drive theo nhóm vị trí trong `RECRUITMENT_POSITION_FOLDER_IDS`:
+
+- Developer Intern và Developer Fresher dùng chung thư mục Developer;
+- Marketing Executive dùng thư mục Marketing;
+- Sales Website dùng thư mục Sales;
+- Graphic Designer dùng thư mục Design.
+
+Tài khoản dùng để deploy Web App phải có quyền tạo tệp trong cả bốn thư mục. Code không tự chuyển tệp thành công khai.
 
 Đặt `ALLOWED_SITE_ORIGIN` thành `https://webs4v.vn` để trang phản hồi Apps Script chỉ gửi kết quả xác nhận về đúng website.
 
@@ -36,7 +42,7 @@ Sau khi cập nhật `Code.gs`:
 2. Chỉnh deployment Web App hiện tại và chọn **New version**.
 3. Execute as: tài khoản sở hữu thư mục Drive.
 4. Who has access: cấu hình phù hợp để form công khai có thể gửi.
-5. Giữ nguyên URL `/exec` nếu chỉnh deployment hiện tại; nếu tạo deployment mới, cập nhật `data-recruitment-endpoint` trong bốn trang tuyển dụng.
+5. Giữ nguyên URL `/exec` nếu chỉnh deployment hiện tại; nếu tạo deployment mới, cập nhật `data-recruitment-endpoint` trong các trang tuyển dụng.
 
 ## Giới hạn tệp
 
@@ -51,7 +57,7 @@ Nếu Telegram tạm thời lỗi, hồ sơ đã lưu vẫn được giữ trên
 
 ## Dọn hồ sơ hết hạn
 
-Sau khi deploy và cấu hình `RECRUITMENT_RETENTION_DAYS`, chạy thủ công một lần hàm `installRecruitmentCleanupTrigger`. Hàm này tạo trigger chạy khoảng 03:00 mỗi ngày và chuyển các thư mục hồ sơ quá hạn vào thùng rác. Chỉ dùng một thư mục Drive riêng cho tuyển dụng.
+Sau khi deploy và cấu hình `RECRUITMENT_RETENTION_DAYS`, chạy thủ công một lần hàm `installRecruitmentCleanupTrigger`. Hàm này tạo trigger chạy khoảng 03:00 mỗi ngày và chuyển các thư mục hồ sơ quá hạn trong cả bốn vùng tuyển dụng vào thùng rác.
 
 ## Chống bot nâng cao
 

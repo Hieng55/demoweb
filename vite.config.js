@@ -27,6 +27,7 @@ export default defineConfig({
         careerWebsiteDeveloperFresher: resolve(__dirname, 'tuyen-dung/website-developer-fresher/index.html'),
         careerMarketingExecutive: resolve(__dirname, 'tuyen-dung/marketing-executive/index.html'),
         careerSalesWebsite: resolve(__dirname, 'tuyen-dung/sales-website/index.html'),
+        careerGraphicDesigner: resolve(__dirname, 'tuyen-dung/graphic-designer/index.html'),
         contact: resolve(__dirname, 'lien-he/index.html'),
         blog: resolve(__dirname, 'blog/index.html'),
         blogWebsiteQuestions: resolve(__dirname, 'blog/7-cau-hoi-truoc-khi-lam-website/index.html'),

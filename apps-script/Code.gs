@@ -9,6 +9,14 @@ const RECRUITMENT_ALLOWED_POSITIONS = {
   'Website Developer Fresher': true,
   'Marketing Executive': true,
   'Sales Website': true,
+  'Graphic Designer': true,
+};
+const RECRUITMENT_POSITION_FOLDER_IDS = {
+  'Website Developer Intern': '198wt2QVGlx-Dji6pSvFvEnQO4d41WZ9R',
+  'Website Developer Fresher': '198wt2QVGlx-Dji6pSvFvEnQO4d41WZ9R',
+  'Marketing Executive': '1MsU9gTxqalJy3aD5Buqh2fTNsm0HdJQm',
+  'Sales Website': '1GbcPWiBVM_OEd2XXSXNN68kZfbOZcmDt',
+  'Graphic Designer': '1WCv2RIYFHivN3_Tv6m6LZQSGt9iU7Sp0',
 };
 
 function doPost(event) {
@@ -108,9 +116,8 @@ function handleRecruitment_(data) {
       return { ok: false, error: 'invalid_application' };
     }
 
-    const properties = PropertiesService.getScriptProperties();
-    const folderId = properties.getProperty('RECRUITMENT_DRIVE_FOLDER_ID');
-    if (!folderId) throw new Error('Missing RECRUITMENT_DRIVE_FOLDER_ID configuration.');
+    const folderId = RECRUITMENT_POSITION_FOLDER_IDS[position];
+    if (!folderId) throw new Error('Missing recruitment folder for position: ' + position);
 
     const duplicateKey = 'recruitment-' + hash_(fullName + '|' + phoneDigits + '|' + email + '|' + position);
     const reservation = reserveSubmission_(duplicateKey, 'candidate-' + hash_(email + '|' + phoneDigits));
@@ -356,23 +363,28 @@ function getTelegramChatId() {
 
 function cleanupExpiredRecruitmentFolders() {
   const properties = PropertiesService.getScriptProperties();
-  const folderId = properties.getProperty('RECRUITMENT_DRIVE_FOLDER_ID');
-  if (!folderId) throw new Error('Missing RECRUITMENT_DRIVE_FOLDER_ID configuration.');
   const retentionDays = Math.min(730, Math.max(30, Number(properties.getProperty('RECRUITMENT_RETENTION_DAYS') || 180)));
   const cutoff = Date.now() - retentionDays * 24 * 60 * 60 * 1000;
-  const folders = DriveApp.getFolderById(folderId).getFolders();
+  const processedFolderIds = {};
   let removed = 0;
 
-  while (folders.hasNext()) {
-    const folder = folders.next();
-    const match = /^(\d{4})-(\d{2})-(\d{2})_/.exec(folder.getName());
-    if (!match) continue;
-    const createdAt = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])).getTime();
-    if (createdAt < cutoff) {
-      folder.setTrashed(true);
-      removed += 1;
+  Object.keys(RECRUITMENT_POSITION_FOLDER_IDS).forEach(function (position) {
+    const folderId = RECRUITMENT_POSITION_FOLDER_IDS[position];
+    if (processedFolderIds[folderId]) return;
+    processedFolderIds[folderId] = true;
+
+    const folders = DriveApp.getFolderById(folderId).getFolders();
+    while (folders.hasNext()) {
+      const folder = folders.next();
+      const match = /^(\d{4})-(\d{2})-(\d{2})_/.exec(folder.getName());
+      if (!match) continue;
+      const createdAt = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])).getTime();
+      if (createdAt < cutoff) {
+        folder.setTrashed(true);
+        removed += 1;
+      }
     }
-  }
+  });
   console.log('Expired recruitment folders moved to trash: ' + removed);
   return removed;
 }
