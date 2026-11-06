@@ -44,8 +44,9 @@ export function SiteFooter() {
               <a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer">0363 644 495</a>
               <a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer">Nhắn Zalo ↗</a>
               <a href="mailto:support@webs4v.vn">Gửi email ↗</a>
-              <a href="https://www.google.com/maps/search/?api=1&query=1104%20%C4%90.%20Ph%E1%BA%A1m%20V%C4%83n%20%C4%90%E1%BB%93ng%2C%20Th%E1%BB%A7%20%C4%90%E1%BB%A9c%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh" target="_blank" rel="noopener noreferrer">
-                1104 Đ. Phạm Văn Đồng, Thủ Đức, TP.HCM ↗
+              <a className="map-link" href="https://maps.google.com/?cid=2797333383793465730" target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google-maps/default.svg" alt="" aria-hidden="true" width="18" height="18" loading="lazy" decoding="async" />
+                <span>1104 Đ. Phạm Văn Đồng, Thủ Đức, TP.HCM ↗</span>
               </a>
               <a href="/lien-he/">Form tư vấn</a>
             </div>
