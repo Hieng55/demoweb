@@ -22,6 +22,7 @@ const pages = [
   // Blog & Kiến thức
   { path: '/blog/', priority: '0.9', changefreq: 'weekly', comment: 'Blog & Kiến thức' },
   { path: '/blog/cong-ty-tnhh-cong-nghe-webs4v-vn/', priority: '0.9', changefreq: 'monthly' },
+  { path: '/blog/web4s-va-webs4v-khac-nhau/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/thiet-ke-website-thu-duc/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/thiet-ke-website-vung-ven-phia-dong/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/thiet-ke-website-hoc-mon/', priority: '0.9', changefreq: 'monthly' },
