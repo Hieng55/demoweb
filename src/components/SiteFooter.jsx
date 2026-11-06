@@ -50,6 +50,13 @@ export function SiteFooter() {
               </a>
               <a href="/lien-he/">Form tư vấn</a>
             </div>
+            <div>
+              <span>Mạng xã hội</span>
+              <a href="https://www.tiktok.com/@webs4v.official" target="_blank" rel="me noopener noreferrer">TikTok ↗</a>
+              <a href="https://www.instagram.com/webs4v/" target="_blank" rel="me noopener noreferrer">Instagram ↗</a>
+              <a href="https://www.facebook.com/webs4v" target="_blank" rel="me noopener noreferrer">Facebook ↗</a>
+              <a href="https://zalo.me/4281504816084070079" target="_blank" rel="me noopener noreferrer">Zalo Official Account ↗</a>
+            </div>
           </nav>
         </div>
 

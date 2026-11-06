@@ -4267,8 +4267,8 @@ b > morph-icon.external-link-icon {
 
 .site-footer__links {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(28px, 5vw, 76px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 52px);
 }
 
 .site-footer__links > div {
@@ -5610,10 +5610,6 @@ body.has-pointer .cursor {
   .site-footer__links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 42px 20px;
-  }
-
-  .site-footer__links > div:last-child {
-    grid-column: 1 / -1;
   }
 
   .site-footer__cta {
