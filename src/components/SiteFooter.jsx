@@ -44,6 +44,7 @@ export function SiteFooter() {
               <a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer">0363 644 495</a>
               <a href="https://zalo.me/4281504816084070079" target="_blank" rel="noopener noreferrer">Nhắn Zalo ↗</a>
               <a href="mailto:support@webs4v.vn">Gửi email ↗</a>
+              <a href="/lien-he/#gio-lam-viec">Giờ làm việc: 09:00 – 17:00</a>
               <a className="map-link" href="https://maps.google.com/?cid=2797333383793465730" target="_blank" rel="noopener noreferrer">
                 <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google-maps/default.svg" alt="" aria-hidden="true" width="18" height="18" loading="lazy" decoding="async" />
                 <span>1104 Đ. Phạm Văn Đồng, Thủ Đức, TP.HCM ↗</span>

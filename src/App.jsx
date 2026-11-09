@@ -2,6 +2,7 @@ import React from 'react';
 import { ExperienceShell } from './components/ExperienceShell';
 import { SiteHeader } from './components/SiteHeader';
 import { SiteFooter } from './components/SiteFooter';
+import { FloatingContactActions } from './components/FloatingContactActions';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
@@ -13,6 +14,7 @@ export default function App({ page, mainMarkup }) {
     <>
       <ExperienceShell page={page} />
       <SiteHeader />
+      <FloatingContactActions />
       <aside className="scroll-progress" aria-hidden="true"><span /><small>Cuộn để khám phá</small></aside>
       <CurrentPage markup={mainMarkup} />
       <SiteFooter />

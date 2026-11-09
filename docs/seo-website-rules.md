@@ -1,7 +1,7 @@
 # Bộ quy tắc SEO website bền vững
 
-> Phiên bản: 1.18
-> Cập nhật: 04/11/2026
+> Phiên bản: 1.27
+> Cập nhật: 09/11/2026
 > Mục đích: Dùng làm rule, checklist và tiêu chuẩn nghiệm thu SEO cho mọi website được xây dựng hoặc tối ưu sau này.
 
 ## 1. Tư tưởng cốt lõi
@@ -62,6 +62,17 @@ Hệ thống tìm kiếm hiện đại và các mô hình AI không đánh giá 
 - **MUST** tránh nội dung quan trọng chỉ xuất hiện sau thao tác khó tái tạo hoặc phụ thuộc hoàn toàn vào JavaScript lỗi.
 - **SHOULD** ưu tiên HTML có nghĩa ngay trong phản hồi đầu tiên đối với nội dung cần index.
 - **SHOULD** kiểm tra website bằng JavaScript bật và tắt khi có nguy cơ nội dung bị mất trong quá trình render.
+
+#### Giới hạn fetch của Googlebot
+
+Theo tài liệu Google Search Central được kiểm tra ngày 09/11/2026, Googlebot for Search chỉ fetch **2MB đầu tiên** của mỗi URL thuộc loại tệp được hỗ trợ; PDF có giới hạn riêng 64MB. Giới hạn áp dụng trên dữ liệu chưa nén. CSS, JavaScript và tài nguyên ngoài được fetch riêng và có giới hạn cho từng request.
+
+- **MUST** giữ response HTML có kích thước hợp lý và đo byte sau khi giải nén khi điều tra crawl/index; không chỉ nhìn transfer size đã gzip/Brotli.
+- **MUST** bảo đảm metadata, nội dung chính, link crawlable và structured data quan trọng không nằm sau ngưỡng fetch.
+- **SHOULD** chuyển CSS/JS inline không thiết yếu thành tài nguyên ngoài khi việc đó giảm HTML mà không làm hỏng critical rendering path.
+- **MUST NOT** suy diễn rằng Schema càng gần đầu `<head>` càng được xếp hạng cao; mục tiêu là nằm trong phần Googlebot thực sự fetch và khớp nội dung hiển thị.
+
+Nguồn: [Googlebot — Google Search Central](https://developers.google.com/search/docs/crawling-indexing/googlebot).
 
 #### Semantic HTML, DOM và ranh giới nội dung
 
@@ -491,6 +502,73 @@ Website cần chủ động nhận diện và triệt tiêu các lỗi kích ho�
 
 - **MUST NOT** xóa bài viết hàng loạt chỉ vì trang có lưu lượng truy cập thấp. Nhiều trang ngách có traffic khiêm tốn nhưng đóng vai trò quan trọng trong việc hoàn thiện Topical Authority hoặc hỗ trợ chốt chuyển đổi trong phễu DLN.
 
+#### Ứng phó Core Update, Spam Update và biến động SERP
+
+"Biến động đa sóng" chỉ là cách mô tả nhiều nhịp tăng/giảm quan sát được trong dữ liệu, **không phải tên cơ chế hoặc thuật ngữ chính thức của Google**.
+
+- **MUST** xác nhận ngày bắt đầu/kết thúc rollout trên Google Search Status Dashboard trước khi gán biến động cho một update.
+- Với Core Update, **SHOULD** đợi ít nhất một tuần sau khi rollout kết thúc rồi mới so sánh dữ liệu; đối chiếu khoảng sau update với khoảng trước khi rollout bắt đầu.
+- **MUST** phân tích riêng page, query, search type, device, country, demand, seasonality và thay đổi tracking; không kết luận chỉ từ một biểu đồ traffic tổng.
+- **MUST NOT** đổi cấu trúc URL, canonical, redirect hoặc xóa bài hàng loạt trong lúc rollout chỉ để phản ứng với dao động ngắn hạn.
+- **SHOULD** ưu tiên cải thiện bền vững: intent, tính chính xác, bằng chứng, trải nghiệm thực, tác giả/nguồn, cấu trúc đọc và internal link.
+- **MUST** xem xóa nội dung là phương án cuối; chỉ prune khi nội dung không thể cứu, không có vai trò cho người dùng/kiến trúc và đã có mapping URL, redirect/status cùng kế hoạch theo dõi.
+
+Nguồn: [Google Search's Core Updates](https://developers.google.com/search/docs/appearance/core-updates), [Google Search Status Dashboard](https://status.search.google.com/).
+
+#### Ranh giới chính sách spam cần kiểm soát
+
+- **Scaled content abuse** là tạo nhiều trang chủ yếu để thao túng thứ hạng và không giúp người dùng, bất kể nội dung được tạo bằng AI, con người hay quy trình kết hợp. **MUST NOT** gọi mọi nội dung có AI hỗ trợ là spam; phải đánh giá mục đích, tính nguyên bản và giá trị bổ sung.
+- **Site reputation abuse** nhắm vào nội dung bên thứ ba được đăng chủ yếu để tận dụng tín hiệu xếp hạng sẵn có của host. **MUST NOT** coi mọi bài khách, nội dung tài trợ, UGC hoặc nội dung bên thứ ba là vi phạm nếu mục đích và quy trình biên tập hợp lệ.
+- **MUST** công khai quan hệ tài trợ/affiliate, gắn `rel="sponsored"` hoặc `nofollow` phù hợp và không cho bên thứ ba xuất bản ngoài phạm vi biên tập chỉ để mượn uy tín domain.
+
+Nguồn: [Spam Policies for Google Web Search](https://developers.google.com/search/docs/essentials/spam-policies).
+
+#### Cách dùng số liệu và phát biểu về spam
+
+- Con số **40 tỷ trang spam mỗi ngày** là số Google công bố trong báo cáo về năm 2020, mô tả số trang spam được phát hiện; **MUST NOT** trình bày nó như số đo hiện hành năm 2026 hoặc đồng nhất "phát hiện" với "chặn hoàn toàn".
+- SpamBrain là hệ thống phòng chống spam dựa trên AI của Google. **MUST NOT** chuyển mô tả này thành tuyên bố không có nguồn rằng Google "tiêu diệt AI slop", nhận diện chính xác mọi nội dung AI hoặc sẽ tăng ngưỡng phạt theo một lịch cố định.
+- Phát biểu “scaled content là vấn đề lớn hơn link spam” được nhiều bài tường thuật quy cho Gary Illyes tại Search Central Live 2026, nhưng hiện thiếu bản ghi/tài liệu Google trực tiếp. Nếu dùng, **MUST** ghi là phát biểu được tường thuật, không gọi là chính sách hoặc so sánh định lượng chính thức.
+- **MUST** dựa hành động trên Spam Policies và dữ liệu website, không dựa trên ngôn ngữ giật gân như “tiêu diệt”, “quét sạch” hoặc “phạt ngày càng nặng”.
+
+Nguồn: [How we fought Search spam in 2020](https://developers.google.com/search/blog/2021/04/how-we-fought-search-spam-2020), [Google Search spam updates](https://developers.google.com/search/docs/appearance/spam-updates).
+
+#### Page-level và site-wide: không chọn một bỏ một
+
+Hệ thống xếp hạng của Google được thiết kế chủ yếu để đánh giá cấp trang, nhưng Google cũng dùng các tín hiệu và bộ phân loại toàn site. Vì vậy, cả hai mệnh đề “Google chỉ đánh giá URL” và “một trang xấu làm cả domain bị phạt” đều quá đơn giản.
+
+- **MUST** audit ở cấp URL/template/section và cấp site; xác định pattern thay vì suy từ một bài tăng hoặc giảm hạng.
+- **MUST NOT** `noindex` một trang chỉ vì trang đó traffic thấp. `noindex` chỉ phù hợp khi URL không có giá trị xuất hiện độc lập trong Search hoặc có lý do sản phẩm/pháp lý rõ ràng.
+- **SHOULD** dùng inventory URL để phân loại Keep → Update → Consolidate → Noindex/Remove; mỗi quyết định phải có intent, internal link, impression/click, conversion, backlink và vai trò trong kiến trúc.
+- **MUST** hiểu rằng một số trang tốt có thể vẫn xếp hạng trên site có vấn đề, và một số trang yếu có thể kém hạng trên site mạnh; không dùng hiện tượng này để phủ nhận site-wide signals.
+
+Nguồn: [Google Search ranking systems guide](https://developers.google.com/search/docs/appearance/ranking-systems-guide).
+
+#### Bốn chiều tự đánh giá chất lượng nội dung
+
+Google Search Central nêu bốn chiều để người làm nội dung tự đánh giá. Đây là khung biên tập hữu ích, **không phải bốn điểm ranking công khai hoặc công thức chấm điểm thuật toán**:
+
+1. **Effort — Nỗ lực:** Có lao động con người hoặc hệ thống thực chất như nghiên cứu, phân tích, thử nghiệm, biên tập và kiểm chứng; ghi nguồn không thay thế nỗ lực nguyên bản.
+2. **Originality — Tính nguyên bản:** Có thông tin, góc nhìn hoặc phương pháp chưa sẵn có ở mọi nguồn khác; không chỉ tóm tắt hoặc xáo lại.
+3. **Talent or skill — Tài năng/kỹ năng:** Chất lượng thể hiện qua khả năng giải quyết nhu cầu: viết rõ, video sản xuất tốt, công cụ hoạt động hoặc chuyên môn phù hợp. Không phải chủ đề nào cũng đòi bằng cấp chuyên gia.
+4. **Accuracy — Tính chính xác:** Thông tin phải đúng; nội dung YMYL phải có độ chính xác cao và phù hợp đồng thuận chuyên môn đã được xác lập.
+
+- **MUST** có owner biên tập chịu trách nhiệm kiểm chứng output AI; không xuất bản hàng loạt từ prompt/template mà không có oversight và curation.
+- **SHOULD** lưu bằng chứng sản xuất phù hợp: nguồn, ghi chú nghiên cứu, dữ liệu, ảnh/case thật, người review và ngày xác minh.
+
+Nguồn: [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [Guidance on generative AI content](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content).
+
+#### Commodity Content Test — heuristic biên tập nội bộ
+
+Hai câu hỏi sau là phép thử biên tập của dự án, không phải bài test hay tín hiệu thuật toán được Google công bố:
+
+1. **Giá trị không thể thay thế:** Trang cung cấp điều gì mà người đọc không dễ dàng tìm thấy ở các trang tổng hợp khác?
+2. **Brand-swap test:** Nếu thay tên doanh nghiệp bằng tên đối thủ mà toàn bộ tuyên bố, ví dụ và bằng chứng vẫn giữ nguyên, trang có nguy cơ là nội dung commodity.
+
+- **MUST** xem test này là cảnh báo để review, không phải lý do tự động xóa/noindex.
+- **MUST NOT** nhân template lên hàng loạt URL chỉ bằng cách đổi từ khóa, địa danh, ngành hoặc tên thương hiệu.
+- **SHOULD** làm cho mỗi trang cần index có intent riêng và bằng chứng phù hợp như case study, hình ảnh, dữ liệu, quy trình, phạm vi, giới hạn hoặc góc nhìn thực tế.
+- Template **MAY** được tái sử dụng cho UI và cấu trúc; rủi ro nằm ở việc nhân bản nội dung không có giá trị độc lập, không phải bản thân template.
+
 #### Customer-first SEO: khách hàng là trọng tâm, từ khóa là công cụ
 
 Thứ tự ra quyết định bắt buộc:
@@ -544,6 +622,16 @@ Một nội dung SEO phải có giá trị sử dụng độc lập, kể cả k
 - **MUST** không đổi ngày xuất bản/cập nhật chỉ để tạo tín hiệu freshness. `dateModified` chỉ thay đổi khi nội dung có chỉnh sửa thực chất và phần thay đổi phải kiểm tra được.
 - **MUST** đánh giá giá trị dài hạn bằng traffic phù hợp, task completion, assisted conversion, lead/doanh thu và chi phí sản xuất–duy trì; không gọi organic traffic là “miễn phí” và không cam kết một bài sẽ giữ hạng hoặc mang khách trong một khoảng thời gian cố định.
 - Khi so sánh SEO với quảng cáo trả phí, **MUST** xem xét thời gian tạo kết quả, khả năng kiểm soát phân phối, chi phí duy trì, biên lợi nhuận, rủi ro nền tảng và vai trò của từng kênh; không mô tả hai kênh như lựa chọn loại trừ nhau.
+
+#### Sổ bảo trì nội dung và nhịp review theo rủi ro
+
+- Mỗi URL chiến lược **SHOULD** có owner, ngày review gần nhất, trigger review tiếp theo, nguồn dữ liệu quan trọng và trạng thái `Keep / Update / Consolidate / Retire`.
+- **MUST** đặt nhịp review theo rủi ro và tốc độ thay đổi: pháp lý, giá, sản phẩm, YMYL và nội dung nhạy thời gian cần kiểm tra thường xuyên hơn nội dung ổn định. Không áp dụng máy móc quy tắc “mọi URL audit mỗi quý”.
+- Trigger review **SHOULD** bao gồm: nguồn thay đổi, sản phẩm/giá/chính sách thay đổi, intent/SERP đổi, traffic/conversion bất thường, broken link, feedback người dùng hoặc bằng chứng mới.
+- Trước đợt làm mới lớn, **MUST** lưu baseline theo URL/query/conversion và change log. **SHOULD** triển khai theo lô URL hoặc topic cluster có thể quan sát, thay vì sửa toàn site cùng lúc khi không có sự cố khẩn cấp.
+- Mỗi lần cập nhật **MUST** ghi rõ nội dung nào thay đổi, lý do, nguồn/bằng chứng, owner và mốc đánh giá lại; không dùng “làm mới” như một task không có tiêu chí nghiệm thu.
+
+Tham khảo biên tập: [GTV SEO — 8 chiến lược SEO bền vững](https://gtvseo.com/seo-ben-vung/). Các ngưỡng và cam kết định lượng trong bài không được đưa vào rule khi chưa có baseline và nguồn kiểm chứng phù hợp.
 
 #### Bảy dạng nội dung tạo giá trị và niềm tin
 
@@ -788,6 +876,11 @@ Mọi hoạt động outreach **MUST** bắt đầu bằng giá trị và mức 
 - **MUST** lưu bằng chứng, nguồn và lý do khi thực hiện biện pháp xử lý liên kết.
 - **SHOULD** ưu tiên xử lý nguyên nhân do chính đội ngũ tạo ra như link mua, mạng site hoặc chiến dịch anchor thao túng.
 - **SHOULD** theo dõi backlink mất, broken destination, redirect chain và link tới URL không còn tồn tại.
+- Disavow là công cụ nâng cao và **MUST NOT** được dùng như thao tác dọn “link độc” định kỳ. Phần lớn website không cần dùng công cụ này.
+- **MUST** chỉ cân nhắc disavow khi có số lượng đáng kể liên kết spam/nhân tạo/kém chất lượng **và** chúng đã gây hoặc có khả năng cao gây manual action, đặc biệt khi website hoặc đơn vị SEO đã tham gia link scheme.
+- Trước disavow, **MUST** kiểm tra Manual Actions, xác minh nguồn link và cố gắng gỡ/qualify các link do mình kiểm soát; file disavow **MUST** được review bởi người có kinh nghiệm vì dùng sai có thể làm giảm hiệu suất Search.
+
+Nguồn: [Disavow links to your site — Search Console Help](https://support.google.com/webmasters/answer/2648487).
 
 #### KPI Offpage SEO
 
@@ -800,6 +893,455 @@ Mọi hoạt động outreach **MUST** bắt đầu bằng giá trị và mức 
 - Mức độ tập trung rủi ro theo nguồn, anchor, trang đích và loại chiến dịch.
 
 Số backlink mới chỉ là chỉ số chẩn đoán. Kết quả Offpage SEO phải được đánh giá bằng mức độ liên quan, uy tín, referral, thương hiệu và giá trị kinh doanh.
+
+### 3.10. Local SEO và đồng bộ thay đổi Website ↔ Google
+
+Local SEO không phải thao tác “đẩy Map” riêng lẻ. Google cho biết kết quả địa phương chủ yếu dựa trên **mức độ liên quan, khoảng cách và độ nổi bật**; không có cách hợp lệ nào bảo đảm vị trí hoặc vượt qua khoảng cách bằng tương tác nhân tạo.
+
+#### Nguyên tắc Google Business Profile
+
+- **MUST** dùng tên thương hiệu đúng như doanh nghiệp thể hiện ngoài đời; không chèn thêm dịch vụ, địa danh, slogan hoặc từ khóa vào tên hồ sơ nếu chúng không thuộc tên thật.
+- **MUST** khai báo địa chỉ, vùng phục vụ, số điện thoại, giờ làm việc, website và danh mục đúng thực tế. Văn phòng ảo, địa điểm không tồn tại hoặc nơi không đủ điều kiện **MUST NOT** được dùng để tạo hồ sơ.
+- **MUST** ẩn địa chỉ trên Business Profile nếu doanh nghiệp không tiếp khách tại đó và chỉ phục vụ tại địa điểm của khách.
+- **MUST** giữ thông tin cốt lõi nhất quán về ý nghĩa giữa website, Business Profile, Maps, Schema và các hồ sơ quan trọng khác. Khác biệt nhỏ về cách viết tắt hoặc dấu câu không phải lý do để sửa hàng loạt nếu thông tin vẫn chỉ cùng một thực thể.
+- **MUST** chọn ít danh mục nhưng cụ thể và đúng hoạt động thực tế; không chọn danh mục chỉ vì đối thủ đang dùng hoặc vì muốn phủ thêm từ khóa.
+- **MUST** chỉ xin đánh giá từ khách hàng có trải nghiệm thật, không trả tiền/tặng quà, không yêu cầu số sao hoặc nội dung cụ thể, không dùng nhân viên/người thân/tài khoản hàng loạt để tạo review, Q&A, lượt chỉ đường hay tương tác giả.
+- **SHOULD** phản hồi cả đánh giá tích cực và tiêu cực một cách trung thực, không tiết lộ dữ liệu cá nhân và không gây áp lực buộc khách sửa/xóa đánh giá.
+- **SHOULD** đăng ảnh thật, rõ, đủ sáng và phản ánh đúng địa điểm, đội ngũ, sản phẩm hoặc dịch vụ. Ảnh có thể giúp khách nhận biết và ra quyết định, nhưng tần suất đăng, tên file, EXIF hoặc geotag **MUST NOT** được tuyên bố là yếu tố bảo đảm tăng hạng.
+- **MUST NOT** dùng PBN, social stack hàng loạt, anchor chính xác, review giả, Local Guide thuê, click chỉ đường hoặc hành vi mô phỏng cảm biến để thao túng kết quả địa phương.
+
+#### Bắt buộc phân loại tác động sau mỗi thay đổi website
+
+Mọi thay đổi **MUST** được kiểm tra xem có tác động tới một trong các nhóm sau không: `Identity | Location | Contact | Hours | Offer/Category | URL/Domain | Media | Business status`.
+
+Nếu có, phần bàn giao **MUST** kèm mục **“Việc cần làm trên Google”** gồm: nền tảng cần cập nhật, trường/URL cụ thể, bằng chứng cần chuẩn bị, thời điểm thực hiện, người chịu trách nhiệm và cách xác minh. Thay đổi trên Business Profile, Search Console hoặc nền tảng bên ngoài **MUST NOT** được tự ý thực hiện nếu chưa được chủ sở hữu cho phép.
+
+#### Website thay đổi → việc cần làm trên Google
+
+| Thay đổi trên website/doanh nghiệp | Hành động bắt buộc hoặc cần xem xét |
+|---|---|
+| Tên thương hiệu hoặc pháp nhân | Xác minh tên dùng ngoài đời và hồ sơ pháp lý; đồng bộ nội dung hiển thị và Schema. Chỉ sửa tên Business Profile khi thương hiệu thực sự đổi; chuẩn bị khả năng bị review hoặc yêu cầu xác minh lại. |
+| Địa chỉ, văn phòng, vùng phục vụ hoặc tọa độ | Kiểm tra địa điểm có đủ điều kiện Business Profile; cập nhật địa chỉ/pin/vùng phục vụ trên Maps, địa chỉ hiển thị, liên kết bản đồ và `PostalAddress`/`GeoCoordinates`; rà hồ sơ trùng và địa chỉ cũ. |
+| Số điện thoại hoặc kênh liên hệ | Cập nhật liên kết gọi trên website, Schema và số chính/phụ trên Business Profile; cập nhật citation quan trọng; kiểm tra click-to-call và duy trì chuyển tiếp số cũ nếu phù hợp. |
+| Giờ làm việc, ngày lễ hoặc tạm nghỉ | Đồng bộ website và Business Profile; dùng **Special hours** cho ngày lễ hoặc lịch khác thường, dùng trạng thái tạm đóng khi doanh nghiệp nghỉ từ 7 ngày trở lên hoặc chưa rõ ngày mở lại. |
+| Dịch vụ, sản phẩm hoặc danh mục kinh doanh | Cập nhật trang dịch vụ thật trước; sau đó rà Services/Products/Description/Category trên Business Profile. Không tạo dịch vụ hoặc danh mục chỉ để phủ từ khóa. |
+| Đổi slug hoặc URL landing page | Tạo `301` từ URL cũ tới trang mới tương ứng; cập nhật canonical, internal link, sitemap và mọi website/appointment/menu/service link trong Business Profile đang trỏ URL cũ; kiểm tra bằng URL Inspection khi trang quan trọng. |
+| Đổi domain hoặc subdomain | Lập mapping URL và `301`, xác minh property cũ/mới, dùng Change of Address chỉ khi đúng trường hợp đổi domain/subdomain, gửi sitemap mới, cập nhật URL Business Profile và hồ sơ ngoài website; giữ redirect tối thiểu một năm. |
+| Xuất bản/cập nhật trang local quan trọng | Kiểm tra indexability, canonical, internal link và sitemap; `lastmod` chỉ đổi khi nội dung thay đổi đáng kể. Chỉ đổi link trên Business Profile nếu URL mới là trang đại diện phù hợp nhất, không phải doorway page. |
+| Ngừng dịch vụ, đóng địa điểm hoặc xóa trang | Xử lý URL bằng trang thay thế phù hợp, `404`/`410` hoặc `301` theo intent; đồng thời xóa thông tin lỗi thời khỏi Services, Posts, link, danh mục, giờ và vùng phục vụ trên Business Profile. |
+| Đổi logo hoặc hình ảnh nhận diện | Đồng bộ ảnh hiển thị, Open Graph/favicon và Schema khi phù hợp; tải ảnh thật, hiện hành lên Business Profile. Không chỉnh metadata/geotag với lời hứa tăng hạng. |
+
+#### Quy trình sau khi cập nhật
+
+1. Lưu ảnh chụp/trạng thái trước khi sửa, trường đã sửa, người thực hiện và thời điểm.
+2. Kiểm tra trạng thái Business Profile là **Accepted, Pending** hay **Not approved**; thay đổi thường được duyệt nhanh nhưng có thể mất tới 30 ngày, không gửi lặp lại liên tục khi đang chờ.
+3. Kiểm tra Search Console: indexability, URL Inspection, sitemap, lỗi redirect và hiệu suất của URL bị tác động.
+4. Gắn UTM cho link website/appointment trên Business Profile khi cần đo lường; URL canonical trên trang vẫn phải sạch và ổn định.
+5. Ghi chú ngày thay đổi và theo dõi tối thiểu Business Profile Performance, Search Console, analytics, cuộc gọi, chỉ đường và lead; không kết luận từ biến động thứ hạng đơn ngày.
+
+#### Những đề xuất từ case study không được coi là rule đã xác thực
+
+- Không coi geotag/EXIF, tên file ảnh, “đăng ảnh mỗi ngày”, “đăng bài mỗi ngày” hoặc một số lượng review cố định là yêu cầu xếp hạng của Google.
+- Không coi Schema/NAP markup là cách bảo đảm lên Local Pack; markup giúp máy hiểu dữ liệu nhưng không thay thế hồ sơ doanh nghiệp thật và đủ điều kiện.
+- Không dùng lượt chỉ đường, review, Q&A, Local Guide hoặc tín hiệu thiết bị nhân tạo để “đánh bại” yếu tố khoảng cách.
+- Không nhân bản hồ sơ mạng xã hội, citation, PBN hoặc backlink exact-match hàng loạt. Chỉ xây hiện diện ở nguồn phù hợp, có người dùng thật và thông tin chính xác.
+
+Nguồn kiểm chứng: [Guidelines for representing your business on Google](https://support.google.com/business/answer/3038177), [Tips to improve local ranking on Google](https://support.google.com/business/answer/7091), [Prohibited & restricted content on Maps](https://support.google.com/contributionpolicy/answer/7400114), [Manage Business Profile photos & videos](https://support.google.com/business/answer/6103862), [Edit business hours](https://support.google.com/business/answer/15300403), [Set special hours](https://support.google.com/business/answer/6303076), [Understand Business Profile edits](https://support.google.com/business/answer/3038311), [Google site moves](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes).
+
+Nguồn tham khảo thực chiến, không dùng làm chính sách chính thức: [GTV SEO — Case Study Google Map](https://gtvseo.com/case-study-google-map/).
+
+### 3.11. Phân tích website và đối thủ SEO
+
+Phân tích đối thủ dùng để hiểu mặt bằng kết quả tìm kiếm, nhu cầu người dùng và khoảng trống có thể phục vụ tốt hơn; **MUST NOT** biến thành việc sao chép nội dung, backlink hoặc cấu trúc của trang đang đứng đầu. Đối thủ kinh doanh và đối thủ đang xuất hiện trên SERP có thể là hai nhóm khác nhau.
+
+#### Phạm vi và mẫu phân tích
+
+- **MUST** xác định trước thị trường, ngôn ngữ, quốc gia/khu vực, thiết bị, thời gian, search type và cụm truy vấn cần phân tích.
+- **MUST** chọn đối thủ theo từng intent/cụm truy vấn và loại trang thực sự xuất hiện trên SERP; không mặc định một danh sách đối thủ cho toàn domain.
+- **MUST** ghi nhận cả organic result, Local Pack, hình ảnh, video, shopping, forum, AI feature và các SERP feature khác có thể làm thay đổi hành vi click.
+- **SHOULD** lấy mẫu nhiều truy vấn đại diện cho topic và funnel thay vì suy luận từ một từ khóa head term.
+- **SHOULD** kiểm tra cả cấp URL, template, section và toàn site; dữ liệu domain không thay thế phân tích trang đang cạnh tranh trực tiếp.
+- **MUST** ghi rõ vị trí và thiết bị mô phỏng khi dùng rank tracker. Incognito, đổi IP hoặc VPN không tạo ra một thứ hạng “toàn quốc” tuyệt đối và **MUST NOT** được coi là phép đo chuẩn duy nhất.
+
+#### Thứ tự ưu tiên dữ liệu
+
+1. **Dữ liệu sở hữu:** Search Console, analytics, CRM/lead, log máy chủ, dữ liệu bán hàng và phản hồi khách hàng.
+2. **Quan sát trực tiếp:** SERP theo bối cảnh đã khai báo, nội dung/indexability/render của URL và trải nghiệm thực tế.
+3. **Dữ liệu bên thứ ba:** backlink, traffic, keyword, difficulty, authority score và ước tính thị trường.
+
+- **MUST** ưu tiên Search Console cho hiệu suất website trên Google, đồng thời hiểu giới hạn về query ẩn danh, data truncation, canonical aggregation, múi giờ và độ trễ dữ liệu.
+- **MUST** coi traffic, keyword, backlink và độ khó của đối thủ từ công cụ bên thứ ba là **ước tính**, không phải dữ liệu Google hoặc dữ liệu analytics thật của đối thủ.
+- **MUST** đối chiếu ít nhất hai loại bằng chứng trước thay đổi có rủi ro cao; không sửa website chỉ vì một tool báo điểm thấp.
+- **MUST** ghi tên công cụ, ngày lấy dữ liệu, phạm vi database, location/device và chế độ `domain / subdomain / exact URL / prefix` để báo cáo có thể tái lập.
+
+#### Khung phân tích bắt buộc
+
+| Lớp | Câu hỏi cần trả lời |
+|---|---|
+| Intent và SERP | Google đang ưu tiên loại trang, định dạng và mục đích nào? SERP có hỗn hợp intent không? |
+| Giá trị nội dung | Đối thủ giải quyết task nào tốt, còn thiếu điều kiện, bằng chứng, dữ liệu, trải nghiệm hoặc góc nhìn nào? |
+| Chất lượng và niềm tin | Ai chịu trách nhiệm nội dung, nguồn nào được dùng, tuyên bố có kiểm chứng được và có bằng chứng trải nghiệm thật không? |
+| Kiến trúc | URL, navigation, breadcrumb, internal link và topic cluster giúp người dùng/bot tìm nội dung ra sao? |
+| Kỹ thuật | Indexability, canonical, status, render, mobile, hiệu năng, structured data và media có vấn đề gì? |
+| Snippet và CTR | Title, description, rich result và định dạng kết quả có diễn đạt đúng giá trị trang không? |
+| Offpage và thương hiệu | Link/mention có liên quan, có giá trị biên tập và có khả năng đưa người dùng thật tới trang không? |
+| Chuyển đổi | CTA, bằng chứng, form, liên hệ, giá/phạm vi và các rào cản ra quyết định được xử lý thế nào? |
+
+Mỗi phát hiện **MUST** được chuyển thành: `bằng chứng → giả thuyết → tác động dự kiến → mức tin cậy → công sức/rủi ro → cách đo → người phụ trách`. “Đối thủ đang làm” không phải lý do triển khai độc lập.
+
+#### Phân tích backlink và anchor của đối thủ
+
+- **MUST** phân biệt backlink toàn domain với backlink tới exact URL đang xếp hạng; hai phạm vi trả lời hai câu hỏi khác nhau.
+- **SHOULD** xem xét nguồn, trang đặt link, ngữ cảnh, mức liên quan, khả năng biên tập, anchor, trang đích, referral tiềm năng và mô hình tăng trưởng thay vì chỉ đếm link/referring domain.
+- **MUST NOT** dùng các ngưỡng `DR < 30`, `UR > 20`, `TF`, số external link trên trang hoặc spam score như quy tắc loại/giữ tự động. Đây là chỉ số riêng của công cụ, không phải tín hiệu hoặc ngưỡng phạt Google công bố.
+- **MUST NOT** suy ra rằng website cần số referring domain bằng hoặc lớn hơn đối thủ mới có thể xếp hạng.
+- **MUST NOT** sao chép exact-match anchor, mua cùng danh sách link hoặc dựng link chỉ để khớp tỷ lệ của đối thủ. Link tạo chủ yếu để thao túng xếp hạng có thể vi phạm chính sách spam.
+- **MUST** coi backlink mà công cụ không phát hiện là dữ liệu thiếu, không tự động suy luận rằng đối thủ “che link” hoặc kết luận nguyên nhân xếp hạng.
+
+#### Các ngưỡng và kết luận không được đưa vào rule
+
+- Không có tỷ lệ anchor text tối ưu chung cho mọi ngành hoặc từ khóa; ví dụ 20% trong một case không chứng minh quan hệ nhân quả.
+- Keyword Difficulty, DA, PA, DR, UR, TF và CF không phải chỉ số của Google và không được dùng để cam kết thời gian, chi phí hoặc thứ hạng.
+- Không mặc định Offpage là yếu tố quyết định chính trong mọi thị trường; mức độ quan trọng phải được đánh giá cùng intent, nội dung, kỹ thuật, thương hiệu, UX và dữ liệu thực tế.
+- Không dùng một lần tìm kiếm thủ công làm báo cáo thứ hạng; kết quả có thể thay đổi theo vị trí, thiết bị, ngôn ngữ, thời gian và ngữ cảnh.
+- Danh sách và giá công cụ trong bài tham khảo có thể lỗi thời; việc chọn công cụ **MUST** dựa trên nhu cầu, chất lượng dữ liệu, quyền riêng tư, consent, chi phí hiện tại và khả năng tích hợp.
+
+#### Nhịp phân tích và nghiệm thu
+
+- **SHOULD** tạo baseline trước chiến dịch hoặc thay đổi lớn, sau đó review khi intent/SERP thay đổi, đối thủ mới xuất hiện, traffic/conversion biến động hoặc theo chu kỳ phù hợp với ngành.
+- **MUST** tách quan sát, suy luận và quyết định trong báo cáo; mọi dự báo phải có giả định và khoảng bất định.
+- **MUST** đánh giá kết quả bằng impression, click, CTR, landing page/query, engaged visit, conversion, lead/doanh thu và chi phí; average position chỉ là chỉ số chẩn đoán.
+- **SHOULD** thử nghiệm theo nhóm URL hoặc thay đổi có thể cô lập, ghi change log và so sánh với baseline; không triển khai toàn site chỉ để bắt chước đối thủ.
+
+Nguồn kiểm chứng: [Google guidance on third-party SEO tools & advice](https://developers.google.com/search/docs/fundamentals/third-party-seo), [Search Console Performance filtering and comparison](https://support.google.com/webmasters/answer/17011165), [About Search Console data](https://support.google.com/webmasters/answer/96568), [Google Search spam policies](https://developers.google.com/search/docs/essentials/spam-policies).
+
+Nguồn tham khảo thực chiến, không dùng làm tiêu chuẩn thuật toán: [GTV SEO — Cách phân tích website đối thủ cạnh tranh SEO](https://gtvseo.com/phan-tich-website/).
+
+### 3.12. Content brief theo loại trang — không dùng một “mẫu chuẩn SEO” duy nhất
+
+Không có một mẫu bài viết, số chữ, mật độ từ khóa hoặc thứ tự block nào bảo đảm thứ hạng. Template **MAY** chuẩn hóa quy trình và UI, nhưng content brief **MUST** được tạo theo intent, page role, sản phẩm/dịch vụ thật, dữ liệu sẵn có và nhiệm vụ người dùng cần hoàn thành.
+
+#### Yêu cầu chung cho mọi trang nội dung
+
+- **MUST** xác định primary intent, đối tượng, task chính, bằng chứng cần có và hành động tiếp theo trước khi viết.
+- **MUST** dùng `<title>`, H1 và heading mô tả đúng nội dung; chúng nên nhất quán về chủ đề nhưng không bắt buộc chứa cùng một exact-match keyword hoặc giống nhau từng ký tự.
+- **MUST** viết tự nhiên, dùng thuật ngữ chính xác và bao phủ các khái niệm cần thiết; không dùng mật độ từ khóa, số lần lặp hoặc điểm plugin làm tiêu chí nghiệm thu.
+- **MUST** không kéo dài nội dung để đạt word count. Độ dài được quyết định bởi mức độ cần thiết để hoàn thành task, giải thích điều kiện/ngoại lệ và cung cấp bằng chứng.
+- **SHOULD** trả lời trực tiếp sau heading khi điều đó giúp người đọc, nhưng không ép mọi đoạn thành 40–75 từ và không tuyên bố cấu trúc này bảo đảm Featured Snippet hoặc AI citation.
+- **MUST** dùng heading theo cấu trúc ý nghĩa; list cho nội dung liệt kê, table cho dữ liệu hàng/cột, figure/caption cho hình cần giải thích. Không định dạng chỉ để chèn từ khóa.
+- **MUST** đặt ảnh, video, sơ đồ hoặc screenshot khi chúng giúp người đọc hiểu/xác minh tốt hơn; alt mô tả đúng mục đích ảnh, ảnh trang trí dùng `alt=""`. Không chèn từ khóa vào mọi alt hoặc đổi tên file hàng loạt với lời hứa tăng hạng.
+- **MUST** dùng internal link và external citation khi chúng tạo bước tiếp theo hoặc giúp kiểm chứng; anchor mô tả tự nhiên, không áp tỷ lệ exact-match và không có số link lý tưởng chung.
+- **MUST** công khai người/đơn vị chịu trách nhiệm, nguồn, phương pháp, ngày kiểm tra hoặc ngày cập nhật khi chúng quan trọng với độ tin cậy; không tạo tác giả/chứng chỉ/trải nghiệm giả.
+- **SHOULD** có mục lục cho nội dung dài hoặc nhiều nhánh khi nó thực sự cải thiện điều hướng; mục lục không phải yêu cầu xếp hạng cho mọi bài.
+
+#### Brief cho bài kiến thức/chuyên môn
+
+Bài kiến thức **MUST** trả lời câu hỏi và giúp người đọc áp dụng, không chỉ tổng hợp những gì các trang khác đã nói. Brief **SHOULD** xem xét:
+
+1. Câu trả lời hoặc định nghĩa trực tiếp, phạm vi thuật ngữ và đối tượng áp dụng.
+2. Bối cảnh, nguyên nhân/cơ chế, quy trình hoặc cách thực hiện.
+3. Điều kiện, ngoại lệ, giới hạn, rủi ro và lỗi thường gặp.
+4. Ví dụ, case, dữ liệu, hình ảnh hoặc kinh nghiệm thực tế có thể kiểm chứng.
+5. Nguồn gốc cho số liệu/tuyên bố; ưu tiên tài liệu chính thức hoặc nguồn sơ cấp.
+6. Bước tiếp theo hợp lý và internal link phục vụ hành trình người đọc.
+
+- Nội dung YMYL **MUST** có tiêu chuẩn chính xác, nguồn và review chuyên môn tương xứng rủi ro; Schema tác giả không thay thế chuyên môn thật.
+- Bài dựa trên nguồn khác **MUST** bổ sung phân tích hoặc giá trị nguyên bản, không chỉ viết lại/tóm tắt.
+- `Article`/`BlogPosting` **MAY** mô tả bài và tác giả khi dữ liệu khớp nội dung thật; markup không tự tạo uy tín hoặc thứ hạng.
+
+#### Brief cho trang sản phẩm
+
+Trang sản phẩm **MUST** giúp người mua xác định đây có phải lựa chọn phù hợp và có thể hoàn thành hành động mua/đăng ký. Tùy sản phẩm, brief **SHOULD** gồm:
+
+- Tên/variant, ảnh thật, giá, tình trạng, SKU/MPN/GTIN/brand khi có và chính xác.
+- Lợi ích gắn với use case, thông số kỹ thuật chính xác, kích thước/chất liệu/tương thích và nội dung trong hộp.
+- Hướng dẫn sử dụng, bảo quản, an toàn, bảo hành, đổi trả, giao hàng và giới hạn sản phẩm.
+- Ảnh/video nhiều góc hoặc demo khi hữu ích; không dùng ảnh không phản ánh đúng sản phẩm.
+- So sánh variant/phiên bản theo tiêu chí khách quan khi giúp lựa chọn; không bịa ưu thế của mình hoặc nhược điểm đối thủ.
+- CTA, trạng thái mua hàng và thông tin giao dịch nhất quán với backend.
+
+- Thông số chung từ nhà sản xuất **MAY** trùng về dữ kiện; **MUST NOT** viết sai thông số chỉ để tạo “unique content”. Phần giá trị riêng nên đến từ ảnh, thử nghiệm, hướng dẫn, so sánh, hỗ trợ và kinh nghiệm thật.
+- `Product`/`Offer`/`AggregateRating` **MAY** được dùng khi trang và dữ liệu đủ điều kiện; giá, availability, rating và review trong markup **MUST** khớp nội dung hiển thị và dữ liệu thật.
+- Review sản phẩm **MUST** dựa trên trải nghiệm thật, hiển thị cho người dùng và tuân thủ chính sách review. Structured data hợp lệ chỉ tạo **eligibility**, không bảo đảm sao hoặc Rich Result.
+
+#### Brief cho trang dịch vụ
+
+Trang dịch vụ **MUST** giúp khách hàng đánh giá offer và giảm rủi ro ra quyết định. Tùy dịch vụ, brief **SHOULD** gồm:
+
+- Vấn đề được giải quyết, đối tượng phù hợp/không phù hợp và kết quả đầu ra.
+- Phạm vi bao gồm/không bao gồm, quy trình, mốc thời gian, trách nhiệm hai bên và tiêu chí nghiệm thu.
+- Cách xác định giá, khoảng giá hoặc lý do cần khảo sát; không dùng “liên hệ” để che mọi thông tin có thể công khai.
+- Case study, hình ảnh thật, deliverable mẫu, năng lực đội ngũ, pháp lý/chứng nhận có thể kiểm chứng.
+- Rủi ro, giới hạn, phụ thuộc và chính sách bảo hành/hỗ trợ.
+- CTA phù hợp như gọi, nhắn tin, đặt lịch hoặc yêu cầu báo giá; form chỉ thu dữ liệu thực sự cần thiết.
+- FAQ dựa trên câu hỏi thật của khách khi giúp giải quyết rào cản; không tạo FAQ chỉ để săn Rich Result.
+
+- Mỗi landing page dịch vụ **MUST** có intent, offer hoặc phạm vi độc lập. Không nhân trang theo địa danh/từ khóa nếu nội dung và năng lực phục vụ không khác biệt thực chất.
+- Testimonial, logo khách hàng, chứng chỉ và case **MUST** là thật, được phép công bố và không trình bày gây hiểu sai.
+- **MUST NOT** dùng khái niệm “testimonial schema” như một loại Rich Result riêng. `Review`/`AggregateRating` chỉ được dùng cho loại đối tượng Google hỗ trợ, đúng chính sách, hiển thị rõ trên trang và không phải review tự phục vụ bị cấm.
+
+#### Tiêu chí nghiệm thu và đo lường
+
+- **MUST** review thủ công tính đúng, đầy đủ, intent, khả năng hoàn thành task, nguồn và bằng chứng; điểm Yoast/Surfer/plugin chỉ là gợi ý chẩn đoán.
+- **MUST** kiểm tra title/snippet thực tế, indexability, mobile, link, media, structured data và conversion path trên output cuối.
+- **SHOULD** theo dõi theo page role: query/impression/click/CTR, engaged visit, scroll hoặc task completion phù hợp, CTA, lead/giao dịch và phản hồi khách hàng.
+- **MUST** cập nhật khi dữ kiện, giá, availability, quy trình, luật/chính sách, intent hoặc sản phẩm thay đổi; không sửa ngày chỉ để tạo cảm giác mới.
+
+Nguồn kiểm chứng: [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [Title links in Google Search](https://developers.google.com/search/docs/appearance/title-link), [Google link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable), [Product structured data](https://developers.google.com/search/docs/appearance/structured-data/product), [Review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet).
+
+Nguồn tham khảo thực hành, không dùng làm công thức xếp hạng: [GTV SEO — Mẫu bài viết chuẩn SEO](https://gtvseo.com/mau-bai-viet-chuan-seo/).
+
+### 3.13. Traffic acquisition — tăng đúng người, không chạy theo pageview
+
+Traffic là đầu vào của hành trình người dùng, không phải kết quả kinh doanh tự thân. Mọi kế hoạch tăng traffic **MUST** xác định đối tượng, nhu cầu, landing page, hành động mong muốn, chi phí và cách đo chất lượng trước khi chọn kênh.
+
+#### Nguyên tắc cốt lõi
+
+- **MUST** ưu tiên traffic phù hợp có khả năng hoàn thành task hoặc tạo giá trị, không tối ưu tổng session/pageview độc lập với lead, giao dịch, retention hoặc mục tiêu sản phẩm.
+- **MUST** phân biệt `Owned` (website, email/list có consent, cộng đồng sở hữu), `Earned` (organic search, mention, referral tự nhiên), và `Paid` (ads, tài trợ, creator/partner trả phí) để đánh giá chi phí, quyền kiểm soát và rủi ro phụ thuộc.
+- **MUST** không tuyên bố traffic, dwell time, time on site, social share hoặc “tương tác sâu” tự động tạo E-E-A-T hay trực tiếp nâng hạng Google. Tương quan không chứng minh quan hệ nhân quả.
+- **MUST** hiểu quảng cáo Google và các kênh trả phí không làm tăng hoặc giảm thứ hạng organic chỉ vì đã mua traffic.
+- **MUST** không cam kết organic traffic luôn rẻ hơn, bền vững hơn hoặc có conversion rate cao hơn paid/social/email; kết luận phải dựa trên dữ liệu ngành, cohort, attribution và tổng chi phí thực tế.
+- **SHOULD** đa dạng hóa kênh khi một nguồn chiếm tỷ trọng rủi ro cao, nhưng không dàn trải sang kênh thiếu audience fit hoặc không đủ năng lực vận hành.
+
+#### Điều kiện chọn một chiến thuật phân phối
+
+Mỗi đề xuất **MUST** trả lời được:
+
+1. Audience cụ thể ở đâu và đang có intent/trạng thái nhận biết nào?
+2. Tài sản nào được phân phối và vì sao nó đáng được click, lưu, chia sẻ hoặc quay lại?
+3. Landing page có khớp thông điệp, thiết bị và hành động tiếp theo không?
+4. Kênh là owned, earned hay paid; chi phí sản xuất, phân phối và vận hành là bao nhiêu?
+5. Có cần consent, disclosure tài trợ, quyền sử dụng media, moderation hoặc điều khoản nền tảng không?
+6. Primary conversion, quality metric, guardrail và thời gian đánh giá là gì?
+7. Kết quả nào dẫn tới mở rộng, sửa, giữ hoặc dừng?
+
+#### Nhóm chiến thuật được phép khi có audience fit
+
+- **Organic Search:** sửa crawl/index, intent, nội dung, title/snippet, internal link, mobile và hiệu năng; mở rộng topic/long-tail chỉ khi có nhu cầu và giá trị độc lập, không tạo URL cho mọi biến thể.
+- **Content refresh:** cập nhật khi dữ kiện, sản phẩm, intent, nguồn hoặc hiệu suất thay đổi; không đổi ngày hoặc viết lại máy móc chỉ để tạo “freshness”.
+- **Tài sản có giá trị:** nghiên cứu, dữ liệu, template, calculator, checklist, demo, case, infographic hoặc video **MAY** được tạo khi định dạng giúp hoàn thành task tốt hơn; không mặc định video/infographic luôn tăng traffic hay conversion.
+- **Internal distribution:** liên kết các tài nguyên có quan hệ để người dùng tiếp tục hành trình và bot khám phá trang; thời gian onsite tăng có thể là kết quả UX nhưng không phải KPI ranking cần thao túng.
+- **Email:** chỉ gửi cho người đã có cơ sở hợp lệ/consent theo luật áp dụng, nêu rõ người gửi, cung cấp cách unsubscribe và bảo vệ dữ liệu; không mua/scrape danh sách hoặc che mục đích thu thập lead magnet.
+- **Community/social/forum:** tham gia bằng câu trả lời có giá trị và tuân thủ quy định cộng đồng; link chỉ đặt khi thực sự giúp người đọc. Không seeding giả, spam nhóm, tạo tài khoản hàng loạt hoặc đăng cùng một nội dung khắp nơi.
+- **Webinar, khóa học, quiz, công cụ và cuộc thi:** **MAY** dùng khi có giá trị độc lập, thể lệ/minh bạch dữ liệu rõ ràng và kế hoạch follow-up; FOMO giả hoặc thu thập dữ liệu quá mức **MUST NOT** được dùng.
+- **Partnership, event, PR và guest contribution:** ưu tiên audience liên quan, giá trị biên tập và referral thật; quan hệ trả phí/tài trợ **MUST** được công khai, link phải dùng `rel="sponsored"`/`nofollow` khi phù hợp.
+- **Paid media:** dùng để mua phân phối, kiểm thử offer/creative/audience và tạo conversion theo ngân sách; **MUST** tách kết quả paid khỏi organic và không trình bày PPC như một thủ thuật SEO.
+
+#### Discover và nội dung có tính chia sẻ
+
+- Nội dung đã index và tuân thủ chính sách có thể đủ điều kiện cho Discover mà không cần tag hoặc Schema đặc biệt; eligibility không bảo đảm được hiển thị.
+- **MUST** dùng headline, snippet và ảnh phản ánh đúng nội dung; không giấu thông tin cốt lõi, clickbait, giật gân hoặc khai thác tò mò tiêu cực để tăng CTR.
+- **SHOULD** dùng ảnh chất lượng cao, liên quan và đủ lớn khi phù hợp; không dùng logo/ảnh chung chung hoặc ảnh nhiều chữ làm ảnh đại diện chính nếu không giúp hiểu bài.
+- Discover traffic **MUST** được coi là nguồn bổ sung có biến động cao, không làm forecast doanh thu ổn định chỉ từ lịch sử ngắn hạn.
+
+#### Đo lường và attribution
+
+- **MUST** dùng Search Console cho impression/click/query/page của Google Search và dùng analytics/CRM cho session, hành vi, conversion và giá trị kinh doanh; không kỳ vọng hai hệ thống khớp tuyệt đối.
+- **MUST** có quy ước UTM nhất quán, phân biệt chữ hoa/thường và tối thiểu quản lý `utm_source`, `utm_medium`, `utm_campaign`; dùng `utm_content` để phân biệt creative/placement khi cần.
+- **MUST NOT** gắn UTM vào internal link vì sẽ làm mất/ghi đè attribution phiên truy cập; UTM dành cho liên kết chiến dịch từ bên ngoài website.
+- **MUST** kiểm tra redirect/shortener có giữ tham số, cross-domain tracking khi áp dụng và consent mode/privacy trước khi tin dữ liệu campaign.
+- `Direct / none` **MUST NOT** được diễn giải hoàn toàn là người dùng gõ URL hoặc nhận diện thương hiệu; nhóm này còn có thể chứa nguồn bị mất referrer/UTM, tài liệu offline, redirect, ad blocker và lỗi tracking.
+- **MUST** lọc bot/spam, traffic nội bộ, duplicate conversion và lỗi instrumentation trước khi ra quyết định.
+- **SHOULD** đánh giá theo channel → campaign → landing page → cohort/device/location → primary conversion → qualified lead/revenue, kèm chi phí đầy đủ.
+
+#### KPI và điều kiện mở rộng
+
+| Lớp | Chỉ số phù hợp |
+|---|---|
+| Phân phối | Reach/impression hợp lệ, email delivered, view đủ điều kiện, branded/non-branded visibility |
+| Thu hút | Click, CTR, session chất lượng, new/returning theo mục tiêu |
+| Hoàn thành task | Engaged visit, xem tài nguyên, dùng công cụ, đăng ký, gọi/nhắn/form thành công |
+| Chất lượng kinh doanh | Qualified lead, cơ hội, giao dịch, doanh thu, retention/LTV khi có |
+| Hiệu quả | CAC/CPL/CPA, ROAS hoặc giá trị trên tổng chi phí sản xuất + phân phối + vận hành |
+| Rủi ro | Unsubscribe/spam complaint, bounce bất thường, invalid traffic, policy violation, phụ thuộc kênh |
+
+- **MUST** đặt baseline, cửa sổ đo và ngưỡng dừng trước thử nghiệm có chi phí đáng kể.
+- **MUST** không dồn ngân sách chỉ vì một kênh tạo nhiều traffic; quyết định mở rộng dựa trên marginal value, chất lượng conversion, saturation, incrementality và rủi ro tập trung.
+- Các tỷ lệ như “video tăng conversion 80%”, “organic luôn chuyển đổi cao hơn”, “Pinterest hơn Facebook 33%” hoặc “social share tăng backlink 245%” **MUST NOT** được dùng làm forecast nếu không kiểm tra nguồn, năm, mẫu, ngành và khả năng áp dụng.
+
+#### Thuật ngữ và mẹo không được coi là rule đã xác thực
+
+- DA/DR và keyword difficulty không phải tín hiệu Google; không dùng để quyết định rằng website mới chỉ nên làm long-tail.
+- “LSI keyword” không phải yêu cầu tối ưu của Google; dùng ngôn ngữ tự nhiên, entity và thuật ngữ cần thiết cho chủ đề thay vì danh sách từ khóa bí truyền.
+- “Phantom keyword”, tên file ảnh có dấu gạch nối, exact-match trong URL hoặc mọi heading không được coi là công thức tăng traffic.
+- Không đổi URL đang ổn chỉ để thêm keyword; lợi ích mô tả phải được cân với rủi ro migration.
+- Không dùng tiêu đề kích thích tò mò nếu làm sai, thiếu hoặc phóng đại nội dung; CTR cao nhưng traffic sai đối tượng không phải thành công.
+
+Nguồn kiểm chứng: [Google Search position FAQ — ads and organic ranking](https://developers.google.com/search/help/site-position-in-search-faq), [Google Discover guidance](https://developers.google.com/search/docs/appearance/google-discover), [Google helpful content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [GA4 campaign URL/UTM guidance](https://support.google.com/analytics/answer/10917952), [GA4 direct traffic explanation](https://support.google.com/analytics/answer/15258820), [Google Search spam policies](https://developers.google.com/search/docs/essentials/spam-policies).
+
+Nguồn tham khảo ý tưởng kênh, không dùng các tỷ lệ trong bài làm benchmark mặc định: [GTV SEO — 31 cách tăng traffic cho website](https://gtvseo.com/cach-tang-traffic-cho-website/).
+
+### 3.14. Technical SEO audit — bằng chứng, quyết định index và release gate
+
+Technical SEO bảo đảm nội dung có thể được truy cập, render, hiểu, canonicalize, index và phục vụ đúng; nó không thể bù cho nội dung/offer kém và không tự bảo đảm thứ hạng.
+
+#### Nguồn bằng chứng bắt buộc
+
+Audit kỹ thuật **MUST** đối chiếu nhiều lớp thay vì tin một điểm health score:
+
+1. HTTP response: final URL, status, header, redirect và nội dung trả về.
+2. Raw HTML và rendered DOM trên desktop/mobile.
+3. Internal crawl từ URL bắt đầu thực tế, có cấu hình JavaScript khi cần.
+4. Search Console: Page Indexing, URL Inspection, Sitemaps, Manual Actions/Security và Performance phù hợp.
+5. `robots.txt`, XML sitemap, canonical/hreflang và structured data ở output live.
+6. Server/CDN log khi website lớn, crawl bất thường hoặc cần xác minh bot/request thực tế.
+7. Dữ liệu người dùng và field performance khi lỗi liên quan UX/tốc độ.
+
+- **MUST** xác minh cảnh báo công cụ trên URL mẫu và output live trước khi tạo task.
+- **MUST** ghi rõ user agent, viewport, location, authentication, JS on/off, thời gian và phạm vi crawl để kết quả có thể tái lập.
+- **MUST** phân biệt `không crawl được`, `đã crawl`, `không render đủ`, `không index`, `duplicate/canonical khác`, `soft 404` và `đã index nhưng không có traffic`; các trạng thái này không dùng chung một cách sửa.
+
+#### Quyết định crawl và index
+
+| Mục tiêu URL | Cấu hình kỳ vọng |
+|---|---|
+| Cần xuất hiện trong Search | `200`, crawl được, không `noindex`, canonical phù hợp, có internal link; sitemap khi thuộc inventory indexable. |
+| Không cần xuất hiện nhưng bot cần đọc directive/link | Cho crawl và dùng `noindex` qua meta hoặc `X-Robots-Tag` khi phù hợp. |
+| Nội dung riêng tư/bảo mật | Authentication/authorization; không dùng `robots.txt` hoặc `noindex` như cơ chế bảo mật. |
+| URL không còn tồn tại và không có thay thế tương đương | `404` hoặc `410`, xóa khỏi internal link và sitemap. |
+| URL đã chuyển vĩnh viễn tới trang tương đương | Redirect vĩnh viễn một bước tới URL đích hợp lý, rồi cập nhật internal link/canonical/sitemap. |
+| Duplicate cần hợp nhất tín hiệu nhưng vẫn truy cập được | Canonical nhất quán hoặc redirect khi không cần giữ URL; kiểm tra Google-selected canonical. |
+| Filter/sort/search/facet không có giá trị index độc lập | Rule crawl/index theo mẫu URL, demand và crawl space; không áp một directive cho mọi website. |
+
+- `robots.txt` **MUST** chỉ được xem là điều khiển crawl, không phải cách bảo đảm URL biến mất khỏi Search. URL bị disallow vẫn có thể được biết/index theo tín hiệu ngoài và bot không thể thấy `noindex` trên URL bị chặn.
+- **MUST NOT** chặn crawl URL rồi chờ Google đọc `noindex` trên chính URL đó.
+- **MUST NOT** noindex chỉ vì trang dưới 100 từ, traffic thấp, là category/tag hoặc bị tool gọi là thin/duplicate. Quyết định phải dựa trên intent, giá trị độc lập, canonical cluster, navigation và nhu cầu người dùng.
+- Duplicate nội bộ bình thường **MUST NOT** được gọi là spam tự động; nhiệm vụ kỹ thuật là chọn URL đại diện và giữ redirect/canonical/sitemap/internal link nhất quán.
+
+#### Kiến trúc, crawl depth và crawl budget
+
+- **MUST** bảo đảm mọi URL indexable quan trọng có ít nhất một internal link crawlable từ nội dung/navigation phù hợp và không là orphan page.
+- **SHOULD** giữ hành trình tới trang quan trọng ngắn và dễ hiểu, nhưng không áp “mọi trang cách homepage tối đa 3–4 click” như ngưỡng xếp hạng cứng. Độ sâu phải được đánh giá cùng loại site, taxonomy và tần suất sử dụng.
+- **MUST** ưu tiên kiến trúc phân cấp rõ ràng hơn việc làm phẳng toàn bộ website; flat architecture quá mức có thể tạo menu khổng lồ, dilution ngữ cảnh và UX kém.
+- Crawl budget chuyên sâu **SHOULD** chỉ thành workstream riêng cho site rất lớn/thay đổi nhanh hoặc có tỷ lệ lớn `Discovered – currently not indexed`. Với site nhỏ, sitemap đúng, internal link, Page Indexing và lỗi server thường đủ để quản lý.
+- **MUST NOT** tuyên bố sitemap hoặc cấu trúc phẳng giúp Google crawl/index “100% URL”; sitemap là tín hiệu khám phá/canonical, không phải cam kết crawl hay index.
+
+#### XML sitemap
+
+- Sitemap **MUST** chỉ chứa URL tuyệt đối, canonical, indexable, trả `200` và được mong muốn xuất hiện trong Search; không đưa `3xx`, `4xx`, `5xx`, `noindex` hoặc URL canonical sang trang khác.
+- `lastmod` **MUST** phản ánh thay đổi đáng kể của nội dung, không cập nhật tự động mỗi lần build/request nếu nội dung không đổi.
+- Một sitemap **MUST NOT** vượt 50.000 URL hoặc 50 MB khi chưa nén; lớn hơn phải tách file và dùng sitemap index.
+- **SHOULD** chia sitemap theo loại/section có ý nghĩa khi cần chẩn đoán index coverage; không chia chỉ để tạo nhiều file.
+- **MUST** khai báo đúng canonical hostname/protocol và kiểm tra trạng thái sitemap trong Search Console sau deploy/migration.
+
+#### Hreflang và website đa ngôn ngữ/đa vùng
+
+- Chỉ dùng `hreflang` khi có URL riêng cho phiên bản ngôn ngữ/vùng; mỗi trang **MUST** có self-reference và return link đầy đủ tới các alternate trong cluster.
+- `hreflang` **MUST** dùng URL tuyệt đối và mã ngôn ngữ ISO 639-1, vùng ISO 3166-1 Alpha 2 khi cần; mã vùng đứng một mình không hợp lệ.
+- Mỗi phiên bản **SHOULD** canonical về chính nó khi là trang độc lập tương đương; không canonical tất cả ngôn ngữ về một URL rồi kỳ vọng `hreflang` giữ các bản còn lại.
+- `x-default` **MAY** dùng cho selector/default không nhắm riêng ngôn ngữ/vùng.
+- **MUST** kiểm tra nội dung chính thực sự được bản địa hóa; chỉ dịch header/footer trong khi thân bài giữ nguyên không tạo phiên bản ngôn ngữ đầy đủ.
+- **MUST NOT** ép redirect theo IP/ngôn ngữ làm bot và người dùng không truy cập được alternate; cần có liên kết chuyển ngôn ngữ rõ ràng.
+
+#### Performance và JavaScript
+
+- **MUST** đo network waterfall, main-thread, Core Web Vitals field/lab, render và task completion; không dùng tổng page weight hoặc PageSpeed score làm chẩn đoán duy nhất.
+- Third-party script **MUST** có owner, mục đích, consent khi cần, chi phí tải/thực thi và tiêu chí giữ/gỡ. Không dùng con số “mỗi script thêm 34 ms” làm hằng số dự án.
+- CDN, cache, minify, lazy-load hoặc framework **MUST** được đo trước/sau trên cùng điều kiện; tương quan từ nghiên cứu bên thứ ba không chứng minh CDN/framework là nguyên nhân chậm.
+- Nội dung/index directive/link quan trọng sinh bằng JavaScript **MUST** được kiểm tra trong rendered HTML của Google và khi script lỗi/chậm.
+- Infinite scroll **MUST** có URL/pagination crawlable nếu nội dung cần được khám phá; bot không được giả định sẽ cuộn hoặc click như người dùng.
+
+#### Canonical, lỗi URL và structured data
+
+- Canonical là tín hiệu mạnh nhưng vẫn là hint; **MUST** kiểm tra Google-selected canonical thay vì chỉ xác nhận thẻ tồn tại.
+- Product variant **MUST** được xử lý theo khả năng mua, URL và chiến lược variant thực tế; không canonical mọi màu/kích thước về một “bản vanilla” nếu các variant cần index hoặc có thông tin/offer riêng.
+- Internal broken link, redirect chain/loop, soft 404 và URL trả `200` cho trang lỗi **MUST** được sửa theo impact; external broken link được rà theo giá trị nguồn và UX, không gọi mọi link chết là án phạt SEO.
+- Structured data hợp lệ **MAY** tạo eligibility cho Search Feature, không trực tiếp bảo đảm ranking, CTR hoặc Rich Result; markup **MUST** khớp visible content và tài liệu hiện hành.
+- Thứ tự kết quả khi tìm một câu trong dấu ngoặc kép **MUST NOT** được dùng làm bằng chứng quyền tác giả hoặc nguồn xuất bản đầu tiên.
+
+#### Release gate và nhịp audit
+
+- **MUST** kiểm tra source → build → staging → live cho status, canonical, robots, sitemap, hreflang, internal link, rendered content và structured data; source đúng nhưng output/deploy sai vẫn là lỗi.
+- Audit định kỳ **SHOULD** theo quy mô/rủi ro và trigger như deploy, migration, thay CMS/template, tăng inventory, biến động index/traffic hoặc lỗi server; không bắt buộc “hàng quý” cho mọi website.
+- Mỗi issue **MUST** có URL mẫu, quy mô ảnh hưởng, bằng chứng, nguyên nhân gốc, priority, owner, acceptance test và rollback/monitoring khi rủi ro cao.
+- Sau sửa **MUST** crawl/test lại đúng mẫu, kiểm tra live output và theo dõi Page Indexing/Performance trong khoảng thời gian hợp lý; không đóng task chỉ vì plugin báo xanh.
+
+Nguồn kiểm chứng: [Google technical requirements and developer guide](https://developers.google.com/search/docs/fundamentals/get-started-developers), [Block indexing with noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing), [Canonicalization](https://developers.google.com/search/docs/crawling-indexing/canonicalization), [Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [Crawl budget management](https://developers.google.com/crawling/docs/crawl-budget), [Localized versions and hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions).
+
+Nguồn tham khảo checklist, các ngưỡng/tuyên bố cũ đã được hiệu chỉnh theo tài liệu Google hiện hành: [GTV SEO — Technical SEO](https://gtvseo.com/technical-seo/).
+
+### 3.15. Information architecture — cấu trúc theo nhiệm vụ, không theo mô hình SEO cứng
+
+Cấu trúc website là hệ thống quan hệ giữa nội dung, navigation, URL, taxonomy, internal link và trạng thái index. Mục tiêu là giúp người dùng tìm/hoàn thành việc cần làm và giúp crawler khám phá, hiểu quan hệ, chọn URL phù hợp; không phải làm cho sơ đồ trông giống một “Silo” hoàn hảo.
+
+#### Đầu vào trước khi vẽ cấu trúc
+
+- **MUST** bắt đầu từ audience, top tasks, hành trình, sản phẩm/dịch vụ thật, inventory nội dung và mục tiêu kinh doanh; keyword và đối thủ chỉ là nguồn kiểm chứng bổ sung.
+- **MUST** xác định page role cho từng node: home, hub/category, listing, detail/product/service, guide/article, utility/tool, policy hoặc conversion page.
+- **MUST** tách `primary intent`, `secondary intents`, entity/offer, owner và lifecycle của mỗi URL; không tạo node chỉ vì có một modifier keyword.
+- **SHOULD** dùng card sorting, tree testing, site search data, analytics, support/sales query và phản hồi người dùng khi cấu trúc lớn hoặc có nhiều nhóm khách hàng.
+- **MUST** kiểm tra SERP/đối thủ để hiểu kỳ vọng loại trang, nhưng **MUST NOT** sao chép taxonomy của đối thủ nếu khác catalog, audience, năng lực hoặc chiến lược kinh doanh.
+
+Mỗi node trong sitemap kiến trúc **SHOULD** có tối thiểu: `label | page role | canonical URL | parent/hub | primary navigation path | index rule | template | owner | conversion/task | lifecycle status`.
+
+#### Silo, Topic Cluster và taxonomy
+
+- Silo và Topic Cluster **MAY** được dùng như mô hình tư duy để nhóm nội dung; chúng không phải thuật ngữ hoặc cấu trúc bắt buộc do Google quy định.
+- **MUST** nhóm theo mental model và nhiệm vụ người dùng, không chỉ theo head/modifier keyword hoặc cơ cấu phòng ban nội bộ.
+- **MUST NOT** cấm liên kết chéo giữa “silo” khi liên kết đó hữu ích. Contextual link hợp lý giữa các nhóm có thể giúp người dùng hoàn thành hành trình và làm rõ quan hệ.
+- Pillar/hub **MUST** có giá trị độc lập như định hướng, phân loại, so sánh hoặc tổng hợp lựa chọn; không tạo một trang dài chung chung chỉ để phân phối link.
+- Một URL **MAY** thuộc nhiều taxonomy/navigation path về mặt trải nghiệm, nhưng canonical URL và trách nhiệm nội dung phải rõ ràng để tránh bản sao.
+- Cannibalization **MUST** được xác định bằng intent/page role và dữ liệu query–URL, không chỉ vì nhiều URL cùng xuất hiện cho một từ khóa. Cấu trúc tốt giảm mơ hồ nhưng không bảo đảm chỉ một URL được xếp hạng.
+
+#### Navigation và khả năng khám phá
+
+- **MUST** dùng liên kết `<a href>` crawlable từ home → category/hub → subcategory/listing → detail cho inventory cần index; search box không thay thế navigation vì crawler thường không gửi truy vấn tìm kiếm nội bộ.
+- Global navigation **SHOULD** ưu tiên top tasks và nhóm quan trọng, không chứa toàn bộ URL. Local navigation, breadcrumb và contextual link xử lý chiều sâu/ngữ cảnh.
+- Footer **SHOULD** dành cho điều hướng phụ, pháp lý, liên hệ và các đích thực sự hữu ích; không biến thành danh sách keyword/city/service lặp lại.
+- **MUST** bảo đảm menu dùng được bằng keyboard, touch và screen reader; trạng thái mở/đóng, focus và label phải rõ.
+- **SHOULD** liên kết trực tiếp tới category/product/service quan trọng từ các trang liên quan khi có lý do cho người dùng; số internal link không phải thước đo importance duy nhất.
+- Sitelinks do Google tạo tự động. Cấu trúc logic, title/heading rõ và anchor nội bộ phù hợp có thể giúp hệ thống hiểu, nhưng **MUST NOT** cam kết hoặc tạo “sitelink thủ công”.
+
+#### URL và breadcrumb
+
+- URL **SHOULD** ổn định, dễ đọc, mô tả và nhất quán; path phân cấp hoặc phẳng đều có thể dùng nếu navigation, canonical và quản trị rõ ràng.
+- Google chủ yếu suy cấu trúc/importance từ liên kết giữa trang; thư mục URL **MUST NOT** được coi là bằng chứng duy nhất của hierarchy hoặc “sức mạnh silo”.
+- **MUST NOT** đổi URL đang hoạt động chỉ để thêm keyword, phản chiếu category mới hoặc chuyển từ flat sang physical silo nếu lợi ích không vượt chi phí migration.
+- Breadcrumb hiển thị **SHOULD** biểu diễn đường đi điển hình/hữu ích cho người dùng, không cần sao chép từng segment URL. `BreadcrumbList` nếu có **MUST** khớp quan hệ hiển thị và thứ tự hợp lý.
+- Khi một trang có nhiều đường truy cập, **SHOULD** chọn một breadcrumb chính ổn định theo mental model; không sinh breadcrumb khác nhau ngẫu nhiên theo referrer/session.
+
+#### Hub, category và listing
+
+- Hub/category **MUST** giúp chọn hoặc hiểu tập hợp: tên/phạm vi rõ, link tới thành phần, filter/sort hữu ích và nội dung hỗ trợ quyết định khi cần.
+- **MUST** bảo đảm mọi item cần index có đường link crawlable; “Load more” hoặc infinite scroll chỉ dùng cho UX khi có URL/pagination/link thay thế cho crawler.
+- Empty category/filter **MUST** có lifecycle rõ: giữ với thông báo và lựa chọn thay thế nếu tạm hết hàng/có nhu cầu quay lại; `noindex`, `404` hoặc remove nếu không còn giá trị. Không redirect mọi trang rỗng về home/category chung.
+- Listing **SHOULD** có thứ tự mặc định ổn định, trạng thái empty/error rõ và không tạo URL mới do session, tracking hoặc thời gian hiện tại.
+
+#### Faceted navigation và bộ lọc
+
+Trước khi triển khai, mỗi facet/combination **MUST** được phân loại:
+
+| Loại | Xử lý định hướng |
+|---|---|
+| Có nhu cầu và landing value độc lập | URL ổn định, content/listing hữu ích, self-canonical, internal link có chọn lọc và sitemap khi thực sự indexable. |
+| Chỉ phục vụ UX/sort/view | Không đưa sitemap; kiểm soát index/crawl theo mẫu, canonical/noindex/robots tùy mục tiêu và quy mô. |
+| Tổ hợp rỗng/vô nghĩa/lặp filter | Trả `404` khi phù hợp; không redirect về listing chung và không tạo infinite crawl space. |
+
+- **MUST** có whitelist/allowlist cho facet indexable thay vì để mọi tổ hợp được crawl/index mặc định.
+- **MUST** dùng thứ tự parameter/path nhất quán, không lặp filter, không sinh permutation cho cùng một tập điều kiện.
+- **MUST** đánh giá robots/noindex/canonical cùng nhau: canonical không bảo đảm ngừng crawl nhanh; robots chặn crawl khiến bot không đọc được `noindex`/canonical trên URL đó.
+- **SHOULD** theo dõi log, Page Indexing và crawl sample sau khi mở facet; rollback nếu crawl space tăng ngoài dự kiến.
+
+#### Pagination, load more và infinite scroll
+
+- Mỗi page trong chuỗi cần discovery **MUST** có URL riêng và liên kết tuần tự bằng `<a href>`; không dùng fragment `#` làm số trang.
+- Mỗi page paginated **SHOULD** self-canonical; **MUST NOT** canonical page 2+ về page 1 chỉ vì cùng collection.
+- Google không còn dùng `rel="next"/"prev"` để nhận diện pagination; **MUST NOT** xem chúng là giải pháp thay cho link crawlable.
+- Filter/sort alternate không có giá trị index độc lập **SHOULD** được kiểm soát riêng; không nhầm chúng với pagination của inventory chính.
+- Load more/infinite scroll **MUST** hoạt động cho người dùng nhưng nội dung cần index phải truy cập được qua URL/link không phụ thuộc click/scroll event.
+
+#### Quản trị thay đổi cấu trúc
+
+- Trước thay đổi lớn **MUST** lưu inventory, mapping old→new, baseline organic/conversion, crawl graph và danh sách URL quan trọng.
+- **MUST** đánh giá tác động tới menu, breadcrumb, canonical, sitemap, hreflang, structured data, internal link, campaign/GBP links và analytics—not chỉ redirect.
+- **SHOULD** thử trên template/section nhỏ khi có thể; migration toàn site cần release gate, rollback và monitoring.
+- Sau triển khai **MUST** crawl lại, kiểm tra orphan/dead-end, status/redirect, Google-selected canonical, Page Indexing, query–URL, conversion và server log khi phù hợp.
+- Cấu trúc **SHOULD** được review khi catalog/offer/audience thay đổi, site search thất bại, support query lặp, content inventory phình to hoặc dữ liệu cho thấy người dùng không tìm được đích; không tái cấu trúc định kỳ chỉ để “làm mới SEO”.
+
+Nguồn kiểm chứng: [Google ecommerce site structure](https://developers.google.com/search/docs/specialty/ecommerce/help-google-understand-your-ecommerce-site-structure), [Ecommerce URL structure](https://developers.google.com/search/docs/specialty/ecommerce/designing-a-url-structure-for-ecommerce-sites), [Faceted navigation crawling](https://developers.google.com/crawling/docs/faceted-navigation), [Pagination and incremental loading](https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading), [Breadcrumb structured data](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb), [Google sitelinks guidance](https://developers.google.com/search/docs/appearance/sitelinks).
+
+Nguồn tham khảo mô hình tổ chức, không dùng Silo/Topic Cluster làm tiêu chuẩn thuật toán: [GTV SEO — Cấu trúc website chuẩn SEO](https://gtvseo.com/cau-truc-website/).
 
 ## 4. Quy tắc sử dụng Schema và JSON-LD
 
@@ -815,6 +1357,11 @@ Số backlink mới chỉ là chỉ số chẩn đoán. Kết quả Offpage SEO 
 - **SHOULD** kiểm tra cú pháp bằng công cụ phù hợp và kiểm tra dữ liệu sau khi render.
 - **SHOULD** gỡ hoặc đơn giản hóa markup đã lỗi thời nếu nó tăng chi phí bảo trì mà không còn giá trị máy đọc rõ ràng.
 - **MAY** giữ Schema.org không còn tạo Rich Result nếu nó vẫn mô tả chính xác nội dung, giúp hệ thống khác hiểu dữ liệu và không tạo rủi ro bảo trì.
+- `Article`/`BlogPosting` **SHOULD** chỉ dùng cho trang bài viết phù hợp và khai báo tác giả, ngày, headline, image theo dữ liệu thật; không phải yêu cầu để được vào Google News.
+- `Organization` **SHOULD** được khai báo tập trung trên trang chủ hoặc trang giới thiệu phù hợp; **MUST NOT** nhân bản một đồ thị doanh nghiệp mâu thuẫn trên mọi URL.
+- `FAQPage` **MAY** dùng khi trang thực sự có một danh sách câu hỏi và câu trả lời do website cung cấp; **MUST NOT** thêm chỉ để săn Rich Result. Google hiện chỉ hiển thị FAQ rich results thường xuyên cho các website chính phủ/y tế có thẩm quyền.
+
+Nguồn: [Article structured data](https://developers.google.com/search/docs/appearance/structured-data/article), [Organization structured data](https://developers.google.com/search/docs/appearance/structured-data/organization), [FAQ rich result changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes).
 
 ## 5. AI discovery, agentic browsing và `llms.txt`
 
@@ -895,6 +1442,18 @@ Bốn trạng thái phải được phân biệt:
 - **MUST** giải thích mục đích và cách kiểm chứng của mỗi thay đổi GEO.
 - **SHOULD** xem GEO là quá trình tăng khả năng truy cập, hiểu đúng, đánh giá và sử dụng thông tin — không chỉ là định dạng lại đoạn văn.
 
+#### Query fan-out và Answer-first
+
+Google xác nhận AI Overviews và AI Mode **có thể** dùng query fan-out: sinh nhiều truy vấn liên quan theo chủ đề con và nguồn dữ liệu để tìm thông tin hỗ trợ. Đây là mô tả cách hệ thống có thể truy xuất, không phải công thức đảm bảo citation.
+
+- **SHOULD** lập bản đồ primary intent, secondary intent, câu hỏi tiếp theo, so sánh, điều kiện và ngoại lệ trước khi quyết định H2/H3 hoặc URL.
+- **MUST** chỉ tách URL khi truy vấn con có intent/page role và giá trị độc lập; nếu không, trả lời trong cùng trang để tránh cannibalization và scaled content.
+- Answer-first **MAY** đặt một câu/khối trả lời ngắn ngay sau heading khi giúp người đọc; **MUST NOT** ép mọi đoạn vào 45–60 từ hoặc lặp lại câu hỏi một cách máy móc.
+- **MUST** giữ điều kiện, ngoại lệ, phương pháp và nguồn ngay cạnh tuyên bố cần kiểm chứng; câu trả lời ngắn không được làm sai nghĩa.
+- **MUST NOT** tạo file AI, markup hoặc Schema đặc biệt với tuyên bố đó là yêu cầu để xuất hiện trong AI Overviews/AI Mode; Google không nêu yêu cầu kỹ thuật bổ sung ngoài nền tảng Search hiện có.
+
+Nguồn: [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features), [Optimizing for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
+
 ### 5.7. Sáu lớp kiểm tra GEO
 
 #### Lớp 1 — Khả năng truy cập
@@ -933,6 +1492,16 @@ Bốn trạng thái phải được phân biệt:
 - **MUST** không báo cáo một lần AI nhắc thương hiệu như bằng chứng GEO thành công bền vững.
 - **SHOULD** dùng Search Console, analytics, referral data, server log, conversion data và kiểm tra câu trả lời AI có hệ thống.
 - **SHOULD** ghi lại prompt, nền tảng, phiên bản/mô hình khi biết, vị trí, thời gian và trạng thái đăng nhập để kết quả có thể so sánh.
+
+#### Diễn giải CTR trong kỷ nguyên AI Overviews
+
+Nghiên cứu Ahrefs công bố năm 2026 trên 300.000 từ khóa thông tin, dùng dữ liệu GSC desktop và so sánh tháng 12/2023 với 12/2025, ước tính AIO **tương quan** với CTR trung bình của kết quả vị trí 1 thấp hơn khoảng 58%. Đây là kết quả theo mẫu và phương pháp cụ thể, không phải hằng số cho mọi ngành, quốc gia, thiết bị hay truy vấn.
+
+- **MUST** ghi nguồn, ngày, cỡ mẫu, loại truy vấn, thiết bị và phương pháp khi dùng số CTR bên thứ ba.
+- **MUST NOT** tuyên bố citation tự động tạo traffic hoặc conversion cao; phải đo citation, click, engaged visit, lead và doanh thu thành các lớp riêng.
+- **SHOULD** theo dõi CTR thực tế theo landing page/query trong GSC, đối chiếu SERP feature và nhu cầu; Google hiện gộp lưu lượng AI features vào search type `Web`, nên không được giả định mọi thay đổi CTR đều do AIO.
+
+Nguồn phương pháp: [Ahrefs — AI Overviews Reduce Clicks](https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/); cách Google báo cáo: [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features).
 
 ### 5.8. Thang đo kết quả GEO
 
