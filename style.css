@@ -14594,6 +14594,40 @@ main > .panel + .panel {
 .google-ads-story__points strong { color: var(--text-title); font-size: 15px; font-weight: 500; }
 .google-ads-story__points small { color: var(--text-body); font-size: 10px; line-height: 1.65; }
 
+.google-ads-pricing {
+  width: min(1480px, calc(100% - clamp(32px, 6vw, 104px)));
+  margin: 0 auto 26px;
+  padding: clamp(58px, 7vw, 96px);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: clamp(32px, 4vw, 52px);
+  background: rgba(249,251,255,.72);
+  box-shadow: 0 28px 80px rgba(38,58,119,.08), inset 0 1px 0 #fff;
+  backdrop-filter: blur(20px) saturate(1.2);
+}
+.google-ads-pricing__grid { display: grid; margin-top: 48px; gap: 18px; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: stretch; }
+.google-ads-price-card { display: flex; min-width: 0; padding: clamp(24px, 2.6vw, 38px); border: 1px solid rgba(43,76,161,.14); border-radius: 28px; background: rgba(255,255,255,.66); box-shadow: 0 14px 36px rgba(38,58,119,.06); flex-direction: column; }
+.google-ads-price-card--featured { color: #f4f7ff; border-color: rgba(255,255,255,.18); background: linear-gradient(145deg,#111d45,#243f7d 58%,#6854ad); box-shadow: 0 28px 62px rgba(24,61,137,.2); }
+.google-ads-price-card header > span { display: block; margin-bottom: 22px; color: #1264d8; font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+.google-ads-price-card header p { display: flex; margin: 0; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.google-ads-price-card header strong { color: var(--text-title); font-size: clamp(32px, 3vw, 46px); font-weight: 500; letter-spacing: -.055em; }
+.google-ads-price-card header small { color: var(--text-body); font-size: 12px; }
+.google-ads-price-card__fit { min-height: 92px; margin: 22px 0 26px; color: var(--text-body); font-size: 14px; line-height: 1.75; }
+.google-ads-price-card__label { margin: 0 0 13px; color: var(--text-title); font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+.google-ads-price-card ul { margin: 0 0 30px; padding: 0; color: var(--text-body); list-style: none; }
+.google-ads-price-card li { position: relative; margin: 0; padding: 10px 0 10px 22px; border-bottom: 1px solid rgba(43,76,161,.11); font-size: 13px; line-height: 1.6; }
+.google-ads-price-card li::before { position: absolute; top: 17px; left: 2px; width: 7px; height: 7px; border-radius: 50%; background: #3d9cff; content: ""; }
+.google-ads-price-card > a { display: flex; min-height: 52px; margin-top: auto; padding: 0 18px; border: 1px solid rgba(32,41,77,.13); border-radius: 999px; color: var(--text-title); background: rgba(244,248,255,.82); align-items: center; justify-content: space-between; font-size: 13px; }
+.google-ads-price-card--featured header > span,
+.google-ads-price-card--featured header strong,
+.google-ads-price-card--featured .google-ads-price-card__label { color: #f4f7ff; }
+.google-ads-price-card--featured header small,
+.google-ads-price-card--featured .google-ads-price-card__fit,
+.google-ads-price-card--featured li { color: rgba(222,234,255,.76); }
+.google-ads-price-card--featured li { border-color: rgba(255,255,255,.13); }
+.google-ads-price-card--featured > a { color: #10285c; border-color: rgba(255,255,255,.82); background: #f4f7ff; }
+.google-ads-pricing__notice { display: grid; margin-top: 18px; padding: 24px 26px; border: 1px solid rgba(43,76,161,.12); border-radius: 22px; background: rgba(237,242,255,.64); gap: 24px; grid-template-columns: repeat(2,minmax(0,1fr)); }
+.google-ads-pricing__notice p:last-child { margin: 0; color: var(--text-body); font-size: 13px; line-height: 1.75; }
+
 .google-ads-case-list { display: grid; }
 .google-ads-case-study { display: grid; padding: clamp(34px, 5vw, 68px) 0; border-top: 1px solid rgba(50,73,137,.16); align-items: center; gap: clamp(30px, 5vw, 72px); grid-template-columns: minmax(0,1.15fr) minmax(300px,.85fr); }
 .google-ads-case-study:nth-child(even) figure { order: 2; }
@@ -16535,11 +16569,18 @@ main > .panel + .panel {
 .article-related a { display: inline-flex; min-height: 48px; margin-top: 14px; padding: 0 22px; border-radius: 999px; align-items: center; color: #13306e; background: #fff; font-size: 13px; font-weight: 500; }
 
 @media (max-width: 860px) {
+  .google-ads-pricing__grid { grid-template-columns: 1fr; }
+  .google-ads-price-card__fit { min-height: 0; }
+  .google-ads-pricing__notice { grid-template-columns: 1fr; }
   .article-layout { grid-template-columns: 1fr; }
   .article-toc { position: static; order: -1; }
 }
 
 @media (max-width: 760px) {
+  .google-ads-pricing { width: calc(100% - 24px); padding: 48px 18px; border-radius: 25px; }
+  .google-ads-pricing__grid { margin-top: 32px; }
+  .google-ads-price-card { padding: 24px 20px; border-radius: 22px; }
+  .google-ads-price-card header strong { font-size: 36px; }
   .article-shell { --article-width: calc(100% - 28px); padding-top: calc(120px + env(safe-area-inset-top)); }
   .article-hero { text-align: left; }
   .article-meta { justify-content: flex-start; flex-wrap: wrap; }

@@ -28,6 +28,7 @@ const pages = [
   { path: '/blog/thiet-ke-website-vung-ven-phia-dong/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/thiet-ke-website-hoc-mon/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/google-ads-co-click-khong-co-khach/', priority: '0.9', changefreq: 'monthly' },
+  { path: '/blog/chay-ads-google-tai-thu-duc/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/7-cau-hoi-truoc-khi-lam-website/', priority: '0.8', changefreq: 'monthly' },
   { path: '/blog/chuan-bi-lam-website-ecommerce/', priority: '0.8', changefreq: 'monthly' },
   { path: '/blog/quy-trinh-trien-khai-website-theo-moc-duyet/', priority: '0.8', changefreq: 'monthly' },

@@ -42,6 +42,7 @@ export default defineConfig({
         blogMiuMiuNailCaseStudy: resolve(__dirname, 'blog/case-study-website-miu-miu-nail-design/index.html'),
         blogWebsiteEasternOutskirts: resolve(__dirname, 'blog/thiet-ke-website-vung-ven-phia-dong/index.html'),
         blogGoogleAdsClicksNoCustomers: resolve(__dirname, 'blog/google-ads-co-click-khong-co-khach/index.html'),
+        blogGoogleAdsThuDuc: resolve(__dirname, 'blog/chay-ads-google-tai-thu-duc/index.html'),
         blogWebsiteHocMon: resolve(__dirname, 'blog/thiet-ke-website-hoc-mon/index.html'),
         notFound: resolve(__dirname, '404.html'),
       },
