@@ -1,7 +1,7 @@
 # Bộ quy tắc SEO website bền vững
 
-> Phiên bản: 1.27
-> Cập nhật: 09/11/2026
+> Phiên bản: 1.30
+> Cập nhật: 12/11/2026
 > Mục đích: Dùng làm rule, checklist và tiêu chuẩn nghiệm thu SEO cho mọi website được xây dựng hoặc tối ưu sau này.
 
 ## 1. Tư tưởng cốt lõi
@@ -305,6 +305,11 @@ Mô hình Topic Cluster giúp website xác lập thẩm quyền chuyên môn (To
 8. **Đo lường và mở rộng theo chu kỳ:** Dùng dữ liệu Search Console để phát hiện các truy vấn mới nảy sinh và cập nhật bổ sung bài viết ngách vào cluster.
 
 - **MUST NOT** chạy đua theo số lượng bài viết; Topical Authority được đo bằng chiều sâu chuyên môn, tính xác thực và mức độ thỏa mãn Search Intent, không phải số lượng URL rỗng.
+- **MUST** xem Topical Map là tài liệu hoạch định nội dung, không phải tín hiệu xếp hạng được Google bảo đảm hoặc lý do để xuất bản mọi node trong sơ đồ.
+- Mỗi node dự kiến **MUST** vượt qua bốn kiểm tra trước khi thành URL: có người dùng thực sự cần, có intent/page role riêng, doanh nghiệp có chuyên môn hoặc bằng chứng phù hợp, và nội dung tạo được giá trị khác biệt so với URL hiện có.
+- **MUST** gộp các biến thể từ khóa có cùng intent vào một trang đủ tốt; không tách URL chỉ để phủ long-tail, câu hỏi fan-out, địa danh hoặc entity liên quan.
+- **SHOULD** ưu tiên cụm chủ đề gần sản phẩm, dịch vụ, dữ liệu và kinh nghiệm thật của doanh nghiệp; quan hệ ngữ nghĩa rộng nhưng không phục vụ khách hàng mục tiêu **MAY** bị loại khỏi roadmap.
+- **SHOULD** dùng dữ liệu Search Console, dữ liệu tìm kiếm nội bộ, câu hỏi bán hàng/chăm sóc khách hàng và SERP thực tế để xác nhận hoặc sửa Topical Map theo chu kỳ.
 
 #### Kiểm soát trang trùng lặp và phát sinh URL
 
@@ -495,12 +500,17 @@ Website cần chủ động nhận diện và triệt tiêu các lỗi kích ho�
    - *Giữ nguyên (Keep):* Các trang có traffic tốt, chuyển đổi ổn định và đáp ứng đúng intent.
    - *Cập nhật (Update):* Các trang evergreen có vị trí 8-20, thông tin hữu ích nhưng chưa tối ưu CTR, thiếu bằng chứng hoặc giao diện cũ.
    - *Hợp nhất (Consolidate):* Gộp các trang có intent trùng lặp vào một Pillar Page toàn diện bằng redirect 301.
-   - *Loại bỏ (Prune):* Chỉ xóa và trả mã 410 đối với các URL rác, URL parameter lỗi hoặc nội dung hoàn toàn không còn giá trị.
+   - *Loại bỏ (Prune):* Chỉ xóa và trả `404` hoặc `410` đối với URL không còn giá trị, không có trang thay thế tương đương và đã được gỡ khỏi internal link/sitemap; không có quy tắc chung buộc chọn riêng một trong hai status.
 3. **Khắc phục triệt để lỗi kỹ thuật:** Tối ưu DOM, nén tài nguyên, dọn dẹp broken links và đảm bảo render hoàn chỉnh trên thiết bị di động.
 4. **Bổ sung bằng chứng và thông tin xác thực:** Cập nhật thông tin tác giả thật, dữ liệu kiểm nghiệm, case study và đồng bộ NAP doanh nghiệp.
 5. **Theo dõi sau tối ưu:** Giám sát chặt chẽ telemetry (CTR, impressions, index status) trong 30–90 ngày để đánh giá mức độ phục hồi tín hiệu.
 
 - **MUST NOT** xóa bài viết hàng loạt chỉ vì trang có lưu lượng truy cập thấp. Nhiều trang ngách có traffic khiêm tốn nhưng đóng vai trò quan trọng trong việc hoàn thiện Topical Authority hoặc hỗ trợ chốt chuyển đổi trong phễu DLN.
+- URL có traffic cao **MUST NOT** tự động được giữ nguyên; vẫn phải kiểm tra tính chính xác, intent, conversion, trải nghiệm, rủi ro pháp lý và mức độ phụ thuộc vào một truy vấn/Search Feature.
+- URL xếp hạng thấp hoặc “đứng ngoài top 30” **MUST NOT** tự động bị rewrite. Trước tiên phải phân biệt vấn đề demand, index/canonical, intent, loại trang, cạnh tranh, chất lượng, internal link và khả năng website có đủ bằng chứng/chuyên môn hay không.
+- Dữ liệu GSC/GA4/CRM và dữ liệu website sở hữu **SHOULD** được ưu tiên; traffic, keyword, authority và backlink do công cụ bên thứ ba ước tính chỉ là nguồn chẩn đoán bổ sung.
+- So sánh đối thủ **SHOULD** tập trung vào nhiệm vụ người dùng, loại bằng chứng, trải nghiệm và khoảng trống thông tin; **MUST NOT** dùng số từ, số heading, entity count hoặc cấu trúc đối thủ như template phải sao chép.
+- Thay đổi content diện rộng **SHOULD** được thử trên một cohort URL/topic đủ đại diện, lưu baseline và change log, theo dõi cả Search lẫn conversion trong cửa sổ phù hợp rồi mới mở rộng. Không đúc kết “công thức chuẩn” từ một lần tăng/giảm thứ hạng ngắn hạn.
 
 #### Ứng phó Core Update, Spam Update và biến động SERP
 
@@ -512,6 +522,22 @@ Website cần chủ động nhận diện và triệt tiêu các lỗi kích ho�
 - **MUST NOT** đổi cấu trúc URL, canonical, redirect hoặc xóa bài hàng loạt trong lúc rollout chỉ để phản ứng với dao động ngắn hạn.
 - **SHOULD** ưu tiên cải thiện bền vững: intent, tính chính xác, bằng chứng, trải nghiệm thực, tác giả/nguồn, cấu trúc đọc và internal link.
 - **MUST** xem xóa nội dung là phương án cuối; chỉ prune khi nội dung không thể cứu, không có vai trò cho người dùng/kiến trúc và đã có mapping URL, redirect/status cùng kế hoạch theo dõi.
+
+#### Runbook khi Core Update đang triển khai
+
+1. **Xác nhận sự kiện:** Lưu tên update, giờ bắt đầu, phạm vi, trạng thái `Active/Complete` và link incident chính thức; không dựa vào ảnh chụp hoặc bài tường thuật thứ cấp.
+2. **Đóng băng thay đổi phản ứng:** Không sửa hàng loạt content, URL, internal link, canonical hoặc backlink chỉ vì biến động trong rollout. Lỗi P0/P1 độc lập vẫn **MUST** được xử lý theo mức rủi ro bình thường.
+3. **Lưu baseline:** Export dữ liệu GSC của một khoảng hoàn chỉnh ngay trước thời điểm rollout, kèm bộ lọc và múi giờ. Khoảng so sánh sau update chỉ được chốt khi rollout đã kết thúc và có ít nhất một tuần dữ liệu tương đối ổn định.
+4. **So sánh tương đương:** Ưu tiên cùng số ngày và cùng thứ trong tuần; ghi nhận seasonality, ngày lễ, campaign, tracking/deploy, thay đổi SERP và biến động nhu cầu.
+5. **Phân rã tác động:** Phân tích riêng search type, page, query, country và device; xem click, impression, CTR và average position cùng nhau, không chỉ tổng organic traffic.
+6. **Phân loại mức giảm:** Giảm nhỏ như ví dụ Google nêu `2 → 4` thường chưa cần hành động mạnh; giảm lớn như `4 → 29` cần đánh giá sâu. Đây là ví dụ chẩn đoán, **MUST NOT** biến thành ngưỡng cứng cho mọi truy vấn/site.
+7. **Tạo giả thuyết sau rollout:** Chỉ mở task khi pattern đủ bền và có bằng chứng về intent, loại kết quả, chất lượng/độ nguyên bản, bằng chứng, trải nghiệm, kỹ thuật hoặc cạnh tranh.
+
+- **MUST** phân biệt tương quan thời gian với quan hệ nhân quả. Tụt hạng trùng lúc Core Update không tự động có nghĩa website bị phạt hoặc vi phạm chính sách.
+- **MUST NOT** gán biến động cho RankBrain, Passage Ranking, Original Content Systems, SpamBrain hoặc thay đổi “trọng số” nếu Google không công bố mối liên hệ với update cụ thể.
+- **MUST NOT** công bố ngày đánh giá “sau update” cố định khi dashboard chưa xác nhận rollout hoàn tất.
+
+Ghi chú vận hành ngày 12/11/2026: [November 2026 core update](https://status.search.google.com/incidents/WLxcJyC6jMWMfryxsKMc) bắt đầu ngày 10/11/2026 lúc 10:06 PST, áp dụng toàn cầu và mọi ngôn ngữ, dự kiến có thể kéo dài đến hai tuần; tại thời điểm kiểm tra vẫn đang `Active`. Mốc này **MUST** được cập nhật theo dashboard, không dùng như trạng thái vĩnh viễn của tài liệu.
 
 Nguồn: [Google Search's Core Updates](https://developers.google.com/search/docs/appearance/core-updates), [Google Search Status Dashboard](https://status.search.google.com/).
 
@@ -880,7 +906,16 @@ Mọi hoạt động outreach **MUST** bắt đầu bằng giá trị và mức 
 - **MUST** chỉ cân nhắc disavow khi có số lượng đáng kể liên kết spam/nhân tạo/kém chất lượng **và** chúng đã gây hoặc có khả năng cao gây manual action, đặc biệt khi website hoặc đơn vị SEO đã tham gia link scheme.
 - Trước disavow, **MUST** kiểm tra Manual Actions, xác minh nguồn link và cố gắng gỡ/qualify các link do mình kiểm soát; file disavow **MUST** được review bởi người có kinh nghiệm vì dùng sai có thể làm giảm hiệu suất Search.
 
-Nguồn: [Disavow links to your site — Search Console Help](https://support.google.com/webmasters/answer/2648487).
+#### Network, “Google stacking” và cạnh tranh với URL ngoài website
+
+- **MUST NOT** tạo mạng tài sản, “simulation”, Google properties, hồ sơ vệ tinh, site cùng chủ sở hữu hoặc nội dung off-site chủ yếu để thao túng link/anchor/ranking; phải đánh giá các hoạt động này theo chính sách link spam và scaled content abuse.
+- **MUST NOT** dùng đa dạng IP/domain như một KPI chất lượng backlink hoặc cố tạo dấu vết hạ tầng khác nhau để che quan hệ sở hữu.
+- **MUST NOT** chèn “hot search”, exact-match keyword hoặc link footer trên money site với mục tiêu “hút trust/link juice trở lại”. Footer/navigation chỉ chứa liên kết thật sự cần cho người dùng và kiến trúc website.
+- Một URL báo chí, mạng xã hội hoặc website khác xếp hạng cùng truy vấn **MUST NOT** tự động được gọi là keyword cannibalization. Trước tiên phải xác định intent, chủ sở hữu URL, thông tin có chính xác không, referral/brand value và liệu website chính thức có trang phù hợp hơn hay không.
+- Với tài sản off-site do doanh nghiệp kiểm soát, **SHOULD** phân vai rõ, tránh sao chép nguyên bài/exact-match anchor và dẫn người đọc về nguồn chính khi có lý do. Với nguồn biên tập độc lập, **MUST NOT** yêu cầu làm yếu hoặc xóa nội dung đúng chỉ để giành vị trí; ưu tiên sửa thông tin sai, bổ sung attribution và nâng chất lượng trang chính thức.
+- **MUST NOT** dùng khái niệm “cân bằng Trust Rank giữa off-page và money site” làm acceptance criterion khi không có định nghĩa, nguồn đo và quan hệ nhân quả có thể kiểm chứng.
+
+Nguồn: [Google Search spam policies](https://developers.google.com/search/docs/essentials/spam-policies), [Disavow links to your site — Search Console Help](https://support.google.com/webmasters/answer/2648487).
 
 #### KPI Offpage SEO
 
@@ -1257,7 +1292,17 @@ Audit kỹ thuật **MUST** đối chiếu nhiều lớp thay vì tin một đi�
 - Mỗi issue **MUST** có URL mẫu, quy mô ảnh hưởng, bằng chứng, nguyên nhân gốc, priority, owner, acceptance test và rollback/monitoring khi rủi ro cao.
 - Sau sửa **MUST** crawl/test lại đúng mẫu, kiểm tra live output và theo dõi Page Indexing/Performance trong khoảng thời gian hợp lý; không đóng task chỉ vì plugin báo xanh.
 
-Nguồn kiểm chứng: [Google technical requirements and developer guide](https://developers.google.com/search/docs/fundamentals/get-started-developers), [Block indexing with noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing), [Canonicalization](https://developers.google.com/search/docs/crawling-indexing/canonicalization), [Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [Crawl budget management](https://developers.google.com/crawling/docs/crawl-budget), [Localized versions and hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions).
+#### Diễn giải cảnh báo từ crawler và công cụ audit
+
+- Ahrefs, Screaming Frog, Website Auditor và công cụ tương tự **MAY** dùng để phát hiện mẫu lỗi; health score, severity và nhãn lỗi của công cụ **MUST NOT** tự động trở thành priority hoặc acceptance criterion.
+- `noindex` kiểm soát việc index; `nofollow` kiểm soát cách crawler xử lý liên kết và **MUST NOT** được báo cáo như một lỗi indexability tương đương `noindex`.
+- Cảnh báo title/meta “quá dài” hoặc “quá ngắn” **SHOULD** được xem là tín hiệu biên tập. Google không đặt giới hạn ký tự cố định cho `<title>` hoặc meta description và có thể cắt/viết lại theo thiết bị, truy vấn.
+- Thiếu H1, H1 rỗng, meta description trùng/thiếu, ảnh thiếu thuộc tính `alt`, sitemap lỗi, internal link gãy và redirect chain **MUST** được xác minh trên URL/template mẫu trước khi mở task diện rộng; mức ưu tiên phụ thuộc intent, khả năng truy cập, quy mô và tác động thực.
+- `alt=""` cho ảnh trang trí là hợp lệ và **MUST NOT** bị đổi thành chuỗi từ khóa chỉ để làm xanh audit.
+- Toán tử `site:` **MAY** dùng để kiểm tra nhanh hoặc lấy mẫu, nhưng **MUST NOT** dùng làm số lượng index chuẩn; dùng Page Indexing, URL Inspection, sitemap, crawl và log phù hợp để điều tra.
+- Internal link đang đi qua redirect **SHOULD** được cập nhật thẳng tới URL cuối khi đội ngũ kiểm soát được link và việc sửa không phá use case; không gọi mọi `3xx` là mất authority hoặc lỗi khẩn cấp.
+
+Nguồn kiểm chứng: [Google technical requirements and developer guide](https://developers.google.com/search/docs/fundamentals/get-started-developers), [Robots meta directives](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag), [Block indexing with noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing), [Canonicalization](https://developers.google.com/search/docs/crawling-indexing/canonicalization), [Title links](https://developers.google.com/search/docs/appearance/title-link), [Search snippets](https://developers.google.com/search/docs/appearance/snippet), [Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [Crawl budget management](https://developers.google.com/crawling/docs/crawl-budget), [Localized versions and hreflang](https://developers.google.com/search/docs/specialty/international/localized-versions).
 
 Nguồn tham khảo checklist, các ngưỡng/tuyên bố cũ đã được hiệu chỉnh theo tài liệu Google hiện hành: [GTV SEO — Technical SEO](https://gtvseo.com/technical-seo/).
 
@@ -1352,6 +1397,7 @@ Nguồn tham khảo mô hình tổ chức, không dùng Silo/Topic Cluster làm 
   - Giúp máy hiểu thực thể và quan hệ thông tin.
   - Đủ điều kiện cho một Search Feature cụ thể.
 - **MUST** hiểu rằng Schema hợp lệ không bảo đảm Google sẽ hiển thị Rich Result.
+- **MUST** không coi Schema là yêu cầu hoặc đòn bẩy ưu tiên số một để xuất hiện trong AI Overviews/AI Mode; Google không yêu cầu structured data đặc biệt cho generative AI search.
 - **MUST** kiểm tra lại tài liệu chính thức, điều kiện áp dụng và trạng thái hỗ trợ trước khi thêm hoặc duy trì một loại Schema.
 - **SHOULD** ưu tiên các loại Schema phản ánh đúng bản chất trang và doanh nghiệp, không chạy theo số lượng.
 - **SHOULD** kiểm tra cú pháp bằng công cụ phù hợp và kiểm tra dữ liệu sau khi render.
@@ -1361,7 +1407,7 @@ Nguồn tham khảo mô hình tổ chức, không dùng Silo/Topic Cluster làm 
 - `Organization` **SHOULD** được khai báo tập trung trên trang chủ hoặc trang giới thiệu phù hợp; **MUST NOT** nhân bản một đồ thị doanh nghiệp mâu thuẫn trên mọi URL.
 - `FAQPage` **MAY** dùng khi trang thực sự có một danh sách câu hỏi và câu trả lời do website cung cấp; **MUST NOT** thêm chỉ để săn Rich Result. Google hiện chỉ hiển thị FAQ rich results thường xuyên cho các website chính phủ/y tế có thẩm quyền.
 
-Nguồn: [Article structured data](https://developers.google.com/search/docs/appearance/structured-data/article), [Organization structured data](https://developers.google.com/search/docs/appearance/structured-data/organization), [FAQ rich result changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes).
+Nguồn: [General structured data guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [Article structured data](https://developers.google.com/search/docs/appearance/structured-data/article), [Organization structured data](https://developers.google.com/search/docs/appearance/structured-data/organization), [FAQ rich result changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes), [Optimizing for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
 
 ## 5. AI discovery, agentic browsing và `llms.txt`
 
@@ -1377,9 +1423,10 @@ Nguồn: [Article structured data](https://developers.google.com/search/docs/app
 
 - **MUST** không coi `llms.txt` là yêu cầu SEO, tín hiệu xếp hạng hoặc “chuẩn GEO”.
 - **MUST** không cam kết `llms.txt` giúp website xuất hiện trong AI Overview, AI Mode hoặc được LLM trích dẫn.
+- **MUST** ghi rõ Google Search không sử dụng `llms.txt`; theo tài liệu Google hiện hành, file này không giúp cũng không làm hại visibility/ranking trên Google Search.
 - **MUST** không ưu tiên tạo `llms.txt` trước các vấn đề crawl, render, index, nội dung, accessibility và chuyển đổi.
 - **MUST** kiểm tra tài liệu chính thức và server log trước khi tuyên bố một bot hoặc nền tảng thực sự sử dụng file này.
-- **SHOULD** xem `llms.txt` là convention tùy chọn, có thể thay đổi và chưa có bằng chứng tác động SEO đủ mạnh.
+- **SHOULD** xem `llms.txt` là convention tùy chọn chỉ cho dịch vụ/hệ thống khác có use case được xác minh, không phải hạng mục Google SEO.
 - **SHOULD** chỉ duy trì file nếu nội dung chính xác, ngắn gọn, có người chịu trách nhiệm cập nhật và chi phí bảo trì thấp.
 - **MAY** triển khai cho tài liệu kỹ thuật, API reference hoặc thư viện phần mềm khi coding agent và người dùng AI là đối tượng sử dụng thực tế.
 - **MAY** cung cấp bản Markdown sạch của tài liệu nếu nó thực sự giúp agent hoặc người dùng tiêu thụ nội dung; bản Markdown phải đồng nhất với trang chuẩn và không tạo một phiên bản nội dung mâu thuẫn.
@@ -1397,6 +1444,9 @@ Thứ tự mặc định:
 6. `llms.txt` hoặc Markdown alternate ở mức tùy chọn.
 
 Không triển khai lớp sau để che lỗi của lớp trước.
+
+- Với AI Overviews/AI Mode trên Google Search, **MUST** kiểm tra quyền truy cập của Googlebot, trạng thái index và snippet eligibility; không dùng trạng thái của GPTBot, ClaudeBot, PerplexityBot hoặc crawler bên thứ ba để suy ra eligibility trên Google.
+- Mỗi crawler AI bên thứ ba **MUST** được đánh giá riêng theo mục đích, tài liệu hiện hành, quyền nội dung, bảo mật, tải máy chủ và giá trị kinh doanh. **MUST NOT** mở chặn hàng loạt chỉ vì kỳ vọng được citation.
 
 ### 5.4. Điều kiện triển khai `llms.txt`
 
@@ -1442,6 +1492,22 @@ Bốn trạng thái phải được phân biệt:
 - **MUST** giải thích mục đích và cách kiểm chứng của mỗi thay đổi GEO.
 - **SHOULD** xem GEO là quá trình tăng khả năng truy cập, hiểu đúng, đánh giá và sử dụng thông tin — không chỉ là định dạng lại đoạn văn.
 
+#### Workflow ưu tiên đã được kiểm chứng
+
+Với Google Search, “GEO workflow” **SHOULD** được quy về quy trình SEO có kiểm chứng thay vì một chuỗi thuật ngữ bắt buộc:
+
+1. Crawl, render, index, canonical và snippet eligibility.
+2. Nhu cầu người dùng, Search Intent, Page Role và giá trị kinh doanh.
+3. Nội dung nguyên bản, hữu ích, có trải nghiệm/chuyên môn và bằng chứng thật.
+4. Kiến trúc thông tin và internal link giúp người dùng lẫn crawler tìm thấy nội dung liên quan.
+5. Entity và dữ kiện nhất quán trong visible content; Schema chỉ bổ sung khi phù hợp.
+6. Trải nghiệm trang, media và khả năng chuyển đổi.
+7. Đo Search visibility, AI visibility, referral và conversion thành các lớp riêng.
+
+- **MUST NOT** dùng tỷ lệ tùy ý như “SEO và GEO giống nhau 80%” làm căn cứ nghiệm thu; đây không phải metric chính thức hoặc tỷ lệ có thể kiểm chứng phổ quát.
+- **MUST NOT** biến các thuật ngữ Topical Map, Semantic SEO, Entity Building, Knowledge Graph hoặc GEO thành các cổng bắt buộc tuần tự nếu dự án không có vấn đề/use case tương ứng.
+- **SHOULD** ưu tiên nội dung phi hàng hóa (non-commodity): dữ liệu gốc, case thực tế, ảnh/video thật, phương pháp, kết quả, giới hạn và góc nhìn có căn cứ; không chỉ tổng hợp lại điều mô hình AI hoặc đối thủ đã nói.
+
 #### Query fan-out và Answer-first
 
 Google xác nhận AI Overviews và AI Mode **có thể** dùng query fan-out: sinh nhiều truy vấn liên quan theo chủ đề con và nguồn dữ liệu để tìm thông tin hỗ trợ. Đây là mô tả cách hệ thống có thể truy xuất, không phải công thức đảm bảo citation.
@@ -1449,8 +1515,10 @@ Google xác nhận AI Overviews và AI Mode **có thể** dùng query fan-out: s
 - **SHOULD** lập bản đồ primary intent, secondary intent, câu hỏi tiếp theo, so sánh, điều kiện và ngoại lệ trước khi quyết định H2/H3 hoặc URL.
 - **MUST** chỉ tách URL khi truy vấn con có intent/page role và giá trị độc lập; nếu không, trả lời trong cùng trang để tránh cannibalization và scaled content.
 - Answer-first **MAY** đặt một câu/khối trả lời ngắn ngay sau heading khi giúp người đọc; **MUST NOT** ép mọi đoạn vào 45–60 từ hoặc lặp lại câu hỏi một cách máy móc.
+- **MUST NOT** áp quy định cứng rằng mọi H2 phải có 2–3 dòng trả lời trực tiếp; cấu trúc phải theo loại câu hỏi, độ phức tạp, điều kiện và nhu cầu đọc thực tế.
 - **MUST** giữ điều kiện, ngoại lệ, phương pháp và nguồn ngay cạnh tuyên bố cần kiểm chứng; câu trả lời ngắn không được làm sai nghĩa.
 - **MUST NOT** tạo file AI, markup hoặc Schema đặc biệt với tuyên bố đó là yêu cầu để xuất hiện trong AI Overviews/AI Mode; Google không nêu yêu cầu kỹ thuật bổ sung ngoài nền tảng Search hiện có.
+- **MUST NOT** chia nội dung thành các đoạn cực ngắn chỉ để “AI dễ chunk”; Google không yêu cầu chunking và không có độ dài trang lý tưởng chung.
 
 Nguồn: [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features), [Optimizing for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
 
@@ -1499,9 +1567,10 @@ Nghiên cứu Ahrefs công bố năm 2026 trên 300.000 từ khóa thông tin, d
 
 - **MUST** ghi nguồn, ngày, cỡ mẫu, loại truy vấn, thiết bị và phương pháp khi dùng số CTR bên thứ ba.
 - **MUST NOT** tuyên bố citation tự động tạo traffic hoặc conversion cao; phải đo citation, click, engaged visit, lead và doanh thu thành các lớp riêng.
-- **SHOULD** theo dõi CTR thực tế theo landing page/query trong GSC, đối chiếu SERP feature và nhu cầu; Google hiện gộp lưu lượng AI features vào search type `Web`, nên không được giả định mọi thay đổi CTR đều do AIO.
+- **SHOULD** theo dõi CTR thực tế theo landing page/query và đối chiếu nhu cầu, loại kết quả cùng thay đổi SERP; không được giả định mọi thay đổi CTR đều do AIO.
+- **SHOULD** dùng báo cáo Generative AI trong Search Console khi property/tài khoản đã được cấp báo cáo, đồng thời ghi rõ phạm vi, bộ lọc và giới hạn dữ liệu; không trộn số liệu này với phép kiểm prompt thủ công như thể cùng một nguồn đo.
 
-Nguồn phương pháp: [Ahrefs — AI Overviews Reduce Clicks](https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/); cách Google báo cáo: [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features).
+Nguồn phương pháp: [Ahrefs — AI Overviews Reduce Clicks](https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/); cách Google báo cáo: [Optimizing for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features).
 
 ### 5.8. Thang đo kết quả GEO
 
@@ -1899,6 +1968,7 @@ Các chỉ số sau hỗ trợ tìm nguyên nhân nhưng không tự đại di�
 - Mức độ phụ thuộc traffic vào một nhóm truy vấn, một trang hoặc một Search Feature.
 - Hiệu quả theo Persona, Search Intent, Page Role và bậc DLN khi dữ liệu cho phép.
 - Với dự án GEO: brand mention, citation, AI referral traffic và conversion phải được theo dõi thành các chỉ số riêng.
+- Với Google generative search: dữ liệu trong báo cáo Generative AI của Search Console **SHOULD** là nguồn đo nền tảng khi có sẵn; phép kiểm prompt, công cụ bên thứ ba và referral analytics là nguồn bổ sung, không được trình bày như dữ liệu nội bộ của Google.
 
 ### 10.6. Tín hiệu sức khỏe thương hiệu và chuyển đổi kinh doanh
 

@@ -34,6 +34,10 @@ const pages = [
   { path: '/blog/quy-trinh-trien-khai-website-theo-moc-duyet/', priority: '0.8', changefreq: 'monthly' },
   { path: '/blog/responsive-khong-chi-la-thu-nho-giao-dien/', priority: '0.8', changefreq: 'monthly' },
   { path: '/blog/seo-nen-tang-gom-nhung-gi/', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog/chi-phi-seo-website/', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog/seo-bao-lau-co-ket-qua/', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog/seo-tong-the-va-seo-tu-khoa/', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog/audit-seo-website-can-kiem-tra-gi/', priority: '0.8', changefreq: 'monthly' },
   { path: '/blog/website-nha-hang-nen-uu-tien-gi/', priority: '0.8', changefreq: 'monthly' },
 
   // Thông tin & Liên hệ & Tuyển dụng
