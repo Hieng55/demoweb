@@ -43,6 +43,7 @@ export default defineConfig({
         blogCompanyIdentity: resolve(__dirname, 'blog/cong-ty-tnhh-cong-nghe-webs4v-vn/index.html'),
         blogWeb4sVsWebs4V: resolve(__dirname, 'blog/web4s-va-webs4v-khac-nhau/index.html'),
         blogWebsiteThuDuc: resolve(__dirname, 'blog/thiet-ke-website-thu-duc/index.html'),
+        blogDentalWebsiteThuDuc: resolve(__dirname, 'blog/thiet-ke-website-nha-khoa-thu-duc/index.html'),
         blogMiuMiuNailCaseStudy: resolve(__dirname, 'blog/case-study-website-miu-miu-nail-design/index.html'),
         blogWebsiteEasternOutskirts: resolve(__dirname, 'blog/thiet-ke-website-vung-ven-phia-dong/index.html'),
         blogGoogleAdsClicksNoCustomers: resolve(__dirname, 'blog/google-ads-co-click-khong-co-khach/index.html'),
