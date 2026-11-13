@@ -1,0 +1,667 @@
+KE HOACH SEO 30 NGAY CHO WEBS4V
+Thoi gian: 13/11/2026 - 12/12/2026
+
+MUC TIEU
+
+1. Tang hien thi va click cua tu khoa khong chua thuong hieu Webs4V.
+2. Dua bai "Chay Ads Google tai Thu Duc" tu vi tri trung binh 13,5 tien gan top 10.
+3. Cung co bai "Thiet ke website Thu Duc" va kiem chung nhu cau ve website nha khoa.
+4. Tim cac tu khoa ngach co y dinh mua ro, canh tranh thap hon tu khoa chung.
+5. Ket noi SEO voi quy trinh sale: CTA, form, Zalo, cuoc goi va theo doi lead.
+
+HIEN TRANG
+
+- Toan website: 210 click, 666 impression, CTR 31,5%, vi tri trung binh 3,8.
+- Tu khoa "webs4v": 118 click, 230 impression, vi tri 1,2.
+- Bai Google Ads Thu Duc: 2 click, 34 impression, CTR 5,9%, vi tri 13,5.
+- Bai website Thu Duc: 3 click, 45 impression, CTR 6,7%, vi tri 13,9.
+- Trang dich vu thiet ke website: 4 click, 328 impression, vi tri 4,7; phan lon impression den tu thuong hieu.
+- Ket luan: thuong hieu dang tot, nhung tu khoa dich vu khong thuong hieu con mong.
+
+NGUYEN TAC
+
+- Khong danh gia SEO bang mot lan tu search Google.
+- Khong doi URL, title va H1 cua bai moi neu chua co du du lieu.
+- Mot trang phuc vu mot y dinh tim kiem chinh.
+- Khong tao hang loat trang chi thay ten phuong, nganh hoac loi chinh ta.
+- Khong dung case study, review hoac so lieu khong co bang chung.
+- Moi bai phai co internal link, CTA va cach do chuyen doi.
+
+NHOM TU KHOA UU TIEN
+
+A. Tu khoa dang co tin hieu
+
+- chay ads google tai thu duc
+- dich vu google ads thu duc
+- bao gia chay google ads thu duc
+- thiet ke website thu duc
+- bao gia thiet ke website thu duc
+- google ads co click khong co khach
+
+B. Tu khoa ngach can kiem chung
+
+- thiet ke website nha khoa tai thu duc
+- thiet ke website phong kham nha khoa thu duc
+- thiet ke website xuong co khi tai thu duc
+- thiet ke website cong ty pccc tai thu duc
+- thiet ke website cong ty van tai tai thu duc
+- landing page nha khoa thu duc
+- chay google ads nha khoa thu duc
+- google business bi mat quyen quan tri
+- lay lai quyen google maps
+- website 3 trieu gom nhung gi
+
+C. Tu khoa danh vao cach hieu sai
+
+- chay google ads co giup seo khong
+- website chuan seo co tu len top khong
+- chay ads co phai tra tien moi ngay khong
+- lam website co bao gom ten mien hosting khong
+- google business va google maps co giong nhau khong
+- seo va google ads nen lam cai nao truoc
+
+TU KHOA GO SAI VA CACH GO DAN GIAN
+
+- Vi du: thiet ke wed, googel ads, google adword, chay ad google, lam web.
+- Khong dua loi sai vao title hoac H1.
+- Khong tao URL rieng cho tung loi sai.
+- Chi nhac tu nhien trong FAQ neu Search Console, Zalo hoac cuoc goi cho thay khach hang that su dung cach go do.
+- "Google Adwords" co the duoc giai thich la ten cu cua Google Ads.
+- Uu tien cau hoi hieu sai vi co gia tri ban hang cao hon loi chinh ta don thuan.
+
+RULE SALE CHO MOI TRANG SEO
+
+1. Phan dau trang phai noi ro dich vu, doi tuong va ket qua ban giao.
+2. Dua bang chung truoc loi hua: anh du an that, quy trinh, pham vi, case duoc phep cong bo.
+3. Neu co gia, phai tach gia nen tang, phan bao gom va phan chua bao gom.
+4. Co hai CTA:
+   - CTA nhe: nhan checklist, gui website de kiem tra, nhan tu van so bo.
+   - CTA manh: goi dien, nhan Zalo, gui brief, yeu cau bao gia.
+5. Form nen hoi: dich vu, nganh, khu vuc, thoi gian va ngan sach du kien.
+6. Moi lead phai duoc ghi nhan nguon URL.
+7. Theo doi tu click den lead, cuoc hen, bao gia va don hang.
+
+TUAN 1: 13/11 - 19/11
+
+- Luu baseline Search Console 28 ngay.
+- Tao bo loc query khong chua "webs4v".
+- Kiem tra tracking click goi, Zalo va form.
+- Bo sung CTA, quy trinh va bang chung vao bai Google Ads Thu Duc.
+- Them 3-5 internal link den bai Google Ads Thu Duc.
+- Ghi lai it nhat 15 cau hoi khach hang thuong hoi sale.
+
+TUAN 2: 20/11 - 26/11
+
+- Bo sung mot phan sau ve website nha khoa vao bai Thiet ke website Thu Duc.
+- Noi dung nha khoa gom: dat lich, ho so bac si, dich vu, chi nhanh, bao mat va tracking.
+- Viet mot bai huong dan website nha khoa neu co du kien thuc va noi dung rieng.
+- Lien ket bai nha khoa voi trang dich vu va bai Thu Duc.
+- Them CTA nhan checklist hoac gui brief website nha khoa.
+
+TUAN 3: 27/11 - 03/12
+
+- Chon mot ngach B2B: xuong co khi hoac cong ty PCCC.
+- Chi viet ngach ma Webs4V co the phuc vu that.
+- Tao mot bai co cau truc website, chuc nang, noi dung can co, chi phi va CTA.
+- Tao hoac mo rong bai ve Google Business bi mat quyen quan tri.
+- Kiem tra index, canonical, sitemap va internal link.
+
+TUAN 4: 04/12 - 12/12
+
+- So sanh 14 ngay gan nhat voi 14 ngay truoc.
+- Tach brand va non-brand.
+- Uu tien trang co vi tri 8-20 de bo sung internal link va FAQ.
+- Chi sua title khi URL co it nhat 100 impression va CTR thap so voi vi tri.
+- Bao cao click, impression, lead, lead du dieu kien, cuoc hen va bao gia.
+- Chon cum tu khoa cho thang tiep theo dua tren du lieu, khong dua tren cam tinh.
+
+NOI DUNG SE LAM TRONG THANG
+
+1. Cap nhat bai Chay Ads Google tai Thu Duc.
+2. Cap nhat bai Thiet ke website Thu Duc.
+3. Viet mot bai website nha khoa.
+4. Viet mot bai ngach B2B: co khi hoac PCCC.
+5. Viet hoac cap nhat bai Google Business bi mat quyen.
+6. Neu con thoi gian, viet bai "Chay Google Ads co giup SEO khong".
+
+KPI 30 NGAY
+
+- 2-3 bai moi.
+- 2 trang hien co duoc cap nhat.
+- Tang it nhat 50% impression khong thuong hieu so voi ky truoc.
+- Dat toi thieu 10 click khong thuong hieu.
+- Bai Google Ads Thu Duc dat tren 100 impression va tien gan top 10.
+- Bai website Thu Duc dat tren 120 impression va it nhat 5 click.
+- Muc tieu 2-5 lead huu co du dieu kien.
+- 100% lead duoc ghi nguon va thoi gian phan hoi.
+
+KHONG LAM
+
+- Khong tao anh cho ke hoach nay.
+- Khong sua website khi chua duoc yeu cau trien khai.
+- Khong tao hang loat trang loi chinh ta.
+- Khong tao trang cho tung phuong voi noi dung giong nhau.
+- Khong nhoi tu khoa.
+- Khong doi ngay cap nhat neu noi dung khong thay doi dang ke.
+- Khong mua backlink hang loat.
+- Khong hua top 1.
+
+SAU 30 NGAY SE QUYET DINH
+
+- Neu cum truy van nha khoa co impression va click tang, tao landing page nha khoa rieng.
+- Neu khong co nhu cau nha khoa, giu noi dung trong bai Thu Duc va chuyen sang ngach co du lieu tot hon.
+- Tiep tuc dau tu trang co vi tri 8-20 vi day la nhom de tang top nhanh hon.
+- Loai bo y tuong tu khoa khong co impression, khong tao lead va khong phu hop nang luc.
+
+PHAN VIEC TOI SE LAM NEU BAN YEU CAU TRIEN KHAI
+
+1. Kiem tra lai Search Console va lap baseline non-brand.
+2. Lap danh sach URL, tu khoa va y dinh tim kiem de tranh an thit tu khoa.
+3. Cap nhat hai bai dang co tin hieu ma khong doi URL.
+4. Them internal link dung ngu canh.
+5. Viet noi dung ngach theo tung tuan.
+6. Chen CTA, form va quy tac thu lead.
+7. Kiem tra title, H1, canonical, sitemap va index.
+8. Theo doi du lieu hang tuan va chi toi uu khi co bang chung.
+
+PHAN BAN CAN CUNG CAP HOAC DUYET
+
+- Nganh nao Webs4V thuc su muon nhan khach: nha khoa, co khi, PCCC hay nganh khac.
+- Bang gia va pham vi dich vu duoc phep cong khai.
+- Hinh anh, du an va case study duoc phep su dung.
+- Cau hoi khach hang thuong hoi qua Zalo va dien thoai.
+- Nguoi nhan lead va thoi gian cam ket phan hoi.
+- Duyet noi dung truoc khi dang len website.
+
+Trang thai hien tai: Moi chi lap ke hoach. Chua tao anh, chua dang bai va chua thay doi website.
+
+======================================================================
+KE HOACH CU THE THEO URL VA NGAY THUC HIEN
+======================================================================
+
+URL 1
+https://webs4v.vn/blog/chay-ads-google-tai-thu-duc/
+
+Muc tieu:
+- Dua vi tri trung binh tu 13,5 tien gan top 10.
+- Tang tu 34 impression len tren 100 impression trong 30 ngay.
+- Tao lead audit hoac quan ly Google Ads.
+
+Se giu nguyen:
+- URL.
+- Title hien tai.
+- H1 hien tai.
+- Phan noi dung dang giup Google hieu bai.
+
+Se bo sung:
+
+1. Mot muc "Dich vu Google Ads tai Thu Duc cua Webs4V gom nhung gi".
+   Noi dung gom nghien cuu tu khoa, cau truc chien dich, mau quang cao,
+   tracking, negative keyword, bao cao va toi uu.
+
+2. Mot muc "Chi phi du kien".
+   Tach ro tien nap Google, phi setup, phi quan ly, landing page va tracking.
+   Chi su dung muc gia da duoc Webs4V duyet.
+
+3. Mot muc "Khi nao Webs4V khong khuyen khich chay Ads".
+   Vi du: chua co landing page, khong co nguoi nghe may, chua do conversion,
+   loi nhuan khong du tra chi phi tim khach.
+
+4. Mot bang chung that.
+   Co the la anh bao cao da che thong tin khach, cau truc chien dich mau,
+   hoac mot case duoc khach hang cho phep cong bo.
+
+5. CTA de xuat:
+   "Gui website va dich vu dang chay de Webs4V kiem tra nhanh cau truc
+   landing page, tracking va nhom tu khoa truoc khi tang ngan sach."
+
+Internal link tro vao URL 1:
+- Tu https://webs4v.vn/dich-vu/google-ads/
+- Tu https://webs4v.vn/blog/google-ads-co-click-khong-co-khach/
+- Tu trang SEO hoac Google Business neu ngu canh phu hop.
+- Tu mot bai moi "Chay Google Ads co giup SEO khong" neu bai nay duoc viet.
+
+Anchor nen dung luan phien:
+- Google Ads tai Thu Duc
+- cach chay Ads theo khu vuc
+- chi phi Google Ads tai Thu Duc
+- quan ly Google Ads dia phuong
+
+Khong dung cung mot anchor chinh xac cho moi lien ket.
+
+---------------------------------------------------------------------
+
+URL 2
+https://webs4v.vn/blog/thiet-ke-website-thu-duc/
+
+Muc tieu:
+- Tang tu 45 impression len tren 120 impression.
+- Dat toi thieu 5 click trong ky.
+- Cung co cac truy van ve website nganh nha khoa tai Thu Duc.
+
+Se giu nguyen:
+- URL.
+- Title va H1 trong 14 ngay dau.
+- Noi dung tong ve website Thu Duc.
+
+Se bo sung H2:
+"Website nha khoa tai Thu Duc can nhung chuc nang gi"
+
+Noi dung trong H2 gom:
+
+1. Trang dich vu rieng cho implant, nieng rang, rang su va nha khoa tong quat.
+2. Ho so bac si, bang cap va chung chi chi dang khi co the xac minh.
+3. Form dat lich co dich vu, chi nhanh, ngay gio va thong tin lien he.
+4. Nut goi, Zalo va ban do de dung tren mobile.
+5. Anh truoc sau chi dung khi co su dong y va phu hop quy dinh.
+6. Chinh sach bao mat thong tin nguoi dat lich.
+7. Tracking form thanh cong, click goi, click Zalo va dat lich.
+8. Phan quan tri dich vu, bac si, bai viet va lich hen neu thuoc pham vi.
+
+CTA de xuat:
+"Gui danh sach dich vu, chi nhanh va quy trinh dat lich hien tai de Webs4V
+de xuat sitemap va pham vi website nha khoa."
+
+Internal link tro vao URL 2:
+- Tu https://webs4v.vn/dich-vu/thiet-ke-website/
+- Tu bai website nha khoa moi.
+- Tu bai 7 cau hoi truoc khi lam website.
+- Tu bai quy trinh trien khai website.
+
+Dieu kien tach landing page nha khoa rieng:
+- Cum truy van nha khoa dat it nhat 20 impression trong 28 ngay; hoac
+- Co it nhat 3 truy van khac nhau lien quan website nha khoa; hoac
+- Co lead that hoi dung dich vu nay; va
+- Webs4V co noi dung, quy trinh hoac bang chung rieng de viet trang.
+
+Neu du dieu kien, URL de xuat:
+https://webs4v.vn/dich-vu/thiet-ke-website-nha-khoa/
+
+Khong tao URL co dia danh neu noi dung chi khac moi chu "Thu Duc".
+
+---------------------------------------------------------------------
+
+URL 3
+https://webs4v.vn/dich-vu/thiet-ke-website/
+
+Muc tieu:
+- Hieu 110 impression khong thuong hieu dang den tu truy van nao.
+- Tang click khong thuong hieu thay vi toi uu theo impression "webs4v".
+
+Viec can xem trong Search Console:
+
+1. Loc Page dung URL nay.
+2. Them Query does not contain "webs4v".
+3. Chon 28 ngay va so sanh 28 ngay truoc.
+4. Xem Query, Devices va Countries.
+5. Ghi lai tu khoa co vi tri 4-15 va co it nhat 5 impression.
+
+Chi sua title neu:
+- Trang co tren 100 impression khong thuong hieu; va
+- CTR thap hon 2%; va
+- Truy van co cung mot y dinh dich vu.
+
+Neu chua du dieu kien, chi bo sung:
+- Link den bai Thiet ke website Thu Duc.
+- Link den case study Miu Miu Nail Design.
+- Pham vi ban giao va phan chua bao gom.
+- CTA gui brief va yeu cau bao gia.
+
+======================================================================
+BAI MOI SO 1
+======================================================================
+
+Ten de xuat:
+Website nha khoa can nhung gi de nhan lich hen va cuoc goi
+
+Tu khoa chinh:
+- thiet ke website nha khoa
+
+Tu khoa phu:
+- website phong kham nha khoa
+- website nha khoa dat lich
+- chi phi website nha khoa
+- giao dien website nha khoa
+
+Y dinh:
+- Nguoi doc dang tim hieu hoac so sanh don vi lam website nha khoa.
+
+Outline:
+
+H1 Website nha khoa can nhung gi de nhan lich hen va cuoc goi
+H2 Website nha khoa phuc vu ai va tao hanh dong gi
+H2 Cau truc trang dich vu dieu tri
+H2 Ho so bac si va bang chung can co
+H2 Quy trinh dat lich tren website
+H2 Chi nhanh ban do goi dien va Zalo
+H2 Noi dung hinh anh va quyen rieng tu
+H2 Chi phi phu thuoc vao nhung hang muc nao
+H2 Checklist noi dung nha khoa can chuan bi
+H2 Webs4V tiep nhan brief nhu the nao
+H2 Cau hoi thuong gap
+
+CTA:
+- Tai hoac nhan checklist noi dung.
+- Gui brief de nhan sitemap va pham vi du kien.
+
+Internal link:
+- Tro den trang dich vu thiet ke website.
+- Tro den bai Thiet ke website Thu Duc.
+- Tro den bai 7 cau hoi truoc khi lam website.
+
+Khong viet:
+- Kien thuc dieu tri rang.
+- Cam ket SEO top 1.
+- So lieu ve benh nhan khong co nguon.
+- Ho so bac si hoac review gia.
+
+======================================================================
+BAI MOI SO 2
+======================================================================
+
+Chi chon mot trong hai phuong an sau.
+
+PHUONG AN A
+Website xuong co khi can gi de nhan yeu cau bao gia B2B
+
+Tu khoa:
+- thiet ke website xuong co khi
+- website cong ty co khi
+- website gia cong co khi
+- website ho so nang luc co khi
+
+Noi dung phai co:
+- Nang luc may moc va cong nghe.
+- Vat lieu va quy cach co the gia cong.
+- Danh muc san pham hoac chi tiet mau.
+- Du an va khach hang duoc phep cong bo.
+- Form tai ban ve hoac gui yeu cau bao gia.
+- Khu vuc nhan gia cong va thoi gian phan hoi.
+
+PHUONG AN B
+Website cong ty PCCC can gi de trung bay san pham va ho so nang luc
+
+Tu khoa:
+- thiet ke website cong ty pccc
+- website thiet bi pccc
+- website thi cong pccc
+
+Noi dung phai co:
+- Tach ro ban thiet bi va dich vu thi cong.
+- Danh muc san pham, thong so va tai lieu.
+- Ho so nang luc va pham vi duoc phep cong bo.
+- Du an va khu vuc phuc vu.
+- Form yeu cau bao gia va khao sat.
+- Khong dua tu van phap ly hoac ky thuat an toan neu khong co nguon chuyen mon.
+
+Cach chon A hay B:
+- Chon nganh co lead hoac moi quan he that.
+- Chon nganh Webs4V co the lay hinh anh va thong tin that.
+- Chon nganh sale co the tiep nhan va tu van ngay.
+- Neu ca hai deu chua co dau vao, khong viet de tranh noi dung mong.
+
+======================================================================
+BAI MOI SO 3
+======================================================================
+
+Ten de xuat:
+Google Business bi mat quyen quan tri can kiem tra gi truoc
+
+Tu khoa:
+- google business bi mat quyen quan tri
+- lay lai quyen google maps
+- google business khong xac minh duoc
+- mat quyen quan tri dia diem google
+
+Y dinh:
+- Khach hang dang co van de cap bach va co kha nang lien he cao.
+
+Outline:
+- Phan biet mat quyen, ho so trung lap, bi dinh chi va khong nhan ma.
+- Kiem tra email va tai khoan dang so huu.
+- Kiem tra ten, dia chi, dien thoai va website.
+- Tai lieu co the can chuan bi.
+- Truong hop Webs4V co the ho tro.
+- Truong hop can lam viec truc tiep voi Google.
+- Thoi gian phu thuoc vao xet duyet, khong hua chac ket qua.
+
+CTA:
+"Gui link Google Maps va mo ta tinh trang hien tai de Webs4V phan loai
+van de truoc khi bao pham vi ho tro."
+
+======================================================================
+BAI MOI SO 4 NEU CON THOI GIAN
+======================================================================
+
+Ten de xuat:
+Chay Google Ads co giup SEO len top khong
+
+Muc dich:
+- Danh vao cau hoi hieu sai.
+- Ban cheo dich vu Ads va SEO dung nhu cau.
+
+Ket luan bai phai noi ngay:
+- Tien Google Ads khong mua duoc vi tri SEO tu nhien.
+- Ads va SEO co the phoi hop ve du lieu, landing page va thong diep.
+- Doanh nghiep can chon theo thoi gian, ngan sach va muc tieu.
+
+CTA:
+"Gui muc tieu va thoi gian mong muon de Webs4V de xuat nen bat dau
+bang Ads, SEO hay ca hai theo tung giai doan."
+
+======================================================================
+LICH CONG VIEC CHI TIET 30 NGAY
+======================================================================
+
+Ngay 1
+- Xuat GSC 28 ngay hien tai va 28 ngay truoc.
+- Tao hai bo loc brand va non-brand.
+- Luu baseline vao bang theo doi.
+
+Ngay 2
+- Kiem tra index va canonical cua ba URL uu tien.
+- Kiem tra sitemap va internal link hien co.
+
+Ngay 3
+- Kiem tra click goi, Zalo va form.
+- Gui thu form va xac nhan du lieu den dung noi.
+
+Ngay 4
+- Lap outline noi dung bo sung cho bai Google Ads Thu Duc.
+- Sale duyet pham vi va gia co the cong khai.
+
+Ngay 5
+- Viet phan bo sung bai Google Ads Thu Duc.
+- Chua dang, chi tao ban nhap de duyet.
+
+Ngay 6
+- Them CTA va internal link vao ban nhap.
+- Kiem tra nham lan voi trang dich vu Google Ads.
+
+Ngay 7
+- Duyet va moi dang cap nhat neu thong tin dung.
+- Ghi ngay cap nhat that.
+
+Ngay 8
+- Lap outline section nha khoa cho bai Thiet ke website Thu Duc.
+
+Ngay 9
+- Thu thap cau hoi sale va dau vao ve website nha khoa.
+
+Ngay 10
+- Viet section nha khoa va CTA gui brief.
+
+Ngay 11
+- Kiem tra trung lap voi trang dich vu thiet ke website.
+
+Ngay 12
+- Duyet va cap nhat bai Thu Duc.
+
+Ngay 13
+- Lap outline bai website nha khoa.
+
+Ngay 14
+- Viet nua dau bai website nha khoa.
+
+Ngay 15
+- Viet nua con lai, FAQ va CTA.
+
+Ngay 16
+- Kiem tra title, H1, canonical, internal link va form.
+
+Ngay 17
+- Duyet va dang bai nha khoa neu du chat luong.
+
+Ngay 18
+- Chon ngach co khi hoac PCCC dua tren dau vao sale.
+
+Ngay 19
+- Nghien cuu cau hoi va cau truc website cua nganh duoc chon.
+
+Ngay 20
+- Lap outline va thu thap bang chung.
+
+Ngay 21
+- Viet ban nhap bai ngach B2B.
+
+Ngay 22
+- Bo sung CTA, gia hoac cach hinh thanh gia.
+
+Ngay 23
+- Duyet va dang neu co noi dung rieng; neu khong du thi dung lai.
+
+Ngay 24
+- Lap outline bai Google Business bi mat quyen.
+
+Ngay 25
+- Viet va kiem tra pham vi ho tro.
+
+Ngay 26
+- Duyet va dang bai Google Business.
+
+Ngay 27
+- Kiem tra GSC cac URL vua cap nhat va URL moi.
+
+Ngay 28
+- Bo sung internal link dua tren cac trang da index.
+
+Ngay 29
+- So sanh 14 ngay gan nhat voi 14 ngay truoc.
+- Tong hop brand, non-brand, click, impression va lead.
+
+Ngay 30
+- Chot bai nao tang, bai nao khong co tin hieu.
+- Quyet dinh co tach landing page nha khoa hay khong.
+- Lap danh sach uu tien cho 30 ngay tiep theo.
+
+======================================================================
+BAO CAO HANG TUAN CAN CO
+======================================================================
+
+1. Tong click va impression.
+2. Click va impression khong chua "webs4v".
+3. Vi tri ba URL uu tien.
+4. Truy van moi co y dinh mua.
+5. URL co vi tri 8-20.
+6. So click goi, Zalo va form.
+7. So lead du dieu kien.
+8. So cuoc hen va bao gia.
+9. Noi dung da dang va noi dung dang cho duyet.
+10. Ba viec se lam trong tuan tiep theo.
+
+======================================================================
+TOM TAT TOI SE LAM GI
+======================================================================
+
+- Toi se phan tich du lieu va chon URL uu tien truoc.
+- Toi se tao ban nhap noi dung de ban duyet, khong tu dong dang.
+- Toi se giu nguyen URL dang co tin hieu.
+- Toi se them internal link va CTA theo tung y dinh tim kiem.
+- Toi se chi viet toi da 2-3 bai moi trong thang.
+- Toi se khong tao anh cho ke hoach nay.
+- Toi se khong tao hang loat trang loi chinh ta.
+- Toi se khong sua website cho den khi ban yeu cau ro phan trien khai.
+
+======================================================================
+NHAT KY THUC HIEN
+======================================================================
+
+NGAY 1 - 13/11/2026 - DA HOAN THANH BASELINE
+
+Khoang du lieu on dinh: 14/10/2026 - 10/11/2026.
+Ly do dung ngay 10/11: Search Console co do tre, tranh dung cac ngay moi
+chua day du.
+
+Toan website:
+- 203 click.
+- 640 impression.
+- CTR 31,72%.
+- Vi tri trung binh 3,73.
+
+Truy van chua "webs4v":
+- 113 click.
+- 222 impression.
+- CTR 50,90%.
+- Vi tri trung binh 1,18.
+
+Du lieu non-brand hien thi duoc trong bang truy van:
+- 1 click.
+- 25 impression tren cac truy van duoc Search Console hien thi.
+- Khong xem 25 impression la tong non-brand that.
+- Ly do: Search Console an cac truy van co tan suat rat thap de bao ve
+  quyen rieng tu. Cac truy van an van nam trong tong tren bieu do.
+
+Truy van dich vu dang nhin thay:
+- "dich vu seo google": 3 impression, vi tri 98.
+- "google seo company": 2 impression, vi tri 39.
+- "thiet ke website thu duc": 1 impression, vi tri 37.
+- "quang cao google adwords khong hien thi": 1 impression, vi tri 42.
+
+Nhan dinh ngay 1:
+- Website dang phu thuoc rat manh vao truy van thuong hieu.
+- Tu khoa dich vu da duoc Google thu nghiem nhung do phu con rat thap.
+- Chua co du du lieu de toi uu title theo CTR.
+- Khong thay doi title, H1 hoac URL trong ngay 1.
+- Uu tien tiep theo van la bai Google Ads Thu Duc va website Thu Duc.
+
+Han che du lieu:
+- Ket noi bao cao hien tai chi cho phep doc 30 ngay gan nhat, nen chua lay
+  duoc ky 28 ngay truoc de so sanh truc tiep.
+- Se dung baseline tren lam moc va so sanh lai vao ngay 29.
+
+Trang thai:
+- Ngay 1 hoan thanh.
+- Chua sua website.
+- Chua dang bai.
+- Chua tao anh.
+
+======================================================================
+QUY UOC LAM VIEC HANG NGAY
+======================================================================
+
+File nay la nguon theo doi chinh cho ke hoach 30 ngay.
+
+Moi khi chu website yeu cau tiep tuc, quy trinh se la:
+
+1. Doc lai toan bo file TXT nay.
+2. Xac dinh ngay gan nhat da hoan thanh.
+3. Doc muc cong viec cua ngay tiep theo.
+4. Thuc hien cac buoc doc du lieu, kiem tra hoac soan ban nhap.
+5. Khong tu dong dang bai hoac sua website neu chua co yeu cau ro.
+6. Ghi ket qua vao phan Nhat ky thuc hien.
+7. Ghi ro viec da lam, so lieu, file da tao, viec cho duyet va buoc tiep theo.
+
+Mau nhat ky moi ngay:
+
+NGAY X - NGAY THANG - TRANG THAI
+- Muc tieu trong ngay.
+- Viec da thuc hien.
+- URL hoac file lien quan.
+- So lieu truoc va sau neu co.
+- Phat hien quan trong.
+- Noi dung cho chu website duyet.
+- Viec khong thuc hien va ly do.
+- Cong viec ngay tiep theo.
+
+Lenh goi y cho chu website:
+"Doc file ke hoach SEO TXT va tiep tuc cong viec ngay tiep theo."
