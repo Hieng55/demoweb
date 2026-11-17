@@ -173,7 +173,13 @@ PHAN BAN CAN CUNG CAP HOAC DUYET
 - Nguoi nhan lead va thoi gian cam ket phan hoi.
 - Duyet noi dung truoc khi dang len website.
 
-Trang thai hien tai: Moi chi lap ke hoach. Chua tao anh, chua dang bai va chua thay doi website.
+Trang thai hien tai (doi chieu code ngay 16/11/2026):
+- Baseline ngay 1 da hoan thanh.
+- Cac viec canonical, sitemap va internal link co ban da co trong source; khong lap lai nhu mot task moi.
+- Bai Google Ads Thu Duc da co noi dung ve cau truc, tracking, chi phi va gia Webs4V; khong can lap outline lai tu dau.
+- Bai website nha khoa Thu Duc da dang ngay 13/11/2026; bo qua cac task ngay 8-17 neu chi lap lai/viet lai bai nay.
+- Chua co bang chung trong code de xac nhan form, goi va Zalo da gui du lieu den dung noi; day la task kiem thu van hanh rieng.
+- Viec con thieu co bang chung ro: bai Google Ads Thu Duc moi co 2 file dat internal link tro vao; chua co bai rieng ve co khi/PCCC va chua co bai Google Business bi mat quyen quan tri.
 
 ======================================================================
 KE HOACH CU THE THEO URL VA NGAY THUC HIEN
@@ -453,34 +459,37 @@ bang Ads, SEO hay ca hai theo tung giai doan."
 LICH CONG VIEC CHI TIET 30 NGAY
 ======================================================================
 
-Ngay 1
+Ngay 1 - DA HOAN THANH
 - Xuat GSC 28 ngay hien tai va 28 ngay truoc.
 - Tao hai bo loc brand va non-brand.
 - Luu baseline vao bang theo doi.
 
-Ngay 2
+Ngay 2 - DA CO TRONG SOURCE, KHONG LAM LAI
 - Kiem tra index va canonical cua ba URL uu tien.
 - Kiem tra sitemap va internal link hien co.
 
-Ngay 3
+Ngay 3 - CHUA CO BANG CHUNG KIEM THU VAN HANH
 - Kiem tra click goi, Zalo va form.
 - Gui thu form va xac nhan du lieu den dung noi.
 
-Ngay 4
+Ngay 4 - NOI DUNG DA CO, KHONG LAP OUTLINE LAI
 - Lap outline noi dung bo sung cho bai Google Ads Thu Duc.
 - Sale duyet pham vi va gia co the cong khai.
 
-Ngay 5
+Ngay 5 - BAI DA DANG; CHI RA SOAT PHAN CON THIEU
 - Viet phan bo sung bai Google Ads Thu Duc.
 - Chua dang, chi tao ban nhap de duyet.
 
-Ngay 6
+Ngay 6 - DANG DO: CTA DA CO, INTERNAL LINK TRO VAO MOI CO 2 FILE
 - Them CTA va internal link vao ban nhap.
 - Kiem tra nham lan voi trang dich vu Google Ads.
 
 Ngay 7
 - Duyet va moi dang cap nhat neu thong tin dung.
 - Ghi ngay cap nhat that.
+
+Ngay 8-17 - DA CO BAI NHA KHOA DANG NGAY 13/11; KHONG VIET LAI
+- Cac task cu ngay 8-17 duoi day chi dung lam checklist doi chieu neu can audit.
 
 Ngay 8
 - Lap outline section nha khoa cho bai Thiet ke website Thu Duc.
@@ -634,6 +643,39 @@ Trang thai:
 - Chua sua website.
 - Chua dang bai.
 - Chua tao anh.
+
+======================================================================
+RA SOAT TIEN DO THUC TE - 16/11/2026
+======================================================================
+
+Da co bang chung trong source:
+- Ca ba URL uu tien deu co canonical dung URL chinh.
+- Ca ba URL uu tien deu co trong public/sitemap.xml.
+- Bai Google Ads Thu Duc da co cau truc chien dich, tracking, bang chi phi,
+  gia Webs4V va checklist truoc khi chay.
+- Bai Thiet ke website Thu Duc da co link sang bai nha khoa.
+- Bai Thiet ke website nha khoa Thu Duc da dang ngay 13/11/2026, co title,
+  H1, canonical, structured data, CTA va internal link.
+- Trang dich vu thiet ke website da co pham vi, gia va phan chua bao gom.
+
+Khong danh dau hoan thanh neu chua co bang chung:
+- Trang thai index thuc te tren Google cua tung URL can doc tu Search Console.
+- Click goi, Zalo va form co gui/ghi nhan dung noi hay khong can test tren
+  moi truong van hanh; chi nhin code khong du ket luan.
+
+Viec con thieu thuc te:
+1. Bai Google Ads Thu Duc moi co internal link tro vao tu 2 file:
+   blog/index.html va dich-vu/google-ads/index.html. Muc tieu cu la 3-5 link.
+2. Chua co bai rieng cho ngach co khi hoac PCCC.
+3. Chua co bai Google Business bi mat quyen quan tri.
+4. Chua co bai "Chay Google Ads co giup SEO khong"; day van la hang muc
+   tuy chon, khong uu tien hon cac viec co du lieu.
+
+Thu tu lam tiep theo thuc te:
+1. Kiem thu form, click goi va Zalo neu chua co bien ban test.
+2. Bo sung 1-3 internal link dung ngu canh den bai Google Ads Thu Duc.
+3. Doc GSC sau khi du du lieu de chon giua bai co khi/PCCC va bai Google
+   Business; khong viet theo lich neu khong co nhu cau hoac dau vao that.
 
 ======================================================================
 QUY UOC LAM VIEC HANG NGAY

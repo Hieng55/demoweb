@@ -1,7 +1,7 @@
 # Bộ quy tắc SEO website bền vững
 
-> Phiên bản: 1.30
-> Cập nhật: 12/11/2026
+> Phiên bản: 1.31
+> Cập nhật: 13/11/2026
 > Mục đích: Dùng làm rule, checklist và tiêu chuẩn nghiệm thu SEO cho mọi website được xây dựng hoặc tối ưu sau này.
 
 ## 1. Tư tưởng cốt lõi
@@ -511,6 +511,18 @@ Website cần chủ động nhận diện và triệt tiêu các lỗi kích ho�
 - Dữ liệu GSC/GA4/CRM và dữ liệu website sở hữu **SHOULD** được ưu tiên; traffic, keyword, authority và backlink do công cụ bên thứ ba ước tính chỉ là nguồn chẩn đoán bổ sung.
 - So sánh đối thủ **SHOULD** tập trung vào nhiệm vụ người dùng, loại bằng chứng, trải nghiệm và khoảng trống thông tin; **MUST NOT** dùng số từ, số heading, entity count hoặc cấu trúc đối thủ như template phải sao chép.
 - Thay đổi content diện rộng **SHOULD** được thử trên một cohort URL/topic đủ đại diện, lưu baseline và change log, theo dõi cả Search lẫn conversion trong cửa sổ phù hợp rồi mới mở rộng. Không đúc kết “công thức chuẩn” từ một lần tăng/giảm thứ hạng ngắn hạn.
+
+#### Runbook content refresh cho trang dịch vụ có intent chuyển đổi
+
+1. **Lập cohort dữ liệu:** Mặc định lấy 3 tháng GSC hoặc toàn bộ dữ liệu sẵn có nếu site mới; so sánh 3/6 tháng trước khi ngành có mùa vụ và ghi rõ Search type, country, device, timezone, bộ lọc. Export giao diện GSC chỉ có tối đa 1.000 dòng đại diện; site lớn **SHOULD** dùng Search Console API hoặc bulk export.
+2. **Sàng lọc, không phán quyết:** `clicks = 0` hoặc `< 5` với `impressions > 0` **MAY** tạo danh sách ứng viên, nhưng **MUST NOT** tự động suy ra nội dung kém. Phải xem thêm demand, average position, CTR theo vị trí/thiết bị, canonical/index, SERP, conversion, mùa vụ và vai trò internal link.
+3. **Chẩn đoán query–URL:** Gom query theo entity, nhu cầu và giai đoạn quyết định; kiểm tra URL đang rank đúng page role hay bị cannibalization. Average position là số trung bình theo impression, không phải thứ hạng cố định.
+4. **Thiết kế lại theo nhiệm vụ:** Trang báo giá/dịch vụ **SHOULD** phủ các câu hỏi thực sự cần cho quyết định như giá và phụ phí, phạm vi, lựa chọn/so sánh, khu vực phục vụ, SLA, quy trình, hợp đồng, bảo trì và tiêu chí chọn. **MUST NOT** ép mọi trang thành đúng 5 intent, 5 H2, 3 CTA hoặc một template cố định.
+5. **Dùng bằng chứng thật:** Giá, model, công suất, phí vượt mức, thời gian giao/xử lý, dùng thử, đổi máy, không đặt cọc và miễn phí linh kiện **MUST** khớp offer/hợp đồng và năng lực vận hành hiện tại. Nhận định so sánh thương hiệu **MUST** có tiêu chí, dữ liệu hoặc kinh nghiệm được mô tả; không biến slogan bán hàng thành sự thật.
+6. **Hoàn thiện UX và discovery:** Giữ ảnh thật khi có quyền sử dụng, tối ưu dung lượng/kích thước/format và viết `alt` mô tả đúng hình trong ngữ cảnh, không nhồi từ khóa. Internal link và anchor **MUST** tự nhiên, mô tả đúng trang đích và giúp người dùng tiến tới bước kế tiếp.
+7. **Đo trước/sau:** Lưu query, page, clicks, impressions, CTR, position, lead/conversion và change log; kiểm tra sau khi Google recrawl/index và theo cửa sổ đủ dài cho chu kỳ bán hàng. **MUST NOT** cam kết Top 1–5 hoặc AI citation từ runbook này.
+
+Nguồn kiểm chứng: [Search Console Performance report](https://support.google.com/webmasters/answer/7576553), [Export data from Search Console](https://support.google.com/webmasters/answer/12919797), [Helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [Google link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable), [Google image SEO](https://developers.google.com/search/docs/appearance/google-images), [Generative AI search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
 
 #### Ứng phó Core Update, Spam Update và biến động SERP
 
@@ -1406,8 +1418,10 @@ Nguồn tham khảo mô hình tổ chức, không dùng Silo/Topic Cluster làm 
 - `Article`/`BlogPosting` **SHOULD** chỉ dùng cho trang bài viết phù hợp và khai báo tác giả, ngày, headline, image theo dữ liệu thật; không phải yêu cầu để được vào Google News.
 - `Organization` **SHOULD** được khai báo tập trung trên trang chủ hoặc trang giới thiệu phù hợp; **MUST NOT** nhân bản một đồ thị doanh nghiệp mâu thuẫn trên mọi URL.
 - `FAQPage` **MAY** dùng khi trang thực sự có một danh sách câu hỏi và câu trả lời do website cung cấp; **MUST NOT** thêm chỉ để săn Rich Result. Google hiện chỉ hiển thị FAQ rich results thường xuyên cho các website chính phủ/y tế có thẩm quyền.
+- `LocalBusiness` **SHOULD** để ở trang có thông tin vị trí/doanh nghiệp phù hợp; không bắt buộc lặp node đầy đủ trong mọi bài viết.
+- `Review`/`AggregateRating` **MUST** hiển thị nội dung review/rating tương ứng cho người dùng, dựa trên đánh giá thật và không tổng hợp rating từ website khác. Doanh nghiệp tự kiểm soát review về chính mình **MUST NOT** kỳ vọng `LocalBusiness`/`Organization` self-serving review markup đủ điều kiện hiển thị sao.
 
-Nguồn: [General structured data guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [Article structured data](https://developers.google.com/search/docs/appearance/structured-data/article), [Organization structured data](https://developers.google.com/search/docs/appearance/structured-data/organization), [FAQ rich result changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes), [Optimizing for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
+Nguồn: [General structured data guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [Article structured data](https://developers.google.com/search/docs/appearance/structured-data/article), [Organization structured data](https://developers.google.com/search/docs/appearance/structured-data/organization), [LocalBusiness structured data](https://developers.google.com/search/docs/appearance/structured-data/local-business), [Review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet), [FAQ rich result changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes), [Optimizing for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
 
 ## 5. AI discovery, agentic browsing và `llms.txt`
 
