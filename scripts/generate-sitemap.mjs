@@ -25,6 +25,8 @@ const pages = [
   { path: '/blog/web4s-va-webs4v-khac-nhau/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/thiet-ke-website-thu-duc/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/thiet-ke-website-nha-khoa-thu-duc/', priority: '0.9', changefreq: 'monthly' },
+  { path: '/blog/thiet-ke-website-gia-cong-co-khi/', priority: '0.9', changefreq: 'monthly' },
+  { path: '/blog/google-maps-bi-mat-quyen-so-huu/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/case-study-website-miu-miu-nail-design/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/thiet-ke-website-vung-ven-phia-dong/', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog/thiet-ke-website-hoc-mon/', priority: '0.9', changefreq: 'monthly' },
