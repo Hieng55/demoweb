@@ -5,6 +5,7 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteRule ^blog/thiet-ke-website-gia-cong-co-khi/?$ /blog/thiet-ke-website-gia-cong-co-khi-thu-duc/ [R=301,L]
   RewriteCond %{HTTP_HOST} ^www\.webs4v\.vn$ [NC]
   RewriteRule ^ https://webs4v.vn%{REQUEST_URI} [R=301,L]
 </IfModule>

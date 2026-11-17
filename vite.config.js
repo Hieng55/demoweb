@@ -44,7 +44,7 @@ export default defineConfig({
         blogWeb4sVsWebs4V: resolve(__dirname, 'blog/web4s-va-webs4v-khac-nhau/index.html'),
         blogWebsiteThuDuc: resolve(__dirname, 'blog/thiet-ke-website-thu-duc/index.html'),
         blogDentalWebsiteThuDuc: resolve(__dirname, 'blog/thiet-ke-website-nha-khoa-thu-duc/index.html'),
-        blogMachiningWebsite: resolve(__dirname, 'blog/thiet-ke-website-gia-cong-co-khi/index.html'),
+        blogMachiningWebsite: resolve(__dirname, 'blog/thiet-ke-website-gia-cong-co-khi-thu-duc/index.html'),
         blogGoogleMapsOwnershipLost: resolve(__dirname, 'blog/google-maps-bi-mat-quyen-so-huu/index.html'),
         blogMiuMiuNailCaseStudy: resolve(__dirname, 'blog/case-study-website-miu-miu-nail-design/index.html'),
         blogWebsiteEasternOutskirts: resolve(__dirname, 'blog/thiet-ke-website-vung-ven-phia-dong/index.html'),
