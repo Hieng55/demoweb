@@ -52,6 +52,7 @@ const pages = [
   { path: '/tuyen-dung/marketing-executive/', priority: '0.8', changefreq: 'weekly' },
   { path: '/tuyen-dung/sales-website/', priority: '0.8', changefreq: 'weekly' },
   { path: '/tuyen-dung/graphic-designer/', priority: '0.8', changefreq: 'weekly' },
+  { path: '/tuyen-dung/nhan-vien-social-ca-dem/', priority: '0.8', changefreq: 'weekly' },
   { path: '/chinh-sach-bao-mat/', priority: '0.5', changefreq: 'yearly' },
 ];
 

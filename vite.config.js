@@ -28,6 +28,7 @@ export default defineConfig({
         careerMarketingExecutive: resolve(__dirname, 'tuyen-dung/marketing-executive/index.html'),
         careerSalesWebsite: resolve(__dirname, 'tuyen-dung/sales-website/index.html'),
         careerGraphicDesigner: resolve(__dirname, 'tuyen-dung/graphic-designer/index.html'),
+        careerSocialNightShift: resolve(__dirname, 'tuyen-dung/nhan-vien-social-ca-dem/index.html'),
         contact: resolve(__dirname, 'lien-he/index.html'),
         blog: resolve(__dirname, 'blog/index.html'),
         blogWebsiteQuestions: resolve(__dirname, 'blog/7-cau-hoi-truoc-khi-lam-website/index.html'),
