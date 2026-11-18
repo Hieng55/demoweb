@@ -1,0 +1,44 @@
+---
+description: Viết và kiểm tra Social SEO cho Facebook, Instagram, Google và trang đích website
+globs: "**/*.{html,md,mdx}"
+alwaysApply: false
+---
+
+# Social SEO
+
+Áp dụng đầy đủ tiêu chuẩn tại `.cursor/rules/seo-social/seo-social-rules.md`.
+Khi viết bài Fanpage, dùng đầu vào và quy trình tại `.cursor/rules/seo-social/fanpage-content-brief.md`.
+
+- Xác định người xem, một search intent chính, chủ đề, bằng chứng, CTA và URL đích trước khi viết.
+- Viết cho con người trước: trả lời trực tiếp, rõ nghĩa, có trải nghiệm/dữ liệu/ví dụ thật.
+- Giữ tên thương hiệu, username, mô tả, website, điện thoại, địa chỉ và giờ làm việc chính xác, nhất quán.
+- Dùng từ/cụm từ khách hàng thật sự tìm một cách tự nhiên; không dùng mật độ từ khóa.
+- Mỗi bài tập trung một vấn đề chính nhưng được dùng thực thể, đồng nghĩa và câu hỏi liên quan khi hữu ích.
+- Đưa thông tin quan trọng vào phần chữ; không để toàn bộ câu trả lời chỉ trong ảnh.
+- Ảnh/video phải có quyền sử dụng; thêm phụ đề chính xác và alt text mô tả, không nhồi từ khóa.
+- Ưu tiên nội dung nguyên bản; khi tái sử dụng phải thêm phân tích, hướng dẫn hoặc bằng chứng mới.
+- Phân biệt được đăng, đủ điều kiện đề xuất và phân phối thực tế; kiểm tra Account Status/Page Quality trước.
+- Link phải đúng ngữ cảnh và dùng UTM thống nhất: source=nền tảng, medium=organic_social/paid_social, content=feed/reel/story/bio.
+- CTA phải rõ, tự nhiên và phù hợp giai đoạn; cấm engagement bait, bình luận giả và mua tương tác.
+- Hashtag chỉ dùng khi liên quan; không mặc định 3–5 hashtag hoặc một danh sách cố định.
+- Không mặc định video ngắn, giờ vàng, tần suất đăng hoặc vị trí từ khóa là yếu tố thắng.
+- Hook 3 giây/2 dòng, phản hồi 1–2 giờ, lịch 4–5 bài/tuần và chu kỳ 28 ngày chỉ là heuristic thử nghiệm, không phải ngưỡng thuật toán.
+- Không tuyên bố Reels luôn thắng reach hay Post luôn thắng chuyển đổi; chọn định dạng theo nhiệm vụ và kiểm chứng cùng vai trò/chủ đề.
+- Không tuyên bố follower, like, social backlink, xác minh Page hoặc link email trực tiếp làm Google tăng hạng.
+- Không hứa index, reach hoặc top Google/Facebook/Instagram; nêu rõ kết quả phụ thuộc cạnh tranh và hệ thống nền tảng.
+- Không spam link, tài khoản, nhóm, hashtag, địa danh, Page name, mô tả hoặc bình luận.
+- Với website, giữ bản đầy đủ/canonical hữu ích; social dùng để tóm lược, chứng minh, đối thoại và phân phối.
+- Với Instagram, xác định riêng Feed/Stories/Reels/Explore/Search; không biến tín hiệu một bề mặt thành quy tắc chung.
+- Không xếp hạng tuyệt đối like/save/share/DM và không dùng con số Explore lịch sử như công thức hiện hành.
+- Trên social, không coi alt text là trường ranking đã xác nhận; luôn mô tả ảnh đúng mục đích và không nhồi từ khóa.
+- Đo theo vai trò: khám phá=reach/retention, nuôi dưỡng=hội thoại, chuyển đổi=lead/doanh thu; tách organic với paid.
+- Nội dung có claim, giá, kết quả, dữ liệu/hình khách hàng hoặc chủ đề rủi ro cao phải duyệt tăng cường và lưu bằng chứng.
+- Không đăng dữ liệu cá nhân khi chưa có căn cứ/đồng ý phù hợp; không xóa phản hồi thật chỉ để làm đẹp Page.
+- Không dùng “GEO hack”, chunking, schema đặc biệt hoặc llms.txt như điều kiện để Google AI trích dẫn.
+- Mọi claim thuật toán mới phải có nguồn chính thức và ngày kiểm tra; kinh nghiệm ngành chỉ là giả thuyết thử nghiệm.
+- Tách dữ kiện, suy luận và ý kiến; trải nghiệm phải nêu người thực hiện, điều kiện, thời gian, bằng chứng và giới hạn.
+- Không biến một case thành quy tắc chung; với nguồn lịch sử, ghi rõ năm và không dùng ngưỡng cũ như công thức hiện hành.
+
+Ví dụ không đạt: `Dịch vụ SEO top 1 #seo #marketing #viral... Comment YES để nhận giá!`
+
+Ví dụ đạt: `Fanpage có bài đều nhưng khách vẫn không tìm thấy? Kiểm tra 5 mục này trước: tên Page, mô tả dịch vụ, thông tin liên hệ, nội dung công khai và Page Quality.`

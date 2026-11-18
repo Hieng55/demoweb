@@ -1,0 +1,23 @@
+---
+description: Vận hành audit SEO định kỳ theo rủi ro cho index, backlink và internal link
+globs: "**/*.{html,md,mdx}"
+alwaysApply: false
+---
+
+# Audit SEO định kỳ
+
+Áp dụng `.cursor/rules/seo-web/seo-website-rules.md`, mục “Release gate và nhịp audit”.
+
+- Cadence là lịch khởi điểm theo quy mô, tốc độ thay đổi và rủi ro; không phải luật xếp hạng.
+- Sau deploy/content batch: test URL mẫu, status, canonical, robots, sitemap, render, schema, form/CTA và link bị tác động.
+- Site thay đổi thường xuyên: review Page Indexing/Crawl Stats/sitemap/Security hàng tuần hoặc hai tuần; sự cố là trigger kiểm tra ngay.
+- Hàng tháng: xem query–page, CTR, conversion, content cohort và orphan/broken/redirected internal link.
+- Hàng quý hoặc sau link campaign/migration: rà referring domain, anchor, destination, referral và lost/broken link.
+- `site:` chỉ lấy mẫu URL/spam; không dùng số kết quả làm số lượng index chuẩn.
+- Không coi index nhiều là tốt; map loại URL nào cần index và điều tra chênh lệch theo template.
+- Không xóa/noindex hàng loạt chỉ để giảm “index bloat” nếu chưa xác định giá trị, canonical, demand và replacement.
+- Không tự động gỡ/disavow link vì công cụ báo toxic; điều tra Manual Actions, nguồn và link đội ngũ kiểm soát.
+- Internal link phải dẫn theo nhiệm vụ và dùng anchor mô tả tự nhiên; không đặt theo quota.
+- Mỗi issue cần URL mẫu, quy mô, bằng chứng, nguyên nhân, priority, owner, acceptance test và monitoring.
+
+Ví dụ: lịch hai tuần có thể phù hợp site đăng hàng ngày; site brochure ít thay đổi dùng lịch tháng nhưng vẫn kiểm tra ngay sau deploy hoặc khi URL quan trọng mất index.

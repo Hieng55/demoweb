@@ -1,0 +1,24 @@
+---
+description: Xử lý khi blog xếp hạng thay trang sản phẩm hoặc nghi ngờ cannibalization
+globs: "**/*.{html,md,mdx}"
+alwaysApply: false
+---
+
+# Search Intent và Cannibalization
+
+Áp dụng runbook tại `.cursor/rules/seo-web/seo-website-rules.md`, mục “Runbook khi bài blog lên hạng thay trang sản phẩm/dịch vụ”.
+
+- Không coi “mỗi từ khóa chỉ có một intent” là luật; một truy vấn có thể hỗn hợp hoặc mơ hồ.
+- Không kết luận từ một lần tìm thủ công, tỷ lệ top 10 cố định hoặc việc hai URL cùng có impression.
+- Dùng Search Console: lọc query/cụm query, xem tab Pages, giữ cùng quốc gia, thiết bị và giai đoạn; đối chiếu conversion.
+- Kiểm tra indexability, Google-selected canonical, render, sitemap và internal link trước khi sửa content.
+- Nếu blog và sản phẩm phục vụ hai nhiệm vụ khác nhau, giữ cả hai và liên kết theo hành trình người dùng.
+- Nếu trang sản phẩm đúng intent nhưng yếu, cải thiện thông tin mua hàng, bằng chứng, chính sách, CTA và liên kết nội bộ tự nhiên.
+- Chỉ hợp nhất và `301/308` khi URL cũ trùng/hết vai trò và URL đích là bản thay thế tương đương.
+- Không redirect bài blog sang sản phẩm không cùng nhiệm vụ; không dùng canonical giữa hai nội dung khác nhau để “chuyển điểm SEO”.
+- Không xóa blog chỉ vì nó đang xếp hạng cao hơn trang sản phẩm.
+- Không hứa thời hạn một tuần hoặc bảo đảm thứ hạng; lưu baseline và đo lại crawl/index, query–page, click, CTR, conversion.
+
+Ví dụ đúng: bài “cách chọn hosting” trả lời thông tin và dẫn sang trang gói hosting; cả hai được giữ nếu SERP có intent hỗn hợp.
+
+Ví dụ hợp nhất: hai landing page cùng gói, cùng nhiệm vụ và gần như cùng nội dung; giữ URL tốt nhất, chuyển phần hữu ích, cập nhật link rồi redirect URL cũ.

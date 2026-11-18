@@ -1,7 +1,7 @@
 # Bộ quy tắc SEO website bền vững
 
-> Phiên bản: 1.31
-> Cập nhật: 13/11/2026
+> Phiên bản: 1.35
+> Cập nhật: 18/11/2026
 > Mục đích: Dùng làm rule, checklist và tiêu chuẩn nghiệm thu SEO cho mọi website được xây dựng hoặc tối ưu sau này.
 
 ## 1. Tư tưởng cốt lõi
@@ -16,6 +16,17 @@ Thứ tự ưu tiên bắt buộc:
 4. Bằng chứng, độ tin cậy và trải nghiệm thực tế.
 5. Hành trình chuyển đổi phục vụ mục tiêu kinh doanh.
 6. Schema và Search Features là lớp tăng cường, không phải nền móng.
+
+### Google dùng nhiều hệ thống xếp hạng
+
+Google công khai rằng Search dùng nhiều hệ thống và tín hiệu, chủ yếu đánh giá ở cấp trang nhưng cũng có tín hiệu/classifier cấp site. Vì vậy:
+
+- **MUST NOT** gọi chung mọi biến động là do “thuật toán Google” hoặc gán nguyên nhân cho một hệ thống cụ thể khi chưa có bằng chứng.
+- **MUST NOT** suy luận một site có tín hiệu tổng thể tốt thì mọi URL đều được xếp hạng cao, hoặc một tín hiệu xấu khiến mọi URL đều thất bại.
+- **MUST** chẩn đoán theo URL, loại truy vấn, intent, bề mặt Search, thiết bị, quốc gia và thời gian trước khi kết luận ở cấp site.
+- **SHOULD** dùng tên hệ thống chỉ khi cần giải thích cơ chế đã được Google công bố; quyết định sửa vẫn phải dựa trên vấn đề quan sát được của website.
+
+Nguồn: [Google Search ranking systems guide](https://developers.google.com/search/docs/appearance/ranking-systems-guide).
 
 ### Khung tín hiệu nén (Signal Compression Framework — Whitehat SEO 2026)
 
@@ -301,7 +312,7 @@ Mô hình Topic Cluster giúp website xác lập thẩm quyền chuyên môn (To
    - Pillar Page **MUST** đặt liên kết hướng tới tất cả các bài viết trong cluster tương ứng.
    - Mọi bài Cluster Content **MUST** liên kết ngược về Pillar Page với anchor text tự nhiên và chuẩn ngữ cảnh.
    - Các bài Cluster Content cùng cụm **SHOULD** liên kết chéo sang nhau khi nội dung bổ trợ trực tiếp cho quyết định tiếp theo của người đọc.
-7. **Rà soát xung đột từ khóa (Cannibalization Audit):** **MUST** kiểm tra để mỗi URL chỉ nhắm một Primary Intent duy nhất; không xuất bản 2 trang cùng tranh chấp một mục đích tìm kiếm.
+7. **Rà soát xung đột truy vấn (Cannibalization Audit):** **MUST** xác định vai trò chính của từng URL và dùng dữ liệu query–page để tìm các trang cùng tranh chấp một nhiệm vụ người dùng. Nhiều URL cùng có impression cho một truy vấn hoặc một truy vấn có intent hỗn hợp **không tự động** là cannibalization.
 8. **Đo lường và mở rộng theo chu kỳ:** Dùng dữ liệu Search Console để phát hiện các truy vấn mới nảy sinh và cập nhật bổ sung bài viết ngách vào cluster.
 
 - **MUST NOT** chạy đua theo số lượng bài viết; Topical Authority được đo bằng chiều sâu chuyên môn, tính xác thực và mức độ thỏa mãn Search Intent, không phải số lượng URL rỗng.
@@ -446,6 +457,31 @@ Nếu không trả lời được câu 3 hoặc 4, liên kết cần được xe
 - Khi người tìm kiếm cần báo giá hoặc hành động, trang **MUST** có CTA rõ ràng và cho biết người dùng cần cung cấp gì, sẽ nhận lại gì và bước tiếp theo diễn ra như thế nào.
 - **MUST** xem xét lại intent khi URL có impression nhưng CTR thấp, có traffic nhưng không hoàn thành nhiệm vụ, hoặc SERP đã chuyển sang loại trang khác; không mặc định vấn đề nằm ở mật độ từ khóa.
 
+#### SERP-first nhưng không sao chép SERP
+
+- **SHOULD** đọc SERP theo `Content Type` (bài, danh mục, sản phẩm, video, forum, local), `Content Format` (hướng dẫn, danh sách, so sánh, review, công cụ) và `Content Angle` (đối tượng, lợi ích, mức giá, độ mới); đồng thời ghi Search Features, intent chính/phụ và loại bằng chứng đang được ưu tiên.
+- **MUST** kiểm tra nhiều query/biến thể, quốc gia, thiết bị và thời điểm phù hợp; top 5/top 10 của một lần tìm là mẫu quan sát, không phải “đáp án Google chấm sẵn” hay template phải sao chép.
+- **MUST** dùng SERP cùng GSC, dữ liệu khách hàng, site search, sales/support và mục tiêu kinh doanh. Who/What/Why không phải bước để bỏ hoặc luôn để cuối; chúng xác định audience, nhiệm vụ và động cơ mà SERP một mình không chứng minh được.
+- Intent phụ **MAY** ở cùng trang nếu hỗ trợ nhiệm vụ chính. Chỉ tách URL khi có page role, nhu cầu và giá trị độc lập; không tách chỉ vì công cụ báo volume hoặc SERP biến động.
+- Các ngưỡng như “SERP đổi trên 30% là Google thử intent mới” **MUST** được ghi là quy tắc của công cụ/phương pháp cụ thể, không phải chuẩn Google.
+- Từ có vẻ giao dịch như “mua”, “giá”, “tốt nhất” chỉ là tín hiệu; **MUST** đối chiếu loại kết quả, hành vi và khả năng hoàn thành nhiệm vụ trước khi chọn trang đích.
+
+#### Runbook khi bài blog lên hạng thay trang sản phẩm/dịch vụ
+
+1. **Xác nhận bằng dữ liệu sở hữu:** Trong Search Console, lọc truy vấn/cụm truy vấn rồi mở tab `Pages`; so sánh impression, click, CTR, vị trí và chuyển đổi của blog với trang sản phẩm trong cùng quốc gia, thiết bị và giai đoạn. Một lần tìm thủ công hoặc việc hai URL cùng xuất hiện **không đủ** kết luận cannibalization.
+2. **Đọc SERP như bằng chứng, không như luật:** Kiểm tra nhiều truy vấn gần nghĩa và ghi nhận tỷ lệ trang kiến thức, danh mục, sản phẩm, local result, video và shopping. SERP nghiêng về một loại trang là tín hiệu về intent; không dùng ngưỡng “80%” hoặc mệnh đề “mỗi từ khóa chỉ có một intent” như quy tắc tuyệt đối.
+3. **Loại trừ lỗi kỹ thuật:** Kiểm tra status, indexability, Google-selected canonical, render, sitemap, breadcrumb, internal link và dữ liệu sản phẩm. Nếu trang sản phẩm không thể index hoặc bị canonical sai thì phải sửa trước khi chỉnh nội dung.
+4. **Đánh giá độ phù hợp của trang sản phẩm:** Trang mục tiêu **MUST** đáp ứng nhiệm vụ giao dịch bằng thông tin riêng có như lựa chọn/biến thể, giá hoặc cách xác định giá, tình trạng, giao nhận, chính sách, bằng chứng, rủi ro, FAQ và CTA; không chỉ đổi title/H1 hoặc lặp từ khóa.
+5. **Chọn đúng hành động:**
+   - Intent khác nhau hoặc SERP hỗn hợp: **KEEP BOTH**; blog giải đáp đầy đủ rồi dẫn tự nhiên sang sản phẩm, còn trang sản phẩm tập trung quyết định mua. Có thể thu hẹp blog về long-tail thông tin để phân vai rõ hơn.
+   - Hai trang thực sự trùng nhiệm vụ và nội dung: **CONSOLIDATE** phần hữu ích vào URL tốt nhất, cập nhật mọi internal link/sitemap, rồi dùng `301/308` từ URL cũ tới trang thay thế tương đương.
+   - Trang sản phẩm đúng intent nhưng yếu: **IMPROVE**, củng cố liên kết từ danh mục/bài liên quan bằng anchor mô tả tự nhiên và kiểm tra khả năng chuyển đổi; **MUST NOT** xóa blog chỉ vì blog đang xếp hạng cao hơn.
+   - URL hết giá trị và không có trang thay thế tương đương: gỡ internal link/sitemap và trả `404/410`; **MUST NOT** redirect cưỡng ép tới trang sản phẩm không cùng nhiệm vụ.
+6. **Dùng canonical đúng mục đích:** `rel="canonical"` dành cho URL trùng hoặc rất giống nhau; **MUST NOT** dùng canonical từ bài hướng dẫn khác nội dung sang trang sản phẩm như công cụ chuyển thứ hạng.
+7. **Đo sau thay đổi:** Lưu baseline và change log; yêu cầu crawl lại khi cần, theo dõi index/canonical, query–page, click, CTR và conversion theo cửa sổ đủ dài. **MUST NOT** hứa “sau một tuần sẽ lên”; recrawl, tái xử lý và xếp hạng không có thời hạn hay kết quả được bảo đảm.
+
+Nguồn kiểm chứng: [Search Console — xem các trang hiển thị cho một truy vấn](https://support.google.com/webmasters/answer/17010961), [Redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects), [Consolidate duplicate URLs](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [Troubleshoot crawling errors](https://developers.google.com/search/docs/crawling-indexing/troubleshoot-crawling-errors).
+
 #### Chuẩn hóa 4 nhóm Search Intent: Cấu trúc nội dung và vị trí CTA
 
 Mọi trang xuất bản **MUST** được xếp vào đúng nhóm Search Intent chủ đạo để thiết kế cấu trúc nội dung và vị trí kêu gọi hành động (CTA) tương ứng:
@@ -561,6 +597,46 @@ Nguồn: [Google Search's Core Updates](https://developers.google.com/search/doc
 
 Nguồn: [Spam Policies for Google Web Search](https://developers.google.com/search/docs/essentials/spam-policies).
 
+#### Danh mục Spam Policies hiện hành và cách dùng
+
+Snapshot kiểm tra ngày 18/11/2026 trên trang Google cập nhật 28/08/2026 gồm **16 heading spam chính**:
+
+1. Cloaking.
+2. Doorway abuse.
+3. Expired domain abuse.
+4. Hacked content.
+5. Hidden text and link abuse.
+6. Keyword stuffing.
+7. Link spam.
+8. Machine-generated traffic.
+9. Malicious practices.
+10. Misleading functionality.
+11. Scaled content abuse.
+12. Scraping.
+13. Site reputation policy.
+14. Sneaky redirects.
+15. Thin affiliation.
+16. User-generated spam.
+
+Phần **Other practices that can lead to demotion or removal** hiện có **4 heading**:
+
+17. Legal removals.
+18. Personal information removals.
+19. Policy circumvention.
+20. Scam and fraud.
+
+- **MUST** dùng tên và định nghĩa từ trang chính thức hiện hành; số `16 + 4` chỉ là snapshot quản trị, không phải cấu trúc bất biến.
+- **MUST NOT** gộp `Malicious practices` với `Misleading functionality`; đây là hai heading riêng trong tài liệu hiện tại.
+- **MUST NOT** nói mọi vi phạm đều khiến toàn bộ domain bị xóa. Google nêu site có thể bị hạ hạng hoặc không xuất hiện; phạm vi/hậu quả phụ thuộc loại vi phạm và hành động cụ thể.
+- **MUST NOT** coi mọi city/service page là doorway. Chỉ kết luận khi nhiều trang/query tương tự chủ yếu funnel người dùng, gần như không có giá trị/điểm đến độc lập.
+- **MUST NOT** coi mọi domain hết hạn, nội dung bên thứ ba, affiliate, UGC, redirect, accordion/tab hoặc nội dung AI là spam. Phải kiểm tra mục đích, giá trị, quyền kiểm soát, cách triển khai và wording chính sách tương ứng.
+- **MUST NOT** gọi mọi rank tracker là machine-generated traffic nếu chưa biết nó truy cập Google bằng cách nào; đánh giá automated queries/scraping không có phép, không suy diễn từ tên công cụ.
+- **MUST** xem hacked content và user-generated spam là rủi ro có thể xảy ra khi chủ site không biết; thiếu chủ ý không loại bỏ nhu cầu xử lý bảo mật/index.
+- **MUST** kiểm tra `Scam and fraud` trong audit trust/brand: giả mạo doanh nghiệp, thông tin doanh nghiệp giả hoặc hỗ trợ khách hàng giả thuộc nhóm Google nêu rõ.
+- **SHOULD** phân loại nguyên nhân vận hành theo bốn lớp để sửa đúng chỗ: chủ ý thao túng; cấu hình/CMS sai; compromise/UGC/third party; tư vấn cũ hoặc nhà cung cấp thiếu kiểm soát. Đây là taxonomy nội bộ, không phải bốn mức phạt của Google.
+
+Nguồn chuẩn duy nhất cho tên/định nghĩa tại thời điểm audit: [Spam Policies for Google Web Search](https://developers.google.com/search/docs/essentials/spam-policies).
+
 #### Cách dùng số liệu và phát biểu về spam
 
 - Con số **40 tỷ trang spam mỗi ngày** là số Google công bố trong báo cáo về năm 2020, mô tả số trang spam được phát hiện; **MUST NOT** trình bày nó như số đo hiện hành năm 2026 hoặc đồng nhất "phát hiện" với "chặn hoàn toàn".
@@ -633,6 +709,16 @@ Thứ tự ra quyết định bắt buộc:
 - **MUST** nhận diện từ đồng nghĩa, tiền tố/hậu tố, thực thể liên quan, chồng lấn intent và nguy cơ cannibalization trước khi mở URL mới.
 - **SHOULD** ưu tiên truy vấn nhỏ nhưng sát nhu cầu và có khả năng chuyển đổi hơn truy vấn lớn nhưng sai đối tượng.
 - **SHOULD** xem search volume, CPC và keyword difficulty là dữ liệu tham khảo, không phải quyết định chiến lược tự động.
+
+#### Guardrail khi dùng AI Agent cho SEO
+
+- LLM **MUST NOT** là nguồn của search volume, CPC, difficulty, SERP hiện hành hoặc dữ kiện có thể thay đổi. Dữ liệu **MUST** được lấy từ nguồn có thời điểm, thị trường và phương pháp rõ ràng; Keyword Planner và công cụ SEO vẫn là ước tính, còn GSC phản ánh impression/click của tài sản sở hữu chứ không phải tổng demand thị trường.
+- **MUST NOT** dùng ngưỡng phổ quát như “người mới chỉ chọn volume 10–500”. Cơ hội phải xét intent, relevance, competition thực tế, page type, khả năng tạo bằng chứng, giá trị kinh doanh và nguồn lực.
+- AI **MAY** hỗ trợ clustering, brief, draft và QA sơ bộ; owner chịu trách nhiệm **MUST** kiểm nguồn, intent, claim, trải nghiệm, liên kết, bản quyền, thương hiệu và output live trước khi xuất bản.
+- URL Inspection **MAY** yêu cầu recrawl cho một số URL mới/sửa quan trọng; sitemap dùng cho nhiều URL. Gửi lặp không làm crawl nhanh hơn và không bảo đảm index hay ranking.
+- Chia sẻ vào cộng đồng **MAY** hỗ trợ discovery/referral khi câu trả lời thật sự hữu ích và đúng quy định; link không tự động trở thành backlink biên tập hoặc tín hiệu xếp hạng có giá trị.
+
+Nguồn: [Ask Google to recrawl](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl), [Google link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable), [Creating helpful, reliable content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content).
 
 #### Value-first content: giúp người đọc trước khi bán hàng
 
@@ -1185,6 +1271,8 @@ Mỗi đề xuất **MUST** trả lời được:
 #### Đo lường và attribution
 
 - **MUST** dùng Search Console cho impression/click/query/page của Google Search và dùng analytics/CRM cho session, hành vi, conversion và giá trị kinh doanh; không kỳ vọng hai hệ thống khớp tuyệt đối.
+- **MAY** dùng Search Console Platform Properties để đo URL Instagram, TikTok, X và YouTube trên Google Search/Discover/News khi tài khoản đủ điều kiện. Danh sách Google công bố tháng 07/2026 không gồm Facebook; **MUST** kiểm tra lại giao diện/tài liệu hiện hành trước mỗi kỳ báo cáo.
+- **MUST NOT** gộp hiệu suất Platform Properties vào property website hoặc dùng nó để chứng minh social link/follower làm website tăng hạng. Đây là dữ liệu hiệu suất URL trên nền tảng, không phải xác nhận quan hệ nhân quả SEO.
 - **MUST** có quy ước UTM nhất quán, phân biệt chữ hoa/thường và tối thiểu quản lý `utm_source`, `utm_medium`, `utm_campaign`; dùng `utm_content` để phân biệt creative/placement khi cần.
 - **MUST NOT** gắn UTM vào internal link vì sẽ làm mất/ghi đè attribution phiên truy cập; UTM dành cho liên kết chiến dịch từ bên ngoài website.
 - **MUST** kiểm tra redirect/shortener có giữ tham số, cross-domain tracking khi áp dụng và consent mode/privacy trước khi tin dữ liệu campaign.
@@ -1215,7 +1303,7 @@ Mỗi đề xuất **MUST** trả lời được:
 - Không đổi URL đang ổn chỉ để thêm keyword; lợi ích mô tả phải được cân với rủi ro migration.
 - Không dùng tiêu đề kích thích tò mò nếu làm sai, thiếu hoặc phóng đại nội dung; CTR cao nhưng traffic sai đối tượng không phải thành công.
 
-Nguồn kiểm chứng: [Google Search position FAQ — ads and organic ranking](https://developers.google.com/search/help/site-position-in-search-faq), [Google Discover guidance](https://developers.google.com/search/docs/appearance/google-discover), [Google helpful content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [GA4 campaign URL/UTM guidance](https://support.google.com/analytics/answer/10917952), [GA4 direct traffic explanation](https://support.google.com/analytics/answer/15258820), [Google Search spam policies](https://developers.google.com/search/docs/essentials/spam-policies).
+Nguồn kiểm chứng: [Google Search position FAQ — ads and organic ranking](https://developers.google.com/search/help/site-position-in-search-faq), [Google Discover guidance](https://developers.google.com/search/docs/appearance/google-discover), [Google helpful content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [Search Console Platform Properties](https://developers.google.com/search/blog/2026/07/search-console-social-video-platforms), [Platform Properties analysis guide](https://developers.google.com/search/blog/2026/07/platform-properties-social-video-guide), [GA4 campaign URL/UTM guidance](https://support.google.com/analytics/answer/10917952), [GA4 direct traffic explanation](https://support.google.com/analytics/answer/15258820), [Google Search spam policies](https://developers.google.com/search/docs/essentials/spam-policies).
 
 Nguồn tham khảo ý tưởng kênh, không dùng các tỷ lệ trong bài làm benchmark mặc định: [GTV SEO — 31 cách tăng traffic cho website](https://gtvseo.com/cach-tang-traffic-cho-website/).
 
@@ -1303,6 +1391,15 @@ Audit kỹ thuật **MUST** đối chiếu nhiều lớp thay vì tin một đi�
 - Audit định kỳ **SHOULD** theo quy mô/rủi ro và trigger như deploy, migration, thay CMS/template, tăng inventory, biến động index/traffic hoặc lỗi server; không bắt buộc “hàng quý” cho mọi website.
 - Mỗi issue **MUST** có URL mẫu, quy mô ảnh hưởng, bằng chứng, nguyên nhân gốc, priority, owner, acceptance test và rollback/monitoring khi rủi ro cao.
 - Sau sửa **MUST** crawl/test lại đúng mẫu, kiểm tra live output và theo dõi Page Indexing/Performance trong khoảng thời gian hợp lý; không đóng task chỉ vì plugin báo xanh.
+
+**Cadence khởi điểm, phải điều chỉnh theo rủi ro:**
+
+- Sau mỗi deploy/template/content batch: kiểm tra URL mẫu, status, canonical, robots, sitemap, render, structured data, form/CTA và internal link bị tác động.
+- Hàng tuần hoặc hai tuần với site thay đổi thường xuyên: xem Page Indexing, Crawl Stats, sitemap, Manual Actions/Security và mẫu URL quan trọng. Site ổn định **MAY** kiểm tra thưa hơn; sự cố index/traffic là trigger kiểm tra ngay.
+- Hàng tháng: review query–page, CTR, landing page, conversion, nội dung mới/cũ và orphan/broken/redirected internal link theo cohort.
+- Hàng quý hoặc sau chiến dịch link/migration: rà referring domain, anchor, trang đích, referral, lost/broken link và link do đội ngũ kiểm soát. **MUST NOT** tự động disavow vì link lạ hoặc điểm “toxic”.
+- `site:` **MAY** lấy mẫu URL/spam và kiểm tra một URL cụ thể; Page Indexing, URL Inspection, sitemap, crawl/log mới là nguồn điều tra chính.
+- Mỗi lịch kiểm tra **MUST** có owner, phạm vi, ngưỡng cảnh báo và hành động; cadence không có owner chỉ là lời nhắc, không phải hệ thống QA.
 
 #### Diễn giải cảnh báo từ crawler và công cụ audit
 
@@ -1535,6 +1632,17 @@ Google xác nhận AI Overviews và AI Mode **có thể** dùng query fan-out: s
 - **MUST NOT** chia nội dung thành các đoạn cực ngắn chỉ để “AI dễ chunk”; Google không yêu cầu chunking và không có độ dài trang lý tưởng chung.
 
 Nguồn: [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features), [Optimizing for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
+
+#### Diễn giải nghiên cứu AI Search bên thứ ba
+
+- Semrush ghi nhận tỷ trọng query mang nhãn commercial trong tập keyword kích hoạt AI Overviews tăng từ `8,15%` lên `18,57%` trong nghiên cứu 2025 trên hơn 10 triệu keyword. **MUST** trình bày đây là kết quả theo dataset, thị trường, thời gian và classifier của Semrush; không gọi là số liệu Google hoặc xác suất chung rằng mọi keyword thương mại hiện AIO.
+- Số `37,5%` trong nghiên cứu prompt được Profound dẫn lại là nhóm **generative intent** — yêu cầu tạo/soạn/thực hiện — không phải tỷ lệ prompt “ghép nhiều điều kiện”. **MUST NOT** dùng số này để chứng minh query hội thoại dài hay multi-constraint chiếm 37,5%.
+- Nghiên cứu tăng trưởng `1.500%`, `40.000%` hoặc `500%` của một website **MUST** kèm baseline tuyệt đối, định nghĩa metric, attribution, thời gian, thay đổi đồng thời và phương pháp; phần trăm lớn trên nền rất nhỏ không chứng minh AI Agent là nguyên nhân.
+- **MUST NOT** đặt mật độ bằng chứng cứng như “mỗi 150–200 từ có một con số”. Bằng chứng phải nằm gần claim cần kiểm chứng, đúng loại và đủ để người đọc hiểu phương pháp, phạm vi, thời điểm cùng giới hạn.
+- Nội dung so sánh/review **SHOULD** có trải nghiệm thật khi tuyên bố dựa trên sử dụng: ảnh/video gốc, thiết lập test, mẫu, số đo, tiêu chí, kết quả và hạn chế. Không bịa trải nghiệm hoặc thêm số liệu trang trí để “AI dễ trích”.
+- Truy vấn muốn mua/đến nơi vẫn có thể xuất hiện AI, quảng cáo, Shopping, Local Pack hoặc câu trả lời hỗ trợ quyết định; **MUST NOT** gọi transactional/local là “an toàn”. Đo visibility, click, call, direction, lead và sale thực tế theo bề mặt.
+
+Nguồn nghiên cứu: [Semrush — AI Overviews study](https://www.semrush.com/blog/semrush-ai-overviews-study/), [Profound — AI Search Glossary](https://www.tryprofound.com/blog/ai-search-glossary). Nguồn cơ chế chính thức: [Google AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
 
 ### 5.7. Sáu lớp kiểm tra GEO
 
@@ -2413,6 +2521,8 @@ Phần này được bổ sung từ audit thực tế trang chủ Webs4V ngày 0
 
 - Nút chia sẻ mạng xã hội là **MAY**, không phải yêu cầu SEO bắt buộc cho mọi trang.
 - **MUST** không cài plugin hoặc script social nặng chỉ để vượt cảnh báo “few sharing options”.
+- URL social công khai **MAY** tự xuất hiện trên Google và được đo riêng khi nền tảng được Search Console hỗ trợ; điều này không biến URL social thành backlink có trọng số bảo đảm cho website.
+- **SHOULD** giữ tên thương hiệu, URL website, thông tin liên hệ và trang đích nhất quán giữa website với hồ sơ social, nhưng **MUST NOT** gọi sự nhất quán này là yếu tố xếp hạng trực tiếp nếu Google không xác nhận.
 - Backlink là tín hiệu off-page; **MUST** không tạo link giả, backlink bẩn, mạng site hoặc link không liên quan để tăng số lượng.
 - Kế hoạch backlink **SHOULD** dựa trên tài sản có giá trị, quan hệ thật, hồ sơ doanh nghiệp, báo chí/ngành nghề phù hợp và local citation nhất quán.
 - Cảnh báo “ít backlink” **MUST** được đưa vào kế hoạch off-page riêng, không giao cho developer như lỗi HTML.

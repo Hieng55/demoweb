@@ -1,0 +1,27 @@
+---
+description: Audit và refresh trang dịch vụ chuyển đổi bằng GSC, bằng chứng thật và Schema đúng điều kiện
+globs: "**/*.{html,md,mdx}"
+alwaysApply: false
+---
+
+# Content Refresh cho trang dịch vụ
+
+Áp dụng runbook tại `.cursor/rules/seo-web/seo-website-rules.md`, mục “Runbook content refresh cho trang dịch vụ có intent chuyển đổi”.
+
+- Dùng 3–6 tháng GSC phù hợp mùa vụ; ghi Search type, quốc gia, thiết bị, thời gian và bộ lọc.
+- Có thể sàng lọc URL bằng `clicks = 0` hoặc `< 5` với `impressions > 0`, nhưng không tự kết luận nội dung kém.
+- Trước khi viết lại, kiểm tra demand, position, CTR, index/canonical, SERP, conversion và vai trò internal link.
+- Gom query theo nhiệm vụ và giai đoạn quyết định; không ép một keyword thành nhiều trang hoặc một trang thành đúng 5 intent.
+- Trang dịch vụ nên giải quyết các câu hỏi cần cho quyết định: giá/phụ phí, lựa chọn, phạm vi/khu vực, SLA, quy trình, hợp đồng, bảo trì và tiêu chí chọn.
+- Không ép đúng 5 H2, 3 CTA hay một template ngành; cấu trúc phải theo bằng chứng tìm kiếm và hành vi khách hàng.
+- Giá, model, công suất, giao hàng, xử lý sự cố, dùng thử, đổi máy và miễn phí phải khớp hợp đồng cùng năng lực thật.
+- Ảnh bàn giao/kho hàng chỉ là bằng chứng hữu ích khi có quyền dùng và đúng ngữ cảnh; E-E-A-T không phải một điểm xếp hạng riêng.
+- Viết `alt` mô tả nội dung/chức năng ảnh tự nhiên; không chèn keyword hoặc địa danh không nhìn thấy trong ảnh.
+- Chọn kích thước, nén và format ảnh theo chất lượng–dung lượng; WebP không tự bảo đảm Core Web Vitals tốt.
+- Internal link phải giúp bước tiếp theo; anchor mô tả đúng trang đích, không lặp exact-match máy móc.
+- Số lượng/vị trí CTA phải theo mức sẵn sàng, mobile UX và dữ liệu thử nghiệm; không mặc định ba CTA.
+- Chỉ thêm Schema mô tả nội dung hiển thị thật và đúng loại trang; markup hợp lệ không bảo đảm Rich Result hay thứ hạng.
+- Không dùng self-serving `Review`/`AggregateRating` cho `LocalBusiness`/`Organization` để săn sao; không kỳ vọng FAQ rich result cho website dịch vụ thông thường.
+- Lưu baseline và change log; đo query/page, click, impression, CTR, lead/conversion sau recrawl bằng cửa sổ phù hợp.
+
+Ví dụ: trang thuê máy photocopy có thể dùng bảng giá theo định mức, phí vượt mức, khu vực/SLA và điều khoản bảo trì nếu các dữ kiện đó đang được doanh nghiệp thực hiện thật.

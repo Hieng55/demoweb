@@ -7,7 +7,7 @@ Tên miền chính: `https://webs4v.vn/`
 
 ## 1. Tóm tắt tình trạng
 
-Website **đạt phần lớn yêu cầu SEO nền tảng**, nhưng **chưa đạt toàn bộ rule** trong `docs/seo-website-rules.md`.
+Website **đạt phần lớn yêu cầu SEO nền tảng**, nhưng **chưa đạt toàn bộ rule** trong `.cursor/rules/seo-web/seo-website-rules.md`.
 
 Các phần đang tốt:
 
@@ -40,7 +40,7 @@ Các phần chưa đạt hoặc chưa thể xác minh:
 | Nội dung | HTML theo thư mục route; blog và trang dịch vụ có URL vật lý riêng |
 | Build output | `out/`; thư mục này đang được track trong Git |
 | Form backend | Google Apps Script trong `apps-script/Code.gs`; form tư vấn gửi thông báo Telegram, form tuyển dụng lưu tệp vào Google Drive rồi gửi liên kết qua Telegram |
-| SEO rule | `docs/seo-website-rules.md` |
+| SEO rule | `.cursor/rules/seo-web/seo-website-rules.md` |
 | Design system | `docs/design-system.md` |
 | Typography | `docs/typography-system.md` |
 
@@ -204,7 +204,7 @@ Việc cần kiểm tra thủ công sau mỗi deploy:
 
 Trước khi sửa:
 
-- Đọc `docs/seo-website-rules.md`.
+- Đọc `.cursor/rules/seo-web/seo-website-rules.md`.
 - Đọc `docs/design-system.md`.
 - Đọc `docs/typography-system.md`.
 - Chạy `git status`; không ghi đè thay đổi chưa rõ chủ sở hữu.

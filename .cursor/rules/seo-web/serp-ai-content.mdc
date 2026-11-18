@@ -1,0 +1,28 @@
+---
+description: Phân tích SERP, Search Intent và nội dung cho AI Search mà không sao chép hoặc dùng ngưỡng bịa đặt
+globs: "**/*.{html,md,mdx}"
+alwaysApply: false
+---
+
+# SERP và AI Search Content
+
+Áp dụng `.cursor/rules/seo-web/seo-website-rules.md`, mục “SERP-first nhưng không sao chép SERP” và “Diễn giải nghiên cứu AI Search bên thứ ba”.
+
+- Đọc Content Type, Format, Angle, Search Features, intent chính/phụ và bằng chứng trên nhiều query/thiết bị/thời điểm.
+- SERP là bằng chứng động, không phải đáp án cố định hoặc template để sao chép.
+- Kết hợp SERP với GSC, khách hàng, sales/support, site search, conversion và mục tiêu kinh doanh.
+- Không gán intent chỉ từ chữ “mua”, “giá”, “tốt nhất”; xác nhận nhiệm vụ và loại trang thực tế.
+- Chỉ tách intent phụ thành URL khi có page role, nhu cầu và giá trị độc lập.
+- Google có thể dùng query fan-out; không ép mọi H2, đoạn 45–60 từ hoặc “mỗi 150–200 từ một số liệu”.
+- Bằng chứng phải gần claim và nêu nguồn/phương pháp/phạm vi/thời điểm/giới hạn tương xứng.
+- Review/so sánh chỉ tuyên bố đã dùng khi có trải nghiệm thật và dấu vết test có thể kiểm tra.
+- Không gọi transactional/local là “an toàn” trước AI; đo Search Feature và conversion thực tế.
+- Số 8,15% → 18,57% là kết quả dataset Semrush, không phải xác suất chung do Google công bố.
+- Số Profound 37,5% là generative intent, không phải tỷ lệ prompt nhiều điều kiện.
+- Không suy quan hệ nhân quả từ case tăng 1.500%/40.000% nếu thiếu baseline và phương pháp.
+- Không dùng LLM làm nguồn search volume hoặc dữ kiện hiện hành; kiểm nguồn, thị trường và thời điểm.
+- Không áp ngưỡng volume 10–500 cho mọi site; ưu tiên relevance, intent, cạnh tranh, bằng chứng và giá trị.
+- Request indexing không bảo đảm index/rank; dùng cho ít URL quan trọng, sitemap cho số lượng lớn, không gửi lặp.
+- Chia sẻ cộng đồng phải hữu ích và đúng quy định; link không tự động là backlink có giá trị.
+
+Ví dụ: query “laptop dưới 30 triệu dựng video pin lâu” được tách thành tiêu chí nếu giúp chọn máy, nhưng không tạo một URL cho từng tiêu chí nếu chúng không có nhiệm vụ độc lập.

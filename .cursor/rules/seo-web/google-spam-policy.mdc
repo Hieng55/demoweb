@@ -1,0 +1,28 @@
+---
+description: Kiểm tra nội dung và triển khai website theo Google Search spam policies hiện hành
+globs: "**/*.{html,md,mdx,js,ts,json,xml}"
+alwaysApply: false
+---
+
+# Google Spam Policy Guardrails
+
+Áp dụng `.cursor/rules/seo-web/seo-website-rules.md` và kiểm tra nguồn gốc tại Google Search Spam Policies trước khi kết luận.
+
+- Snapshot 18/11/2026 có 16 nhóm spam chính và 4 nhóm other practices; không coi số lượng này là bất biến.
+- 16 nhóm: cloaking; doorway abuse; expired domain abuse; hacked content; hidden text/link abuse; keyword stuffing; link spam; machine-generated traffic; malicious practices; misleading functionality; scaled content abuse; scraping; site reputation policy; sneaky redirects; thin affiliation; user-generated spam.
+- 4 nhóm khác: legal removals; personal information removals; policy circumvention; scam and fraud.
+- Không nói mọi vi phạm làm toàn bộ domain bị xóa; mô tả đúng loại, phạm vi, bằng chứng và hậu quả quan sát được.
+- Không gộp malicious practices với misleading functionality; đây là hai heading riêng.
+- Không coi mọi city page, expired domain, affiliate, UGC, third-party content, redirect, accordion/tab hoặc AI content là spam.
+- Với doorway, kiểm tra các trang/query tương tự có chủ yếu funnel về một điểm và thiếu giá trị độc lập hay không.
+- Với scaled content, đánh giá mục đích, quy mô, tính nguyên bản và giá trị; AI hay con người không tự quyết định vi phạm.
+- Với link trả phí/tài trợ, công khai quan hệ và qualify bằng `rel="sponsored"`/`nofollow` khi phù hợp.
+- Không gọi mọi rank tracker là machine-generated traffic nếu chưa biết cách công cụ truy cập Google.
+- Hacked content và UGC spam có thể xảy ra ngoài ý muốn; vẫn phải xử lý bảo mật, moderation và index.
+- Kiểm tra scam/fraud khi có giả mạo thương hiệu, hỗ trợ giả hoặc thông tin doanh nghiệp sai có chủ ý.
+- Khi phát hiện rủi ro, lưu URL, bằng chứng, nguồn tạo, mục đích, owner, phạm vi index và phương án khắc phục.
+- Phân biệt chính sách Google với taxonomy nội bộ như “vô tình/cố ý”; taxonomy nguyên nhân không phải mức phạt.
+
+Không đạt: tạo hàng trăm trang `dịch vụ + quận` gần như giống nhau chỉ để funnel về một form.
+
+Có thể đạt: trang địa phương có đội ngũ/phạm vi/giá/case/thông tin phục vụ riêng và giá trị độc lập cho người dùng.
