@@ -8,6 +8,9 @@ alwaysApply: false
 
 Áp dụng đầy đủ tiêu chuẩn tại `.cursor/rules/seo-social/seo-social-rules.md`.
 Khi viết bài Fanpage, dùng đầu vào và quy trình tại `.cursor/rules/seo-social/fanpage-content-brief.md`.
+Khi làm nội dung TikTok, áp dụng `.cursor/rules/seo-social/tiktok-social-seo.mdc`.
+Khi làm Instagram hoặc YouTube, áp dụng file nền tảng tương ứng trong thư mục này.
+Khi tư vấn chiến lược, kênh ít view hoặc kế hoạch content, áp dụng `social-seo-advisor.mdc`.
 
 - Xác định người xem, một search intent chính, chủ đề, bằng chứng, CTA và URL đích trước khi viết.
 - Viết cho con người trước: trả lời trực tiếp, rõ nghĩa, có trải nghiệm/dữ liệu/ví dụ thật.

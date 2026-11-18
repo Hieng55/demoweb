@@ -1,0 +1,28 @@
+---
+description: Kiểm tra kênh, video dài và Shorts theo YouTube Search và đề xuất
+globs: "**/*.{md,mdx,html}"
+alwaysApply: false
+---
+
+# YouTube Social SEO
+
+Đọc chuẩn đầy đủ tại `.cursor/rules/seo-social/seo-social-rules.md`, mục 16.
+
+- Xác định bề mặt chính: Search, Home, Suggested hay Shorts; đặt KPI riêng.
+- Search ưu tiên relevance, engagement và quality; title, description và nội dung phải khớp đúng truy vấn.
+- Tên kênh/mô tả phải rõ thương hiệu và chủ đề; không nhồi channel keywords.
+- Suggest/Research tab dùng để tìm ngôn ngữ; volume từ công cụ bên thứ ba chỉ là ước tính.
+- Title và thumbnail phải chính xác, hấp dẫn, không clickbait.
+- Không áp chuẩn cứng title 60 ký tự, keyword trong 40 ký tự đầu hoặc mô tả 200–300 từ.
+- Tên file dùng để quản trị, không được gọi là tín hiệu ranking khi chưa có xác nhận.
+- Tags chủ yếu hỗ trợ lỗi chính tả; không áp quota 5–10 tags.
+- Hashtag phải liên quan; hơn 60 hashtag khiến YouTube bỏ qua toàn bộ hashtag của nội dung.
+- Phụ đề phải chính xác cho accessibility; không bắt buộc đọc keyword trong 15 giây đầu.
+- Mở đầu phải giao đúng lời hứa; đo retention, không áp ngưỡng chung 50–60%.
+- CTR so theo nguồn traffic và lịch sử kênh; không coi 4–6% là chuẩn đạt chung.
+- Chapters, playlist, cards và end screen chỉ dùng khi giúp điều hướng, không hứa tăng hạng.
+- Không có quy tắc “72 giờ đầu để thuật toán phân loại”; đọc dữ liệu ở nhiều cửa sổ.
+- Shorts có thể dài đến 3 phút khi đủ điều kiện hiện hành; có thể gắn Related Video nếu đủ quyền tính năng.
+- Đo impressions, CTR, watch time, retention, satisfaction, subscriber, click, lead và sale theo mục tiêu.
+
+Ví dụ đạt: `Website bán hàng cần chuẩn bị gì? Checklist trước khi nhận báo giá | Webs4V`.

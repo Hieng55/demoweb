@@ -1,12 +1,14 @@
-# Bộ quy tắc Social SEO cho Google, Facebook và Instagram
+# Bộ quy tắc Social SEO cho Google, Facebook, Instagram, TikTok và YouTube
 
-> Phiên bản: 1.5
+> Phiên bản: 1.9
 >
 > Cập nhật: 18/11/2026
 >
-> Phạm vi chính: Facebook, Instagram, nội dung social có thể xuất hiện trên Google và trang đích website.
+> Phạm vi chính: Facebook, Instagram, TikTok, YouTube, nội dung social có thể xuất hiện trên Google và trang đích website.
 >
 > Mục tiêu: tăng khả năng được khám phá đúng truy vấn, tạo lượt truy cập/chuyển đổi thật và xây tài sản thương hiệu bền vững. Không dùng để cam kết vị trí xếp hạng.
+
+Khi yêu cầu là tư vấn chiến lược, chẩn đoán kênh ít view hoặc xây kế hoạch content, **MUST** áp dụng thêm `social-seo-advisor.mdc` và `social-seo-advisor-playbook.md`; không chỉ trả một checklist tối ưu kỹ thuật.
 
 ## 1. Cách hiểu đúng về Social SEO
 
@@ -325,13 +327,16 @@ Danh sách trên không phải thứ tự trọng số. Meta cho biết các h�
 
 ### 8.2. Hồ sơ và Instagram Search
 
+- Tài khoản doanh nghiệp/nhà sáng tạo **SHOULD** dùng Professional Account khi cần Insights, category và công cụ liên hệ. Đây là lựa chọn vận hành, không phải điều kiện xếp hạng Instagram Search.
 - **MUST** dùng username ngắn, đúng thương hiệu, dễ đọc; không nhồi từ khóa.
 - **SHOULD** dùng tên hiển thị gồm tên thương hiệu và tối đa một mô tả dịch vụ/địa điểm thật sự cần thiết, ví dụ `Tên Spa | Nail Quận 1`.
 - **MUST** viết bio trả lời ngắn: phục vụ ai, làm gì, ở đâu và hành động tiếp theo.
 - **SHOULD** dùng ngôn ngữ khách hàng thật sự tìm trong username, tên hiển thị, bio, caption và hashtag khi tự nhiên/phù hợp.
-- **MUST** để câu đầu caption nêu đúng chủ đề; dùng từ đồng nghĩa tự nhiên và tránh nhồi hashtag.
+- **SHOULD** để câu đầu caption nêu đúng chủ đề khi tự nhiên; đây không phải vị trí keyword bắt buộc hay trường có trọng số cố định.
 - **MUST** dùng alt text để mô tả ảnh cho khả năng tiếp cận. **MUST NOT** coi alt text là trường xếp hạng Instagram Search nếu không có tài liệu chính thức hiện hành xác nhận.
 - **MUST NOT** xem hashtag là yếu tố xếp hạng chính hoặc phương án cứu caption/nội dung yếu.
+- Gợi ý tìm kiếm **MAY** dùng để lấy ngôn ngữ người dùng; **MUST NOT** gọi thứ tự gợi ý là danh sách volume cao nhất nếu Instagram không công bố volume.
+- Với tài khoản công khai đủ điều kiện, **MAY** bật tùy chọn cho phép ảnh/video công khai xuất hiện trên công cụ tìm kiếm. Đây chỉ là quyền cho phép crawl/index, không bảo đảm Google sẽ index hoặc xếp hạng.
 
 Thông tin Meta từng công bố về text matching trong Instagram Search là bằng chứng định hướng, không phải danh sách trường hoặc trọng số bất biến. **MUST** kiểm tra lại tài liệu hiện hành trước khi thay đổi quy tắc này.
 
@@ -344,6 +349,9 @@ Nguồn Instagram năm 2021 từng nêu ba nhóm tín hiệu Search: nội dung 
 - **MUST NOT** cho rằng video càng ngắn càng thắng; chọn độ dài theo nội dung và kiểm tra retention thực tế.
 - **MUST NOT** đăng lại nội dung có watermark nền tảng khác hoặc chỉnh sửa giá trị thấp; ưu tiên bản gốc sạch do tài khoản sở hữu.
 - **SHOULD** thử nghiệm nội dung có giá trị lưu lại như checklist, hướng dẫn, so sánh, lỗi thường gặp hoặc bảng tham khảo khi phù hợp nhu cầu.
+- **MUST NOT** khẳng định save/share luôn có trọng số cao hơn like trên mọi bề mặt; đánh giá theo mục tiêu và Insights của nội dung.
+- Text overlay, lời thoại và phụ đề **SHOULD** làm rõ chủ đề khi phù hợp khả năng tiếp cận; **MUST NOT** bắt buộc lặp cùng keyword ở mọi điểm chạm.
+- Geotag **SHOULD** dùng khi địa điểm là thật và hữu ích cho người xem địa phương; không gắn địa điểm không liên quan để mượn reach.
 - **MUST NOT** dùng con số lịch sử “Explore lấy 1.500 bài rồi lọc còn 100” như quy tắc hiện hành; kiến trúc và quy mô hệ thống có thể đã thay đổi.
 
 ### 8.4. Instagram, Facebook và Google
@@ -352,6 +360,7 @@ Nguồn Instagram năm 2021 từng nêu ba nhóm tín hiệu Search: nội dung 
 - **MAY** dùng Instagram để đo trực tiếp hiệu suất URL Instagram trên Google qua Search Console Platform Properties khi tài khoản đủ điều kiện.
 - **MUST NOT** suy ra từ khả năng đo Instagram rằng Instagram luôn xếp hạng Google tốt hơn Facebook; công cụ đo lường không phải lợi thế xếp hạng.
 - **SHOULD** dùng Facebook theo thế mạnh thực tế của doanh nghiệp như cộng đồng, hội thoại, tin nhắn và chuyển đổi, nhưng chỉ kết luận bằng dữ liệu của tài khoản.
+- **SHOULD** xuất dữ liệu định kỳ nếu cần lịch sử dài; **MUST NOT** nói Insights tự xóa toàn bộ sau 90 ngày chỉ vì một giao diện/API giới hạn mỗi cửa sổ truy vấn 90 ngày.
 
 ### 8.5. Ranh giới khi áp dụng YouTube và TikTok
 
@@ -558,7 +567,92 @@ Các yếu tố này phụ thuộc nền tảng, tài khoản, đối tượng v
 - **MUST** lưu chính sách nội dung, người phê duyệt, quyền sử dụng tài sản và cách xử lý khủng hoảng.
 - **MUST** bảo vệ dữ liệu cá nhân; không công bố inbox, số điện thoại, địa chỉ hoặc case khách hàng nếu chưa có quyền.
 
-## 15. Nguồn chính thức đã đối chiếu
+## 15. TikTok Social SEO
+
+### 15.1. Tài khoản và hồ sơ
+
+- Doanh nghiệp quảng bá sản phẩm/dịch vụ **SHOULD** cân nhắc Business Account vì TikTok thiết kế loại tài khoản này cho doanh nghiệp, cho phép link website và có Business Suite/analytics sau khi có ít nhất một bài công khai. Đây không phải điều kiện để nội dung được xếp hạng Search.
+- Trước khi chuyển, **MUST** cân nhắc quyền âm nhạc: Business Account dùng Commercial Music Library và không truy cập thư viện nhạc phổ thông dành cho giải trí cá nhân. Không chuyển chỉ để “mở khóa phân tích từ khóa”.
+- Username **SHOULD** ngắn, đúng thương hiệu và ổn định vì nó tạo URL hồ sơ; **MUST NOT** nhồi keyword hoặc đổi thường xuyên. Tên hiển thị **MAY** thêm một mô tả ngành thật sự hữu ích, nhưng thương hiệu phải dễ nhận ra.
+- Bio **MUST** nói rõ phục vụ ai, giá trị gì và hành động tiếp theo trong giới hạn giao diện hiện hành. Không coi “1–2 keyword” hoặc đúng 80 ký tự là công thức xếp hạng.
+
+### 15.2. Nghiên cứu nhu cầu tìm kiếm
+
+- **MUST** bắt đầu từ khách hàng, vấn đề, ngữ cảnh và hành động mong muốn; keyword chỉ là cách người dùng diễn đạt nhu cầu, không thay thế nghiên cứu khách hàng.
+- Auto-suggest, related searches và SERP TikTok **MAY** dùng để lấy ngôn ngữ/truy vấn thực tế; **MUST NOT** gọi thứ tự gợi ý là danh sách có search volume cao nhất nếu TikTok không cung cấp số liệu đó.
+- **SHOULD** dùng Creator Search Insights khi tài khoản/khu vực có tính năng để khám phá topic, content gap và Search analytics; ghi rõ phạm vi/availability.
+- Creative Center `Keyword Insights` phản ánh từ khóa/cụm từ trong **TikTok Ads** nhằm gợi ý ad copy và creative. **MUST NOT** trình bày nó như volume hoặc ranking organic TikTok Search.
+- Creative Center Trends **MAY** dùng để xem hashtag đang thịnh hành theo ngành, khu vực và thời gian; trendline/popularity không đồng nghĩa search volume organic hoặc khả năng lên top.
+- Hashtag, video đối thủ và Google Trends chỉ là nguồn mở rộng ý tưởng; không thay thế intent, dữ liệu tài khoản, phản hồi khách hàng và kiểm tra Search thực tế.
+- Ba tiêu chí `volume – relevance – difficulty` **MAY** dùng làm khung quyết định, nhưng volume/difficulty từ công cụ bên thứ ba phải ghi là ước tính. **MUST** ưu tiên mức khớp intent và khả năng tạo nội dung tốt hơn đối thủ.
+
+Con số “gần 40% người trẻ dùng TikTok/Instagram thay Google” là phát biểu nghiên cứu của Google năm 2022 trong ví dụ người 18–24 tuổi tìm **địa điểm ăn trưa**. **MUST NOT** mở rộng thành “40% mọi người trẻ ưu tiên TikTok cho mọi tìm kiếm” hoặc dùng như số liệu hiện hành nếu chưa kiểm tra lại mẫu, truy vấn và thời điểm.
+
+### 15.3. Nội dung và tín hiệu tìm kiếm
+
+- TikTok công khai Search có thể dùng lịch sử tương tác, mức khớp truy vấn, hashtag, sound, thiết bị/ngôn ngữ/vị trí; với đa số người dùng, content information gồm mức khớp truy vấn thường được cân nặng hơn. Search vẫn cá nhân hóa và trọng số có thể thay đổi.
+- **MUST NOT** tuyên bố follower “không ảnh hưởng” hoặc kênh mới luôn cạnh tranh sòng phẳng. TikTok nêu follower/view có thể xuất hiện trong một số hệ thống đề xuất tài khoản, còn Search dùng nhiều nhóm tín hiệu.
+- Chủ đề/truy vấn **SHOULD** xuất hiện tự nhiên trong nội dung cần thiết: lời nói, text overlay, caption hoặc hashtag liên quan. **MUST NOT** bắt buộc lặp keyword ở bốn điểm hoặc nhét keyword phụ vào câu mở đầu.
+- Phụ đề **SHOULD** được bật/chỉnh khi giúp tiếp cận và hiểu đúng lời nói. Auto captions là tính năng accessibility; **MUST NOT** gọi nó là tín hiệu ranking đã được xác nhận.
+- Tên file gốc trước upload **MAY** dùng để quản trị tài sản nội bộ; **MUST NOT** coi tên file là tín hiệu TikTok Search khi chưa có nguồn chính thức.
+- Nội dung **MUST** giải quyết intent thật và giữ người xem vì giá trị; keyword không cứu video sai nhu cầu, gây hiểu lầm hoặc có watch/skip pattern kém.
+
+### 15.4. Caption, hashtag, cover, vị trí và sản phẩm
+
+- Caption **MUST** đủ ngữ cảnh, chính xác và dễ đọc; không áp độ dài cứng 150–300 ký tự hoặc bắt keyword ở câu đầu nếu làm câu chữ gượng ép.
+- Hashtag **MAY** hỗ trợ phân loại/khớp truy vấn, nhưng không có công thức bắt buộc `1 thương hiệu + 2 ngách + 1 trend`, ngưỡng 3–5 hoặc án phạt chung khi trên 8. Chỉ dùng thẻ liên quan; `#fyp/#xuhuong` không được mặc định có lợi hoặc có hại.
+- Broad/niche/brand hashtag **MAY** là cách tổ chức danh sách, không phải công thức viral. Mỗi hashtag phải đúng nội dung và đúng tệp; hashtag phổ biến nhưng lệch intent phải loại.
+- Cover xuất hiện ở profile và có thể ở Search; **SHOULD** rõ, đúng video, dễ đọc và nhất quán series. Tiêu đề chứa truy vấn **MAY** dùng khi tự nhiên, không phải yêu cầu ranking.
+- Location và TikTok Shop product link **MUST** đúng địa điểm/sản phẩm hiển thị; không gắn để mượn reach. Tên/mô tả sản phẩm phải chính xác, không nhồi keyword và phải tuân thủ chính sách Shop hiện hành.
+- Nội dung thương mại **MUST** dùng content disclosure khi TikTok yêu cầu và âm thanh có quyền sử dụng; “sound thịnh hành” không vượt quyền âm nhạc hoặc mức độ liên quan.
+- TikTok xác nhận sound có thể là content information trong Search/Feed; **MAY** thử sound phù hợp, nhưng **MUST NOT** nói nhạc hot tự động tăng hạng, viral hoặc phân phối đúng tệp.
+- Hook có số, câu hỏi hoặc sự kiện **MAY** dùng khi đúng nội dung. **MUST NOT** cường điệu, tạo tò mò bỏ lửng, dùng trigger words hoặc dựng kịch tính gây hiểu lầm chỉ để lấy click/tương tác.
+
+### 15.5. Vận hành và đo lường
+
+- **MUST NOT** tuyên bố đăng sớm 30–60 phút giúp “index keyword”, có cửa sổ tương tác 30 phút, hoặc một giờ vàng chung. Chọn giờ từ audience analytics và thử nghiệm theo cohort.
+- Bình luận ghim **MAY** bổ sung thông tin/câu hỏi thật; **MUST NOT** tự tạo tương tác giả, nhồi keyword hoặc engagement bait để “mồi thuật toán”. Trả lời bình luận vì giá trị và cộng đồng, không vì một SLA ranking bịa đặt.
+- Tần suất `4–5 video/tuần trong tháng đầu` **MAY** là lịch thử nếu đủ nguồn lực; **MUST NOT** gọi là ngưỡng TikTok dùng để xác định authority. Chất lượng, tính bền vững và đủ mẫu học quan trọng hơn quota.
+- Series nội dung và tính nhất quán chủ đề **MAY** giúp người xem hiểu/lần theo nội dung; **MUST NOT** tuyên bố chúng tự động tạo “độ uy tín thuật toán”. Mỗi video vẫn phải tự trả lời được intent hoặc chỉ rõ phần tiếp theo.
+- Chia sẻ chéo sang Facebook, Instagram, YouTube hoặc website **MAY** mở rộng phân phối; **MUST** biên tập theo nền tảng, tránh watermark/tái đăng giá trị thấp và gắn UTM khi dẫn website.
+- Không chờ đúng 48 giờ để kết luận. **SHOULD** đọc nhiều cửa sổ phù hợp vòng đời video và ghi baseline: Search traffic/query khi có, views, watch time/completion/skip, profile visit, follower sau xem, click, lead và sale.
+- **MUST** tách Search, For You, Following, profile và Shop; một video viral trên FYP không chứng minh Search SEO thành công, và Search traffic tăng không tự động chứng minh doanh thu.
+- **SHOULD** thử một biến chính mỗi cohort như topic, hook, format, độ dài, cover, caption hoặc CTA; lưu phiên bản và chỉ nhân rộng khi kết quả lặp lại.
+
+Nguồn: [TikTok — Account types](https://support.tiktok.com/en/using-tiktok/growing-your-audience/switching-to-a-creator-or-business-account), [How TikTok recommends content](https://support.tiktok.com/en/using-tiktok/exploring-videos/how-tiktok-recommends-content), [Commercial use of music](https://support.tiktok.com/en/business-and-creator/creator-and-business-accounts/commercial-use-of-music-on-tiktok), [Creative Center](https://ads.tiktok.com/help/article/about-the-creative-tips-finder), [Creative Center Trends](https://ads.tiktok.com/resources/help/article/how-to-use-trends), [Creator Search Insights](https://support.tiktok.com/en/search?searchTerm=creator%20search%20insights), [Editing and video cover](https://support.tiktok.com/en/using-tiktok/creating-videos/editing-posting-and-deleting).
+
+## 16. YouTube Social SEO
+
+### 16.1. Kênh, truy vấn và metadata
+
+- **SHOULD** đặt tên/mô tả kênh rõ thương hiệu, chủ đề và giá trị; **MUST NOT** nhồi “channel keywords” hoặc coi cấu trúc `thương hiệu + keyword` là công thức xếp hạng.
+- Xác minh và feature eligibility **MUST** được hoàn tất theo tính năng cần dùng như thumbnail tùy chỉnh, video dài hoặc related video; không trình bày xác minh là tín hiệu ranking.
+- YouTube Search ưu tiên ba nhóm: relevance, engagement và quality. **MUST** làm title, description và nội dung video khớp đúng truy vấn; **MUST NOT** tối ưu metadata gây hiểu lầm.
+- Suggest và Research tab **MAY** dùng để tìm ngôn ngữ/chủ đề. Volume của vidIQ/TubeBuddy là ước tính bên thứ ba, không phải dữ liệu chính thức của YouTube.
+- **SHOULD** dùng một cụm chủ đề chính và từ liên quan tự nhiên trong title/mô tả. Không có chuẩn bắt buộc title dưới 60 ký tự, keyword trong 40 ký tự đầu hoặc description tối thiểu 200–300 từ.
+- Tên file **MAY** dùng để quản trị tài sản; **MUST NOT** gọi tên file chứa keyword là tín hiệu Search khi YouTube không xác nhận.
+- Tags không quan trọng cho discovery và chủ yếu giúp sửa lỗi chính tả. **MUST NOT** áp quota 5–10 tags như chuẩn SEO.
+- Hashtag phải liên quan. YouTube công bố hơn 60 hashtag sẽ khiến toàn bộ hashtag của nội dung bị bỏ qua; mốc 15 không phải quy tắc hiện hành.
+
+### 16.2. Nội dung, thumbnail và trải nghiệm xem
+
+- Title/thumbnail **MUST** chính xác và hấp dẫn, không clickbait. CTR phải so theo nguồn traffic, quy mô mẫu và lịch sử kênh; khoảng 2–10% chỉ là phân bố tham khảo của một nửa số kênh/video, không phải mục tiêu 4–6%.
+- Phần mở đầu **SHOULD** giao đúng lời hứa và đi vào giá trị sớm; không có ngưỡng bắt buộc phải đọc keyword trong 15 giây.
+- Phụ đề **SHOULD** chính xác vì khả năng tiếp cận và hiểu nội dung; không gọi phụ đề hay lời nói chứa keyword là tín hiệu ranking độc lập đã xác nhận.
+- Chapters, playlist, cards và end screen **SHOULD** dùng khi giúp người xem tìm phần cần thiết hoặc nội dung liên quan; không hứa chúng tự động tăng hạng.
+- **MUST NOT** đặt chuẩn retention chung 50–60%. Đánh giá average view duration, average percentage viewed và điểm rơi retention so với video cùng định dạng/độ dài và mục tiêu.
+- Không có “72 giờ phân loại” bắt buộc. **SHOULD** đọc dữ liệu ở nhiều cửa sổ và tách Search, Home, Suggested, Shorts, External.
+
+### 16.3. Đề xuất, Shorts và đo lường
+
+- Hệ thống đề xuất tìm video phù hợp cho từng người xem dựa trên appeal, engagement và satisfaction; keyword không bù được mức hài lòng thấp.
+- **MUST** đo impressions, CTR theo nguồn, watch time, retention, phản hồi hài lòng khi có, subscriber, click và chuyển đổi; không tối ưu một chỉ số tách rời.
+- Shorts hiện có thể dài đến 3 phút nếu đáp ứng điều kiện định dạng/thời điểm của YouTube; **MUST NOT** giữ quy tắc cũ “Shorts luôn dưới 60 giây”.
+- **MAY** gắn Related Video từ Short sang video/Short/Live phù hợp khi kênh có advanced feature access; đây là điều hướng cho người xem, không phải bảo đảm tăng hạng video dài.
+
+Nguồn: [How YouTube Search works](https://support.google.com/youtube/answer/16090438), [Search and discovery FAQ](https://support.google.com/youtube/answer/141805), [Recommendation performance](https://support.google.com/youtube/answer/16559650), [Description tips](https://support.google.com/youtube/answer/12948449), [CTR FAQ](https://support.google.com/youtube/answer/7628154), [Hashtag policy](https://support.google.com/youtube/answer/6390658), [Audience retention](https://support.google.com/youtube/answer/9314415), [Feature eligibility](https://support.google.com/youtube/answer/9722880), [Three-minute Shorts](https://support.google.com/youtube/answer/15424877), [Related video for Shorts](https://support.google.com/youtube/answer/14075157).
+
+## 17. Nguồn chính thức đã đối chiếu
 
 Kiểm tra gần nhất: 18/11/2026.
 
@@ -602,11 +696,26 @@ Kiểm tra gần nhất: 18/11/2026.
 - [Instagram Feed Ranking System Card](https://ai.meta.com/tools/system-cards/instagram-feed-ranking/)
 - [How AI powers experiences on Facebook and Instagram](https://ai.meta.com/blog/how-ai-powers-experiences-facebook-instagram-system-cards/)
 - [Instagram Explore recommender system](https://ai.meta.com/blog/powered-by-ai-instagrams-explore-recommender-system)
+- [Instagram Media API — alt text dùng cho accessibility](https://developers.facebook.com/docs/instagram-platform/reference/instagram-media/)
+- [Instagram Insights API](https://developers.facebook.com/docs/graph-api/reference/shadow-ig-user/insights/)
 
 ### Nền tảng bổ trợ
 
 - [How YouTube Search works](https://support.google.com/youtube/answer/16090438)
 - [YouTube Search and discovery FAQ](https://support.google.com/youtube/answer/141805)
+- [Understand performance for YouTube recommendations](https://support.google.com/youtube/answer/16559650)
+- [Tips for video descriptions](https://support.google.com/youtube/answer/12948449)
+- [Impressions and CTR FAQ](https://support.google.com/youtube/answer/7628154)
+- [YouTube hashtag policy](https://support.google.com/youtube/answer/6390658)
+- [Audience retention and comparison](https://support.google.com/youtube/answer/9314415)
+- [Feature access with phone verification](https://support.google.com/youtube/answer/9722880)
+- [Three-minute YouTube Shorts](https://support.google.com/youtube/answer/15424877)
+- [Related video for YouTube Shorts](https://support.google.com/youtube/answer/14075157)
 - [How TikTok recommends content](https://support.tiktok.com/en/using-tiktok/exploring-videos/how-tiktok-recommends-content)
+- [TikTok account types](https://support.tiktok.com/en/using-tiktok/growing-your-audience/switching-to-a-creator-or-business-account)
+- [Commercial use of music on TikTok](https://support.tiktok.com/en/business-and-creator/creator-and-business-accounts/commercial-use-of-music-on-tiktok)
+- [TikTok Creative Center](https://ads.tiktok.com/help/article/about-the-creative-tips-finder)
+- [TikTok Creative Center Trends](https://ads.tiktok.com/resources/help/article/how-to-use-trends)
+- [TikTok accessibility and captions](https://support.tiktok.com/en/using-tiktok/creating-videos/accessibility)
 
 Các số liệu phần trăm về hành vi Gen Z trong tài liệu đầu vào không được đưa thành rule vì số liệu nghiên cứu có thể thay đổi theo mẫu, thị trường và thời điểm. Chỉ sử dụng trong bài truyền thông khi đã truy nguyên báo cáo gốc, phạm vi khảo sát và ngày công bố.

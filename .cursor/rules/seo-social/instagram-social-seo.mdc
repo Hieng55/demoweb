@@ -1,0 +1,27 @@
+---
+description: Kiểm tra hồ sơ, bài ảnh, carousel và Reels theo Instagram Social SEO
+globs: "**/*.{md,mdx,html}"
+alwaysApply: false
+---
+
+# Instagram Social SEO
+
+Đọc chuẩn đầy đủ tại `.cursor/rules/seo-social/seo-social-rules.md`, mục 8.
+
+- Xác định bề mặt chính: Feed, Stories, Reels, Explore hay Search; không dùng một công thức cho mọi bề mặt.
+- Professional Account dùng cho Insights/công cụ kinh doanh, không phải điều kiện xếp hạng.
+- Username và tên hiển thị phải rõ thương hiệu; chỉ thêm mô tả ngành/địa điểm khi hữu ích, không nhồi keyword.
+- Bio nói rõ phục vụ ai, giá trị gì, ở đâu và hành động tiếp theo; không áp quota 2–3 keyword.
+- Search suggestions là nguồn ý tưởng truy vấn, không được gọi là danh sách volume cao nhất.
+- Caption phải rõ chủ đề và tự nhiên; keyword ở câu đầu là lựa chọn biên tập, không phải trường ranking bắt buộc.
+- Alt text mô tả ảnh cho accessibility; không nhồi keyword hoặc gọi đây là tín hiệu ranking đã xác nhận.
+- Hashtag chỉ dùng khi liên quan; không mặc định 3–5 hay một công thức hashtag cố định.
+- Với Reels, dùng text/lời nói/phụ đề khi giúp người xem hiểu; không bắt buộc lặp cùng keyword ở mọi nơi.
+- Geotag chỉ dùng cho địa điểm thật và hữu ích.
+- Không tuyên bố save/share luôn mạnh hơn like; đọc tín hiệu theo bề mặt, mục tiêu và Insights.
+- Không gọi lịch đăng đều là “topical authority score”; coi đây là quy trình vận hành và thử nghiệm.
+- Nếu bật cho công cụ tìm kiếm truy cập nội dung công khai, không hứa Google sẽ index hoặc xếp hạng.
+- Đo reach ngoài follower, profile visit, watch/retention, save/share, click, lead và sale theo vai trò nội dung.
+- Không nói Insights xóa toàn bộ sau 90 ngày; xuất dữ liệu định kỳ nếu doanh nghiệp cần lịch sử dài.
+
+Ví dụ đạt: `Thiết kế website bán hàng tại Thủ Đức: 5 mục cần chuẩn bị trước khi báo giá.`

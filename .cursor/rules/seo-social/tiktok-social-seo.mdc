@@ -1,0 +1,32 @@
+---
+description: Viết, kiểm tra và đo nội dung TikTok Search/SEO theo tài liệu chính thức, không dùng công thức cứng
+globs: "**/*.{html,md,mdx}"
+alwaysApply: false
+---
+
+# TikTok Social SEO
+
+Áp dụng `.cursor/rules/seo-social/seo-social-rules.md`, mục “TikTok Social SEO”.
+
+- Chọn Business Account theo mục tiêu doanh nghiệp và quyền âm nhạc; không coi đây là điều kiện xếp hạng Search.
+- Business Account có link website/Business Suite nhưng bị giới hạn sang Commercial Music Library.
+- Username ưu tiên thương hiệu, ngắn và ổn định; tên hiển thị/bio rõ đối tượng, giá trị và CTA, không nhồi keyword.
+- Dùng auto-suggest/SERP như insight định tính; không gọi thứ tự gợi ý là volume cao nhất.
+- Dùng Creator Search Insights khi có; Creative Center Keyword Insights là dữ liệu từ quảng cáo, không phải organic search volume.
+- Creative Center Trends cho biết hashtag/trend theo bộ lọc; không đồng nghĩa search volume hoặc bảo đảm lên top.
+- TikTok Search có thể dùng tương tác, độ khớp truy vấn, hashtag, sound và thông tin người dùng; Search được cá nhân hóa.
+- Không nói follower hoàn toàn không ảnh hưởng hoặc kênh mới luôn cạnh tranh ngang nhau.
+- Không dùng số liệu “40% người trẻ” cho mọi hành vi tìm kiếm; nguồn 2022 chỉ nói gần 40% nhóm 18–24 trong ví dụ tìm nơi ăn trưa.
+- Từ khóa chỉ xuất hiện nơi tự nhiên/hữu ích; không bắt buộc 4 điểm chạm, 3 giây đầu hoặc đổi tên file.
+- Phụ đề cần chính xác vì accessibility/khả năng hiểu; không gọi auto captions là tín hiệu ranking đã xác nhận.
+- Không áp caption 150–300 ký tự, 3–5 hashtag, tối đa 8 hashtag hay công thức hashtag cố định.
+- Broad/niche/brand hashtag chỉ là cách tổ chức; hashtag phổ biến nhưng lệch intent phải loại.
+- Cover rõ và đúng video; location/product link đúng thực tế; nội dung thương mại dùng disclosure và nhạc có quyền.
+- Sound là content information nhưng nhạc hot không bảo đảm viral; hook không được cường điệu hoặc gây hiểu lầm.
+- Không dùng “index 30–60 phút”, tương tác mồi 30 phút, giờ vàng chung hoặc 4–5 video/tuần như luật thuật toán.
+- Series, chủ đề nhất quán và chia sẻ chéo là chiến thuật nội dung/phân phối, không phải điểm authority đã xác nhận.
+- Bình luận ghim chỉ bổ sung giá trị; cấm tương tác giả, keyword stuffing và engagement bait.
+- Đo nhiều cửa sổ: Search traffic/query khi có, watch/completion/skip, profile visit, click, lead và sale.
+- Tách Search khỏi For You/Following/Profile/Shop; viral không đồng nghĩa Search SEO thành công.
+
+Ví dụ đạt: video trả lời “website doanh nghiệp giá bao nhiêu?”, nêu phạm vi và yếu tố tính giá, caption đúng nội dung, cover rõ, CTA xem bảng giá; không lặp keyword ở mọi câu.
