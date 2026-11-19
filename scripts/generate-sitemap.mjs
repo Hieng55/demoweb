@@ -12,6 +12,8 @@ const pages = [
   // Dịch vụ
   { path: '/dich-vu/', priority: '0.9', changefreq: 'weekly', comment: 'Dịch vụ' },
   { path: '/dich-vu/thiet-ke-website/', priority: '0.9', changefreq: 'weekly' },
+  { path: '/dich-vu/thiet-ke-web-thu-duc/', priority: '0.9', changefreq: 'weekly' },
+  { path: '/dich-vu/landing-page-gia-re/', priority: '0.9', changefreq: 'weekly' },
   { path: '/dich-vu/seo-google/', priority: '0.9', changefreq: 'weekly' },
   { path: '/dich-vu/google-ads/', priority: '0.8', changefreq: 'weekly' },
   { path: '/dich-vu/meta-ads/', priority: '0.8', changefreq: 'weekly' },

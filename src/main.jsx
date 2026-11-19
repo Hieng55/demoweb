@@ -24,9 +24,12 @@ flushSync(() => {
 // Phones and coarse-pointer devices use the lightweight bundle. This prevents
 // Three.js, the water shaders, and their five textures from being downloaded.
 const hasHero = Boolean(document.querySelector('.hero'));
+const needsWebglBackground = hasHero
+  || document.body.classList.contains('local-web-service-page')
+  || document.body.classList.contains('budget-landing-service-page');
 const mobileStaticExperience = window.matchMedia('(max-width: 760px), (hover: none), (pointer: coarse)').matches;
 
-if (!hasHero || mobileStaticExperience) {
+if (!needsWebglBackground || mobileStaticExperience) {
   import('../main-lite.js');
 } else {
   import('../main.js');

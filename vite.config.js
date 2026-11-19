@@ -15,6 +15,8 @@ export default defineConfig({
         about: resolve(__dirname, 've-chung-toi/index.html'),
         services: resolve(__dirname, 'dich-vu/index.html'),
         serviceWebsite: resolve(__dirname, 'dich-vu/thiet-ke-website/index.html'),
+        serviceWebsiteThuDuc: resolve(__dirname, 'dich-vu/thiet-ke-web-thu-duc/index.html'),
+        serviceBudgetLandingPage: resolve(__dirname, 'dich-vu/landing-page-gia-re/index.html'),
         serviceGoogleAds: resolve(__dirname, 'dich-vu/google-ads/index.html'),
         serviceMetaAds: resolve(__dirname, 'dich-vu/meta-ads/index.html'),
         serviceFanpage: resolve(__dirname, 'dich-vu/cham-soc-fanpage/index.html'),
