@@ -22,5 +22,7 @@ Thumbs.db
 /image/project/*.webp
 !/image/project/*-480.webp
 !/image/project/miu-miu-nail-live.webp
+!/image/project/candice-lash-live.webp
+!/image/project/td-transactions-live.webp
 /image/project/*-960.webp
 /image/project/*-1600.webp
