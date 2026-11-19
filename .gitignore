@@ -21,5 +21,6 @@ Thumbs.db
 /image/business team/1 (*)*.webp
 /image/project/*.webp
 !/image/project/*-480.webp
+!/image/project/miu-miu-nail-live.webp
 /image/project/*-960.webp
 /image/project/*-1600.webp
