@@ -2,6 +2,9 @@ const DOMAIN_CHECK_MAX_ITEMS = 5;
 const DOMAIN_CHECK_CACHE_SECONDS = 60;
 const DOMAIN_CHECK_RATE_PER_MINUTE = 60;
 const INET_DOMAIN_CHECK_URL = 'https://dms.inet.vn/api/rms/v1/domain/checkavailable';
+const INET_SUFFIX_LIST_URL = 'https://dms.inet.vn/api/rms/v1/suffix/list';
+const DOMAIN_DETAIL_CACHE_SECONDS = 21600;
+const PUBLIC_RDAP_URL = 'https://rdap.org/domain/';
 
 function doGet(event) {
   const data = event && event.parameter ? event.parameter : {};
@@ -59,7 +62,7 @@ function handleDomainCheck_(data) {
   const missingDomains = [];
 
   domains.forEach(function (domain) {
-    const cached = cache.get('domain-check-' + domain);
+    const cached = cache.get('domain-check-v2-' + domain);
     if (!cached) {
       missingDomains.push(domain);
       return;
@@ -108,16 +111,179 @@ function handleDomainCheck_(data) {
       };
     }).forEach(function (item) {
       resultsByDomain[item.domain] = item;
-      cache.put('domain-check-' + item.domain, JSON.stringify(item), DOMAIN_CHECK_CACHE_SECONDS);
+      cache.put('domain-check-v2-' + item.domain, JSON.stringify(item), DOMAIN_CHECK_CACHE_SECONDS);
     });
   }
 
+  const enrichedResults = enrichDomainResults_(domains.map(function (domain) {
+    return resultsByDomain[domain] || { domain: domain, availability: 'unknown', price: null };
+  }), token, cache);
+
   return {
     ok: true,
-    results: domains.map(function (domain) {
-      return resultsByDomain[domain] || { domain: domain, availability: 'unknown', price: null };
-    }),
+    results: enrichedResults,
   };
+}
+
+function enrichDomainResults_(items, token, cache) {
+  const detailsByKey = {};
+  const pending = [];
+  const seen = {};
+
+  items.forEach(function (item) {
+    let type = '';
+    let value = '';
+    if (item.availability === 'available') {
+      type = 'pricing';
+      value = domainSuffix_(item.domain);
+    } else if (item.availability === 'taken') {
+      type = 'whois';
+      value = item.domain;
+    }
+    if (!type || !value) return;
+
+    const key = type + '-' + value;
+    if (seen[key]) return;
+    seen[key] = true;
+    const cached = cache.get('domain-detail-' + key);
+    if (cached) {
+      try {
+        detailsByKey[key] = JSON.parse(cached);
+        return;
+      } catch (error) {
+        // Ignore malformed cache entries and refresh them below.
+      }
+    }
+
+    pending.push({
+      key: key,
+      type: type,
+      value: value,
+      request: type === 'pricing' ? {
+        url: INET_SUFFIX_LIST_URL,
+        method: 'post',
+        contentType: 'application/json',
+        headers: { token: token },
+        payload: JSON.stringify({ suffix: value }),
+        muteHttpExceptions: true,
+      } : {
+        url: PUBLIC_RDAP_URL + encodeURIComponent(value),
+        method: 'get',
+        headers: { Accept: 'application/rdap+json' },
+        muteHttpExceptions: true,
+        followRedirects: true,
+      },
+    });
+  });
+
+  if (pending.length) {
+    UrlFetchApp.fetchAll(pending.map(function (item) { return item.request; }))
+      .forEach(function (response, index) {
+        const pendingItem = pending[index];
+        const detail = pendingItem.type === 'pricing'
+          ? parseSuffixPricing_(response)
+          : parseRdapWhois_(response);
+        detailsByKey[pendingItem.key] = detail;
+        cache.put('domain-detail-' + pendingItem.key, JSON.stringify(detail), DOMAIN_DETAIL_CACHE_SECONDS);
+      });
+  }
+
+  return items.map(function (item) {
+    if (item.availability === 'available') {
+      const pricing = detailsByKey['pricing-' + domainSuffix_(item.domain)] || {};
+      return Object.assign({}, item, pricing, {
+        price: item.price || pricing.registrationPrice || null,
+      });
+    }
+    if (item.availability === 'taken') {
+      return Object.assign({}, item, {
+        whois: detailsByKey['whois-' + item.domain] || null,
+      });
+    }
+    return item;
+  });
+}
+
+function parseSuffixPricing_(response) {
+  if (response.getResponseCode() < 200 || response.getResponseCode() >= 300) return {};
+  try {
+    const payload = JSON.parse(response.getContentText());
+    const rows = Array.isArray(payload) ? payload
+      : Array.isArray(payload.data) ? payload.data
+        : Array.isArray(payload.items) ? payload.items
+          : [payload.data || payload];
+    const row = rows[0] || {};
+    return {
+      registrationPrice: firstPositive_(row.regPromotion, row.regOrigin, row.registerPrice, row.sellingPrice),
+      renewalPrice: firstPositive_(row.renPromotion, row.renOrigin, row.renewPrice),
+      transferPrice: firstPositive_(row.transferPromotion, row.transferOrigin, row.transferPrice),
+    };
+  } catch (error) {
+    return {};
+  }
+}
+
+function parseRdapWhois_(response) {
+  if (response.getResponseCode() < 200 || response.getResponseCode() >= 300) return null;
+  try {
+    const payload = JSON.parse(response.getContentText());
+    const registrar = (payload.entities || []).filter(function (entity) {
+      return (entity.roles || []).indexOf('registrar') !== -1;
+    })[0];
+    const registrant = (payload.entities || []).filter(function (entity) {
+      return (entity.roles || []).indexOf('registrant') !== -1;
+    })[0];
+    return {
+      createdAt: rdapEventDate_(payload.events, ['registration']),
+      updatedAt: rdapEventDate_(payload.events, ['last changed', 'last update of RDAP database']),
+      expiresAt: rdapEventDate_(payload.events, ['expiration']),
+      registrar: rdapVcardValue_(registrar, ['fn', 'org']),
+      registrantOrganization: rdapVcardValue_(registrant, ['org']),
+      statuses: (payload.status || []).slice(0, 8),
+      nameservers: (payload.nameservers || []).map(function (item) {
+        return clean_(item.ldhName || item.unicodeName, 253).toLowerCase();
+      }).filter(Boolean).slice(0, 8),
+      dnssec: payload.secureDNS && payload.secureDNS.delegationSigned === true ? 'signed'
+        : payload.secureDNS && payload.secureDNS.delegationSigned === false ? 'unsigned'
+          : '',
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
+function rdapEventDate_(events, actions) {
+  const wanted = actions.map(function (action) { return action.toLowerCase(); });
+  const match = (events || []).filter(function (event) {
+    return wanted.indexOf(clean_(event.eventAction, 80).toLowerCase()) !== -1;
+  })[0];
+  return match ? clean_(match.eventDate, 60) : '';
+}
+
+function rdapVcardValue_(entity, fields) {
+  const rows = entity && entity.vcardArray && Array.isArray(entity.vcardArray[1]) ? entity.vcardArray[1] : [];
+  for (let index = 0; index < fields.length; index += 1) {
+    const field = fields[index];
+    const match = rows.filter(function (row) { return row && row[0] === field; })[0];
+    if (match && typeof match[3] === 'string' && !/redacted|privacy/i.test(match[3])) {
+      return clean_(match[3], 200);
+    }
+  }
+  return '';
+}
+
+function domainSuffix_(domain) {
+  const labels = String(domain || '').split('.');
+  if (labels.length < 2) return '';
+  return labels.slice(1).join('.');
+}
+
+function firstPositive_() {
+  for (let index = 0; index < arguments.length; index += 1) {
+    const value = Number(arguments[index]);
+    if (isFinite(value) && value > 0) return value;
+  }
+  return null;
 }
 
 function handleDomainOrder_(data) {

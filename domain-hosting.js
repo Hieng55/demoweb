@@ -43,6 +43,25 @@ function formatPrice(value) {
   return `${new Intl.NumberFormat('vi-VN').format(numeric)}đ / năm`;
 }
 
+function formatDomainDate(value) {
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
+  return new Intl.DateTimeFormat('vi-VN', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).format(date);
+}
+
+function detailRow(label, value, wide = false) {
+  if (!value) return '';
+  return `<div class="domain-result__detail${wide ? ' domain-result__detail--wide' : ''}">
+    <dt>${escapeHtml(label)}</dt>
+    <dd>${escapeHtml(value)}</dd>
+  </div>`;
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -83,6 +102,10 @@ function mapDomainResults(domains, results) {
       domain,
       availability: match?.availability ?? match?.available ?? match?.isAvailable ?? match?.status ?? 'unknown',
       price: match?.sellingPrice ?? match?.price ?? match?.registerPrice ?? null,
+      registrationPrice: match?.registrationPrice ?? match?.registerPrice ?? match?.price ?? null,
+      renewalPrice: match?.renewalPrice ?? match?.renewPrice ?? null,
+      transferPrice: match?.transferPrice ?? null,
+      whois: match?.whois ?? null,
     };
   });
 }
@@ -100,7 +123,7 @@ function requestDomainResultsThroughIframe(domains) {
     const timeout = window.setTimeout(() => {
       cleanup();
       reject(new Error('Hệ thống kiểm tra phản hồi quá lâu. Vui lòng thử lại.'));
-    }, 15000);
+    }, 25000);
 
     function cleanup() {
       window.clearTimeout(timeout);
@@ -155,9 +178,32 @@ function renderDomainResults(results) {
     const disabled = available ? '' : ' disabled';
     const actionLabel = available ? 'Tôi muốn mua' : taken ? 'Không thể đặt mua' : 'Vui lòng thử lại';
     const priceLabel = available ? formatPrice(result.price) : taken ? 'Tên miền không còn trống' : 'Chưa có thông tin giá';
+    const whois = result.whois || {};
+    const detailRows = available
+      ? [
+          detailRow('Phí đăng ký', result.registrationPrice ? formatPrice(result.registrationPrice) : ''),
+          detailRow('Phí gia hạn', result.renewalPrice ? formatPrice(result.renewalPrice) : ''),
+          detailRow('Chu kỳ', 'Tối thiểu 1 năm'),
+        ]
+      : taken
+        ? [
+            detailRow('Ngày đăng ký', formatDomainDate(whois.createdAt)),
+            detailRow('Ngày hết hạn', formatDomainDate(whois.expiresAt)),
+            detailRow('Nhà đăng ký', whois.registrar),
+            detailRow('Tổ chức đăng ký', whois.registrantOrganization),
+            detailRow('Trạng thái', Array.isArray(whois.statuses) ? whois.statuses.join(', ') : whois.statuses, true),
+            detailRow('Nameserver', Array.isArray(whois.nameservers) ? whois.nameservers.join(' · ') : whois.nameservers, true),
+            detailRow('DNSSEC', whois.dnssec === 'signed' ? 'Đã ký' : whois.dnssec === 'unsigned' ? 'Chưa ký' : ''),
+          ]
+        : [];
+    const visibleDetails = detailRows.filter(Boolean).join('');
+    const detailTitle = available ? 'Chi phí tên miền' : 'Thông tin WHOIS công khai';
+    const details = visibleDetails
+      ? `<div class="domain-result__details"><span>${detailTitle}</span><dl>${visibleDetails}</dl></div>`
+      : '';
 
     return `<article class="domain-result">
-      <div>
+      <div class="domain-result__summary">
         <strong class="domain-result__name">${escapeHtml(result.domain)}</strong>
         <div class="domain-result__meta">
           <span class="domain-result__status${statusClass}">${statusLabel}</span>
@@ -165,6 +211,7 @@ function renderDomainResults(results) {
         </div>
       </div>
       <button class="domain-result__action" type="button" data-add-domain="${escapeHtml(result.domain)}" data-price="${result.price || ''}"${disabled}>${actionLabel}</button>
+      ${details}
     </article>`;
   }).join('');
 

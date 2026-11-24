@@ -1,8 +1,10 @@
 # Google Apps Script riêng cho tên miền và hosting
 
-App Script này độc lập với backend liên hệ/tuyển dụng hiện tại. Nó chỉ làm hai việc:
+App Script này độc lập với backend liên hệ/tuyển dụng hiện tại. Nó làm các việc sau:
 
 - kiểm tra tên miền qua API iNET;
+- lấy giá đăng ký/gia hạn theo đuôi tên miền;
+- bổ sung WHOIS công khai khi nguồn RDAP của đuôi tên miền hỗ trợ;
 - nhận yêu cầu mua và gửi thông báo tới bot Telegram riêng.
 
 Nó không gọi API đăng ký/gia hạn và không tự động trừ quỹ iNET.
