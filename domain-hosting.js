@@ -87,6 +87,12 @@ function mapDomainResults(domains, results) {
   });
 }
 
+function isTrustedDomainStoreMessage(event) {
+  const origin = String(event.origin || '');
+  return origin === 'https://script.google.com'
+    || /^https:\/\/[a-z0-9-]+-script\.googleusercontent\.com$/i.test(origin);
+}
+
 function requestDomainResultsThroughIframe(domains) {
   return new Promise((resolve, reject) => {
     const requestId = `domain-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
@@ -103,7 +109,9 @@ function requestDomainResultsThroughIframe(domains) {
     }
 
     function handleMessage(event) {
-      if (event.source !== iframe.contentWindow) return;
+      // Apps Script runs HtmlService inside a nested sandbox frame, so the
+      // message source is not the outer iframe created on this page.
+      if (!isTrustedDomainStoreMessage(event)) return;
       const payload = event.data;
       if (!payload || payload.source !== 'webs4v-domain-check' || payload.requestId !== requestId) return;
       cleanup();
@@ -233,7 +241,7 @@ function requestOrderThroughIframe(payload) {
     }
 
     function handleMessage(event) {
-      if (event.source !== iframe.contentWindow) return;
+      if (!isTrustedDomainStoreMessage(event)) return;
       const response = event.data;
       if (!response || response.source !== 'webs4v-domain-order' || response.requestId !== requestId) return;
       cleanup();
