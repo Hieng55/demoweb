@@ -415,7 +415,7 @@ function initializeDomainStore() {
 
     const button = searchForm.querySelector('[type="submit"]');
     button.disabled = true;
-    button.textContent = 'Đang kiểm tra...';
+    button.textContent = 'Đang phân tích...';
 
     try {
       const results = await requestDomainResults(buildCandidates(query));
@@ -424,7 +424,7 @@ function initializeDomainStore() {
       searchError.textContent = requestError.message || 'Không thể kiểm tra tên miền lúc này.';
     } finally {
       button.disabled = false;
-      button.textContent = 'Kiểm tra tên miền';
+      button.textContent = 'Phân tích tên miền';
     }
   });
 

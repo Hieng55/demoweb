@@ -38,14 +38,18 @@
 
           <div class="domain-finder__shell reveal">
             <form class="domain-search" data-domain-search novalidate>
-              <label for="domain-query">Tên miền muốn kiểm tra</label>
+              <div class="domain-search__header">
+                <div><span>Domain intelligence</span><label for="domain-query">Tra cứu tên miền</label></div>
+                <small><i aria-hidden="true"></i>Hệ thống sẵn sàng</small>
+              </div>
               <div class="domain-search__control">
                 <span aria-hidden="true">www.</span>
                 <input id="domain-query" name="domain" type="text" inputmode="url" autocomplete="off" placeholder="ten-thuong-hieu.vn" aria-describedby="domain-search-hint domain-search-error" required />
-                <button type="submit">Kiểm tra tên miền</button>
+                <button type="submit">Phân tích tên miền</button>
               </div>
               <p id="domain-search-hint">Nhập tên đầy đủ hoặc chỉ nhập tên thương hiệu để kiểm tra nhiều đuôi cùng lúc.</p>
               <p class="domain-search__error" id="domain-search-error" data-domain-error role="alert"></p>
+              <div class="domain-search__capabilities" aria-label="Dữ liệu được phân tích"><span>Availability</span><span>WHOIS</span><span>Pricing</span><span>DNSSEC</span></div>
               <div class="domain-search__suffixes" aria-label="Đuôi tên miền phổ biến">
                 <button type="button" data-suffix=".vn">.vn</button>
                 <button type="button" data-suffix=".com">.com</button>
@@ -56,8 +60,10 @@
             </form>
 
             <div class="domain-results" data-domain-results aria-live="polite">
+              <div class="domain-results__toolbar"><span>Registry analysis</span><small>Dữ liệu trực tiếp</small></div>
               <div class="domain-results__empty domain-results__empty--start">
-                <div><strong>Nhập tên miền để bắt đầu</strong><p>Kết quả sẽ cho biết tên miền còn trống hay đã có người đăng ký. Kiểm tra không làm phát sinh đơn hàng.</p></div>
+                <div class="domain-results__scanner" aria-hidden="true"><span></span><i></i><b>W</b></div>
+                <div><span class="domain-results__eyebrow">Sẵn sàng phân tích</span><strong>Nhập tên miền để bắt đầu</strong><p>Hệ thống sẽ đối chiếu trạng thái đăng ký, mức giá và dữ liệu WHOIS công khai nếu có.</p><ul><li>Trạng thái đăng ký</li><li>Thông tin WHOIS</li><li>Giá đăng ký và gia hạn</li></ul></div>
               </div>
             </div>
           </div>
