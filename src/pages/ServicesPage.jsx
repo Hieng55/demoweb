@@ -65,6 +65,14 @@ export const serviceItems = [
     benefit: 'Tăng khả năng xuất hiện bền vững và thu hút khách hàng mà không phụ thuộc hoàn toàn vào quảng cáo.',
     icon: 'https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google/default.svg',
   },
+  {
+    slug: 'ten-mien-hosting', index: '08', short: 'Domain / Hosting', title: 'Tên miền & Hosting',
+    lead: 'Kiểm tra tên miền, chọn nhóm hosting và tạo yêu cầu theo quy trình có người xác minh trước khi mua.',
+    support: 'Tra cứu tên miền, lựa chọn hosting, xác nhận thông tin và bàn giao sau khi yêu cầu được xử lý.',
+    outcomes: ['Tên miền được kiểm tra lại trước khi mua', 'Hosting được chọn theo nhu cầu thực tế', 'Trạng thái đơn hàng minh bạch'],
+    benefit: 'Một điểm bắt đầu rõ ràng để kiểm tra, lựa chọn và đăng ký tên miền cùng hosting phù hợp.',
+    icon: serviceWebIcon,
+  },
 ];
 
 const packages = [
@@ -140,6 +148,12 @@ function ServiceContact({ title }) {
 }
 
 export function ServicesPage({ markup }) {
-  if (markup) return <main id="top" className="website-service-page" dangerouslySetInnerHTML={{ __html: markup }} />;
+  if (markup) {
+    const pageClassName = document.body.classList.contains('domain-store-page')
+      ? 'website-service-page domain-store'
+      : 'website-service-page';
+
+    return <main id="top" className={pageClassName} dangerouslySetInnerHTML={{ __html: markup }} />;
+  }
   return <ServicesHub />;
 }

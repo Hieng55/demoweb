@@ -36,6 +36,7 @@ export function SiteFooter() {
               <span>Dịch vụ</span>
               <a href="/dich-vu/#website-doanh-nghiep">Website doanh nghiệp</a>
               <a href="/dich-vu/thiet-ke-website/#pricing">Website thương mại điện tử</a>
+              <a href="/dich-vu/ten-mien-hosting/">Tên miền &amp; Hosting</a>
               <a href="/dich-vu/#bang-gia">Landing page</a>
               <a href="/dich-vu/#seo-geo">SEO &amp; GEO</a>
             </div>

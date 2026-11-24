@@ -17,6 +17,7 @@ export default defineConfig({
         serviceWebsite: resolve(__dirname, 'dich-vu/thiet-ke-website/index.html'),
         serviceWebsiteThuDuc: resolve(__dirname, 'dich-vu/thiet-ke-web-thu-duc/index.html'),
         serviceBudgetLandingPage: resolve(__dirname, 'dich-vu/landing-page-gia-re/index.html'),
+        serviceDomainHosting: resolve(__dirname, 'dich-vu/ten-mien-hosting/index.html'),
         serviceGoogleAds: resolve(__dirname, 'dich-vu/google-ads/index.html'),
         serviceMetaAds: resolve(__dirname, 'dich-vu/meta-ads/index.html'),
         serviceFanpage: resolve(__dirname, 'dich-vu/cham-soc-fanpage/index.html'),

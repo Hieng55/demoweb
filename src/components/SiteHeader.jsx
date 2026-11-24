@@ -12,6 +12,7 @@ const mainLinks = [
 
 const serviceLinks = [
   ['/dich-vu/thiet-ke-website/', 'Thiết kế website & E-commerce', 'wordpress'],
+  ['/dich-vu/ten-mien-hosting/', 'Tên miền & Hosting', 'wordpress'],
   ['/dich-vu/google-ads/', 'Google Ads', 'google-ads'],
   ['/dich-vu/meta-ads/', 'Facebook & Instagram Ads', 'meta'],
   ['/dich-vu/cham-soc-fanpage/', 'Chăm sóc Fanpage', 'facebook'],
