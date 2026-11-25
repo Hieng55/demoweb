@@ -720,6 +720,22 @@
   margin: 0;
 }
 
+.domain-result__tax-note {
+  margin: 16px 0 0;
+  padding-top: 12px;
+  color: #607196;
+  border-top: 1px solid rgba(18, 100, 216, 0.11);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.domain-result__tax-note::before {
+  margin-right: 6px;
+  color: var(--store-blue);
+  content: "*";
+  font-weight: 700;
+}
+
 .domain-result__detail {
   display: grid;
   min-width: 0;

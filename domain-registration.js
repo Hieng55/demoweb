@@ -252,8 +252,11 @@ function renderDomainResults(results) {
         : [];
     const visibleDetails = detailRows.filter(Boolean).join('');
     const detailTitle = available ? 'Thông tin đăng ký' : 'Thông tin WHOIS công khai';
+    const taxNotice = available
+      ? '<p class="domain-result__tax-note">Các mức phí hiển thị chưa bao gồm thuế GTGT (VAT).</p>'
+      : '';
     const details = visibleDetails
-      ? `<div class="domain-result__details"><span>${detailTitle}</span><dl>${visibleDetails}</dl></div>`
+      ? `<div class="domain-result__details"><span>${detailTitle}</span><dl>${visibleDetails}</dl>${taxNotice}</div>`
       : '';
 
     return `<article class="domain-result">
