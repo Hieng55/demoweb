@@ -46,7 +46,7 @@ function MobileServicesMenu() {
     <div>
       <a href="/dich-vu/"><span>00</span>Tất cả dịch vụ</a>
       {serviceLinks.map(([href, label, icon]) => <a href={href} key={href}>
-        <img src={theSvgIcon(icon)} alt={`Biểu tượng ${label}`} aria-hidden="true" width="24" height="24" />{label}
+        <img src={resolveServiceIcon(icon)} alt={`Biểu tượng ${label}`} aria-hidden="true" width="24" height="24" />{label}
       </a>)}
     </div>
   </details>;
