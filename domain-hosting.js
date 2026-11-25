@@ -37,6 +37,16 @@ function buildCandidates(query) {
   return DEFAULT_SUFFIXES.map((suffix) => `${query}${suffix}`);
 }
 
+function getDomainSuffix(domain) {
+  const labels = String(domain || '').split('.').filter(Boolean);
+  if (labels.length < 2) return '';
+  return `.${labels.slice(1).join('.')}`;
+}
+
+function getDomainCategory(suffix) {
+  return suffix.endsWith('.vn') ? 'Tên miền Việt Nam' : 'Tên miền quốc tế';
+}
+
 function formatPrice(value) {
   const numeric = Number(value);
   if (!Number.isFinite(numeric) || numeric <= 0) return 'Giá xác nhận khi tạo đơn';
@@ -178,18 +188,27 @@ function renderDomainResults(results) {
     const disabled = available ? '' : ' disabled';
     const actionLabel = available ? 'Tôi muốn mua' : taken ? 'Không thể đặt mua' : 'Vui lòng thử lại';
     const registrationPrice = result.registrationPrice || result.price;
+    const suffix = getDomainSuffix(result.domain);
+    const domainCategory = getDomainCategory(suffix);
     const priceLabel = available
       ? registrationPrice ? `Đăng ký: ${formatPrice(registrationPrice)}` : 'Đang xác nhận giá đăng ký'
       : taken ? 'Tên miền không còn trống' : 'Chưa có thông tin giá';
     const whois = result.whois || {};
     const detailRows = available
       ? [
-          detailRow('Phí đăng ký', result.registrationPrice ? formatPrice(result.registrationPrice) : ''),
+          detailRow('Phí đăng ký', registrationPrice ? formatPrice(registrationPrice) : ''),
           detailRow('Phí gia hạn', result.renewalPrice ? formatPrice(result.renewalPrice) : ''),
-          detailRow('Chu kỳ', 'Tối thiểu 1 năm'),
+          detailRow('Phí chuyển về', result.transferPrice ? formatPrice(result.transferPrice) : ''),
+          detailRow('Đuôi tên miền', suffix),
+          detailRow('Phân loại', domainCategory),
+          detailRow('Thời hạn đăng ký', 'Từ 1 đến 10 năm'),
+          detailRow('WHOIS', 'Chưa phát sinh vì tên miền chưa được đăng ký', true),
+          detailRow('Nameserver & DNSSEC', 'Thiết lập sau khi đăng ký và kích hoạt tên miền', true),
         ]
       : taken
         ? [
+            detailRow('Đuôi tên miền', suffix),
+            detailRow('Phân loại', domainCategory),
             detailRow('Ngày đăng ký', formatDomainDate(whois.createdAt)),
             detailRow('Ngày hết hạn', formatDomainDate(whois.expiresAt)),
             detailRow('Nhà đăng ký', whois.registrar),
@@ -200,7 +219,7 @@ function renderDomainResults(results) {
           ]
         : [];
     const visibleDetails = detailRows.filter(Boolean).join('');
-    const detailTitle = available ? 'Chi phí tên miền' : 'Thông tin WHOIS công khai';
+    const detailTitle = available ? 'Thông tin đăng ký' : 'Thông tin WHOIS công khai';
     const details = visibleDetails
       ? `<div class="domain-result__details"><span>${detailTitle}</span><dl>${visibleDetails}</dl></div>`
       : '';
