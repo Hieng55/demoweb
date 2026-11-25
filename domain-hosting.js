@@ -83,7 +83,7 @@ function escapeHtml(value) {
 
 async function requestDomainResults(domains) {
   if (API_BASE) {
-    const response = await fetch(`${API_BASE}/domains/check`, {
+    const response = await fetch(`${API_BASE}/domains/check.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ domains }),
@@ -380,6 +380,9 @@ async function submitOrder(form) {
     },
     items: state.items,
     source: 'domain-hosting-page',
+    startedAt: PAGE_STARTED_AT,
+    website: formData.get('website') || '',
+    consent: formData.get('consent') === 'on',
   };
 
   const submitButton = form.querySelector('[type="submit"]');
@@ -389,7 +392,7 @@ async function submitOrder(form) {
   try {
     let order;
     if (API_BASE) {
-      const response = await fetch(`${API_BASE}/orders`, {
+      const response = await fetch(`${API_BASE}/orders.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

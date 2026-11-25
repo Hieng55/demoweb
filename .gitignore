@@ -12,6 +12,7 @@ test-results/
 .qa-chrome/
 
 *.log
+cpanel/domain-store/*-deploy.zip
 .DS_Store
 Thumbs.db
 # Locally generated image variants that are not shipped by the homepage build.

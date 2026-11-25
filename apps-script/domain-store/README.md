@@ -1,4 +1,6 @@
-# Google Apps Script riêng cho tên miền và hosting
+# Google Apps Script cũ cho tên miền và hosting
+
+> Backend này chỉ được giữ làm phương án quay lui. Trang tên miền hiện dùng PHP/MySQL trên cPanel tại `public/api/`; hướng dẫn triển khai mới nằm trong `cpanel/domain-store/README.md`.
 
 App Script này độc lập với backend liên hệ/tuyển dụng hiện tại. Nó làm các việc sau:
 

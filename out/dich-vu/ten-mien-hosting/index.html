@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#edf2ff" />
-    <meta name="webs4v-domain-store-endpoint" content="https://script.google.com/macros/s/AKfycbz7jXvMRquCrjtmFAhfTt1lmJ4bjAzIpJCOMYEwYAciQJfBTOvgE4H0mhDYWydnD9e9/exec" />
+    <meta name="webs4v-storefront-api" content="/api" />
     <meta name="description" content="Kiểm tra tên miền, chọn hosting và gửi yêu cầu đăng ký tại Webs4V. Đơn được xác nhận thanh toán và xử lý thủ công trước khi bàn giao dịch vụ." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="vi_VN" />
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&amp;family=Lora:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://webs4v.vn/dich-vu/ten-mien-hosting/#service","name":"Đăng ký tên miền và hosting","serviceType":"Tra cứu, đăng ký tên miền và cung cấp hosting","url":"https://webs4v.vn/dich-vu/ten-mien-hosting/","description":"Dịch vụ hỗ trợ kiểm tra tên miền, lựa chọn hosting, xác nhận thanh toán và bàn giao sau khi nhân viên xử lý.","provider":{"@id":"https://webs4v.vn/#organization"},"areaServed":"VN"},{"@type":"WebPage","@id":"https://webs4v.vn/dich-vu/ten-mien-hosting/#webpage","url":"https://webs4v.vn/dich-vu/ten-mien-hosting/","name":"Kiểm tra tên miền và chọn hosting","inLanguage":"vi-VN","about":{"@id":"https://webs4v.vn/dich-vu/ten-mien-hosting/#service"}},{"@type":"Organization","@id":"https://webs4v.vn/#organization","name":"Webs4V","legalName":"CÔNG TY TNHH CÔNG NGHỆ WEBS4V.VN","url":"https://webs4v.vn/","logo":"https://webs4v.vn/image/logo/logo-webs4v.png","taxID":"0319765116","telephone":"+84363644495","email":"support@webs4v.vn"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Trang chủ","item":"https://webs4v.vn/"},{"@type":"ListItem","position":2,"name":"Dịch vụ","item":"https://webs4v.vn/dich-vu/"},{"@type":"ListItem","position":3,"name":"Tên miền và Hosting","item":"https://webs4v.vn/dich-vu/ten-mien-hosting/"}]}]}</script>
-    <script type="module" crossorigin src="/assets/serviceDomainHosting-KBVLTrYf.js"></script>
+    <script type="module" crossorigin src="/assets/serviceDomainHosting-BhB6IdfB.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/main-BBmlJwKx.js">
     <link rel="stylesheet" crossorigin href="/assets/serviceDomainHosting-CbxUqMat.css">
     <link rel="stylesheet" crossorigin href="/assets/style-Bpwvasmm.css">
@@ -145,6 +145,7 @@
             </div>
 
             <form class="order-form reveal" data-order-form novalidate>
+              <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
               <div class="order-form__intro"><span>Thông tin nhận đơn</span><small>Không nhập CCCD ở bước này.</small></div>
               <div class="order-form__grid">
                 <label><span>Họ và tên</span><input name="fullname" autocomplete="name" required /></label>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#edf2ff" />
-    <meta name="webs4v-domain-store-endpoint" content="https://script.google.com/macros/s/AKfycbz7jXvMRquCrjtmFAhfTt1lmJ4bjAzIpJCOMYEwYAciQJfBTOvgE4H0mhDYWydnD9e9/exec" />
+    <meta name="webs4v-storefront-api" content="/api" />
     <meta name="description" content="Kiểm tra tên miền, chọn hosting và gửi yêu cầu đăng ký tại Webs4V. Đơn được xác nhận thanh toán và xử lý thủ công trước khi bàn giao dịch vụ." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="vi_VN" />
@@ -143,6 +143,7 @@
             </div>
 
             <form class="order-form reveal" data-order-form novalidate>
+              <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
               <div class="order-form__intro"><span>Thông tin nhận đơn</span><small>Không nhập CCCD ở bước này.</small></div>
               <div class="order-form__grid">
                 <label><span>Họ và tên</span><input name="fullname" autocomplete="name" required /></label>
