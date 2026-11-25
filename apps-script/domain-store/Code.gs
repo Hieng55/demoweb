@@ -211,11 +211,13 @@ function parseSuffixPricing_(response) {
     const rows = Array.isArray(payload) ? payload
       : Array.isArray(payload.data) ? payload.data
         : Array.isArray(payload.items) ? payload.items
-          : [payload.data || payload];
+          : Array.isArray(payload.result) ? payload.result
+            : Array.isArray(payload.list) ? payload.list
+              : [payload.data || payload.result || payload];
     const row = rows[0] || {};
     return {
-      registrationPrice: firstPositive_(row.regPromotion, row.regOrigin, row.registerPrice, row.sellingPrice),
-      renewalPrice: firstPositive_(row.renPromotion, row.renOrigin, row.renewPrice),
+      registrationPrice: firstPositive_(row.regPromotion, row.regOrigin, row.registerPrice, row.registrationPrice, row.sellingPrice),
+      renewalPrice: firstPositive_(row.renPromotion, row.renOrigin, row.renewPrice, row.renewalPrice),
       transferPrice: firstPositive_(row.transferPromotion, row.transferOrigin, row.transferPrice),
     };
   } catch (error) {
@@ -432,7 +434,7 @@ function normalizeDomain_(value) {
     .toLowerCase()
     .replace(/^https?:\/\//, '')
     .replace(/^www\./, '')
-    .split('/')[0]
+    .split(/[/?#]/)[0]
     .replace(/\.$/, '');
 }
 

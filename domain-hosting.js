@@ -19,7 +19,7 @@ function normalizeDomain(value) {
     .toLowerCase()
     .replace(/^https?:\/\//, '')
     .replace(/^www\./, '')
-    .split('/')[0]
+    .split(/[/?#]/)[0]
     .replace(/\s+/g, '');
 }
 
@@ -177,7 +177,10 @@ function renderDomainResults(results) {
     const statusLabel = available ? 'Còn trống — có thể đăng ký' : taken ? 'Đã có người đăng ký' : 'Chưa thể xác minh';
     const disabled = available ? '' : ' disabled';
     const actionLabel = available ? 'Tôi muốn mua' : taken ? 'Không thể đặt mua' : 'Vui lòng thử lại';
-    const priceLabel = available ? formatPrice(result.price) : taken ? 'Tên miền không còn trống' : 'Chưa có thông tin giá';
+    const registrationPrice = result.registrationPrice || result.price;
+    const priceLabel = available
+      ? registrationPrice ? `Đăng ký: ${formatPrice(registrationPrice)}` : 'Đang xác nhận giá đăng ký'
+      : taken ? 'Tên miền không còn trống' : 'Chưa có thông tin giá';
     const whois = result.whois || {};
     const detailRows = available
       ? [
@@ -402,9 +405,21 @@ function initializeDomainStore() {
   const orderForm = document.querySelector('[data-order-form]');
   if (!searchForm || !queryInput || !orderForm) return;
 
+  queryInput.addEventListener('input', () => {
+    const currentValue = queryInput.value;
+    if (!/^\s*(?:https?:\/\/|www\.)/i.test(currentValue)) return;
+    const cleanedValue = normalizeDomain(currentValue);
+    if (cleanedValue) queryInput.value = cleanedValue;
+  });
+
+  queryInput.addEventListener('blur', () => {
+    if (queryInput.value.trim()) queryInput.value = normalizeDomain(queryInput.value);
+  });
+
   searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const query = normalizeDomain(queryInput.value);
+    queryInput.value = query;
     searchError.textContent = '';
 
     if (!isValidDomainInput(query)) {
