@@ -233,7 +233,7 @@ function renderDomainResults(results) {
           detailRow('Đuôi tên miền', suffix),
           detailRow('Phân loại', domainCategory),
           detailRow('Thời hạn đăng ký', 'Từ 1 đến 10 năm'),
-          detailRow('Đơn vị hỗ trợ đăng ký', 'Webs4V'),
+          detailRow('Đơn vị hỗ trợ đăng ký', 'CÔNG TY TNHH CÔNG NGHỆ WEBS4V.VN'),
           detailRow('WHOIS', 'Chưa phát sinh vì tên miền chưa được đăng ký', true),
           detailRow('Nameserver & DNSSEC', 'Thiết lập sau khi đăng ký và kích hoạt tên miền', true),
         ]
