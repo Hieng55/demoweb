@@ -685,13 +685,23 @@
 }
 
 .domain-result__details > span {
-  display: block;
+  display: flex;
+  gap: 8px;
+  align-items: center;
   margin-bottom: 14px;
-  color: rgba(32, 41, 77, 0.62);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  color: #263f78;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.domain-result__details > span::before {
+  width: 3px;
+  height: 15px;
+  content: "";
+  background: var(--store-blue);
+  border-radius: 999px;
 }
 
 .domain-result__details dl {
@@ -704,11 +714,44 @@
 .domain-result__detail {
   display: grid;
   min-width: 0;
-  gap: 4px;
+  gap: 5px;
 }
 
 .domain-result__detail--wide {
   grid-column: 1 / -1;
+}
+
+.domain-result__detail--price,
+.domain-result__detail--price-primary {
+  padding: 11px 13px;
+  background: rgba(18, 100, 216, 0.075);
+  border: 1px solid rgba(18, 100, 216, 0.14);
+  border-radius: 12px;
+}
+
+.domain-result__detail--price dt {
+  color: #3f6399;
+}
+
+.domain-result__detail--price dd {
+  color: var(--store-blue);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.domain-result__detail--price-primary {
+  background: rgba(21, 148, 103, 0.09);
+  border-color: rgba(21, 148, 103, 0.18);
+}
+
+.domain-result__detail--price-primary dt {
+  color: #397a63;
+}
+
+.domain-result__detail--price-primary dd {
+  color: #08784f;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .domain-result__detail dt,
@@ -718,13 +761,15 @@
 }
 
 .domain-result__detail dt {
-  color: rgba(32, 41, 77, 0.58);
-  font-size: 12px;
+  color: #52658f;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .domain-result__detail dd {
   color: var(--ink);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.55;
 }
 

@@ -64,9 +64,10 @@ function formatDomainDate(value) {
   }).format(date);
 }
 
-function detailRow(label, value, wide = false) {
+function detailRow(label, value, wide = false, variant = '') {
   if (!value) return '';
-  return `<div class="domain-result__detail${wide ? ' domain-result__detail--wide' : ''}">
+  const variantClass = variant ? ` domain-result__detail--${variant}` : '';
+  return `<div class="domain-result__detail${wide ? ' domain-result__detail--wide' : ''}${variantClass}">
     <dt>${escapeHtml(label)}</dt>
     <dd>${escapeHtml(value)}</dd>
   </div>`;
@@ -196,9 +197,9 @@ function renderDomainResults(results) {
     const whois = result.whois || {};
     const detailRows = available
       ? [
-          detailRow('Phí đăng ký', registrationPrice ? formatPrice(registrationPrice) : ''),
-          detailRow('Phí gia hạn', result.renewalPrice ? formatPrice(result.renewalPrice) : ''),
-          detailRow('Phí chuyển về', result.transferPrice ? formatPrice(result.transferPrice) : ''),
+          detailRow('Phí đăng ký', registrationPrice ? formatPrice(registrationPrice) : '', false, 'price-primary'),
+          detailRow('Phí gia hạn', result.renewalPrice ? formatPrice(result.renewalPrice) : '', false, 'price'),
+          detailRow('Phí chuyển về', result.transferPrice ? formatPrice(result.transferPrice) : '', false, 'price'),
           detailRow('Đuôi tên miền', suffix),
           detailRow('Phân loại', domainCategory),
           detailRow('Thời hạn đăng ký', 'Từ 1 đến 10 năm'),
