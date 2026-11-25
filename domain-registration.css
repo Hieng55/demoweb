@@ -439,8 +439,8 @@
   position: relative;
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-color: rgba(47, 101, 202, 0.42) rgba(44, 80, 151, 0.08);
-  scrollbar-width: thin;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   background:
     linear-gradient(rgba(44, 80, 151, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(44, 80, 151, 0.035) 1px, transparent 1px),
@@ -450,17 +450,9 @@
 }
 
 .domain-results::-webkit-scrollbar {
-  width: 9px;
-}
-
-.domain-results::-webkit-scrollbar-track {
-  background: rgba(44, 80, 151, 0.08);
-}
-
-.domain-results::-webkit-scrollbar-thumb {
-  background: rgba(47, 101, 202, 0.42);
-  border: 2px solid #f5f8ff;
-  border-radius: 999px;
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .domain-results__toolbar {
