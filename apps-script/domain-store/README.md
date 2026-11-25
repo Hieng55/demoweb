@@ -7,7 +7,7 @@ App Script này độc lập với backend liên hệ/tuyển dụng hiện tạ
 - kiểm tra tên miền qua API iNET;
 - lấy giá đăng ký/gia hạn theo đuôi tên miền;
 - bổ sung WHOIS công khai khi nguồn RDAP của đuôi tên miền hỗ trợ;
-- nhận yêu cầu mua và gửi thông báo tới bot Telegram riêng.
+- nhận yêu cầu tư vấn/báo giá và gửi thông báo tới bot Telegram riêng, kèm bằng chứng đồng ý phiên bản `2.0`.
 
 Nó không gọi API đăng ký/gia hạn và không tự động trừ quỹ iNET.
 

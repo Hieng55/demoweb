@@ -6,6 +6,9 @@ const INET_SUFFIX_LIST_URL = 'https://dms.inet.vn/api/rms/v1/suffix/list';
 const INET_PUBLIC_WHOIS_URL = 'https://dms.inet.vn/api/public/whois/v1/whois/directly';
 const DOMAIN_DETAIL_CACHE_SECONDS = 21600;
 const PUBLIC_RDAP_URL = 'https://rdap.org/domain/';
+const PRIVACY_POLICY_VERSION = '2.0';
+const DOMAIN_CONSENT_PURPOSE = 'domain_consultation';
+const DOMAIN_CONSENT_TEXT = 'Tôi đồng ý để Webs4V dùng họ tên, số điện thoại, email, tên miền quan tâm và ghi chú để liên hệ tư vấn, xác minh tên miền và báo giá theo Chính sách bảo mật.';
 
 function doGet(event) {
   const data = event && event.parameter ? event.parameter : {};
@@ -333,11 +336,15 @@ function handleDomainOrder_(data) {
   const note = clean_(data.note, 1500);
   const honeypot = clean_(data.website, 120);
   const startedAt = Number(data.startedAt || 0);
+  const consent = clean_(data.consent, 10);
+  const consentPurpose = clean_(data.consentPurpose, 80);
+  const policyVersion = clean_(data.policyVersion, 20);
   const elapsed = Date.now() - startedAt;
   const phoneDigits = phone.replace(/\D/g, '');
 
   if (honeypot) return { ok: true };
   if (!startedAt || elapsed < 1500 || elapsed > 7200000) return { ok: false, error: 'invalid_timing' };
+  if (!isValidConsent_(consent, consentPurpose, policyVersion)) return { ok: false, error: 'consent_required' };
   if (fullname.length < 2 || phoneDigits.length < 9 || phoneDigits.length > 15 || !isValidEmail_(email)) {
     return { ok: false, error: 'invalid_customer' };
   }
@@ -365,6 +372,7 @@ function handleDomainOrder_(data) {
 
   const orderCode = 'TM-' + Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'yyMMdd-HHmm')
     + '-' + Utilities.getUuid().slice(0, 6).toUpperCase();
+  const submittedAt = Utilities.formatDate(new Date(), 'Asia/Ho_Chi_Minh', 'dd/MM/yyyy HH:mm:ss');
   const itemRows = normalizedItems.map(function (item, index) {
     return (index + 1) + '. ' + escapeHtml_(item.name) + ' (' + escapeHtml_(item.type) + ')';
   });
@@ -378,6 +386,11 @@ function handleDomainOrder_(data) {
     '<b>Hạng mục:</b>',
   ].concat(itemRows).concat([
     '<b>Ghi chú:</b> ' + escapeHtml_(note || 'Chưa cung cấp'),
+    '<b>Đồng ý xử lý dữ liệu:</b> Có',
+    '<b>Mục đích:</b> ' + escapeHtml_(DOMAIN_CONSENT_PURPOSE),
+    '<b>Phiên bản chính sách:</b> ' + escapeHtml_(PRIVACY_POLICY_VERSION),
+    '<b>Nội dung đồng ý:</b> ' + escapeHtml_(DOMAIN_CONSENT_TEXT),
+    '<b>Gửi lúc:</b> ' + escapeHtml_(submittedAt),
     '',
     '<i>Chỉ là yêu cầu tư vấn/báo giá; chưa phát sinh đơn hàng, hợp đồng hoặc nghĩa vụ thanh toán.</i>',
   ]).join('\n');
@@ -487,6 +500,12 @@ function isValidDomain_(domain) {
 
 function isValidEmail_(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 160;
+}
+
+function isValidConsent_(granted, purpose, policyVersion) {
+  return /^(?:true|1|yes|on)$/i.test(granted)
+    && purpose === DOMAIN_CONSENT_PURPOSE
+    && policyVersion === PRIVACY_POLICY_VERSION;
 }
 
 function clean_(value, maximumLength) {

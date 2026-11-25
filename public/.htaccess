@@ -1,7 +1,13 @@
 AddDefaultCharset UTF-8
 
+Options -Indexes
+
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+
+<FilesMatch "(?i)(^\.env|^\.git|^\.ht|composer\.(?:json|lock)$|package-lock\.json$|\.(?:bak|backup|conf|dist|ini|log|sql|sqlite|swp)$)">
+  Require all denied
+</FilesMatch>
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -28,8 +34,15 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 <IfModule mod_headers.c>
+  Header always unset X-Powered-By
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-XSS-Protection "0"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
+  Header always set Strict-Transport-Security "max-age=86400"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://script.google.com; script-src 'self' 'unsafe-inline' https://images.dmca.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src https://www.google.com https://script.google.com; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests"
   <FilesMatch "\.(?:css|js|png|jpe?g|webp|svg|mp4)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>

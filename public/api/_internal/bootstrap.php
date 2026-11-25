@@ -82,8 +82,18 @@ function json_response(array $payload, int $status = 200): void
     exit;
 }
 
+function api_security_headers(): void
+{
+    header_remove('X-Powered-By');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: DENY');
+    header('Referrer-Policy: no-referrer');
+    header("Content-Security-Policy: default-src 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'none'");
+}
+
 function run_api(callable $handler): void
 {
+    api_security_headers();
     try {
         $config = app_config();
         guard_origin($config);

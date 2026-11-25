@@ -1,3 +1,5 @@
+import { CONSENT_PURPOSES, PRIVACY_POLICY_VERSION } from './privacy-consent.js';
+
 const DEFAULT_SUFFIXES = ['.vn', '.com', '.com.vn', '.net', '.id.vn'];
 const API_BASE = (window.WEBS4V_STOREFRONT_API || document.querySelector('meta[name="webs4v-storefront-api"]')?.content || '').replace(/\/$/, '');
 const DOMAIN_STORE_ENDPOINT = window.WEBS4V_DOMAIN_STORE_ENDPOINT
@@ -326,6 +328,9 @@ function requestOrderThroughIframe(payload) {
       items: JSON.stringify(payload.items),
       startedAt: String(PAGE_STARTED_AT),
       website: '',
+      consent: payload.consent ? 'true' : 'false',
+      consentPurpose: payload.consentPurpose,
+      policyVersion: payload.policyVersion,
     };
 
     iframe.hidden = true;
@@ -377,6 +382,8 @@ async function submitOrder(form) {
     startedAt: PAGE_STARTED_AT,
     website: formData.get('website') || '',
     consent: formData.get('consent') === 'on',
+    consentPurpose: CONSENT_PURPOSES.domainConsultation,
+    policyVersion: PRIVACY_POLICY_VERSION,
   };
 
   const submitButton = form.querySelector('[type="submit"]');

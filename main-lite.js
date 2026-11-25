@@ -14,6 +14,7 @@ import {
 } from 'lucide';
 import { initializeDirectionalIcons } from './ui-icons.js';
 import { submitWithVerifiedResponse } from './verified-form-submit.js';
+import { CONSENT_PURPOSES, PRIVACY_POLICY_VERSION } from './privacy-consent.js';
 import projectFeaturedTablet from './image/project/featured-tablet-480.webp';
 import projectFeaturedBusiness from './image/project/featured-4503766-480.webp';
 import projectFeaturedPortfolio from './image/project/featured-7288248-480.webp';
@@ -428,6 +429,9 @@ function initializeContactForm() {
       utmMedium: String(searchParams.get('utm_medium') || '').slice(0, 100),
       utmCampaign: String(searchParams.get('utm_campaign') || '').slice(0, 150),
       startedAt: String(formStartedAt),
+      privacyConsent: data.get('privacyConsent') === 'on' ? 'true' : 'false',
+      consentPurpose: CONSENT_PURPOSES.contact,
+      policyVersion: PRIVACY_POLICY_VERSION,
     };
     if (!endpoint.startsWith('https://script.google.com/macros/s/') || endpoint.includes('THAY_BANG_URL_CUA_BAN')) {
       status.textContent = 'Biểu mẫu chưa được kết nối. Vui lòng nhắn Zalo để được hỗ trợ.';

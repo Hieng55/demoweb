@@ -1,4 +1,5 @@
 import { submitWithVerifiedResponse } from './verified-form-submit.js';
+import { CONSENT_PURPOSES, PRIVACY_POLICY_VERSION } from './privacy-consent.js';
 
 const forms = document.querySelectorAll('[data-recruitment-form]');
 
@@ -227,6 +228,9 @@ forms.forEach((form) => {
       payload.set('attachments', JSON.stringify(attachments));
       payload.set('landingPage', window.location.href.slice(0, 250));
       payload.set('startedAt', String(startedAt));
+      payload.set('privacyConsent', data.get('privacyConsent') === 'on' ? 'true' : 'false');
+      payload.set('consentPurpose', CONSENT_PURPOSES.recruitment);
+      payload.set('policyVersion', PRIVACY_POLICY_VERSION);
 
       await submitWithVerifiedResponse(endpoint, payload);
       form.reset();

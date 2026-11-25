@@ -7,6 +7,7 @@ import googleBusinessIcon from '../../image/service-google-business.svg';
 import photoshopIcon from '../../image/service-photoshop.svg';
 import illustratorIcon from '../../image/service-illustrator.svg';
 import indesignIcon from '../../image/service-indesign.svg';
+import domainIcon from '../../image/domain/com.png';
 
 export const serviceItems = [
   {
@@ -71,7 +72,7 @@ export const serviceItems = [
     support: 'Tra cứu tình trạng, tham khảo chi phí, xác nhận thông tin chủ thể và hỗ trợ đăng ký tên miền.',
     outcomes: ['Tên miền được kiểm tra lại trước khi đăng ký', 'Chi phí được xác nhận rõ ràng', 'Trạng thái yêu cầu minh bạch'],
     benefit: 'Một điểm bắt đầu rõ ràng để kiểm tra, lựa chọn và đăng ký tên miền phù hợp.',
-    icon: serviceWebIcon,
+    icon: domainIcon,
   },
 ];
 

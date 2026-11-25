@@ -44,6 +44,8 @@ Sau khi cập nhật `Code.gs`:
 4. Who has access: cấu hình phù hợp để form công khai có thể gửi.
 5. Giữ nguyên URL `/exec` nếu chỉnh deployment hiện tại; nếu tạo deployment mới, cập nhật `data-recruitment-endpoint` trong các trang tuyển dụng.
 
+Phiên bản website dùng chính sách bảo mật `2.0`. Cần deploy `Code.gs` mới trước hoặc cùng đợt phát hành để máy chủ kiểm tra và lưu bằng chứng đồng ý cho form tư vấn/tuyển dụng.
+
 ## Giới hạn tệp
 
 - Đúng 1 tệp mỗi hồ sơ.

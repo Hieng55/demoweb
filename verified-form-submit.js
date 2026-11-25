@@ -6,6 +6,7 @@ export const RESPONSE_ERROR_MESSAGES = {
   invalid_contact: 'Thông tin liên hệ chưa hợp lệ. Vui lòng kiểm tra lại.',
   invalid_application: 'Thông tin hồ sơ chưa hợp lệ. Vui lòng kiểm tra lại.',
   invalid_timing: 'Phiên biểu mẫu đã hết hạn. Vui lòng tải lại trang rồi thử lại.',
+  consent_required: 'Bạn cần đồng ý với mục đích xử lý dữ liệu trước khi gửi.',
   cv_required: 'Vui lòng chọn một tệp CV PDF hợp lệ.',
   request_failed: 'Máy chủ chưa thể xử lý yêu cầu. Vui lòng thử lại sau.',
 };

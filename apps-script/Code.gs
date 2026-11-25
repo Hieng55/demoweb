@@ -4,6 +4,11 @@ const RECRUITMENT_MAX_TOTAL_BYTES = 5 * 1024 * 1024;
 const RECRUITMENT_ALLOWED_MIME_TYPES = {
   'application/pdf': true,
 };
+const PRIVACY_POLICY_VERSION = '2.0';
+const CONTACT_CONSENT_PURPOSE = 'contact_request';
+const RECRUITMENT_CONSENT_PURPOSE = 'recruitment_application';
+const CONTACT_CONSENT_TEXT = 'Tôi đồng ý để Webs4V xử lý thông tin này nhằm phản hồi yêu cầu theo Chính sách bảo mật.';
+const RECRUITMENT_CONSENT_TEXT = 'Tôi đồng ý để Webs4V xử lý hồ sơ cho mục đích tuyển dụng theo chính sách bảo mật.';
 const RECRUITMENT_ALLOWED_POSITIONS = {
   'Website Developer Intern': true,
   'Website Developer Fresher': true,
@@ -53,11 +58,17 @@ function handleContact_(data) {
     const utmCampaign = clean_(data.utmCampaign, 150);
     const honeypot = clean_(data.website, 120);
     const startedAt = Number(data.startedAt || 0);
+    const privacyConsent = clean_(data.privacyConsent, 10);
+    const consentPurpose = clean_(data.consentPurpose, 80);
+    const policyVersion = clean_(data.policyVersion, 20);
     const elapsed = Date.now() - startedAt;
     const phoneDigits = phone.replace(/\D/g, '');
 
     if (honeypot) return { ok: true };
     if (!startedAt || elapsed < 1500 || elapsed > 7200000) return { ok: false, error: 'invalid_timing' };
+    if (!isValidConsent_(privacyConsent, consentPurpose, policyVersion, CONTACT_CONSENT_PURPOSE)) {
+      return { ok: false, error: 'consent_required' };
+    }
     if (name.length < 2 || phoneDigits.length < 9 || phoneDigits.length > 15 || !industry || !goal || !budget || !service) {
       return { ok: false, error: 'invalid_contact' };
     }
@@ -81,6 +92,10 @@ function handleContact_(data) {
       '<b>Nội dung:</b> ' + escapeHtml_(message || 'Chưa cung cấp'),
       '<b>Trang gửi:</b> ' + escapeHtml_(landingPage || 'Không xác định'),
       '<b>Nguồn:</b> ' + escapeHtml_([utmSource, utmMedium, utmCampaign].filter(Boolean).join(' / ') || 'Truy cập trực tiếp hoặc không gắn UTM'),
+      '<b>Đồng ý xử lý dữ liệu:</b> Có',
+      '<b>Mục đích:</b> ' + escapeHtml_(CONTACT_CONSENT_PURPOSE),
+      '<b>Phiên bản chính sách:</b> ' + escapeHtml_(PRIVACY_POLICY_VERSION),
+      '<b>Nội dung đồng ý:</b> ' + escapeHtml_(CONTACT_CONSENT_TEXT),
       '',
       '<i>Gửi lúc ' + escapeHtml_(submittedAt) + '</i>',
     ].join('\n');
@@ -107,11 +122,17 @@ function handleRecruitment_(data) {
     const landingPage = clean_(data.landingPage, 250);
     const honeypot = clean_(data.website, 120);
     const startedAt = Number(data.startedAt || 0);
+    const privacyConsent = clean_(data.privacyConsent, 10);
+    const consentPurpose = clean_(data.consentPurpose, 80);
+    const policyVersion = clean_(data.policyVersion, 20);
     const elapsed = Date.now() - startedAt;
     const phoneDigits = phone.replace(/\D/g, '');
 
     if (honeypot) return { ok: true };
     if (!startedAt || elapsed < 2000 || elapsed > 7200000) return { ok: false, error: 'invalid_timing' };
+    if (!isValidConsent_(privacyConsent, consentPurpose, policyVersion, RECRUITMENT_CONSENT_PURPOSE)) {
+      return { ok: false, error: 'consent_required' };
+    }
     if (fullName.length < 2 || phoneDigits.length < 9 || phoneDigits.length > 15 || !isValidEmail_(email) || !RECRUITMENT_ALLOWED_POSITIONS[position]) {
       return { ok: false, error: 'invalid_application' };
     }
@@ -157,6 +178,10 @@ function handleRecruitment_(data) {
       'Giới thiệu: ' + (introduction || 'Chưa cung cấp'),
       'Trang gửi: ' + (landingPage || 'Không xác định'),
       'Gửi lúc: ' + submittedLabel,
+      'Đồng ý xử lý dữ liệu: Có',
+      'Mục đích đồng ý: ' + RECRUITMENT_CONSENT_PURPOSE,
+      'Phiên bản chính sách: ' + PRIVACY_POLICY_VERSION,
+      'Nội dung đồng ý: ' + RECRUITMENT_CONSENT_TEXT,
     ].join('\n');
     applicantFolder.createFile('thong-tin-ung-vien.txt', summary, MimeType.PLAIN_TEXT);
     applicationSaved = true;
@@ -173,6 +198,9 @@ function handleRecruitment_(data) {
       '<b>Điện thoại:</b> ' + escapeHtml_(phone),
       '<b>Email:</b> ' + escapeHtml_(email),
       '<b>Giới thiệu:</b> ' + escapeHtml_(introduction || 'Chưa cung cấp'),
+      '<b>Đồng ý xử lý dữ liệu:</b> Có',
+      '<b>Mục đích:</b> ' + escapeHtml_(RECRUITMENT_CONSENT_PURPOSE),
+      '<b>Phiên bản chính sách:</b> ' + escapeHtml_(PRIVACY_POLICY_VERSION),
       '',
       '<b>Thư mục hồ sơ:</b> <a href="' + escapeHtmlAttribute_(applicantFolder.getUrl()) + '">Mở trên Google Drive</a>',
     ].concat(fileRows).concat([
@@ -398,6 +426,12 @@ function installRecruitmentCleanupTrigger() {
 
 function clean_(value, maximumLength) {
   return String(value || '').trim().replace(/[\u0000-\u001f\u007f]/g, ' ').slice(0, maximumLength);
+}
+
+function isValidConsent_(granted, purpose, policyVersion, expectedPurpose) {
+  return /^(?:true|1|yes|on)$/i.test(granted)
+    && purpose === expectedPurpose
+    && policyVersion === PRIVACY_POLICY_VERSION;
 }
 
 function cleanUrl_(value, maximumLength) {

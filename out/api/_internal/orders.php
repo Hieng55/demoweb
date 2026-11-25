@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 function create_order(array $payload): array
 {
+    enforce_rate_limit('domain-order-attempt', 20, 3600);
+
     $customer = is_array($payload['customer'] ?? null) ? $payload['customer'] : [];
     $fullname = clean_text($customer['fullname'] ?? '', 100);
     $phone = clean_text($customer['phone'] ?? '', 30);
@@ -12,7 +14,12 @@ function create_order(array $payload): array
     $note = clean_text($customer['note'] ?? '', 1500);
     $honeypot = clean_text($payload['website'] ?? '', 120);
     $startedAt = (int) ($payload['startedAt'] ?? 0);
+    $consentPurpose = clean_text($payload['consentPurpose'] ?? '', 80);
+    $policyVersion = clean_text($payload['policyVersion'] ?? '', 20);
     $elapsed = (int) floor(microtime(true) * 1000) - $startedAt;
+    $expectedConsentPurpose = 'domain_consultation';
+    $expectedPolicyVersion = '2.0';
+    $consentText = 'Tôi đồng ý để Webs4V dùng họ tên, số điện thoại, email, tên miền quan tâm và ghi chú để liên hệ tư vấn, xác minh tên miền và báo giá theo Chính sách bảo mật.';
 
     if ($honeypot !== '') {
         return ['code' => 'TM-' . date('ymd-Hi') . '-OK', 'status' => 'pending_manual_review'];
@@ -20,7 +27,7 @@ function create_order(array $payload): array
     if ($startedAt <= 0 || $elapsed < 1500 || $elapsed > 7200000) {
         throw new ApiException('invalid_timing');
     }
-    if (empty($payload['consent'])) {
+    if (empty($payload['consent']) || $consentPurpose !== $expectedConsentPurpose || $policyVersion !== $expectedPolicyVersion) {
         throw new ApiException('consent_required');
     }
     if (strlen($fullname) < 2 || strlen($phoneDigits) < 9 || strlen($phoneDigits) > 15 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -45,7 +52,6 @@ function create_order(array $payload): array
     $duplicate = $existing->fetch();
     if (is_array($duplicate)) {
         return [
-            'id' => (int) $duplicate['id'],
             'code' => $duplicate['order_code'],
             'status' => $duplicate['status'],
             'duplicate' => true,
@@ -53,7 +59,7 @@ function create_order(array $payload): array
     }
 
     $orderCode = 'TM-' . date('ymd-Hi') . '-' . strtoupper(bin2hex(random_bytes(3)));
-    $source = clean_text($payload['source'] ?? 'domain-hosting-page', 80);
+    $source = 'domain-registration-page';
     $pdo = db();
     $pdo->beginTransaction();
     try {
@@ -76,6 +82,21 @@ function create_order(array $payload): array
             'notification_status' => 'pending',
         ]);
         $orderId = (int) $pdo->lastInsertId();
+
+        $consentStatement = $pdo->prepare(
+            'INSERT INTO domain_consents
+             (order_id, purpose, policy_version, consent_text, source, granted, consented_at)
+             VALUES
+             (:order_id, :purpose, :policy_version, :consent_text, :source, :granted, UTC_TIMESTAMP())'
+        );
+        $consentStatement->execute([
+            'order_id' => $orderId,
+            'purpose' => $expectedConsentPurpose,
+            'policy_version' => $expectedPolicyVersion,
+            'consent_text' => $consentText,
+            'source' => $source,
+            'granted' => 1,
+        ]);
 
         $itemStatement = $pdo->prepare(
             'INSERT INTO domain_order_items
@@ -100,15 +121,10 @@ function create_order(array $payload): array
     }
 
     notify_order($orderId, $orderCode, $fullname, $phone, $email, $note, $items);
-    return ['id' => $orderId, 'code' => $orderCode, 'status' => 'pending_manual_review'];
+    return ['code' => $orderCode, 'status' => 'pending_manual_review'];
 }
 function normalize_order_items(array $rawItems): array
 {
-    $hostingProducts = app_config()['hosting_products'] ?? [
-        'wordpress-new' => 'Web Hosting WordPress',
-        'business' => 'Business Hosting',
-        'cloud-hosting' => 'Cloud Hosting',
-    ];
     $items = [];
     foreach ($rawItems as $rawItem) {
         if (!is_array($rawItem)) throw new ApiException('invalid_items');
@@ -129,16 +145,6 @@ function normalize_order_items(array $rawItems): array
             continue;
         }
 
-        if ($type === 'hosting' && is_array($hostingProducts) && isset($hostingProducts[$key])) {
-            $items[] = [
-                'type' => 'hosting',
-                'key' => $key,
-                'name' => clean_text($hostingProducts[$key], 253),
-                'price' => null,
-                'availability' => 'manual_review',
-            ];
-            continue;
-        }
         throw new ApiException('invalid_items');
     }
 
@@ -171,6 +177,7 @@ function notify_order(int $orderId, string $code, string $fullname, string $phon
         $lines[] = ($index + 1) . '. ' . html_escape($item['name']) . ' (' . html_escape($item['type']) . ')' . $price;
     }
     $lines[] = '<b>Ghi chú:</b> ' . html_escape($note !== '' ? $note : 'Chưa cung cấp');
+    $lines[] = '<b>Đồng ý xử lý dữ liệu:</b> Có — mục đích domain_consultation — chính sách 2.0';
     $lines[] = '';
     $lines[] = '<i>Yêu cầu tư vấn đã được lưu vào MySQL và đang chờ nhân viên liên hệ báo giá. Chưa phát sinh đơn hàng hoặc nghĩa vụ thanh toán.</i>';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import brandLogo from '../../image/logo/logo (1).webp';
+import domainIcon from '../../image/domain/com.png';
 
 const mainLinks = [
   ['/', 'Trang chủ'],
@@ -12,7 +13,7 @@ const mainLinks = [
 
 const serviceLinks = [
   ['/dich-vu/thiet-ke-website/', 'Thiết kế website & E-commerce', 'wordpress'],
-  ['/dich-vu/dang-ky-ten-mien/', 'Đăng ký tên miền', 'wordpress'],
+  ['/dich-vu/dang-ky-ten-mien/', 'Đăng ký tên miền', domainIcon],
   ['/dich-vu/google-ads/', 'Google Ads', 'google-ads'],
   ['/dich-vu/meta-ads/', 'Facebook & Instagram Ads', 'meta'],
   ['/dich-vu/cham-soc-fanpage/', 'Chăm sóc Fanpage', 'facebook'],
@@ -21,7 +22,7 @@ const serviceLinks = [
   ['/dich-vu/seo-google/', 'SEO Google', 'google'],
 ];
 
-const theSvgIcon = (slug) => `https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/${slug}/default.svg`;
+const resolveServiceIcon = (icon) => icon.includes('/') ? icon : `https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/${icon}/default.svg`;
 
 function ServicesDropdown() {
   return <div className="primary-nav__services">
@@ -32,7 +33,7 @@ function ServicesDropdown() {
       <header><span>Hệ dịch vụ Webs4V</span><a href="/dich-vu/">Xem tất cả <b>↗</b></a></header>
       <div>
         {serviceLinks.map(([href, label, icon]) => <a href={href} key={href}>
-          <span className="services-dropdown__icon"><img src={theSvgIcon(icon)} alt={`Biểu tượng ${label}`} aria-hidden="true" width="24" height="24" /></span><strong>{label}</strong><b>↗</b>
+          <span className="services-dropdown__icon"><img src={resolveServiceIcon(icon)} alt={`Biểu tượng ${label}`} aria-hidden="true" width="24" height="24" /></span><strong>{label}</strong><b>↗</b>
         </a>)}
       </div>
     </div>

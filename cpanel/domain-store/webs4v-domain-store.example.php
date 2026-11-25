@@ -27,9 +27,4 @@ return [
     // Only enable when the origin server is restricted to Cloudflare traffic.
     'trust_cloudflare' => false,
 
-    'hosting_products' => [
-        'wordpress-new' => 'Web Hosting WordPress',
-        'business' => 'Business Hosting',
-        'cloud-hosting' => 'Cloud Hosting',
-    ],
 ];

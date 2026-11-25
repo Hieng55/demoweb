@@ -20,6 +20,7 @@ import noiseUrl from './image/noises.webp';
 import wavesUrl from './image/waves.webp';
 import { initializeDirectionalIcons } from './ui-icons.js';
 import { submitWithVerifiedResponse } from './verified-form-submit.js';
+import { CONSENT_PURPOSES, PRIVACY_POLICY_VERSION } from './privacy-consent.js';
 
 const projectImageModules = import.meta.glob('./image/project/*-480.webp', {
   eager: true,
@@ -625,6 +626,9 @@ function initializeContactForm() {
       utmMedium: String(searchParams.get('utm_medium') || '').slice(0, 100),
       utmCampaign: String(searchParams.get('utm_campaign') || '').slice(0, 150),
       startedAt: String(formStartedAt),
+      privacyConsent: data.get('privacyConsent') === 'on' ? 'true' : 'false',
+      consentPurpose: CONSENT_PURPOSES.contact,
+      policyVersion: PRIVACY_POLICY_VERSION,
     };
 
     if (!endpoint.startsWith('https://script.google.com/macros/s/') || endpoint.includes('THAY_BANG_URL_CUA_BAN')) {
