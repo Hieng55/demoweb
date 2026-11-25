@@ -15,6 +15,34 @@ const state = {
   domainMode: API_BASE || DOMAIN_STORE_ENDPOINT ? 'live' : 'preview',
 };
 
+const ORDER_ERROR_MESSAGES = {
+  consent_required: 'Bạn cần đồng ý Chính sách bảo mật trước khi gửi yêu cầu.',
+  invalid_customer: 'Thông tin liên hệ chưa hợp lệ. Vui lòng kiểm tra lại họ tên, số điện thoại và email.',
+  invalid_items: 'Danh sách tên miền chưa hợp lệ. Vui lòng kiểm tra và chọn lại tên miền.',
+  invalid_timing: 'Phiên gửi yêu cầu đã hết hạn. Vui lòng tải lại trang rồi thử lại.',
+  rate_limited: 'Bạn đã gửi quá nhiều lần. Vui lòng chờ một lúc rồi thử lại.',
+  server_error: 'Hệ thống chưa thể lưu yêu cầu lúc này. Vui lòng thử lại sau hoặc liên hệ trực tiếp với Webs4V.',
+};
+
+async function showOrderAlert(options) {
+  const [{ default: Swal }] = await Promise.all([
+    import('sweetalert2'),
+    import('sweetalert2/dist/sweetalert2.min.css'),
+  ]);
+
+  return Swal.fire({
+    confirmButtonColor: '#1769e8',
+    confirmButtonText: 'Hoàn tất',
+    heightAuto: false,
+    returnFocus: false,
+    ...options,
+  });
+}
+
+function orderErrorMessage(code) {
+  return ORDER_ERROR_MESSAGES[code] || 'Không thể tạo yêu cầu lúc này. Vui lòng thử lại.';
+}
+
 function normalizeDomain(value) {
   return value
     .trim()
@@ -398,8 +426,11 @@ async function submitOrder(form) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      if (!response.ok) throw new Error('Không thể tạo yêu cầu lúc này.');
-      order = await response.json();
+      const responsePayload = await response.json().catch(() => null);
+      if (!response.ok || !responsePayload?.ok) {
+        throw new Error(orderErrorMessage(responsePayload?.error));
+      }
+      order = responsePayload;
     } else if (DOMAIN_STORE_ENDPOINT) {
       order = await requestOrderThroughIframe(payload);
     } else {
@@ -412,9 +443,22 @@ async function submitOrder(form) {
     preview.innerHTML = state.orderMode === 'preview'
       ? `<strong>Chưa thể gửi yêu cầu ${escapeHtml(order.code)}</strong><span>Thông tin mới được lưu tạm trên thiết bị này và chưa gửi tới Webs4V. Vui lòng liên hệ trực tiếp nếu bạn cần tư vấn ngay.</span>`
       : `<strong>Đã nhận yêu cầu ${escapeHtml(order.code || order.id)}</strong><span>Webs4V sẽ liên hệ tư vấn và gửi báo giá riêng. Đây không phải đơn hàng và chưa phát sinh hợp đồng hoặc nghĩa vụ thanh toán.</span>`;
-    preview.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    await showOrderAlert({
+      icon: state.orderMode === 'preview' ? 'info' : 'success',
+      title: state.orderMode === 'preview' ? 'Đã tạo bản xem trước' : 'Đã gửi yêu cầu',
+      text: state.orderMode === 'preview'
+        ? 'Yêu cầu mới được lưu tạm trên thiết bị này và chưa gửi tới Webs4V.'
+        : `Mã yêu cầu ${order.code || order.id}. Webs4V sẽ liên hệ tư vấn và gửi báo giá riêng.`,
+    });
   } catch (requestError) {
-    error.textContent = requestError.message || 'Có lỗi khi tạo yêu cầu. Vui lòng thử lại.';
+    const message = requestError.message || 'Có lỗi khi tạo yêu cầu. Vui lòng thử lại.';
+    error.textContent = message;
+    await showOrderAlert({
+      icon: 'error',
+      title: 'Chưa thể gửi yêu cầu',
+      text: message,
+      confirmButtonText: 'Đã hiểu',
+    });
   } finally {
     submitButton.disabled = false;
     submitButton.textContent = 'Gửi yêu cầu báo giá';
