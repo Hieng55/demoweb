@@ -3,6 +3,7 @@ const DOMAIN_CHECK_CACHE_SECONDS = 60;
 const DOMAIN_CHECK_RATE_PER_MINUTE = 60;
 const INET_DOMAIN_CHECK_URL = 'https://dms.inet.vn/api/rms/v1/domain/checkavailable';
 const INET_SUFFIX_LIST_URL = 'https://dms.inet.vn/api/rms/v1/suffix/list';
+const INET_PUBLIC_WHOIS_URL = 'https://dms.inet.vn/api/public/whois/v1/whois/directly';
 const DOMAIN_DETAIL_CACHE_SECONDS = 21600;
 const PUBLIC_RDAP_URL = 'https://rdap.org/domain/';
 
@@ -145,7 +146,7 @@ function enrichDomainResults_(items, token, cache) {
     const key = type + '-' + value;
     if (seen[key]) return;
     seen[key] = true;
-    const cached = cache.get('domain-detail-' + key);
+    const cached = cache.get('domain-detail-v2-' + key);
     if (cached) {
       try {
         detailsByKey[key] = JSON.parse(cached);
@@ -167,11 +168,11 @@ function enrichDomainResults_(items, token, cache) {
         payload: JSON.stringify({ suffix: value }),
         muteHttpExceptions: true,
       } : {
-        url: PUBLIC_RDAP_URL + encodeURIComponent(value),
-        method: 'get',
-        headers: { Accept: 'application/rdap+json' },
+        url: INET_PUBLIC_WHOIS_URL,
+        method: 'post',
+        contentType: 'application/json',
+        payload: JSON.stringify({ domainName: value }),
         muteHttpExceptions: true,
-        followRedirects: true,
       },
     });
   });
@@ -180,11 +181,19 @@ function enrichDomainResults_(items, token, cache) {
     UrlFetchApp.fetchAll(pending.map(function (item) { return item.request; }))
       .forEach(function (response, index) {
         const pendingItem = pending[index];
-        const detail = pendingItem.type === 'pricing'
+        let detail = pendingItem.type === 'pricing'
           ? parseSuffixPricing_(response)
-          : parseRdapWhois_(response);
+          : parseInetWhois_(response);
+        if (pendingItem.type === 'whois' && !detail) {
+          detail = parseRdapWhois_(UrlFetchApp.fetch(PUBLIC_RDAP_URL + encodeURIComponent(pendingItem.value), {
+            method: 'get',
+            headers: { Accept: 'application/rdap+json' },
+            muteHttpExceptions: true,
+            followRedirects: true,
+          }));
+        }
         detailsByKey[pendingItem.key] = detail;
-        cache.put('domain-detail-' + pendingItem.key, JSON.stringify(detail), DOMAIN_DETAIL_CACHE_SECONDS);
+        cache.put('domain-detail-v2-' + pendingItem.key, JSON.stringify(detail), DOMAIN_DETAIL_CACHE_SECONDS);
       });
   }
 
@@ -223,6 +232,35 @@ function parseSuffixPricing_(response) {
   } catch (error) {
     return {};
   }
+}
+
+function parseInetWhois_(response) {
+  if (response.getResponseCode() < 200 || response.getResponseCode() >= 300) return null;
+  try {
+    const payload = JSON.parse(response.getContentText());
+    if (String(payload.code) !== '0' || !payload.domainName) return null;
+    return {
+      createdAt: inetWhoisDate_(payload.creationDate),
+      expiresAt: inetWhoisDate_(payload.expirationDate),
+      registrar: clean_(payload.registrar, 200),
+      registrantName: clean_(payload.registrantName, 200),
+      statuses: (payload.status || []).map(function (status) {
+        return clean_(status, 100);
+      }).filter(Boolean).slice(0, 8),
+      nameservers: (payload.nameServer || []).map(function (nameserver) {
+        return clean_(nameserver, 253).toLowerCase();
+      }).filter(Boolean).slice(0, 8),
+      dnssec: clean_(payload.DNSSEC, 40).toLowerCase(),
+      source: 'inet-whois',
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
+function inetWhoisDate_(value) {
+  const match = clean_(value, 30).match(/^(\d{2})-(\d{2})-(\d{4})$/);
+  return match ? match[3] + '-' + match[2] + '-' + match[1] : clean_(value, 30);
 }
 
 function parseRdapWhois_(response) {

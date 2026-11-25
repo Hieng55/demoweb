@@ -212,7 +212,7 @@ function renderDomainResults(results) {
             detailRow('Ngày đăng ký', formatDomainDate(whois.createdAt)),
             detailRow('Ngày hết hạn', formatDomainDate(whois.expiresAt)),
             detailRow('Nhà đăng ký', whois.registrar),
-            detailRow('Tổ chức đăng ký', whois.registrantOrganization),
+            detailRow('Chủ thể đăng ký', whois.registrantName || whois.registrantOrganization),
             detailRow('Trạng thái', Array.isArray(whois.statuses) ? whois.statuses.join(', ') : whois.statuses, true),
             detailRow('Nameserver', Array.isArray(whois.nameservers) ? whois.nameservers.join(' · ') : whois.nameservers, true),
             detailRow('DNSSEC', whois.dnssec === 'signed' ? 'Đã ký' : whois.dnssec === 'unsigned' ? 'Chưa ký' : ''),
