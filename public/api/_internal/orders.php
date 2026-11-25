@@ -158,7 +158,7 @@ function numeric_price(mixed $value): ?float
 function notify_order(int $orderId, string $code, string $fullname, string $phone, string $email, string $note, array $items): void
 {
     $lines = [
-        '<b>YÊU CẦU TÊN MIỀN / HOSTING — WEBS4V</b>',
+        '<b>YÊU CẦU TƯ VẤN TÊN MIỀN — WEBS4V</b>',
         '',
         '<b>Mã yêu cầu:</b> ' . html_escape($code),
         '<b>Khách hàng:</b> ' . html_escape($fullname),
@@ -172,7 +172,7 @@ function notify_order(int $orderId, string $code, string $fullname, string $phon
     }
     $lines[] = '<b>Ghi chú:</b> ' . html_escape($note !== '' ? $note : 'Chưa cung cấp');
     $lines[] = '';
-    $lines[] = '<i>Đơn đã được lưu vào MySQL và đang chờ nhân viên kiểm tra thủ công.</i>';
+    $lines[] = '<i>Yêu cầu tư vấn đã được lưu vào MySQL và đang chờ nhân viên liên hệ báo giá. Chưa phát sinh đơn hàng hoặc nghĩa vụ thanh toán.</i>';
 
     try {
         telegram_send(implode("\n", $lines));

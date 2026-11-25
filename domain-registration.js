@@ -187,7 +187,7 @@ function renderDomainResults(results) {
     const statusClass = available ? '' : taken ? ' domain-result__status--taken' : ' domain-result__status--pending';
     const statusLabel = available ? 'Còn trống — có thể đăng ký' : taken ? 'Đã có người đăng ký' : 'Chưa thể xác minh';
     const disabled = available ? '' : ' disabled';
-    const actionLabel = available ? 'Tôi muốn mua' : taken ? 'Không thể đặt mua' : 'Vui lòng thử lại';
+    const actionLabel = available ? 'Nhận tư vấn' : taken ? 'Đã được đăng ký' : 'Vui lòng thử lại';
     const registrationPrice = result.registrationPrice || result.price;
     const suffix = getDomainSuffix(result.domain);
     const domainCategory = getDomainCategory(suffix);
@@ -248,7 +248,6 @@ function itemKey(item) {
 function addItem(item) {
   const exists = state.items.some((entry) => itemKey(entry) === itemKey(item));
   if (exists) return;
-  if (item.type === 'hosting') state.items = state.items.filter((entry) => entry.type !== 'hosting');
   state.items.push(item);
   renderCart();
 }
@@ -267,11 +266,11 @@ function renderCart() {
   count.textContent = `${state.items.length} hạng mục`;
 
   if (!state.items.length) {
-    itemsContainer.innerHTML = '<div class="order-cart__empty"><strong>Chưa có hạng mục</strong><p>Chọn một tên miền hoặc nhóm hosting ở phía trên.</p></div>';
+    itemsContainer.innerHTML = '<div class="order-cart__empty"><strong>Chưa có tên miền</strong><p>Kiểm tra và chọn một tên miền ở phía trên.</p></div>';
     total.textContent = 'Chờ xác nhận giá';
   } else {
     itemsContainer.innerHTML = state.items.map((item) => `<div class="cart-item">
-      <div><strong>${escapeHtml(item.name)}</strong><small>${item.type === 'domain' ? formatPrice(item.price) : 'Cấu hình và giá được xác nhận sau'}</small></div>
+      <div><strong>${escapeHtml(item.name)}</strong><small>${formatPrice(item.price)}</small></div>
       <button type="button" data-remove-item="${escapeHtml(itemKey(item))}">Bỏ chọn</button>
     </div>`).join('');
 
@@ -284,12 +283,6 @@ function renderCart() {
         : 'Chờ xác nhận giá';
   }
 
-  document.querySelectorAll('[data-add-hosting]').forEach((button) => {
-    const card = button.closest('[data-hosting-id]');
-    const selected = state.items.some((item) => item.type === 'hosting' && item.id === card?.dataset.hostingId);
-    button.classList.toggle('is-selected', selected);
-    button.textContent = selected ? 'Đã chọn nhóm hosting' : 'Chọn nhóm hosting này';
-  });
 }
 
 function requestOrderThroughIframe(payload) {
@@ -362,7 +355,7 @@ async function submitOrder(form) {
   error.textContent = '';
 
   if (!state.items.length) {
-    error.textContent = 'Vui lòng chọn ít nhất một tên miền hoặc nhóm hosting.';
+    error.textContent = 'Vui lòng chọn ít nhất một tên miền.';
     return;
   }
 
@@ -380,7 +373,7 @@ async function submitOrder(form) {
       note: formData.get('note'),
     },
     items: state.items,
-    source: 'domain-hosting-page',
+    source: 'domain-registration-page',
     startedAt: PAGE_STARTED_AT,
     website: formData.get('website') || '',
     consent: formData.get('consent') === 'on',
@@ -410,14 +403,14 @@ async function submitOrder(form) {
 
     preview.hidden = false;
     preview.innerHTML = state.orderMode === 'preview'
-      ? `<strong>Chưa thể gửi yêu cầu ${escapeHtml(order.code)}</strong><span>Thông tin mới được lưu tạm trên thiết bị này và chưa gửi tới Webs4V. Vui lòng liên hệ trực tiếp nếu bạn cần xử lý ngay.</span>`
-      : `<strong>Đã gửi yêu cầu ${escapeHtml(order.code || order.id)}</strong><span>Đội ngũ Webs4V đã nhận thông báo và sẽ liên hệ xác nhận giá, thanh toán trước khi xử lý mua thủ công.</span>`;
+      ? `<strong>Chưa thể gửi yêu cầu ${escapeHtml(order.code)}</strong><span>Thông tin mới được lưu tạm trên thiết bị này và chưa gửi tới Webs4V. Vui lòng liên hệ trực tiếp nếu bạn cần tư vấn ngay.</span>`
+      : `<strong>Đã nhận yêu cầu ${escapeHtml(order.code || order.id)}</strong><span>Webs4V sẽ liên hệ tư vấn và gửi báo giá riêng. Đây không phải đơn hàng và chưa phát sinh hợp đồng hoặc nghĩa vụ thanh toán.</span>`;
     preview.scrollIntoView({ behavior: 'smooth', block: 'center' });
   } catch (requestError) {
     error.textContent = requestError.message || 'Có lỗi khi tạo yêu cầu. Vui lòng thử lại.';
   } finally {
     submitButton.disabled = false;
-    submitButton.textContent = 'Gửi yêu cầu mua';
+    submitButton.textContent = 'Gửi yêu cầu báo giá';
   }
 }
 
@@ -479,13 +472,6 @@ function initializeDomainStore() {
     if (domainButton) {
       addItem({ type: 'domain', id: domainButton.dataset.addDomain, name: domainButton.dataset.addDomain, price: domainButton.dataset.price || null });
       document.querySelector('#don-hang')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return;
-    }
-
-    const hostingButton = event.target.closest('[data-add-hosting]');
-    if (hostingButton) {
-      const card = hostingButton.closest('[data-hosting-id]');
-      addItem({ type: 'hosting', id: card.dataset.hostingId, name: card.dataset.hostingName, price: null });
       return;
     }
 

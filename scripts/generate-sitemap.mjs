@@ -14,7 +14,7 @@ const pages = [
   { path: '/dich-vu/thiet-ke-website/', priority: '0.9', changefreq: 'weekly' },
   { path: '/dich-vu/thiet-ke-web-thu-duc/', priority: '0.9', changefreq: 'weekly' },
   { path: '/dich-vu/landing-page-gia-re/', priority: '0.9', changefreq: 'weekly' },
-  { path: '/dich-vu/ten-mien-hosting/', priority: '0.9', changefreq: 'weekly' },
+  { path: '/dich-vu/dang-ky-ten-mien/', priority: '0.9', changefreq: 'weekly' },
   { path: '/dich-vu/seo-google/', priority: '0.9', changefreq: 'weekly' },
   { path: '/dich-vu/google-ads/', priority: '0.8', changefreq: 'weekly' },
   { path: '/dich-vu/meta-ads/', priority: '0.8', changefreq: 'weekly' },

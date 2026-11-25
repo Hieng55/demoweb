@@ -66,11 +66,11 @@ export const serviceItems = [
     icon: 'https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google/default.svg',
   },
   {
-    slug: 'ten-mien-hosting', index: '08', short: 'Domain / Hosting', title: 'Tên miền & Hosting',
-    lead: 'Kiểm tra tên miền, chọn nhóm hosting và tạo yêu cầu theo quy trình có người xác minh trước khi mua.',
-    support: 'Tra cứu tên miền, lựa chọn hosting, xác nhận thông tin và bàn giao sau khi yêu cầu được xử lý.',
-    outcomes: ['Tên miền được kiểm tra lại trước khi mua', 'Hosting được chọn theo nhu cầu thực tế', 'Trạng thái đơn hàng minh bạch'],
-    benefit: 'Một điểm bắt đầu rõ ràng để kiểm tra, lựa chọn và đăng ký tên miền cùng hosting phù hợp.',
+    slug: 'dang-ky-ten-mien', index: '08', short: 'Domain registration', title: 'Đăng ký tên miền',
+    lead: 'Kiểm tra tên miền và gửi yêu cầu tư vấn theo quy trình có người xác minh trước khi đăng ký.',
+    support: 'Tra cứu tình trạng, tham khảo chi phí, xác nhận thông tin chủ thể và hỗ trợ đăng ký tên miền.',
+    outcomes: ['Tên miền được kiểm tra lại trước khi đăng ký', 'Chi phí được xác nhận rõ ràng', 'Trạng thái yêu cầu minh bạch'],
+    benefit: 'Một điểm bắt đầu rõ ràng để kiểm tra, lựa chọn và đăng ký tên miền phù hợp.',
     icon: serviceWebIcon,
   },
 ];

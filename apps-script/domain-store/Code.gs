@@ -369,7 +369,7 @@ function handleDomainOrder_(data) {
     return (index + 1) + '. ' + escapeHtml_(item.name) + ' (' + escapeHtml_(item.type) + ')';
   });
   const message = [
-    '<b>YÊU CẦU TÊN MIỀN / HOSTING — WEBS4V</b>',
+    '<b>YÊU CẦU TƯ VẤN TÊN MIỀN — WEBS4V</b>',
     '',
     '<b>Mã yêu cầu:</b> ' + escapeHtml_(orderCode),
     '<b>Khách hàng:</b> ' + escapeHtml_(fullname),
@@ -379,7 +379,7 @@ function handleDomainOrder_(data) {
   ].concat(itemRows).concat([
     '<b>Ghi chú:</b> ' + escapeHtml_(note || 'Chưa cung cấp'),
     '',
-    '<i>Chỉ là yêu cầu mua; hệ thống chưa gọi API đăng ký và chưa trừ quỹ iNET.</i>',
+    '<i>Chỉ là yêu cầu tư vấn/báo giá; chưa phát sinh đơn hàng, hợp đồng hoặc nghĩa vụ thanh toán.</i>',
   ]).join('\n');
 
   sendTelegram_(message);
